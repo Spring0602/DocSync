@@ -1,0 +1,40 @@
+[build-system]
+requires = ["hatchling==1.27.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "docsync-core"
+version = "0.2.0"
+description = "Evidence-first Python and Markdown documentation drift detection"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = ["pydantic==2.11.7", "markdown-it-py==3.0.0"]
+
+[project.optional-dependencies]
+dev = ["pytest==8.4.1", "ruff==0.12.7", "mypy==1.17.1", "build==1.3.0", "hatchling==1.27.0"]
+
+[project.scripts]
+docsync = "docsync.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/docsync"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src", "tests", "scripts", "bench", "action", "examples", "docs", "compliance", "schemas", "README.md", "LICENSE", "pyproject.toml", "requirements-*.lock", "requirements-dev.txt", "docsync.toml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "UP"]
+
+[tool.mypy]
+python_version = "3.12"
+files = ["src/docsync"]
+check_untyped_defs = true
+disallow_untyped_defs = true

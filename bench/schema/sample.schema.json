@@ -1,0 +1,116 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "sample_id": {
+      "pattern": "^[A-Za-z0-9_-]+$",
+      "title": "Sample Id",
+      "type": "string"
+    },
+    "repo_id": {
+      "title": "Repo Id",
+      "type": "string"
+    },
+    "repo_path": {
+      "title": "Repo Path",
+      "type": "string"
+    },
+    "head_sha": {
+      "pattern": "^[a-f0-9]{40,64}$",
+      "title": "Head Sha",
+      "type": "string"
+    },
+    "document_path": {
+      "title": "Document Path",
+      "type": "string"
+    },
+    "code_path": {
+      "title": "Code Path",
+      "type": "string"
+    },
+    "group_id": {
+      "title": "Group Id",
+      "type": "string"
+    },
+    "split": {
+      "enum": [
+        "dev",
+        "test"
+      ],
+      "title": "Split",
+      "type": "string"
+    },
+    "origin": {
+      "enum": [
+        "real",
+        "controlled"
+      ],
+      "title": "Origin",
+      "type": "string"
+    },
+    "gold": {
+      "enum": [
+        "CONSISTENT",
+        "INCONSISTENT",
+        "INSUFFICIENT"
+      ],
+      "title": "Gold",
+      "type": "string"
+    },
+    "drift_type": {
+      "enum": [
+        "DEFAULT_VALUE",
+        "SIGNATURE",
+        "CONFIG"
+      ],
+      "title": "Drift Type",
+      "type": "string"
+    },
+    "rights_status": {
+      "enum": [
+        "cleared",
+        "manifest_only",
+        "pending"
+      ],
+      "title": "Rights Status",
+      "type": "string"
+    },
+    "annotation_status": {
+      "default": "provisional",
+      "enum": [
+        "provisional",
+        "adjudicated"
+      ],
+      "title": "Annotation Status",
+      "type": "string"
+    },
+    "claim_line": {
+      "anyOf": [
+        {
+          "minimum": 1,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Claim Line"
+    }
+  },
+  "required": [
+    "sample_id",
+    "repo_id",
+    "repo_path",
+    "head_sha",
+    "document_path",
+    "code_path",
+    "group_id",
+    "split",
+    "origin",
+    "gold",
+    "drift_type",
+    "rights_status"
+  ],
+  "title": "BenchmarkSample",
+  "type": "object"
+}

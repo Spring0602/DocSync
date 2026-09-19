@@ -1,0 +1,22 @@
+[scan]
+mode = "hybrid"
+fail_on = "none"
+require_complete = true
+
+[llm]
+provider = "chat-completions"
+# Set the full POST endpoint, exact model ID and key environment variable.
+endpoint = "https://your-provider.example/v1/chat/completions"
+model = "replace-with-exact-model-id"
+api_key_env = "DOCSYNC_API_KEY"
+response_format = "json_schema"
+token_parameter = "max_completion_tokens"
+temperature = 0
+timeout_seconds = 30
+max_retries = 2
+max_requests = 20
+max_input_bytes = 32000
+max_output_tokens = 1024
+max_total_tokens = 100000
+# Optional local cache contains generated judgments, never API keys.
+# cache_dir = "runs/model-cache"

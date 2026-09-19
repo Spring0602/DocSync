@@ -1,0 +1,10 @@
+LICENSE STATUS — PRE-RELEASE FRAMEWORK
+
+The project plan proposes Apache-2.0 for the DocSync source code. The team has not
+yet confirmed ownership and third-party redistribution obligations. No blanket
+license is granted by this placeholder. Replace this file with the approved full
+license text before public release, and set the pyproject license metadata then.
+
+The original planning document, competition attachments and personal declaration
+forms are separate materials and are not covered by a future source-code license.
+Third-party dependencies remain subject to their own licenses.

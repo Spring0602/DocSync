@@ -1,0 +1,1190 @@
+{
+  "$defs": {
+    "Candidate": {
+      "additionalProperties": false,
+      "properties": {
+        "fact_id": {
+          "title": "Fact Id",
+          "type": "string"
+        },
+        "rank": {
+          "minimum": 1,
+          "title": "Rank",
+          "type": "integer"
+        },
+        "score": {
+          "title": "Score",
+          "type": "number"
+        },
+        "features": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Features",
+          "type": "array"
+        }
+      },
+      "required": [
+        "fact_id",
+        "rank",
+        "score",
+        "features"
+      ],
+      "title": "Candidate",
+      "type": "object"
+    },
+    "CandidateSet": {
+      "additionalProperties": false,
+      "properties": {
+        "claim_id": {
+          "title": "Claim Id",
+          "type": "string"
+        },
+        "candidates": {
+          "items": {
+            "$ref": "#/$defs/Candidate"
+          },
+          "title": "Candidates",
+          "type": "array"
+        },
+        "ambiguity": {
+          "title": "Ambiguity",
+          "type": "boolean"
+        },
+        "reason": {
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "claim_id",
+        "candidates",
+        "ambiguity",
+        "reason"
+      ],
+      "title": "CandidateSet",
+      "type": "object"
+    },
+    "CodeEntity": {
+      "additionalProperties": false,
+      "properties": {
+        "entity_id": {
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "function",
+            "async_function",
+            "method",
+            "config"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "qualified_name": {
+          "title": "Qualified Name",
+          "type": "string"
+        },
+        "module": {
+          "title": "Module",
+          "type": "string"
+        },
+        "signature": {
+          "items": {
+            "$ref": "#/$defs/Parameter"
+          },
+          "title": "Signature",
+          "type": "array"
+        },
+        "decorators": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Decorators",
+          "type": "array"
+        },
+        "span": {
+          "$ref": "#/$defs/SourceSpan"
+        }
+      },
+      "required": [
+        "entity_id",
+        "kind",
+        "qualified_name",
+        "module",
+        "signature",
+        "decorators",
+        "span"
+      ],
+      "title": "CodeEntity",
+      "type": "object"
+    },
+    "CodeFact": {
+      "additionalProperties": false,
+      "properties": {
+        "fact_id": {
+          "title": "Fact Id",
+          "type": "string"
+        },
+        "entity_id": {
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "subject": {
+          "title": "Subject",
+          "type": "string"
+        },
+        "property": {
+          "title": "Property",
+          "type": "string"
+        },
+        "value_state": {
+          "enum": [
+            "KNOWN",
+            "UNKNOWN"
+          ],
+          "title": "Value State",
+          "type": "string"
+        },
+        "typed_value": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/LiteralValue"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "expression": {
+          "title": "Expression",
+          "type": "string"
+        },
+        "span": {
+          "$ref": "#/$defs/SourceSpan"
+        },
+        "fact_kind": {
+          "default": "DEFAULT_VALUE",
+          "enum": [
+            "DEFAULT_VALUE",
+            "SIGNATURE",
+            "CONFIG"
+          ],
+          "title": "Fact Kind",
+          "type": "string"
+        },
+        "parameters": {
+          "items": {
+            "$ref": "#/$defs/Parameter"
+          },
+          "title": "Parameters",
+          "type": "array"
+        },
+        "receiver": {
+          "default": "none",
+          "enum": [
+            "none",
+            "instance",
+            "class"
+          ],
+          "title": "Receiver",
+          "type": "string"
+        },
+        "extractor_version": {
+          "default": "python-static/2",
+          "title": "Extractor Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "fact_id",
+        "entity_id",
+        "subject",
+        "property",
+        "value_state",
+        "typed_value",
+        "expression",
+        "span"
+      ],
+      "title": "CodeFact",
+      "type": "object"
+    },
+    "Decision": {
+      "enum": [
+        "CONSISTENT",
+        "INCONSISTENT",
+        "UNCERTAIN",
+        "SKIPPED"
+      ],
+      "title": "Decision",
+      "type": "string"
+    },
+    "Diagnostic": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "title": "Code",
+          "type": "string"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        },
+        "stage": {
+          "title": "Stage",
+          "type": "string"
+        },
+        "path": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Path"
+        },
+        "retryable": {
+          "default": false,
+          "title": "Retryable",
+          "type": "boolean"
+        },
+        "affects_completeness": {
+          "default": true,
+          "title": "Affects Completeness",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "stage"
+      ],
+      "title": "Diagnostic",
+      "type": "object"
+    },
+    "DocumentClaim": {
+      "additionalProperties": false,
+      "properties": {
+        "claim_id": {
+          "title": "Claim Id",
+          "type": "string"
+        },
+        "subject": {
+          "title": "Subject",
+          "type": "string"
+        },
+        "predicate": {
+          "title": "Predicate",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "DEFAULT_ASSERTION",
+            "CALL_EXAMPLE",
+            "VERSION_NOTE",
+            "CONFIG_ASSERTION"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/LiteralValue"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "qualifiers": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Qualifiers",
+          "type": "array"
+        },
+        "version_scope": {
+          "default": "current",
+          "enum": [
+            "current",
+            "unresolved"
+          ],
+          "title": "Version Scope",
+          "type": "string"
+        },
+        "span": {
+          "$ref": "#/$defs/SourceSpan"
+        },
+        "value_span": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SourceSpan"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "quote": {
+          "title": "Quote",
+          "type": "string"
+        },
+        "extraction_method": {
+          "default": "markdown-rules/1",
+          "title": "Extraction Method",
+          "type": "string"
+        },
+        "source_hint": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Hint"
+        },
+        "positional_count": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Positional Count"
+        },
+        "keyword_names": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Keyword Names",
+          "type": "array"
+        },
+        "unpacking": {
+          "default": false,
+          "title": "Unpacking",
+          "type": "boolean"
+        },
+        "bound_receiver": {
+          "default": false,
+          "title": "Bound Receiver",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "claim_id",
+        "subject",
+        "predicate",
+        "kind",
+        "value",
+        "span",
+        "quote"
+      ],
+      "title": "DocumentClaim",
+      "type": "object"
+    },
+    "Evidence": {
+      "additionalProperties": false,
+      "properties": {
+        "head_sha": {
+          "title": "Head Sha",
+          "type": "string"
+        },
+        "snapshot_hash": {
+          "title": "Snapshot Hash",
+          "type": "string"
+        },
+        "entity_id": {
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "document": {
+          "$ref": "#/$defs/SourceSpan"
+        },
+        "code": {
+          "$ref": "#/$defs/SourceSpan"
+        },
+        "rule_id": {
+          "default": "DEFAULT_VALUE/1",
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "verifier_version": {
+          "default": "verifier/2",
+          "title": "Verifier Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "head_sha",
+        "snapshot_hash",
+        "entity_id",
+        "document",
+        "code"
+      ],
+      "title": "Evidence",
+      "type": "object"
+    },
+    "FileRecord": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "blob_hash": {
+          "title": "Blob Hash",
+          "type": "string"
+        },
+        "size": {
+          "title": "Size",
+          "type": "integer"
+        },
+        "encoding": {
+          "default": "utf-8",
+          "title": "Encoding",
+          "type": "string"
+        }
+      },
+      "required": [
+        "path",
+        "blob_hash",
+        "size"
+      ],
+      "title": "FileRecord",
+      "type": "object"
+    },
+    "Finding": {
+      "additionalProperties": false,
+      "properties": {
+        "finding_id": {
+          "title": "Finding Id",
+          "type": "string"
+        },
+        "drift_type": {
+          "default": "DEFAULT_VALUE",
+          "enum": [
+            "DEFAULT_VALUE",
+            "SIGNATURE",
+            "CONFIG"
+          ],
+          "title": "Drift Type",
+          "type": "string"
+        },
+        "claim_id": {
+          "title": "Claim Id",
+          "type": "string"
+        },
+        "fact_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Fact Ids",
+          "type": "array"
+        },
+        "evidence": {
+          "$ref": "#/$defs/Evidence"
+        },
+        "severity": {
+          "const": "warning",
+          "default": "warning",
+          "title": "Severity",
+          "type": "string"
+        },
+        "status": {
+          "const": "INCONSISTENT",
+          "default": "INCONSISTENT",
+          "title": "Status",
+          "type": "string"
+        },
+        "verification_status": {
+          "const": "VERIFIED",
+          "default": "VERIFIED",
+          "title": "Verification Status",
+          "type": "string"
+        },
+        "ignored": {
+          "default": false,
+          "title": "Ignored",
+          "type": "boolean"
+        },
+        "ignore_reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ignore Reason"
+        }
+      },
+      "required": [
+        "finding_id",
+        "claim_id",
+        "fact_ids",
+        "evidence"
+      ],
+      "title": "Finding",
+      "type": "object"
+    },
+    "JudgeResult": {
+      "additionalProperties": false,
+      "properties": {
+        "claim_id": {
+          "title": "Claim Id",
+          "type": "string"
+        },
+        "decision": {
+          "$ref": "#/$defs/Decision"
+        },
+        "fact_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Fact Ids",
+          "type": "array"
+        },
+        "reason_code": {
+          "title": "Reason Code",
+          "type": "string"
+        },
+        "reason_text": {
+          "title": "Reason Text",
+          "type": "string"
+        },
+        "claim_type_check": {
+          "default": false,
+          "title": "Claim Type Check",
+          "type": "boolean"
+        },
+        "version_compatible": {
+          "default": false,
+          "title": "Version Compatible",
+          "type": "boolean"
+        },
+        "score": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Score"
+        },
+        "uncertainty_reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Uncertainty Reason"
+        },
+        "model_run_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Model Run Id"
+        }
+      },
+      "required": [
+        "claim_id",
+        "decision",
+        "fact_ids",
+        "reason_code",
+        "reason_text"
+      ],
+      "title": "JudgeResult",
+      "type": "object"
+    },
+    "LiteralType": {
+      "enum": [
+        "NoneType",
+        "bool",
+        "int",
+        "float",
+        "str",
+        "list",
+        "tuple",
+        "dict",
+        "set"
+      ],
+      "type": "string"
+    },
+    "LiteralValue": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "$ref": "#/$defs/LiteralType"
+        },
+        "canonical": {
+          "title": "Canonical",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "canonical"
+      ],
+      "title": "LiteralValue",
+      "type": "object"
+    },
+    "Parameter": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "kind": {
+          "$ref": "#/$defs/ParameterKind"
+        },
+        "required": {
+          "title": "Required",
+          "type": "boolean"
+        },
+        "value_state": {
+          "enum": [
+            "KNOWN",
+            "UNKNOWN",
+            "ABSENT"
+          ],
+          "title": "Value State",
+          "type": "string"
+        },
+        "typed_value": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/LiteralValue"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "expression": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Expression"
+        }
+      },
+      "required": [
+        "name",
+        "kind",
+        "required",
+        "value_state"
+      ],
+      "title": "Parameter",
+      "type": "object"
+    },
+    "ParameterKind": {
+      "enum": [
+        "POSITIONAL_ONLY",
+        "POSITIONAL_OR_KEYWORD",
+        "KEYWORD_ONLY",
+        "VAR_POSITIONAL",
+        "VAR_KEYWORD"
+      ],
+      "type": "string"
+    },
+    "PatchEdit": {
+      "additionalProperties": false,
+      "properties": {
+        "span": {
+          "$ref": "#/$defs/SourceSpan"
+        },
+        "old_text": {
+          "title": "Old Text",
+          "type": "string"
+        },
+        "new_text": {
+          "title": "New Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "span",
+        "old_text",
+        "new_text"
+      ],
+      "title": "PatchEdit",
+      "type": "object"
+    },
+    "PatchProposal": {
+      "additionalProperties": false,
+      "properties": {
+        "patch_id": {
+          "title": "Patch Id",
+          "type": "string"
+        },
+        "finding_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Finding Ids",
+          "type": "array"
+        },
+        "base_hashes": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Base Hashes",
+          "type": "object"
+        },
+        "edits": {
+          "items": {
+            "$ref": "#/$defs/PatchEdit"
+          },
+          "title": "Edits",
+          "type": "array"
+        },
+        "diff": {
+          "title": "Diff",
+          "type": "string"
+        },
+        "validation": {
+          "enum": [
+            "VALIDATED",
+            "CONFLICT",
+            "NOT_ELIGIBLE"
+          ],
+          "title": "Validation",
+          "type": "string"
+        },
+        "requires_review": {
+          "default": true,
+          "title": "Requires Review",
+          "type": "boolean"
+        },
+        "validation_details": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Validation Details",
+          "type": "array"
+        }
+      },
+      "required": [
+        "patch_id",
+        "finding_ids",
+        "base_hashes",
+        "edits",
+        "diff",
+        "validation",
+        "validation_details"
+      ],
+      "title": "PatchProposal",
+      "type": "object"
+    },
+    "RejectedDecision": {
+      "additionalProperties": false,
+      "properties": {
+        "claim_id": {
+          "title": "Claim Id",
+          "type": "string"
+        },
+        "reason": {
+          "title": "Reason",
+          "type": "string"
+        },
+        "decision": {
+          "const": "UNCERTAIN",
+          "default": "UNCERTAIN",
+          "title": "Decision",
+          "type": "string"
+        }
+      },
+      "required": [
+        "claim_id",
+        "reason"
+      ],
+      "title": "RejectedDecision",
+      "type": "object"
+    },
+    "RepositorySnapshot": {
+      "additionalProperties": false,
+      "properties": {
+        "repo_id": {
+          "title": "Repo Id",
+          "type": "string"
+        },
+        "head_sha": {
+          "title": "Head Sha",
+          "type": "string"
+        },
+        "base_sha": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Base Sha"
+        },
+        "mode": {
+          "enum": [
+            "commit",
+            "working-tree"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "files_hash": {
+          "title": "Files Hash",
+          "type": "string"
+        },
+        "dirty": {
+          "title": "Dirty",
+          "type": "boolean"
+        },
+        "files": {
+          "items": {
+            "$ref": "#/$defs/FileRecord"
+          },
+          "title": "Files",
+          "type": "array"
+        },
+        "changed_paths": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Changed Paths",
+          "type": "array"
+        }
+      },
+      "required": [
+        "repo_id",
+        "head_sha",
+        "base_sha",
+        "mode",
+        "files_hash",
+        "dirty",
+        "files",
+        "changed_paths"
+      ],
+      "title": "RepositorySnapshot",
+      "type": "object"
+    },
+    "RunManifest": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "default": "2.0",
+          "enum": [
+            "1.0",
+            "2.0"
+          ],
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        },
+        "versions": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Versions",
+          "type": "object"
+        },
+        "config_hash": {
+          "title": "Config Hash",
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "rules",
+            "hybrid"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/RunStatus"
+        },
+        "enabled_types": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Enabled Types",
+          "type": "array"
+        },
+        "semantic_coverage": {
+          "default": "supported-static-claims-only",
+          "title": "Semantic Coverage",
+          "type": "string"
+        },
+        "budget": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "title": "Budget",
+          "type": "object"
+        },
+        "usage": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "title": "Usage",
+          "type": "object"
+        },
+        "diagnostics": {
+          "items": {
+            "$ref": "#/$defs/Diagnostic"
+          },
+          "title": "Diagnostics",
+          "type": "array"
+        },
+        "stage_seconds": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Stage Seconds",
+          "type": "object"
+        },
+        "model": {
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "title": "Model",
+          "type": "object"
+        },
+        "events": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Events",
+          "type": "array"
+        },
+        "model_calls": {
+          "items": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "type": "object"
+          },
+          "title": "Model Calls",
+          "type": "array"
+        }
+      },
+      "required": [
+        "run_id",
+        "versions",
+        "config_hash",
+        "mode",
+        "status",
+        "budget",
+        "usage",
+        "diagnostics"
+      ],
+      "title": "RunManifest",
+      "type": "object"
+    },
+    "RunStatus": {
+      "enum": [
+        "COMPLETED",
+        "PARTIAL",
+        "FAILED"
+      ],
+      "title": "RunStatus",
+      "type": "string"
+    },
+    "SourceSpan": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "start_line": {
+          "minimum": 1,
+          "title": "Start Line",
+          "type": "integer"
+        },
+        "end_line": {
+          "minimum": 1,
+          "title": "End Line",
+          "type": "integer"
+        },
+        "start_byte": {
+          "minimum": 0,
+          "title": "Start Byte",
+          "type": "integer"
+        },
+        "end_byte": {
+          "minimum": 0,
+          "title": "End Byte",
+          "type": "integer"
+        },
+        "blob_hash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Blob Hash",
+          "type": "string"
+        }
+      },
+      "required": [
+        "path",
+        "start_line",
+        "end_line",
+        "start_byte",
+        "end_byte",
+        "blob_hash"
+      ],
+      "title": "SourceSpan",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "default": "2.0",
+      "enum": [
+        "1.0",
+        "2.0"
+      ],
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "manifest": {
+      "$ref": "#/$defs/RunManifest"
+    },
+    "snapshot": {
+      "$ref": "#/$defs/RepositorySnapshot"
+    },
+    "entities": {
+      "items": {
+        "$ref": "#/$defs/CodeEntity"
+      },
+      "title": "Entities",
+      "type": "array"
+    },
+    "facts": {
+      "items": {
+        "$ref": "#/$defs/CodeFact"
+      },
+      "title": "Facts",
+      "type": "array"
+    },
+    "claims": {
+      "items": {
+        "$ref": "#/$defs/DocumentClaim"
+      },
+      "title": "Claims",
+      "type": "array"
+    },
+    "candidates": {
+      "items": {
+        "$ref": "#/$defs/CandidateSet"
+      },
+      "title": "Candidates",
+      "type": "array"
+    },
+    "judgments": {
+      "items": {
+        "$ref": "#/$defs/JudgeResult"
+      },
+      "title": "Judgments",
+      "type": "array"
+    },
+    "findings": {
+      "items": {
+        "$ref": "#/$defs/Finding"
+      },
+      "title": "Findings",
+      "type": "array"
+    },
+    "rejected": {
+      "items": {
+        "$ref": "#/$defs/RejectedDecision"
+      },
+      "title": "Rejected",
+      "type": "array"
+    },
+    "patches": {
+      "items": {
+        "$ref": "#/$defs/PatchProposal"
+      },
+      "title": "Patches",
+      "type": "array"
+    }
+  },
+  "required": [
+    "manifest",
+    "snapshot",
+    "entities",
+    "facts",
+    "claims",
+    "candidates",
+    "judgments",
+    "findings",
+    "rejected"
+  ],
+  "title": "ScanReport",
+  "type": "object"
+}

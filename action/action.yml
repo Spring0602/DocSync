@@ -1,0 +1,67 @@
+name: DocSync
+description: Read-only Python and Markdown drift checks from a trusted tool checkout
+inputs:
+  repo-path:
+    description: Target Git root; treated as data and never installed
+    required: true
+  head:
+    description: Explicit target commit
+    required: true
+  base:
+    description: Optional base commit, must already exist locally
+    default: ''
+  config:
+    description: Optional explicit TOML config
+    default: ''
+  mode:
+    description: rules or hybrid (hybrid is PARTIAL until a real provider is connected)
+    default: rules
+  fail-on:
+    description: none or warning
+    default: none
+  require-complete:
+    description: Return exit 3 for partial scans
+    default: 'false'
+outputs:
+  report-path:
+    description: Absolute report JSON path
+    value: ${{ steps.scan.outputs.report-path }}
+  confirmed-count:
+    description: Verified drift count
+    value: ${{ steps.scan.outputs.confirmed-count }}
+  uncertain-count:
+    description: Uncertain claim count
+    value: ${{ steps.scan.outputs.uncertain-count }}
+  scan-status:
+    description: COMPLETED, PARTIAL or FAILED
+    value: ${{ steps.scan.outputs.scan-status }}
+  patch-path:
+    description: Absolute validated diff path, empty when no proposal exists
+    value: ${{ steps.scan.outputs.patch-path }}
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+      with:
+        python-version: '3.12'
+    - name: Install tool from trusted Action revision
+      shell: bash
+      env:
+        TOOL_ROOT: ${{ github.action_path }}/..
+      run: |
+        python -m venv "$RUNNER_TEMP/docsync-venv"
+        "$RUNNER_TEMP/docsync-venv/bin/python" -m pip install --require-hashes -r "$TOOL_ROOT/requirements-runtime.lock"
+        "$RUNNER_TEMP/docsync-venv/bin/python" -m pip install --no-deps --no-build-isolation "$TOOL_ROOT"
+    - name: Run the shared CLI
+      id: scan
+      shell: bash
+      env:
+        DOCSYNC_REPO: ${{ inputs.repo-path }}
+        DOCSYNC_HEAD: ${{ inputs.head }}
+        DOCSYNC_BASE: ${{ inputs.base }}
+        DOCSYNC_CONFIG: ${{ inputs.config }}
+        DOCSYNC_MODE: ${{ inputs.mode }}
+        DOCSYNC_FAIL_ON: ${{ inputs.fail-on }}
+        DOCSYNC_REQUIRE_COMPLETE: ${{ inputs.require-complete }}
+        DOCSYNC_ACTION_PATH: ${{ github.action_path }}
+      run: '"$RUNNER_TEMP/docsync-venv/bin/python" "$DOCSYNC_ACTION_PATH/run.py"'

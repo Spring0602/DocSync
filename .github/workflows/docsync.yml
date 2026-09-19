@@ -1,0 +1,49 @@
+name: Documentation consistency
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: docsync-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout trusted tool revision
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.base.sha || github.sha }}
+          path: trusted-tool
+          persist-credentials: false
+      - name: Checkout target as data
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          path: target
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Scan without model secrets
+        id: docsync
+        uses: ./trusted-tool/action
+        with:
+          repo-path: target
+          head: ${{ github.event.pull_request.head.sha || github.sha }}
+          base: ${{ github.event.pull_request.base.sha || '' }}
+          config: trusted-tool/docsync.toml
+          mode: rules
+          fail-on: none
+      - name: Upload scan evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: docsync-evidence
+          path: |
+            ${{ runner.temp }}/docsync-*/report.*
+            ${{ runner.temp }}/docsync-*/manifest.json
+            ${{ runner.temp }}/docsync-*/snapshot.json
+            ${{ runner.temp }}/docsync-*/*.jsonl
+            ${{ runner.temp }}/docsync-*/fixes.patch*
+          if-no-files-found: warn

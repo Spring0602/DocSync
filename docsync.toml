@@ -1,0 +1,16 @@
+[scan]
+mode = "rules"
+fail_on = "none"
+require_complete = false
+max_file_bytes = 1048576
+max_total_bytes = 52428800
+include = ["**/*.py", "**/*.md"]
+exclude = ["tests/**", "bench/**", "runs/**", "examples/**"]
+
+[alignment]
+top_k = 5
+
+[llm]
+timeout_seconds = 30
+max_retries = 2
+max_requests = 20

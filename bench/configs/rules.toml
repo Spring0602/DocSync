@@ -1,0 +1,7 @@
+[scan]
+mode = "rules"
+fail_on = "none"
+require_complete = true
+
+[alignment]
+top_k = 5
