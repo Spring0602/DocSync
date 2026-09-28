@@ -8,6 +8,7 @@ import subprocess
 import sys
 from importlib.metadata import version
 from pathlib import Path
+from sysconfig import get_path
 
 import pytest
 from pydantic import ValidationError
@@ -21,7 +22,7 @@ from docsync.repository import analyze
 
 
 def test_installed_and_module_cli_expose_the_same_commands():
-    console = Path(sys.executable).parent / ("docsync.exe" if os.name == "nt" else "docsync")
+    console = Path(get_path("scripts")) / ("docsync.exe" if os.name == "nt" else "docsync")
     assert console.is_file()
     assert version("docsync-core") == __version__
 
