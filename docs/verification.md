@@ -1,5 +1,23 @@
 # 实际验收记录
 
+## 成员 B：对齐、规则与补丁回归（2026-09-28）
+
+新增 `tests/integration/test_b_alignment_patches.py`，专项测试 **15 passed**；与既有对齐、流水线、补丁守卫和契约测试联合执行 **90 passed，1 skipped**；全量回归 **180 passed，1 skipped，0 failed，0 errors**。Ruff 检查通过，44 个 Python 文件格式正确；mypy 检查 20 个源文件无类型错误。测试 XML 位于 `runs/b3-review/pytest.xml`。
+
+本轮增加 canonical 行号/字节区间校验及确定性 patch ID、非空/唯一 finding ID 校验；伪造行号/ID、篡改 diff/hash/旧文本、重叠编辑、过期补丁和重复应用均在写入前拒绝。默认值和配置补丁只替换目标文档值，工作树复扫确认冲突消失；签名规则不生成补丁并在 Markdown 报告中给出人工处理提示。完整矩阵见 [B3 审核记录](b3-alignment-patch-review.md)，三类固定提交报告见 [B3 审计样例](audit-samples/b3/README.md)。
+
+## 成员 B：静态事实扩展与验证（2026-09-28）
+
+新增 `tests/integration/test_b_static_facts.py`，专项测试 **22 passed**；与既有静态扩展及主流水线联合执行 **78 passed**；全量回归 **165 passed，1 skipped，0 failed，0 errors**。Ruff 检查通过，40 个 Python 文件格式正确；mypy 检查 20 个源文件无类型错误。测试 XML 位于 `runs/b2-review/pytest.xml`。
+
+本轮修复继承/元类方法、动态字典键覆盖和重复定义仍可能产生 KNOWN 事实的问题；明确区分字面量 `None`、`False`、`0`、无默认值和动态 UNKNOWN。新增唯一模块顶层直接/链式/相对重导出及包 `__init__.py` 的静态事实，别名事实继续引用原始实体和源码 blob；星号、条件、重绑定和运行时导出保持拒答。正例、反例、歧义、字节级溯源及跨提交稳定 ID 的证据见 [B2 审核记录](b2-static-facts-review.md)。
+
+## 成员 B：包、Schema 与仓库快照审核（2026-09-28）
+
+新增 `tests/integration/test_b_repository_contracts.py`，专项测试 **31 passed**；全量回归 **143 passed，1 skipped，0 failed，0 errors**。Ruff 检查通过，39 个 Python 文件格式正确；mypy 检查 20 个源文件无类型错误。唯一跳过仍是当前 Windows 进程无权创建真实文件系统符号链接；无需该权限的 Git symlink blob 用例实际通过。
+
+本轮收紧 `FileRecord` 的安全相对路径、SHA-256 和非负大小约束，并拒绝重复快照路径；report/benchmark Schema 已重新生成。最终 wheel/sdist 构建成功，wheel 在新 Python 3.12 环境离线安装后 `pip check` 无错误，安装版 CLI 可用且导出的两个 Schema 与仓库文件完全相同。完整矩阵、命令和边界见 [B1 审核记录](b1-repository-review.md)，测试 XML 位于 `runs/b1-review/pytest.xml`。
+
 ## 成员 A 契约审查（2026-09-20）
 
 新增 `tests/integration/test_a_contract_review.py`，使用实际 0.1.0 归档报告和新生成的 2.0 报告验证读取、渲染、证据保留、补丁导出、篡改拒绝、失败格式、退出码优先级及 Schema/配置边界。实际执行 **14 passed**，证据为 `runs/a-review/contracts.xml`。这不是重新执行全量测试后的总数，不能直接覆盖下面的历史回归记录。

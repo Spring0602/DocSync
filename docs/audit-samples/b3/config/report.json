@@ -1,0 +1,273 @@
+{
+  "schema_version": "2.0",
+  "manifest": {
+    "schema_version": "2.0",
+    "run_id": "bd2328c6682c47a4b70c74bb9039ce21",
+    "versions": {
+      "docsync": "0.2.0",
+      "schema": "2.0",
+      "extractor": "python-static/2",
+      "claims": "markdown/2",
+      "verifier": "verifier/2",
+      "method": "full",
+      "pydantic": "2.11.7",
+      "markdown-it-py": "3.0.0"
+    },
+    "config_hash": "b2e60a68557de08f75100c2d052b4d4223c94a7867a9c5d7664a3c3c32231cc1",
+    "mode": "rules",
+    "status": "COMPLETED",
+    "enabled_types": [
+      "DEFAULT_VALUE",
+      "SIGNATURE",
+      "CONFIG"
+    ],
+    "semantic_coverage": "supported-static-claims-only",
+    "budget": {
+      "max_requests": 20,
+      "max_total_tokens": 100000
+    },
+    "usage": {
+      "requests": 0,
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "diagnostics": [],
+    "stage_seconds": {
+      "extraction": 0.001295899972319603,
+      "alignment": 0.00001650000922381878,
+      "judging": 0.000030199997127056122,
+      "verification": 0.00008729996625334024,
+      "analysis_total": 0.0020614999812096357,
+      "repository": 0.3922185000265017,
+      "patch_validation": 0.0031305999727919698,
+      "total": 0.39954000001307577
+    },
+    "model": {
+      "provider": "none",
+      "model": null,
+      "temperature": 0.0
+    },
+    "events": [
+      "CREATED",
+      "ANALYZING",
+      "EXTRACTING",
+      "ALIGNING",
+      "JUDGING",
+      "VERIFYING",
+      "REPORTING",
+      "COMPLETED"
+    ],
+    "model_calls": []
+  },
+  "snapshot": {
+    "repo_id": "94675d3af29db7c66555e9fa",
+    "head_sha": "710cd36a67a555fe29ff23f7973fb697cd418393",
+    "base_sha": null,
+    "mode": "commit",
+    "files_hash": "77ca2f53753264bc2418972b",
+    "dirty": false,
+    "files": [
+      {
+        "path": "README.md",
+        "blob_hash": "0d9842ee4ae924c83756f07e250217d0c6844dd543d247528f6597fee55cf78e",
+        "size": 79,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "settings.py",
+        "blob_hash": "5d33eb674702308154dafb8da0aa79726680f717ff89c06f386931cc04988112",
+        "size": 25,
+        "encoding": "utf-8"
+      }
+    ],
+    "changed_paths": []
+  },
+  "entities": [
+    {
+      "entity_id": "c6045fa4f969425da1343353",
+      "kind": "config",
+      "qualified_name": "settings.CONFIG",
+      "module": "settings",
+      "signature": [],
+      "decorators": [],
+      "span": {
+        "path": "settings.py",
+        "start_line": 1,
+        "end_line": 1,
+        "start_byte": 0,
+        "end_byte": 24,
+        "blob_hash": "5d33eb674702308154dafb8da0aa79726680f717ff89c06f386931cc04988112"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "3de271ea2c025a5707338e21",
+      "entity_id": "c6045fa4f969425da1343353",
+      "subject": "settings.CONFIG",
+      "property": "timeout",
+      "value_state": "KNOWN",
+      "typed_value": {
+        "type": "int",
+        "canonical": "[\"int\",60]"
+      },
+      "expression": "60",
+      "span": {
+        "path": "settings.py",
+        "start_line": 1,
+        "end_line": 1,
+        "start_byte": 21,
+        "end_byte": 23,
+        "blob_hash": "5d33eb674702308154dafb8da0aa79726680f717ff89c06f386931cc04988112"
+      },
+      "fact_kind": "CONFIG",
+      "parameters": [],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "a941dd063567282752c8e654",
+      "subject": "settings.CONFIG",
+      "predicate": "timeout",
+      "kind": "CONFIG_ASSERTION",
+      "value": {
+        "type": "int",
+        "canonical": "[\"int\",30]"
+      },
+      "qualifiers": [],
+      "version_scope": "current",
+      "span": {
+        "path": "README.md",
+        "start_line": 5,
+        "end_line": 5,
+        "start_byte": 51,
+        "end_byte": 78,
+        "blob_hash": "0d9842ee4ae924c83756f07e250217d0c6844dd543d247528f6597fee55cf78e"
+      },
+      "value_span": {
+        "path": "README.md",
+        "start_line": 5,
+        "end_line": 5,
+        "start_byte": 74,
+        "end_byte": 76,
+        "blob_hash": "0d9842ee4ae924c83756f07e250217d0c6844dd543d247528f6597fee55cf78e"
+      },
+      "quote": "`timeout` defaults to `30`.",
+      "extraction_method": "markdown-rules/2",
+      "source_hint": null,
+      "positional_count": null,
+      "keyword_names": [],
+      "unpacking": false,
+      "bound_receiver": false
+    }
+  ],
+  "candidates": [
+    {
+      "claim_id": "a941dd063567282752c8e654",
+      "candidates": [
+        {
+          "fact_id": "3de271ea2c025a5707338e21",
+          "rank": 1,
+          "score": 1.0,
+          "features": [
+            "exact_symbol",
+            "parameter_owner"
+          ]
+        }
+      ],
+      "ambiguity": false,
+      "reason": "MATCH"
+    }
+  ],
+  "judgments": [
+    {
+      "claim_id": "a941dd063567282752c8e654",
+      "decision": "INCONSISTENT",
+      "fact_ids": [
+        "3de271ea2c025a5707338e21"
+      ],
+      "reason_code": "LITERAL_MISMATCH",
+      "reason_text": "Compare explicit typed default values for the same parameter",
+      "claim_type_check": true,
+      "version_compatible": true,
+      "score": null,
+      "uncertainty_reason": null,
+      "model_run_id": null
+    }
+  ],
+  "findings": [
+    {
+      "finding_id": "285d2cdfeabf7bc47b828d1d",
+      "drift_type": "CONFIG",
+      "claim_id": "a941dd063567282752c8e654",
+      "fact_ids": [
+        "3de271ea2c025a5707338e21"
+      ],
+      "evidence": {
+        "head_sha": "710cd36a67a555fe29ff23f7973fb697cd418393",
+        "snapshot_hash": "77ca2f53753264bc2418972b",
+        "entity_id": "c6045fa4f969425da1343353",
+        "document": {
+          "path": "README.md",
+          "start_line": 5,
+          "end_line": 5,
+          "start_byte": 51,
+          "end_byte": 78,
+          "blob_hash": "0d9842ee4ae924c83756f07e250217d0c6844dd543d247528f6597fee55cf78e"
+        },
+        "code": {
+          "path": "settings.py",
+          "start_line": 1,
+          "end_line": 1,
+          "start_byte": 21,
+          "end_byte": 23,
+          "blob_hash": "5d33eb674702308154dafb8da0aa79726680f717ff89c06f386931cc04988112"
+        },
+        "rule_id": "CONFIG/1",
+        "verifier_version": "verifier/2"
+      },
+      "severity": "warning",
+      "status": "INCONSISTENT",
+      "verification_status": "VERIFIED",
+      "ignored": false,
+      "ignore_reason": null
+    }
+  ],
+  "rejected": [],
+  "patches": [
+    {
+      "patch_id": "bbd80c734fa7f44299610394",
+      "finding_ids": [
+        "285d2cdfeabf7bc47b828d1d"
+      ],
+      "base_hashes": {
+        "README.md": "0d9842ee4ae924c83756f07e250217d0c6844dd543d247528f6597fee55cf78e"
+      },
+      "edits": [
+        {
+          "span": {
+            "path": "README.md",
+            "start_line": 5,
+            "end_line": 5,
+            "start_byte": 74,
+            "end_byte": 76,
+            "blob_hash": "0d9842ee4ae924c83756f07e250217d0c6844dd543d247528f6597fee55cf78e"
+          },
+          "old_text": "30",
+          "new_text": "60"
+        }
+      ],
+      "diff": "--- a/README.md\n+++ b/README.md\n@@ -2,4 +2,4 @@\n \n ## config `settings.CONFIG`\n \n-`timeout` defaults to `30`.\n+`timeout` defaults to `60`.\n",
+      "validation": "VALIDATED",
+      "requires_review": true,
+      "validation_details": [
+        "All byte preimages match",
+        "Code fences unchanged",
+        "In-memory rescan: target conflicts removed; no new confirmed conflicts",
+        "Human semantic review still required"
+      ]
+    }
+  ]
+}

@@ -47,6 +47,13 @@ def markdown_report(report: ScanReport) -> str:
                 "",
             ]
         )
+        if finding.drift_type == "SIGNATURE":
+            lines.extend(
+                [
+                    "处理：签名问题不自动生成参数值；请根据上述证据人工修正文档调用示例。",
+                    "",
+                ]
+            )
     if report.uncertain_count:
         lines.extend(["## 待核查", ""])
         for judgment in report.judgments:
