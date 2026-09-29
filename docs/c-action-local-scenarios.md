@@ -47,14 +47,18 @@
 
 ## 三、远程 CI
 
-- 触发方式：本记录随分支推送至远程仓库，`ci.yml`（`on: push`）自动触发。
-- 预期矩阵：ubuntu-latest + windows-latest，步骤 pytest / ruff check / ruff format / mypy / build。
-- 运行记录：见本次推送后补充的工作流链接与提交 SHA。
-- ⚠️ 已知风险：windows-latest 上 `test_external_symlink_is_rejected` 的行为待远程验证
-  （GitHub 托管 runner 默认允许普通用户创建符号链接时，测试应通过或按设计跳过）。
+- 触发方式：本记录随分支 `c2-action-verification` 推送，`ci.yml`（`on: push`）自动触发。
+- **运行链接**：https://github.com/Spring0602/DocSync/actions/runs/36589298331
+- **提交 SHA**：`e6315f2`（父提交 `1be73fe`）
+- **结果：2/2 作业全部成功** ✅
+  - `check (ubuntu-latest)`：success（pytest / ruff check / ruff format / mypy / build）
+  - `check (windows-latest)`：success——`test_external_symlink_is_rejected` 在远程正常
+    Windows 环境下通过，进一步证实本地失败为环境问题而非产品缺陷
+- 无失败日志需要修复；此前 main 与 member-b-tasks 分支也已有真实 CI 运行记录
+  （run 35489771490 / 36451523193 等），"远程 CI 尚未执行"的 README 描述已过时。
 
 ## 四、待办
 
-- [ ] 补充远程 CI 运行链接、SHA、（如有）失败日志与修复结果
-- [ ] B 确认符号链接加固建议
-- [ ] Action 示例中的可信工具 SHA 已使用固定第三方 SHA（`actions/checkout@11bd...` 等），待首次发布后替换为实际发布提交
+- [x] 补充远程 CI 运行链接、SHA（2026-09-29 完成，见第三节）
+- [ ] B 确认符号链接加固建议（apply 建议把 FileNotFoundError 转为 UNSAFE_PATCH）
+- [ ] Action 示例中的第三方 Action 已使用固定 SHA；待首次真实发布后替换为实际发布提交
