@@ -1,5 +1,5 @@
 resource,origin,version,license_or_authorization,usage,redistribution,reviewer,status
-minimal_repo,task-created fixture,0.1.0,team ownership confirmation pending,regression and local demo,pending team license decision,pending,pending
-controlled_seed_20,task-created fixtures,0.2.0,team ownership confirmation pending,development benchmark only; provisional labels,pending team license decision,pending,pending dual annotation and rights review
-planning_docx,user-provided,2026-09-16,local task reference only,requirements extraction,not included in package,pending,not cleared for public redistribution
-competition_attachments,user-provided,local copies,third-party rights unverified,reference only,not included in package,pending,not cleared for public redistribution
+minimal_repo,task-created fixture,0.1.0,team ownership confirmation pending,regression and local demo,pending team license decision,C,C audited fixtures are team-authored; final license decision pending team (Apache-2.0)
+controlled_seed_20,task-created fixtures,0.2.0,team ownership confirmation pending,development benchmark only; provisional labels,pending team license decision,C,C audited fixtures are team-authored; final license decision pending team (Apache-2.0)
+planning_docx,user-provided,2026-09-16,local task reference only,requirements extraction,not included in package,C,not cleared for public redistribution
+competition_attachments,user-provided,local copies,third-party rights unverified,reference only,not included in package,C,not cleared for public redistribution

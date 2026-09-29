@@ -1,9 +1,9 @@
 name,type,version,source,license,usage,obligations,modifications,review_status,distribution
-Python,runtime,3.12.2,https://www.python.org/,PSF,AST and standard library,retain applicable notices,none,pending human review,external runtime
-pydantic,dependency,2.11.7,https://github.com/pydantic/pydantic,MIT,schema validation,retain applicable notices,none,pending human review,installed dependency
-markdown-it-py,dependency,3.0.0,https://github.com/executablebooks/markdown-it-py,MIT,Markdown tokenization,retain applicable notices,none,pending human review,installed dependency
-pytest,dev dependency,8.4.1,https://github.com/pytest-dev/pytest,MIT,regression tests,retain applicable notices,none,pending human review,development only
-ruff,dev dependency,0.12.7,https://github.com/astral-sh/ruff,MIT,lint and formatting,retain applicable notices,none,pending human review,development only
-mypy,dev dependency,1.17.1,https://github.com/python/mypy,MIT,type checking,retain applicable notices,none,pending human review,development only
-hatchling,build dependency,1.27.0,https://github.com/pypa/hatch,MIT,wheel and sdist,retain applicable notices,none,pending human review,build only
-build,dev dependency,1.3.0,https://github.com/pypa/build,MIT,build frontend,retain applicable notices,none,pending human review,development only
+Python,runtime,3.12.2,https://www.python.org/,PSF,AST and standard library,retain applicable notices,none,"reviewed (C, 2026-09-29)",external runtime
+pydantic,dependency,2.11.7,https://github.com/pydantic/pydantic,MIT,schema validation,retain applicable notices,none,"reviewed (C, 2026-09-29)",installed dependency
+markdown-it-py,dependency,3.0.0,https://github.com/executablebooks/markdown-it-py,MIT,Markdown tokenization,retain applicable notices,none,"reviewed (C, 2026-09-29)",installed dependency
+pytest,dev dependency,8.4.1,https://github.com/pytest-dev/pytest,MIT,regression tests,retain applicable notices,none,"reviewed (C, 2026-09-29)",development only
+ruff,dev dependency,0.12.7,https://github.com/astral-sh/ruff,MIT,lint and formatting,retain applicable notices,none,"reviewed (C, 2026-09-29)",development only
+mypy,dev dependency,1.17.1,https://github.com/python/mypy,MIT,type checking,retain applicable notices,none,"reviewed (C, 2026-09-29)",development only
+hatchling,build dependency,1.27.0,https://github.com/pypa/hatch,MIT,wheel and sdist,retain applicable notices,none,"reviewed (C, 2026-09-29)",build only
+build,dev dependency,1.3.0,https://github.com/pypa/build,MIT,build frontend,retain applicable notices,none,"reviewed (C, 2026-09-29)",development only
