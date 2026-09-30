@@ -1,0 +1,1 @@
+{"claim_id":"e8429187a1b63f696c228054","decision":"INCONSISTENT","fact_ids":["dbc6c5697365463264106b98"],"reason_code":"CALL_BINDING_ERROR","reason_text":"Statically bind supplied arguments to the supported signature","claim_type_check":true,"version_compatible":true,"score":null,"uncertainty_reason":null,"model_run_id":null}

@@ -11,7 +11,7 @@ from markdown_it import MarkdownIt
 
 from docsync.models import FileRecord, PatchEdit, PatchProposal, ScanReport
 from docsync.repository import SnapshotData
-from docsync.utils import DocSyncError, digest, stable_id
+from docsync.utils import DocSyncError, digest, span_for, stable_id
 
 
 def edited_blobs(edits: list[PatchEdit], blobs: dict[str, bytes]) -> dict[str, bytes]:
@@ -29,6 +29,7 @@ def edited_blobs(edits: list[PatchEdit], blobs: dict[str, bytes]) -> dict[str, b
             if (
                 digest(blobs[path]) != span.blob_hash
                 or span.end_byte > boundary
+                or span_for(path, blobs[path], span.start_byte, span.end_byte) != span
                 or data[span.start_byte : span.end_byte] != edit.old_text.encode("utf-8")
             ):
                 raise DocSyncError("PATCH_CONFLICT", "Overlapping, stale or invalid edit", "patch")
@@ -205,7 +206,14 @@ def atomic_write(path: Path, data: bytes) -> None:
 
 
 def apply_patch(repo: Path, proposal: PatchProposal, diff: str) -> list[str]:
-    if proposal.validation != "VALIDATED" or diff != proposal.diff or not proposal.edits:
+    if (
+        proposal.validation != "VALIDATED"
+        or diff != proposal.diff
+        or not proposal.edits
+        or not proposal.finding_ids
+        or len(set(proposal.finding_ids)) != len(proposal.finding_ids)
+        or proposal.patch_id != stable_id("patch", *proposal.finding_ids)
+    ):
         raise DocSyncError(
             "INVALID_PATCH", "Expected the matching validated patch and manifest", "apply"
         )

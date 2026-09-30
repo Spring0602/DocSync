@@ -445,10 +445,12 @@
           "type": "string"
         },
         "blob_hash": {
+          "pattern": "^[a-f0-9]{64}$",
           "title": "Blob Hash",
           "type": "string"
         },
         "size": {
+          "minimum": 0,
           "title": "Size",
           "type": "integer"
         },

@@ -1,0 +1,32 @@
+{
+  "patch_id": "bbd80c734fa7f44299610394",
+  "finding_ids": [
+    "285d2cdfeabf7bc47b828d1d"
+  ],
+  "base_hashes": {
+    "README.md": "0d9842ee4ae924c83756f07e250217d0c6844dd543d247528f6597fee55cf78e"
+  },
+  "edits": [
+    {
+      "span": {
+        "path": "README.md",
+        "start_line": 5,
+        "end_line": 5,
+        "start_byte": 74,
+        "end_byte": 76,
+        "blob_hash": "0d9842ee4ae924c83756f07e250217d0c6844dd543d247528f6597fee55cf78e"
+      },
+      "old_text": "30",
+      "new_text": "60"
+    }
+  ],
+  "diff": "--- a/README.md\n+++ b/README.md\n@@ -2,4 +2,4 @@\n \n ## config `settings.CONFIG`\n \n-`timeout` defaults to `30`.\n+`timeout` defaults to `60`.\n",
+  "validation": "VALIDATED",
+  "requires_review": true,
+  "validation_details": [
+    "All byte preimages match",
+    "Code fences unchanged",
+    "In-memory rescan: target conflicts removed; no new confirmed conflicts",
+    "Human semantic review still required"
+  ]
+}
