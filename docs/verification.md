@@ -1,5 +1,12 @@
 # 实际验收记录
 
+## A 接收与发布准备（2026-09-30）
+
+基线为合并提交 7db2456a1ff955f72eab2504169b17409c5ab4fb。本轮契约/指标/benchmark/provider/Action 专项 **39 passed**（runs/a-review-20260930/targeted.xml）；未将其累加为新的全量测试数。合并时全量记录为 180 passed/1 skipped。两种开发基线各 20 例，失败或部分完成为 0，标签仍 provisional。
+
+Apache 官方许可证原文已落地，wheel/sdist 构建成功，wheel 内 License-Expression: Apache-2.0 及 LICENSE 字节一致性检查通过。远程 Core CI 36683440902 的 Windows/Linux 作业均成功。标注接收、许可证范围、C2 超时证据更正及四类验收结论详见 [A 接收与裁决记录](a-acceptance-20260930.md)。
+
+
 ## 成员 B：对齐、规则与补丁回归（2026-09-28）
 
 新增 `tests/integration/test_b_alignment_patches.py`，专项测试 **15 passed**；与既有对齐、流水线、补丁守卫和契约测试联合执行 **90 passed，1 skipped**；全量回归 **180 passed，1 skipped，0 failed，0 errors**。Ruff 检查通过，44 个 Python 文件格式正确；mypy 检查 20 个源文件无类型错误。测试 XML 位于 `runs/b3-review/pytest.xml`。

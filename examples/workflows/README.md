@@ -1,6 +1,6 @@
 # GitHub Actions 接入
 
-`action/action.yml` 是 Linux runner 的 composite Action，目标仓库仅作为数据。项目地址已确定为 `Spring0602/DocSync`，但远程尚无提交；首次推送后将下面的 FULL_TRUSTED_COMMIT_SHA 替换为实际完整提交，不能使用被扫描 PR 的工具版本。
+`action/action.yml` 是 Linux runner 的 composite Action，目标仓库仅作为数据。下面固定到已通过双平台 Core CI 的合并提交 `7db2456a1ff955f72eab2504169b17409c5ab4fb`。这是经验证的开发提交，不是正式发布 tag；不能使用被扫描 PR 的工具版本。
 
 ```yaml
 name: Documentation drift

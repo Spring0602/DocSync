@@ -25,4 +25,6 @@
 
 补丁的自动验证只覆盖支持范围。apply 会核对 SHA-256、canonical 行号/字节区间、确定性 patch ID、完整 diff 和原文；多文件采用全预检、逐文件原子替换与异常回滚，不是掉电安全的跨文件事务，不支持和编辑器并发写入。签名错误可能需要人为选择参数，不能自动编造。
 
-GitHub 仓库 `https://github.com/Spring0602/DocSync` 已只读核对，目前没有 refs。工作流文件及本地包装器测试不等于 GitHub Actions 已运行。许可证仍待团队确认；原始 DOCX/PDF 资料保持本地且不进入构建包或默认 Git 跟踪。
+2026-09-30 已核验合并提交的双平台 Core CI 成功，详见 [A 接收与裁决记录](a-acceptance-20260930.md)。这不等于 Documentation consistency 工作流或真实模型实验已验收。团队已确认原创代码和自建样本采用 Apache-2.0；原始 DOCX/PDF 不进入授权及发布范围。
+
+C1 已报告的缺口：英文 “The default value of X is Y” 句式未被支持，未提取不等于一致；当前 Finding 不保存忽略到期日，不能宣称报告完整展示此字段。两项由 B/C 后续补充实现与回归。
