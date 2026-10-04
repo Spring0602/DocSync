@@ -1,5 +1,11 @@
 # 实际验收记录
 
+## 成员 B：到期日契约与坏链接复核（B-N3，2026-10-04）
+
+A 已确认保持 Schema 2.0，并以非必填 `ignore_expires: date | null` 扩展 Finding。B 已完成模型、忽略匹配、固定扫描日期、Schema 和真实 1.0/2.0 旧报告兼容测试；过期规则保留原因/日期但不忽略告警，多规则不会混用元数据。异常补丁目标现在稳定转换为 `UNSAFE_PATCH`，Git symlink blob 继续拒绝；本机真实越界/dangling symlink 因系统权限无法创建，保留给有权限环境复验。
+
+B-N3 专项 **11 passed**；相关联合回归 **109 passed，2 skipped**；全量回归 **198 passed，2 skipped**。Ruff 检查及格式检查通过，mypy 检查 20 个源文件无类型错误，wheel/sdist 构建成功。完整契约、兼容边界、测试证据和 C 的剩余报告工作见 [B-N3 复核记录](b-n3-ignore-expiry-symlink-review.md)。
+
 ## 成员 B：英文默认句式修复（B-N2，2026-10-04）
 
 针对 C1 缺陷 D-1，新增 `The default value of X is Y` 提取支持及 `tests/integration/test_b_n2_english_defaults.py`。测试按失败优先编写：修复前专项 **6 failed**，修复后 **6 passed**；覆盖一致/冲突、旧版限定、同名歧义、显式源码链接、合法调用及含中文 CRLF 文档的 UTF-8 精确字节证据。

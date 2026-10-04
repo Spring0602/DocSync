@@ -7,7 +7,7 @@ from importlib.metadata import version
 
 from docsync import __version__
 from docsync.alignment import align
-from docsync.config import RepoSpec, ScanConfig
+from docsync.config import IgnoreRule, RepoSpec, ScanConfig
 from docsync.extractors.markdown import extract_claims
 from docsync.extractors.python_ast import extract_code
 from docsync.llm import judge
@@ -31,7 +31,10 @@ from docsync.verification import VerificationIndex, verify
 
 
 def evaluate_snapshot(
-    snapshot: SnapshotData, cfg: ScanConfig, provider: ChatCompletionsProvider | None = None
+    snapshot: SnapshotData,
+    cfg: ScanConfig,
+    provider: ChatCompletionsProvider | None = None,
+    scan_date: date | None = None,
 ) -> ScanReport:
     started = time.perf_counter()
     code = extract_code(snapshot)
@@ -77,6 +80,7 @@ def evaluate_snapshot(
     rejected: list[RejectedDecision] = []
     verification_index = VerificationIndex.from_snapshot(snapshot)
     judge_seconds, verify_seconds = 0.0, 0.0
+    scan_date = scan_date or date.today()
     for claim, candidate in zip(docs.claims, candidates, strict=True):
         step = time.perf_counter()
         judgment = judge(claim, candidate, facts)
@@ -128,18 +132,33 @@ def evaluate_snapshot(
         step = time.perf_counter()
         result = verify(judgment, claim, facts, snapshot, verification_index)
         if isinstance(result, Finding):
+            expired_match: IgnoreRule | None = None
             for rule in cfg.ignores:
-                if rule.expires is not None and rule.expires < date.today():
-                    continue
                 if (
                     (rule.finding_id is None or rule.finding_id == result.finding_id)
                     and (rule.rule_id is None or rule.rule_id == result.evidence.rule_id)
                     and matches(claim.span.path, [rule.path])
                 ):
+                    if rule.expires is not None and rule.expires < scan_date:
+                        if expired_match is None:
+                            expired_match = rule
+                        continue
                     result = result.model_copy(
-                        update={"ignored": True, "ignore_reason": rule.reason}
+                        update={
+                            "ignored": True,
+                            "ignore_reason": rule.reason,
+                            "ignore_expires": rule.expires,
+                        }
                     )
                     break
+            else:
+                if expired_match is not None:
+                    result = result.model_copy(
+                        update={
+                            "ignore_reason": expired_match.reason,
+                            "ignore_expires": expired_match.expires,
+                        }
+                    )
             findings.append(result)
         elif isinstance(result, RejectedDecision):
             rejected.append(result)
@@ -214,9 +233,10 @@ def scan(
 ) -> ScanReport:
     cfg = cfg or ScanConfig()
     started = time.perf_counter()
+    scan_date = date.today()
     snapshot = analyze(spec, cfg)
     repository_seconds = time.perf_counter() - started
-    report = evaluate_snapshot(snapshot, cfg, provider)
+    report = evaluate_snapshot(snapshot, cfg, provider, scan_date)
     patch_started = time.perf_counter()
     # Patch verification is deterministic, does not spend extra model budget or rerun experiments.
     validation_cfg = cfg.model_copy(
@@ -225,7 +245,9 @@ def scan(
             "ignores": [],
         }
     )
-    proposal = propose_patch(report, snapshot, lambda data: evaluate_snapshot(data, validation_cfg))
+    proposal = propose_patch(
+        report, snapshot, lambda data: evaluate_snapshot(data, validation_cfg, scan_date=scan_date)
+    )
     manifest = report.manifest.model_copy(
         update={
             "stage_seconds": {

@@ -1,5 +1,6 @@
 """Schema 2.0 contracts; 1.0 reports remain readable for review and patch export."""
 
+from datetime import date
 from enum import StrEnum
 from pathlib import PurePosixPath
 from typing import Literal, Self
@@ -169,6 +170,7 @@ class Finding(Model):
     verification_status: Literal["VERIFIED"] = "VERIFIED"
     ignored: bool = False
     ignore_reason: str | None = None
+    ignore_expires: date | None = None
 
 
 class RejectedDecision(Model):
