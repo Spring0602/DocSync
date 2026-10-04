@@ -1,5 +1,11 @@
 # 实际验收记录
 
+## 成员 B：英文默认句式修复（B-N2，2026-10-04）
+
+针对 C1 缺陷 D-1，新增 `The default value of X is Y` 提取支持及 `tests/integration/test_b_n2_english_defaults.py`。测试按失败优先编写：修复前专项 **6 failed**，修复后 **6 passed**；覆盖一致/冲突、旧版限定、同名歧义、显式源码链接、合法调用及含中文 CRLF 文档的 UTF-8 精确字节证据。
+
+原有流水线与静态扩展联合回归 **56 passed**；全量回归 **186 passed，1 skipped**，唯一跳过仍为当前 Windows 进程无符号链接创建权限。Ruff 检查及格式检查通过，mypy 检查 20 个源文件无类型错误，wheel/sdist 构建成功。完整复现、矩阵和交给 C 的复验命令见 [B-N2 修复记录](b-n2-english-defaults-review.md)；当前状态是 B 本地完成、等待 C 独立复验，不提前宣称 D-1 已验收关闭。
+
 ## A 接收与发布准备（2026-09-30）
 
 基线为合并提交 7db2456a1ff955f72eab2504169b17409c5ab4fb。本轮契约/指标/benchmark/provider/Action 专项 **39 passed**（runs/a-review-20260930/targeted.xml）；未将其累加为新的全量测试数。合并时全量记录为 180 passed/1 skipped。两种开发基线各 20 例，失败或部分完成为 0，标签仍 provisional。
