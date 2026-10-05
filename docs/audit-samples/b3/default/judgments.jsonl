@@ -1,0 +1,1 @@
+{"claim_id":"46f16a9b1a14ed9eec33bc29","decision":"INCONSISTENT","fact_ids":["2ba6848378098979403e6ec0"],"reason_code":"LITERAL_MISMATCH","reason_text":"Compare explicit typed default values for the same parameter","claim_type_check":true,"version_compatible":true,"score":null,"uncertainty_reason":null,"model_run_id":null}

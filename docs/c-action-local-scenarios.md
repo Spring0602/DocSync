@@ -62,3 +62,7 @@
 - [x] 补充远程 CI 运行链接、SHA（2026-09-29 完成，见第三节）
 - [ ] B 确认符号链接加固建议（apply 建议把 FileNotFoundError 转为 UNSAFE_PATCH）
 - [ ] Action 示例中的第三方 Action 已使用固定 SHA；待首次真实发布后替换为实际发布提交
+
+## A 后续复核（2026-09-30）
+
+本记录 S6 所列非本地 HTTP endpoint 被当前 Provider 在发送请求前拒绝，不能证明真实网络超时；见 [A 复核及实测](a-acceptance-20260930.md)。历史记录保留，以复核结论限定其证据范围。

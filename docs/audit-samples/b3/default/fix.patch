@@ -1,0 +1,5 @@
+--- a/README.md
++++ b/README.md
+@@ -5 +5 @@
+-`timeout` defaults to `30`.
++`timeout` defaults to `60`.

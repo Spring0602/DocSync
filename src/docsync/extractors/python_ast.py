@@ -17,6 +17,7 @@ def extract_code(snapshot: SnapshotData) -> CodeExtractionResult:
     entities: list[CodeEntity] = []
     facts: list[CodeFact] = []
     diagnostics: list[Diagnostic] = []
+    module_trees: dict[str, tuple[str, ast.Module]] = {}
     for path, data in snapshot.blobs.items():
         if not path.endswith(".py"):
             continue
@@ -37,11 +38,19 @@ def extract_code(snapshot: SnapshotData) -> CodeExtractionResult:
         for line in data.splitlines(keepends=True):
             offsets.append(offsets[-1] + len(line))
         module = path[:-3].replace("/", ".")
+        if module.endswith(".__init__"):
+            module = module.removesuffix(".__init__")
+        module_trees[module] = (path, tree)
 
         def visit(
             body: list[ast.stmt], parents: tuple[str, ...] = (), inherited_safe: bool = True
         ) -> None:
-            rebound: set[str] = set()
+            definition_names = [
+                statement.name
+                for statement in body
+                if isinstance(statement, ast.FunctionDef | ast.AsyncFunctionDef | ast.ClassDef)
+            ]
+            rebound = {name for name in definition_names if definition_names.count(name) > 1}
             for statement in body:
                 if isinstance(statement, ast.FunctionDef | ast.AsyncFunctionDef | ast.ClassDef):
                     continue
@@ -77,7 +86,11 @@ def extract_code(snapshot: SnapshotData) -> CodeExtractionResult:
                     visit(
                         node.body,
                         (*parents, node.name),
-                        inherited_safe and not node.decorator_list and node.name not in rebound,
+                        inherited_safe
+                        and not node.decorator_list
+                        and not node.bases
+                        and not node.keywords
+                        and node.name not in rebound,
                     )
                 if not isinstance(
                     node, ast.FunctionDef | ast.AsyncFunctionDef
@@ -155,7 +168,7 @@ def extract_code(snapshot: SnapshotData) -> CodeExtractionResult:
                                 entity_id=entity_id,
                                 subject=name,
                                 property=arg.arg,
-                                value_state="KNOWN" if value else "UNKNOWN",
+                                value_state="KNOWN" if value is not None else "UNKNOWN",
                                 typed_value=value,
                                 expression=expression,
                                 span=default_span,
@@ -250,15 +263,21 @@ def extract_code(snapshot: SnapshotData) -> CodeExtractionResult:
             fields: list[tuple[str, str, ast.expr]] = [(module, key, value_node)]
             dict_unknown: set[str] = set()
             if isinstance(value_node, ast.Dict):
-                fields = [
-                    (module + "." + key, k.value, v)
-                    for k, v in zip(value_node.keys, value_node.values, strict=True)
-                    if isinstance(k, ast.Constant) and isinstance(k.value, str)
-                ]
-                names = [prop for _, prop, _ in fields]
-                dict_unknown = {prop for prop in names if names.count(prop) > 1}
-                if any(k is None for k in value_node.keys):
-                    dict_unknown.update(names)
+                fields = []
+                for dict_key, dict_value in zip(value_node.keys, value_node.values, strict=True):
+                    if dict_key is None:
+                        # An unpack can override any explicit string key seen before it.
+                        dict_unknown.update(prop for _, prop, _ in fields)
+                    elif isinstance(dict_key, ast.Constant) and isinstance(dict_key.value, str):
+                        prop = dict_key.value
+                        if any(existing == prop for _, existing, _ in fields):
+                            # Duplicate explicit keys remain conservative even though Python
+                            # currently selects the last value.
+                            dict_unknown.add(prop)
+                        fields.append((module + "." + key, prop, dict_value))
+                    elif not isinstance(dict_key, ast.Constant):
+                        # A later runtime-computed key may equal any earlier string key.
+                        dict_unknown.update(prop for _, prop, _ in fields)
                 fields = list(
                     {
                         prop: (subject, prop, expression) for subject, prop, expression in fields
@@ -295,11 +314,109 @@ def extract_code(snapshot: SnapshotData) -> CodeExtractionResult:
                         entity_id=config_id,
                         subject=subject,
                         property=prop,
-                        value_state="KNOWN" if value else "UNKNOWN",
+                        value_state="KNOWN" if value is not None else "UNKNOWN",
                         typed_value=value,
                         expression=expression,
                         span=fact_span,
                         fact_kind="CONFIG",
                     )
                 )
+
+    # A direct module-level ``from module import name`` is a statically provable namespace
+    # alias only when that local binding is unique. Clone facts with the exported subject while
+    # retaining the original entity and source span. Star imports, conditional imports, missing
+    # modules and any rebinding deliberately produce no alias facts.
+    exports: list[tuple[str, str, str, str, str]] = []
+    for module, (path, tree) in module_trees.items():
+        binding_counts: dict[str, int] = {}
+        candidates: list[tuple[ast.ImportFrom, ast.alias, str]] = []
+        for statement in tree.body:
+            if isinstance(statement, ast.ImportFrom):
+                for alias in statement.names:
+                    if alias.name == "*":
+                        continue
+                    binding = alias.asname or alias.name
+                    binding_counts[binding] = binding_counts.get(binding, 0) + 1
+                    candidates.append((statement, alias, binding))
+                continue
+            if isinstance(statement, ast.Import):
+                for alias in statement.names:
+                    binding = alias.asname or alias.name.split(".")[0]
+                    binding_counts[binding] = binding_counts.get(binding, 0) + 1
+                continue
+            if isinstance(statement, ast.FunctionDef | ast.AsyncFunctionDef | ast.ClassDef):
+                binding_counts[statement.name] = binding_counts.get(statement.name, 0) + 1
+                continue
+            rebound = {
+                child.id
+                for child in ast.walk(statement)
+                if isinstance(child, ast.Name) and isinstance(child.ctx, ast.Store | ast.Del)
+            }
+            rebound.update(
+                child.name
+                for child in ast.walk(statement)
+                if isinstance(child, ast.FunctionDef | ast.AsyncFunctionDef | ast.ClassDef)
+            )
+            for binding in rebound:
+                binding_counts[binding] = binding_counts.get(binding, 0) + 1
+        for statement, alias, binding in candidates:
+            if binding_counts[binding] != 1 or statement.module is None:
+                continue
+            if statement.level:
+                package = (
+                    module.split(".") if path.endswith("/__init__.py") else module.split(".")[:-1]
+                )
+                parents = statement.level - 1
+                if parents > len(package):
+                    continue
+                prefix = package[: len(package) - parents]
+                source_module = ".".join([*prefix, statement.module])
+            else:
+                source_module = statement.module
+            exports.append((module, path, source_module, alias.name, binding))
+
+    seen = {
+        (
+            fact.subject,
+            fact.property,
+            fact.fact_kind,
+            fact.entity_id,
+            fact.span.path,
+            fact.span.start_byte,
+            fact.span.end_byte,
+        )
+        for fact in facts
+    }
+    for _ in range(len(exports) + 1):
+        changed = False
+        for target_module, target_path, source_module, imported_name, binding in exports:
+            source = source_module + "." + imported_name
+            exported_subject = target_module + "." + binding
+            for fact in list(facts):
+                if fact.subject != source and not fact.subject.startswith(source + "."):
+                    continue
+                subject = exported_subject + fact.subject[len(source) :]
+                identity = (
+                    subject,
+                    fact.property,
+                    fact.fact_kind,
+                    fact.entity_id,
+                    fact.span.path,
+                    fact.span.start_byte,
+                    fact.span.end_byte,
+                )
+                if identity in seen:
+                    continue
+                facts.append(
+                    fact.model_copy(
+                        update={
+                            "fact_id": stable_id("export", target_path, subject, fact.fact_id),
+                            "subject": subject,
+                        }
+                    )
+                )
+                seen.add(identity)
+                changed = True
+        if not changed:
+            break
     return CodeExtractionResult(entities, facts, diagnostics)

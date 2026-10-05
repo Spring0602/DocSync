@@ -1,0 +1,318 @@
+{
+  "schema_version": "2.0",
+  "manifest": {
+    "schema_version": "2.0",
+    "run_id": "4230450b8159403fb60c9fa2c41f6afc",
+    "versions": {
+      "docsync": "0.2.0",
+      "schema": "2.0",
+      "extractor": "python-static/2",
+      "claims": "markdown/2",
+      "verifier": "verifier/2",
+      "method": "full",
+      "pydantic": "2.11.7",
+      "markdown-it-py": "3.0.0"
+    },
+    "config_hash": "b2e60a68557de08f75100c2d052b4d4223c94a7867a9c5d7664a3c3c32231cc1",
+    "mode": "rules",
+    "status": "COMPLETED",
+    "enabled_types": [
+      "DEFAULT_VALUE",
+      "SIGNATURE",
+      "CONFIG"
+    ],
+    "semantic_coverage": "supported-static-claims-only",
+    "budget": {
+      "max_requests": 20,
+      "max_total_tokens": 100000
+    },
+    "usage": {
+      "requests": 0,
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "diagnostics": [],
+    "stage_seconds": {
+      "extraction": 0.0012128999223932624,
+      "alignment": 0.000017900019884109497,
+      "judging": 0.00002510007470846176,
+      "verification": 0.00008209992665797472,
+      "analysis_total": 0.0017977999523282051,
+      "repository": 0.39159630006179214,
+      "patch_validation": 0.003196000005118549,
+      "total": 0.39896610006690025
+    },
+    "model": {
+      "provider": "none",
+      "model": null,
+      "temperature": 0.0
+    },
+    "events": [
+      "CREATED",
+      "ANALYZING",
+      "EXTRACTING",
+      "ALIGNING",
+      "JUDGING",
+      "VERIFYING",
+      "REPORTING",
+      "COMPLETED"
+    ],
+    "model_calls": []
+  },
+  "snapshot": {
+    "repo_id": "c977f582aa791dc12874726e",
+    "head_sha": "6c0b6246151b40bf3ee0bc08e76a0548c79efe3e",
+    "base_sha": null,
+    "mode": "commit",
+    "files_hash": "8e4a98de6a881054dea5d30c",
+    "dirty": false,
+    "files": [
+      {
+        "path": "README.md",
+        "blob_hash": "7dca10567e77ceb7a8a10b8223876014491faed7e38bf97dc8aee0aa18552586",
+        "size": 64,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "api.py",
+        "blob_hash": "ae4ec283ec97acbde5f65ecb71e61a96e50eb35a216d0382051e41d53bd2f7d0",
+        "size": 44,
+        "encoding": "utf-8"
+      }
+    ],
+    "changed_paths": []
+  },
+  "entities": [
+    {
+      "entity_id": "914cd4163f05055c1a8de814",
+      "kind": "function",
+      "qualified_name": "api.connect",
+      "module": "api",
+      "signature": [
+        {
+          "name": "timeout",
+          "kind": "POSITIONAL_OR_KEYWORD",
+          "required": false,
+          "value_state": "KNOWN",
+          "typed_value": {
+            "type": "int",
+            "canonical": "[\"int\",60]"
+          },
+          "expression": "60"
+        }
+      ],
+      "decorators": [],
+      "span": {
+        "path": "api.py",
+        "start_line": 1,
+        "end_line": 2,
+        "start_byte": 0,
+        "end_byte": 43,
+        "blob_hash": "ae4ec283ec97acbde5f65ecb71e61a96e50eb35a216d0382051e41d53bd2f7d0"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "2ba6848378098979403e6ec0",
+      "entity_id": "914cd4163f05055c1a8de814",
+      "subject": "api.connect",
+      "property": "timeout",
+      "value_state": "KNOWN",
+      "typed_value": {
+        "type": "int",
+        "canonical": "[\"int\",60]"
+      },
+      "expression": "60",
+      "span": {
+        "path": "api.py",
+        "start_line": 1,
+        "end_line": 1,
+        "start_byte": 20,
+        "end_byte": 22,
+        "blob_hash": "ae4ec283ec97acbde5f65ecb71e61a96e50eb35a216d0382051e41d53bd2f7d0"
+      },
+      "fact_kind": "DEFAULT_VALUE",
+      "parameters": [],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    },
+    {
+      "fact_id": "e865c7908d81f1b054b195ca",
+      "entity_id": "914cd4163f05055c1a8de814",
+      "subject": "api.connect",
+      "property": "__signature__",
+      "value_state": "KNOWN",
+      "typed_value": null,
+      "expression": "def connect(timeout=60):\n    return timeout",
+      "span": {
+        "path": "api.py",
+        "start_line": 1,
+        "end_line": 2,
+        "start_byte": 0,
+        "end_byte": 43,
+        "blob_hash": "ae4ec283ec97acbde5f65ecb71e61a96e50eb35a216d0382051e41d53bd2f7d0"
+      },
+      "fact_kind": "SIGNATURE",
+      "parameters": [
+        {
+          "name": "timeout",
+          "kind": "POSITIONAL_OR_KEYWORD",
+          "required": false,
+          "value_state": "KNOWN",
+          "typed_value": {
+            "type": "int",
+            "canonical": "[\"int\",60]"
+          },
+          "expression": "60"
+        }
+      ],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "46f16a9b1a14ed9eec33bc29",
+      "subject": "connect",
+      "predicate": "timeout",
+      "kind": "DEFAULT_ASSERTION",
+      "value": {
+        "type": "int",
+        "canonical": "[\"int\",30]"
+      },
+      "qualifiers": [],
+      "version_scope": "current",
+      "span": {
+        "path": "README.md",
+        "start_line": 5,
+        "end_line": 5,
+        "start_byte": 36,
+        "end_byte": 63,
+        "blob_hash": "7dca10567e77ceb7a8a10b8223876014491faed7e38bf97dc8aee0aa18552586"
+      },
+      "value_span": {
+        "path": "README.md",
+        "start_line": 5,
+        "end_line": 5,
+        "start_byte": 59,
+        "end_byte": 61,
+        "blob_hash": "7dca10567e77ceb7a8a10b8223876014491faed7e38bf97dc8aee0aa18552586"
+      },
+      "quote": "`timeout` defaults to `30`.",
+      "extraction_method": "markdown-rules/2",
+      "source_hint": null,
+      "positional_count": null,
+      "keyword_names": [],
+      "unpacking": false,
+      "bound_receiver": false
+    }
+  ],
+  "candidates": [
+    {
+      "claim_id": "46f16a9b1a14ed9eec33bc29",
+      "candidates": [
+        {
+          "fact_id": "2ba6848378098979403e6ec0",
+          "rank": 1,
+          "score": 1.0,
+          "features": [
+            "exact_symbol",
+            "parameter_owner"
+          ]
+        }
+      ],
+      "ambiguity": false,
+      "reason": "MATCH"
+    }
+  ],
+  "judgments": [
+    {
+      "claim_id": "46f16a9b1a14ed9eec33bc29",
+      "decision": "INCONSISTENT",
+      "fact_ids": [
+        "2ba6848378098979403e6ec0"
+      ],
+      "reason_code": "LITERAL_MISMATCH",
+      "reason_text": "Compare explicit typed default values for the same parameter",
+      "claim_type_check": true,
+      "version_compatible": true,
+      "score": null,
+      "uncertainty_reason": null,
+      "model_run_id": null
+    }
+  ],
+  "findings": [
+    {
+      "finding_id": "748bde3625dd1b11bf51c170",
+      "drift_type": "DEFAULT_VALUE",
+      "claim_id": "46f16a9b1a14ed9eec33bc29",
+      "fact_ids": [
+        "2ba6848378098979403e6ec0"
+      ],
+      "evidence": {
+        "head_sha": "6c0b6246151b40bf3ee0bc08e76a0548c79efe3e",
+        "snapshot_hash": "8e4a98de6a881054dea5d30c",
+        "entity_id": "914cd4163f05055c1a8de814",
+        "document": {
+          "path": "README.md",
+          "start_line": 5,
+          "end_line": 5,
+          "start_byte": 36,
+          "end_byte": 63,
+          "blob_hash": "7dca10567e77ceb7a8a10b8223876014491faed7e38bf97dc8aee0aa18552586"
+        },
+        "code": {
+          "path": "api.py",
+          "start_line": 1,
+          "end_line": 1,
+          "start_byte": 20,
+          "end_byte": 22,
+          "blob_hash": "ae4ec283ec97acbde5f65ecb71e61a96e50eb35a216d0382051e41d53bd2f7d0"
+        },
+        "rule_id": "DEFAULT_VALUE/1",
+        "verifier_version": "verifier/2"
+      },
+      "severity": "warning",
+      "status": "INCONSISTENT",
+      "verification_status": "VERIFIED",
+      "ignored": false,
+      "ignore_reason": null
+    }
+  ],
+  "rejected": [],
+  "patches": [
+    {
+      "patch_id": "32c69e09f315c7790d717223",
+      "finding_ids": [
+        "748bde3625dd1b11bf51c170"
+      ],
+      "base_hashes": {
+        "README.md": "7dca10567e77ceb7a8a10b8223876014491faed7e38bf97dc8aee0aa18552586"
+      },
+      "edits": [
+        {
+          "span": {
+            "path": "README.md",
+            "start_line": 5,
+            "end_line": 5,
+            "start_byte": 59,
+            "end_byte": 61,
+            "blob_hash": "7dca10567e77ceb7a8a10b8223876014491faed7e38bf97dc8aee0aa18552586"
+          },
+          "old_text": "30",
+          "new_text": "60"
+        }
+      ],
+      "diff": "--- a/README.md\n+++ b/README.md\n@@ -2,4 +2,4 @@\n \n ## `connect`\n \n-`timeout` defaults to `30`.\n+`timeout` defaults to `60`.\n",
+      "validation": "VALIDATED",
+      "requires_review": true,
+      "validation_details": [
+        "All byte preimages match",
+        "Code fences unchanged",
+        "In-memory rescan: target conflicts removed; no new confirmed conflicts",
+        "Human semantic review still required"
+      ]
+    }
+  ]
+}

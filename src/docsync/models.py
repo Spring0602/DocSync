@@ -1,5 +1,6 @@
 """Schema 2.0 contracts; 1.0 reports remain readable for review and patch export."""
 
+from datetime import date
 from enum import StrEnum
 from pathlib import PurePosixPath
 from typing import Literal, Self
@@ -169,6 +170,7 @@ class Finding(Model):
     verification_status: Literal["VERIFIED"] = "VERIFIED"
     ignored: bool = False
     ignore_reason: str | None = None
+    ignore_expires: date | None = None
 
 
 class RejectedDecision(Model):
@@ -179,9 +181,17 @@ class RejectedDecision(Model):
 
 class FileRecord(Model):
     path: str
-    blob_hash: str
-    size: int
+    blob_hash: str = Field(pattern=r"^[a-f0-9]{64}$")
+    size: int = Field(ge=0)
     encoding: str = "utf-8"
+
+    @field_validator("path")
+    @classmethod
+    def relative_path(cls, value: str) -> str:
+        path = PurePosixPath(value)
+        if not value or path.is_absolute() or ".." in path.parts or "\\" in value or ":" in value:
+            raise ValueError("Expected a repository-relative POSIX path")
+        return value
 
 
 class RepositorySnapshot(Model):
@@ -252,6 +262,8 @@ class ScanReport(Model):
         claims = {c.claim_id: c for c in self.claims}
         findings = {f.finding_id: f for f in self.findings}
         blobs = {f.path: f.blob_hash for f in self.snapshot.files}
+        if len(blobs) != len(self.snapshot.files):
+            raise ValueError("Duplicate snapshot paths")
         if (
             len(entities) != len(self.entities)
             or len(facts) != len(self.facts)

@@ -30,3 +30,30 @@ def test_external_symlink_is_rejected(tmp_path):
         pytest.skip("OS does not grant symlink creation to this process")
     with pytest.raises(DocSyncError):
         safe_target(root, "README.md")
+
+
+def test_unavailable_patch_target_is_a_structured_project_error(tmp_path):
+    root = tmp_path / "repo"
+    root.mkdir()
+
+    with pytest.raises(DocSyncError) as error:
+        safe_target(root, "README.md")
+
+    assert error.value.code == "UNSAFE_PATCH"
+    assert error.value.stage == "apply"
+
+
+def test_dangling_symlink_is_rejected_when_platform_can_create_it(tmp_path):
+    root = tmp_path / "repo"
+    root.mkdir()
+    link = root / "README.md"
+    try:
+        link.symlink_to(root / "missing.md")
+    except OSError:
+        pytest.skip("OS does not grant symlink creation to this process")
+
+    with pytest.raises(DocSyncError) as error:
+        safe_target(root, "README.md")
+
+    assert error.value.code == "UNSAFE_PATCH"
+    assert error.value.stage == "apply"

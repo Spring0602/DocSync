@@ -1,0 +1,245 @@
+{
+  "schema_version": "2.0",
+  "manifest": {
+    "schema_version": "2.0",
+    "run_id": "9a5a06038ffe4d71aa01bae94fdfdeb3",
+    "versions": {
+      "docsync": "0.2.0",
+      "schema": "2.0",
+      "extractor": "python-static/2",
+      "claims": "markdown/2",
+      "verifier": "verifier/2",
+      "method": "full",
+      "pydantic": "2.11.7",
+      "markdown-it-py": "3.0.0"
+    },
+    "config_hash": "b2e60a68557de08f75100c2d052b4d4223c94a7867a9c5d7664a3c3c32231cc1",
+    "mode": "rules",
+    "status": "COMPLETED",
+    "enabled_types": [
+      "DEFAULT_VALUE",
+      "SIGNATURE",
+      "CONFIG"
+    ],
+    "semantic_coverage": "supported-static-claims-only",
+    "budget": {
+      "max_requests": 20,
+      "max_total_tokens": 100000
+    },
+    "usage": {
+      "requests": 0,
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "diagnostics": [],
+    "stage_seconds": {
+      "extraction": 0.0010108000133186579,
+      "alignment": 0.000016200006939470768,
+      "judging": 0.000044199987314641476,
+      "verification": 0.00010730000212788582,
+      "analysis_total": 0.0015469000209122896,
+      "repository": 0.3468749000458047,
+      "patch_validation": 0.000015600002370774746,
+      "total": 0.35082629998214543
+    },
+    "model": {
+      "provider": "none",
+      "model": null,
+      "temperature": 0.0
+    },
+    "events": [
+      "CREATED",
+      "ANALYZING",
+      "EXTRACTING",
+      "ALIGNING",
+      "JUDGING",
+      "VERIFYING",
+      "REPORTING",
+      "COMPLETED"
+    ],
+    "model_calls": []
+  },
+  "snapshot": {
+    "repo_id": "9c14c54b9cfb78d1521f3933",
+    "head_sha": "2ec5c7505464e42d0232e2d6a99fac8f5f09e283",
+    "base_sha": null,
+    "mode": "commit",
+    "files_hash": "170b5e3fb57aeae3bd43ed1f",
+    "dirty": false,
+    "files": [
+      {
+        "path": "README.md",
+        "blob_hash": "8b6b9490ac7074367acd7e9bde6de3cb636f26751faaba65c35b84ea4f0a998a",
+        "size": 42,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "api.py",
+        "blob_hash": "f3bbbf211895d7cf97c290987c64db9904520b5392df21b7bee73a109442c803",
+        "size": 43,
+        "encoding": "utf-8"
+      }
+    ],
+    "changed_paths": []
+  },
+  "entities": [
+    {
+      "entity_id": "914cd4163f05055c1a8de814",
+      "kind": "function",
+      "qualified_name": "api.connect",
+      "module": "api",
+      "signature": [
+        {
+          "name": "required",
+          "kind": "POSITIONAL_OR_KEYWORD",
+          "required": true,
+          "value_state": "ABSENT",
+          "typed_value": null,
+          "expression": null
+        }
+      ],
+      "decorators": [],
+      "span": {
+        "path": "api.py",
+        "start_line": 1,
+        "end_line": 2,
+        "start_byte": 0,
+        "end_byte": 42,
+        "blob_hash": "f3bbbf211895d7cf97c290987c64db9904520b5392df21b7bee73a109442c803"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "dbc6c5697365463264106b98",
+      "entity_id": "914cd4163f05055c1a8de814",
+      "subject": "api.connect",
+      "property": "__signature__",
+      "value_state": "KNOWN",
+      "typed_value": null,
+      "expression": "def connect(required):\n    return required",
+      "span": {
+        "path": "api.py",
+        "start_line": 1,
+        "end_line": 2,
+        "start_byte": 0,
+        "end_byte": 42,
+        "blob_hash": "f3bbbf211895d7cf97c290987c64db9904520b5392df21b7bee73a109442c803"
+      },
+      "fact_kind": "SIGNATURE",
+      "parameters": [
+        {
+          "name": "required",
+          "kind": "POSITIONAL_OR_KEYWORD",
+          "required": true,
+          "value_state": "ABSENT",
+          "typed_value": null,
+          "expression": null
+        }
+      ],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "e8429187a1b63f696c228054",
+      "subject": "connect",
+      "predicate": "__signature__",
+      "kind": "CALL_EXAMPLE",
+      "value": null,
+      "qualifiers": [],
+      "version_scope": "current",
+      "span": {
+        "path": "README.md",
+        "start_line": 3,
+        "end_line": 5,
+        "start_byte": 18,
+        "end_byte": 42,
+        "blob_hash": "8b6b9490ac7074367acd7e9bde6de3cb636f26751faaba65c35b84ea4f0a998a"
+      },
+      "value_span": null,
+      "quote": "```python\nconnect()\n```\n",
+      "extraction_method": "markdown-call/2",
+      "source_hint": null,
+      "positional_count": 0,
+      "keyword_names": [],
+      "unpacking": false,
+      "bound_receiver": false
+    }
+  ],
+  "candidates": [
+    {
+      "claim_id": "e8429187a1b63f696c228054",
+      "candidates": [
+        {
+          "fact_id": "dbc6c5697365463264106b98",
+          "rank": 1,
+          "score": 1.0,
+          "features": [
+            "exact_symbol",
+            "parameter_owner"
+          ]
+        }
+      ],
+      "ambiguity": false,
+      "reason": "MATCH"
+    }
+  ],
+  "judgments": [
+    {
+      "claim_id": "e8429187a1b63f696c228054",
+      "decision": "INCONSISTENT",
+      "fact_ids": [
+        "dbc6c5697365463264106b98"
+      ],
+      "reason_code": "CALL_BINDING_ERROR",
+      "reason_text": "Statically bind supplied arguments to the supported signature",
+      "claim_type_check": true,
+      "version_compatible": true,
+      "score": null,
+      "uncertainty_reason": null,
+      "model_run_id": null
+    }
+  ],
+  "findings": [
+    {
+      "finding_id": "0c6eee77370455539fd82d15",
+      "drift_type": "SIGNATURE",
+      "claim_id": "e8429187a1b63f696c228054",
+      "fact_ids": [
+        "dbc6c5697365463264106b98"
+      ],
+      "evidence": {
+        "head_sha": "2ec5c7505464e42d0232e2d6a99fac8f5f09e283",
+        "snapshot_hash": "170b5e3fb57aeae3bd43ed1f",
+        "entity_id": "914cd4163f05055c1a8de814",
+        "document": {
+          "path": "README.md",
+          "start_line": 3,
+          "end_line": 5,
+          "start_byte": 18,
+          "end_byte": 42,
+          "blob_hash": "8b6b9490ac7074367acd7e9bde6de3cb636f26751faaba65c35b84ea4f0a998a"
+        },
+        "code": {
+          "path": "api.py",
+          "start_line": 1,
+          "end_line": 2,
+          "start_byte": 0,
+          "end_byte": 42,
+          "blob_hash": "f3bbbf211895d7cf97c290987c64db9904520b5392df21b7bee73a109442c803"
+        },
+        "rule_id": "SIGNATURE/1",
+        "verifier_version": "verifier/2"
+      },
+      "severity": "warning",
+      "status": "INCONSISTENT",
+      "verification_status": "VERIFIED",
+      "ignored": false,
+      "ignore_reason": null
+    }
+  ],
+  "rejected": [],
+  "patches": []
+}

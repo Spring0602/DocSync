@@ -34,3 +34,9 @@ python bench/evaluate.py --input runs/my-benchmark/predictions.jsonl --out runs/
 ```
 
 尚待团队完成：人工标注、合法真实案例、测试集冻结、真实模型主实验与重复运行、组 bootstrap、人工证据/补丁正确率、成本金额、真实社区反馈。当前受控案例指标不用于声称达到策划案中正式 Precision/Recall 目标。
+
+## 下一步由谁推进（2026-09-30）
+
+B-N1/C-N1 各提交完整独立标注；A-N2 负责裁决、目标实体映射、数据分组及 Recall@K 口径/实现。C 的现有预填表不是已完成标注，A 已明确暂不冻结，见 [接收记录](a-acceptance-20260930.md)。
+
+开发数据可继续验证流程。正式实验 A-N3 等待数据、模型和相关代码修复准备好；固定同一版本运行并保留失败、拒答及 PARTIAL。当前分类 recall 不等于 Recall@K，后者尚未实现，不报告虚构数值。详细操作与交付物见 [任务清单](tasks.md)。

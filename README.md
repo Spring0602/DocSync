@@ -1,5 +1,7 @@
 # DocSync
 
+团队后续开发请先阅读 [三位成员任务清单](docs/tasks.md)：明确 A/B/C 当前优先事项、交付物与依赖；最新裁决见 [A 接收记录](docs/a-acceptance-20260930.md)。
+
 面向 Python 与 Markdown 的代码—文档一致性检测工具。当前 0.2.0：读取固定 Git 快照，检测明确默认值、支持的调用签名和简单配置冲突，独立验证证据，生成报告和最小文档补丁。
 
 **已实现：三类静态规则、可配置 AI 适配器、评测运行器和 Action 包装。** 默认规则模式不需要密钥。真实模型服务暂未配置，20 例自建种子标签待人工复核，远程 CI 尚未执行；详细范围见 [能力边界](docs/limitations.md)、[验收记录](docs/verification.md) 和 [开发任务](docs/tasks.md)。
@@ -99,4 +101,4 @@ docsync benchmark --manifest runs/my-seed/manifest.jsonl --method keyword --out 
 
 真实模型准备后可用 `--method full/llm/no_alignment/no_verifier/no_static` 的相应单个值，配合 `--config` 运行。方法边界、失败计分和人工标注要求见 [评测说明](docs/benchmark.md)。
 
-方案拟采用 Apache-2.0；团队权利确认和第三方审查完成前，本框架不代替团队授予整个资料目录的再分发许可。参见 [LICENSE](LICENSE) 和 [第三方台账](compliance/third_party_resources.csv)。
+项目原创代码及自建样本采用 Apache-2.0（团队于 2026-09-30 确认）。原始策划案、竞赛附件和个人承诺书不在授权范围内；第三方资源遵循各自许可证。参见 [LICENSE](LICENSE)、[授权范围](docs/license-scope.md)和[第三方台账](compliance/third_party_resources.csv)。

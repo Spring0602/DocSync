@@ -55,3 +55,9 @@
 - checklist 第 13 行"首次推送 + CI 记录"：分支 `c2-action-verification` 已推送，
   CI 双平台运行记录见 `docs/c-action-local-scenarios.md` 第三节（run 36589298331，
   SHA e6315f2/c7d77ec）。main 的推送由团队决定合入时机。
+
+## 2026-09-30 状态更正与后续入口
+
+上文是 09-29 的预审快照。团队 Apache-2.0 已于 09-30 确认并落地，C 的依赖台账审核已被 A 接收，无需重复请求同一决定。main 已合并且 Core CI 双平台成功。剩余事项为独立标注、AI 人工复核、第二设备及最终材料审核。
+
+下一步按 [tasks.md 的 C-N1/C-N4](tasks.md) 执行；裁决依据见 [A 接收记录](a-acceptance-20260930.md)。C 原预填表保留，新建完成版，不覆盖历史证据。

@@ -1,0 +1,164 @@
+sample_id,head_sha,reviewer,reviewed_at,label,drift_type,document_path,document_lines,code_path,code_lines,target_entity,evidence,reason,questions
+seed-01-default_drift,e8701dddd7d559d0794afbcdd8b6ace8d8a1f2b0,卢佳妮,2026-10-04T11:30:00+08:00,INCONSISTENT,DEFAULT_VALUE,README.md,3,client.py,1,connect,"README.md:
+1: ## `connect`
+2:
+3: `timeout` 默认值为 `30`。
+
+client.py:
+1: def connect(timeout=60):
+2:     return timeout",文档称timeout默认值为30，代码默认值为60，二者不一致。,无
+seed-02-default_equal,6f3876f25a59976d116eb80d1a0220e2f3132be6,卢佳妮,2026-10-04T11:30:00+08:00,CONSISTENT,DEFAULT_VALUE,README.md,3,client.py,1,connect,"README.md:
+1: ## `connect`
+2:
+3: `timeout` 默认值为 `60`。
+
+client.py:
+1: def connect(timeout=60):
+2:     return timeout",文档和代码都将timeout默认值设为整数60，类型和值一致。,无
+seed-03-typed_bool,8b42acebdad4fd16b1d02561228f27dc2c2ccc65,卢佳妮,2026-10-04T11:30:00+08:00,INCONSISTENT,DEFAULT_VALUE,README.md,3,client.py,1,connect,"README.md:
+1: ## `connect`
+2:
+3: `timeout` 默认值为 `1`。
+
+client.py:
+1: def connect(timeout=True):
+2:     return timeout",文档值为整数1，代码值为布尔值True，二者类型不同。,无
+seed-04-factory_unknown,a12996cb00b0bcc90c9458caf4a6db09838a0278,卢佳妮,2026-10-04T11:30:00+08:00,INSUFFICIENT,DEFAULT_VALUE,README.md,3,client.py,1,connect,"README.md:
+1: ## `connect`
+2:
+3: `timeout` 默认值为 `30`。
+
+client.py:
+1: def connect(timeout=factory()):
+2:     return timeout",代码默认值来自factory()动态调用，当前证据无法确定实际返回值。,需要确认factory()的定义和固定提交下的实际返回值。
+seed-05-historical,8e407ba6cea6e8f58f3ccced86d81d7761f1c453,卢佳妮,2026-10-04T11:30:00+08:00,INSUFFICIENT,DEFAULT_VALUE,README.md,3,client.py,1,connect,"README.md:
+1: ## 旧版 `connect`
+2:
+3: `timeout` 默认值为 `30`。
+
+client.py:
+1: def connect(timeout=60):
+2:     return timeout",文档明确描述旧版connect，当前证据只展示当前代码，无法验证旧版默认值。,需要提供旧版connect对应的版本或提交以核对当时的默认值。
+seed-06-ambiguous,6d9ed71fa83b3bf747a080dfaf33d411e968d2f7,卢佳妮,2026-10-04T11:30:00+08:00,INSUFFICIENT,DEFAULT_VALUE,README.md,3,client.py;other.py,client.py:1;other.py:1,connect,"README.md:
+1: ## `connect`
+2:
+3: `timeout` 默认值为 `30`。
+
+client.py:
+1: def connect(timeout=60):
+2:     return timeout
+
+other.py:
+1: def connect(timeout=60):
+2:     return timeout",文档没有说明目标属于client.py还是other.py，无法唯一确定对应的connect定义。,需要明确文档中的connect具体属于client.py还是other.py。
+seed-07-table_drift,c131e00fcf344e565a4a30648c2c53392d9b7428,卢佳妮,2026-10-04T11:30:00+08:00,INCONSISTENT,DEFAULT_VALUE,README.md,3-5,client.py,1,connect,"README.md:
+1: ## `connect`
+2:
+3: | parameter | default |
+4: |---|---|
+5: |timeout|30|
+
+client.py:
+1: def connect(timeout=60):
+2:     return timeout",文档表格中的timeout默认值为30，代码默认值为60，二者不一致。,无
+seed-08-table_equal,af9fbfe9d2715b403d7b37758863a238e9be56bb,卢佳妮,2026-10-04T11:30:00+08:00,CONSISTENT,DEFAULT_VALUE,README.md,3-5,client.py,1,connect,"README.md:
+1: ## `connect`
+2:
+3: | parameter | default |
+4: |---|---|
+5: |timeout|60|
+
+client.py:
+1: def connect(timeout=60):
+2:     return timeout",文档表格和代码都将timeout默认值设为60，二者一致。,无
+seed-09-linked_owner,5ec21f193f947e5c54490f1a3ebac57b9cc3c290,卢佳妮,2026-10-04T11:30:00+08:00,INCONSISTENT,DEFAULT_VALUE,README.md,3,client.py;other.py,client.py:1;other.py:1,client.connect,"README.md:
+1: ## [connect](client.py)
+2:
+3: `timeout` 默认值为 `30`。
+
+client.py:
+1: def connect(timeout=60):
+2:     return timeout
+
+other.py:
+1: def connect(timeout=30):
+2:     return timeout",文档链接明确指向client.py，但文档值为30而目标代码值为60。,无
+seed-10-constant_drift,ab57f9585b67276cead2e786f4aa4b4f94ac5c26,卢佳妮,2026-10-04T11:30:00+08:00,INCONSISTENT,CONFIG,README.md,3,settings.py,1,settings.TIMEOUT,"README.md:
+1: ## 配置 `settings`
+2:
+3: `TIMEOUT` 默认值为 `30`。
+
+settings.py:
+1: TIMEOUT = 60",文档中的TIMEOUT默认值为30，代码中的静态常量值为60。,无
+seed-11-constant_equal,dcce728ee423df7f969e31a1b124a21bc2f5e3fe,卢佳妮,2026-10-04T11:30:00+08:00,CONSISTENT,CONFIG,README.md,3,settings.py,1,settings.TIMEOUT,"README.md:
+1: ## 配置 `settings`
+2:
+3: `TIMEOUT` 默认值为 `60`。
+
+settings.py:
+1: TIMEOUT = 60",文档和代码中的TIMEOUT值均为60，二者一致。,无
+seed-12-dict_drift,2e4da1b56480b3a17927d6f8505911961e208a26,卢佳妮,2026-10-04T11:30:00+08:00,INCONSISTENT,CONFIG,README.md,3,settings.py,1,settings.CONFIG,"README.md:
+1: ## `settings.CONFIG`
+2:
+3: `timeout` 默认值为 `30`。
+
+settings.py:
+1: CONFIG = {'timeout': 60}",文档中的timeout配置值为30，代码字典中的静态值为60。,无
+seed-13-dict_dynamic,2524e5f3c443b08ba170875da8d20b2299808f42,卢佳妮,2026-10-04T11:30:00+08:00,INSUFFICIENT,CONFIG,README.md,3,settings.py,1,settings.CONFIG,"README.md:
+1: ## `settings.CONFIG`
+2:
+3: `timeout` 默认值为 `30`。
+
+settings.py:
+1: CONFIG = {'timeout': env()}",代码中的timeout值来自env()动态调用，当前证据无法确定实际值。,需要确认env()读取的来源以及固定环境下的实际返回值。
+seed-14-missing_required,59f09b9d8efff70eaebce74ae46589a697b14959,卢佳妮,2026-10-04T11:30:00+08:00,INCONSISTENT,SIGNATURE,README.md,2,client.py,1,connect,"README.md:
+1: ```python
+2: connect()
+3: ```
+
+client.py:
+1: def connect(host): pass",函数要求提供必选参数host，但文档中的connect()调用没有提供该参数。,无
+seed-15-unexpected_keyword,a95d8228d35c88cae04b359c7c5e09cafa57fe3e,卢佳妮,2026-10-04T11:30:00+08:00,INCONSISTENT,SIGNATURE,README.md,2,client.py,1,connect,"README.md:
+1: ```python
+2: connect(host='local')
+3: ```
+
+client.py:
+1: def connect(timeout=60):
+2:     return timeout",文档传入host关键字参数，但目标函数只声明timeout且不接收额外关键字参数。,无
+seed-16-kwargs_legal,4c5a8deb8d27ed524c548021d10ac812a46a0da2,卢佳妮,2026-10-04T11:30:00+08:00,CONSISTENT,SIGNATURE,README.md,2,client.py,1,connect,"README.md:
+1: ```python
+2: connect(host='local')
+3: ```
+
+client.py:
+1: def connect(**kwargs): pass",目标函数通过双星号kwargs接收额外关键字参数，因此host可以合法传入。,无
+seed-17-positional_only,42d6aa0bc5153528895ec510881d91d44f2c5b93,卢佳妮,2026-10-04T11:30:00+08:00,INCONSISTENT,SIGNATURE,README.md,2,client.py,1,connect,"README.md:
+1: ```python
+2: connect(host='local')
+3: ```
+
+client.py:
+1: def connect(host, /): pass",host被声明为仅位置参数，文档却将其作为关键字参数传入。,无
+seed-18-keyword_only,ca392b5052c1ddfac069dad57a143a8132f53a26,卢佳妮,2026-10-04T11:30:00+08:00,INCONSISTENT,SIGNATURE,README.md,2,client.py,1,connect,"README.md:
+1: ```python
+2: connect()
+3: ```
+
+client.py:
+1: def connect(*, host): pass",host是必选的仅关键字参数，但文档中的无参数调用没有提供host。,无
+seed-19-optional_added,8782f5c711d1427f3f2ef9580bdda56d2ebbab3c,卢佳妮,2026-10-04T11:30:00+08:00,CONSISTENT,SIGNATURE,README.md,2,client.py,1,connect,"README.md:
+1: ```python
+2: connect(timeout=30)
+3: ```
+
+client.py:
+1: def connect(timeout=60, retries=3): pass",文档传入的timeout参数可以合法绑定，retries具有默认值并非必填参数。,无
+seed-20-import_alias,4fe77671790bed8a501719efabff9ebab4836e36,卢佳妮,2026-10-04T11:30:00+08:00,INCONSISTENT,SIGNATURE,README.md,2-3,client.py,1,connect,"README.md:
+1: ```python
+2: from client import connect as open_connection
+3: open_connection()
+4: ```
+
+client.py:
+1: def connect(host): pass",open_connection别名指向connect，而connect要求必选参数host，文档中的无参数调用缺少该参数。,无

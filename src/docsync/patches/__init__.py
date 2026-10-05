@@ -2,6 +2,7 @@
 
 import difflib
 import os
+import stat
 import tempfile
 from collections import defaultdict
 from collections.abc import Callable
@@ -11,7 +12,7 @@ from markdown_it import MarkdownIt
 
 from docsync.models import FileRecord, PatchEdit, PatchProposal, ScanReport
 from docsync.repository import SnapshotData
-from docsync.utils import DocSyncError, digest, stable_id
+from docsync.utils import DocSyncError, digest, span_for, stable_id
 
 
 def edited_blobs(edits: list[PatchEdit], blobs: dict[str, bytes]) -> dict[str, bytes]:
@@ -29,6 +30,7 @@ def edited_blobs(edits: list[PatchEdit], blobs: dict[str, bytes]) -> dict[str, b
             if (
                 digest(blobs[path]) != span.blob_hash
                 or span.end_byte > boundary
+                or span_for(path, blobs[path], span.start_byte, span.end_byte) != span
                 or data[span.start_byte : span.end_byte] != edit.old_text.encode("utf-8")
             ):
                 raise DocSyncError("PATCH_CONFLICT", "Overlapping, stale or invalid edit", "patch")
@@ -171,21 +173,48 @@ def propose_patch(
 
 def safe_target(root: Path, relative: str) -> Path:
     target = root / relative
+    relative_path = Path(relative)
     if (
         not relative.endswith(".md")
-        or Path(relative).is_absolute()
-        or ".." in Path(relative).parts
+        or relative_path.is_absolute()
+        or ".." in relative_path.parts
         or "\\" in relative
         or ":" in relative
-        or ".git" in Path(relative).parts
-        or not target.resolve().is_relative_to(root)
-        or target.is_symlink()
+        or ".git" in relative_path.parts
     ):
         raise DocSyncError("UNSAFE_PATCH", "Patch path is not an allowed Markdown file", "apply")
+
+    def inspect(path: Path) -> os.stat_result:
+        try:
+            return path.lstat()
+        except OSError as exc:
+            raise DocSyncError(
+                "UNSAFE_PATCH", "Patch target is missing or inaccessible", "apply"
+            ) from exc
+
+    details = inspect(target)
+    reparse_flag = getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", 0)
+    if (
+        not stat.S_ISREG(details.st_mode)
+        or stat.S_ISLNK(details.st_mode)
+        or bool(getattr(details, "st_file_attributes", 0) & reparse_flag)
+    ):
+        raise DocSyncError("UNSAFE_PATCH", "Patch target is not a regular file", "apply")
+    try:
+        resolved = target.resolve(strict=True)
+    except OSError as exc:
+        raise DocSyncError(
+            "UNSAFE_PATCH", "Patch target cannot be resolved safely", "apply"
+        ) from exc
+    if not resolved.is_relative_to(root):
+        raise DocSyncError("UNSAFE_PATCH", "Patch path leaves the repository", "apply")
     for parent in target.parents:
         if parent == root:
             break
-        if parent.is_symlink():
+        details = inspect(parent)
+        if stat.S_ISLNK(details.st_mode) or bool(
+            getattr(details, "st_file_attributes", 0) & reparse_flag
+        ):
             raise DocSyncError("UNSAFE_PATCH", "Symlinked parent directory", "apply")
     return target
 
@@ -205,7 +234,14 @@ def atomic_write(path: Path, data: bytes) -> None:
 
 
 def apply_patch(repo: Path, proposal: PatchProposal, diff: str) -> list[str]:
-    if proposal.validation != "VALIDATED" or diff != proposal.diff or not proposal.edits:
+    if (
+        proposal.validation != "VALIDATED"
+        or diff != proposal.diff
+        or not proposal.edits
+        or not proposal.finding_ids
+        or len(set(proposal.finding_ids)) != len(proposal.finding_ids)
+        or proposal.patch_id != stable_id("patch", *proposal.finding_ids)
+    ):
         raise DocSyncError(
             "INVALID_PATCH", "Expected the matching validated patch and manifest", "apply"
         )
