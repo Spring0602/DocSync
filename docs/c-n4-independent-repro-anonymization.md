@@ -1,0 +1,68 @@
+# C-N4 同机独立环境复现与匿名化核查记录
+
+- 记录日期：2026-10-06
+- 复现性质：同机独立环境复现，不称为第二台物理设备复现
+- 说明：队友确认如果仍是同一台电脑，全新 clone + 全新 venv 可用于验证安装与使用流程；原清单需注明“同机独立环境复现，跨设备验证未完成”。
+
+## 一、环境与版本
+
+| 项 | 记录 |
+| --- | --- |
+| 设备/环境 | C 本人电脑，同机独立目录与独立虚拟环境 |
+| 系统 | Microsoft Windows 10.0.26200 |
+| Python | 3.12.1 |
+| Git | 2.55.0.windows.3 |
+| 来源 | 从 GitHub 全新 clone `https://github.com/Spring0602/DocSync.git` |
+| 分支 | `c2-action-verification` |
+| 固定提交 | `002b076efe145d0c35ea26669aff516eb4e09990` |
+| 复现目录 | `runs/c-n4-independent-repro/checkout`（本地忽略目录，不入库） |
+| 虚拟环境 | `runs/c-n4-independent-repro/checkout/.venv`，全新创建 |
+| 模型范围 | 未配置真实模型；按 README 默认 rules 模式验证安装与基础使用流程 |
+
+## 二、执行命令与结果
+
+| 步骤 | 命令 | 结果 |
+| --- | --- | --- |
+| 全新 clone | `git clone --branch c2-action-verification https://github.com/Spring0602/DocSync.git runs/c-n4-independent-repro/checkout` | 成功 |
+| 固定提交 | `git checkout 002b076efe145d0c35ea26669aff516eb4e09990` | 成功，detached HEAD |
+| 创建 venv | `python -m venv .venv` | 成功 |
+| 安装依赖 | `.\.venv\Scripts\python.exe -m pip install -e ".[dev]"` | 成功，安装 `docsync-core-0.2.0` 及 dev 依赖 |
+| CLI help | `.\.venv\Scripts\docsync.exe --help` | 成功，显示 `scan/patch/apply/schema/benchmark` 子命令 |
+| 创建 demo | `.\.venv\Scripts\python.exe scripts/create_demo.py --out runs/demo-repo` | 成功，输出 `runs\demo-repo` |
+| 首次扫描 | `.\.venv\Scripts\docsync.exe scan --repo runs/demo-repo --out runs/demo` | 成功，`COMPLETED`，`confirmed_count=1` |
+| 补丁预览 | `.\.venv\Scripts\docsync.exe patch --report runs/demo/report.json --out runs/fixes.patch` | 成功，生成 `runs\fixes.patch` 和 `runs\fixes.patch.json`，`requires_review=true` |
+| 显式应用 | `.\.venv\Scripts\docsync.exe apply --repo runs/demo-repo --patch runs/fixes.patch --manifest runs/fixes.patch.json` | 成功，`APPLIED`，修改 `README.md` |
+| working-tree 复扫 | `.\.venv\Scripts\docsync.exe scan --repo runs/demo-repo --working-tree --out runs/after` | 成功，`COMPLETED`，`confirmed_count=0` |
+
+## 三、关键产物
+
+| 产物 | 路径 | 说明 |
+| --- | --- | --- |
+| 首次扫描 JSON 报告 | `runs/c-n4-independent-repro/checkout/runs/demo/report.json` | `status=COMPLETED`，初扫确认 1 条冲突 |
+| 首次扫描 Markdown 报告 | `runs/c-n4-independent-repro/checkout/runs/demo/report.md` | 人类可读报告 |
+| 补丁文件 | `runs/c-n4-independent-repro/checkout/runs/fixes.patch` | 补丁预览产物 |
+| 补丁 manifest | `runs/c-n4-independent-repro/checkout/runs/fixes.patch.json` | 应用前校验依据 |
+| 复扫 JSON 报告 | `runs/c-n4-independent-repro/checkout/runs/after/report.json` | `status=COMPLETED`，确认冲突降为 0 |
+| 复扫 Markdown 报告 | `runs/c-n4-independent-repro/checkout/runs/after/report.md` | 人类可读复扫报告 |
+
+## 四、结论
+
+README 中的安装、CLI help、demo 构建、扫描、补丁预览、显式应用和 working-tree 复扫流程，已在同机独立 clone 与全新 venv 中跑通。该复现证明安装与基础使用流程可从干净工作副本完成。
+
+限制：本次不是第二台物理设备复现；跨设备验证仍未完成。未配置真实模型，验证范围限于默认 rules 模式和基础 CLI 流程。
+
+## 五、匿名化核查表
+
+| 项 | 状态 | 记录 |
+| --- | --- | --- |
+| 原始 DOCX/PDF/ZIP 是否入库 | 通过 | 既有 C3 审核确认仓库无 `.docx` / `.pdf` / `.zip` 入库；根目录 `.gitignore` 继续排除原始私有材料。 |
+| 复现产物是否入库 | 通过 | 复现目录位于 `runs/`，该目录被 `.gitignore` 忽略，不进入提交。 |
+| 对外文档是否含学号 | 待最终材料阶段复核 | 当前仓库文档未专门扫描最终演示/视频/截图材料；最终提交前需复核。 |
+| 对外文档是否含真实姓名/账号/本机路径 | 待最终材料阶段复核 | 当前记录含本机复现目录作为本地证据路径；若对外发布材料截图或视频，应打码本机用户名、绝对路径、浏览器账号和终端提示符。 |
+| 链接是否有效 | 部分完成 | GitHub workflow run 链接已保存；最终材料链接需在发布前统一复核。 |
+| 许可证和署名 | 保留 | 不因匿名化删除 Apache-2.0、第三方许可证和必要权利声明。 |
+
+## 六、后续待办
+
+- 如最终验收要求严格“第二台物理设备”，需换另一台电脑重复 README 流程并补记录。
+- 最终演示、截图、视频和提交链接确定后，再做一次匿名化与链接可访问性复核。

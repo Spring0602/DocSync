@@ -197,3 +197,10 @@ e6315f2  docs(c): record local Action scenario verification (6 scenarios pass)
 - Artifact：`1`（`docsync-evidence`）
 - scan summary：`Status: PARTIAL`；`Confirmed: 0`；`uncertain: 1`
 - 结论：C-N3 的 `Documentation consistency` 实际运行证据已补齐。该记录不替代 Core CI，也不声明真实模型实验完成。
+
+## C-N4 same-machine independent environment reproduction progress (2026-10-06)
+
+- Completed the team-approved same-machine independent environment reproduction: fresh clone from GitHub on branch `c2-action-verification`, fixed commit `002b076efe145d0c35ea26669aff516eb4e09990`, fresh `.venv`, and README flow for install, CLI help, demo creation, scan, patch preview, explicit apply, and working-tree rescan.
+- Result: install succeeded; first scan returned `COMPLETED, confirmed_count=1`; patch preview and explicit apply succeeded; rescan returned `COMPLETED, confirmed_count=0`.
+- Record file: `docs/c-n4-independent-repro-anonymization.md`.
+- Limitation: this is a same-machine independent environment reproduction, not a second physical device reproduction. Cross-device verification, final material anonymization, and final link checks remain open.
