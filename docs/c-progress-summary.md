@@ -184,3 +184,16 @@ e6315f2  docs(c): record local Action scenario verification (6 scenarios pass)
 - 已补受控 transport 超时复验：`.venv\Scripts\python.exe -m pytest tests/integration/test_action_scenarios.py tests/integration/test_model_pipeline.py::test_model_timeout_is_partial_uncertain -q -p no:cacheprovider` -> `7 passed`。
 - 证据性质：受控故障测试，不是实际模型服务调用，不声明真实模型实验完成。
 - 待完成：在 GitHub 实际运行 `Documentation consistency` 工作流（`.github/workflows/docsync.yml`），记录完整 SHA、run 链接、状态和 `docsync-evidence` 工件。
+
+## 十、Documentation consistency 实际运行记录（2026-10-06）
+
+- 工作流：`Documentation consistency`
+- 触发方式：`workflow_dispatch`
+- 分支：`c2-action-verification`
+- 提交：`3f694ff19828945ac8a25a21ddc62ea4549b8944`
+- 运行链接：`https://github.com/Spring0602/DocSync/actions/runs/37421932006`
+- 状态：`success`
+- 总耗时：`17s`
+- Artifact：`1`（`docsync-evidence`）
+- scan summary：`Status: PARTIAL`；`Confirmed: 0`；`uncertain: 1`
+- 结论：C-N3 的 `Documentation consistency` 实际运行证据已补齐。该记录不替代 Core CI，也不声明真实模型实验完成。

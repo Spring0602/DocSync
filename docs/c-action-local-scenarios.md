@@ -89,3 +89,16 @@
 ### Documentation consistency 工作流待跑
 
 仓库存在 `.github/workflows/docsync.yml`，工作流名称为 `Documentation consistency`，触发条件包含 `workflow_dispatch` 和 `pull_request`。该工作流不同于 Core CI，仍需在 GitHub 上对确定提交实际运行，并记录完整 SHA、run 链接、状态和 `docsync-evidence` 工件。Core CI 记录不能替代本项。
+
+### Documentation consistency 实际运行记录（2026-10-06）
+
+- 工作流：`Documentation consistency`（`.github/workflows/docsync.yml`）
+- 触发方式：`workflow_dispatch`
+- 分支：`c2-action-verification`
+- 提交：`3f694ff19828945ac8a25a21ddc62ea4549b8944`
+- 运行链接：`https://github.com/Spring0602/DocSync/actions/runs/37421932006`
+- 状态：`success`
+- 总耗时：`17s`
+- Artifact：`1`（`docsync-evidence`）
+- scan summary：`Status: PARTIAL`；`Confirmed: 0`；`uncertain: 1`
+- 说明：该工作流为规则模式、无模型密钥运行；`PARTIAL` 来自模型未配置/usage 记录语义，不代表 workflow 失败。该记录与 Core CI 分开保存，满足 C-N3 对 `Documentation consistency` 实际 run 的证据要求。
