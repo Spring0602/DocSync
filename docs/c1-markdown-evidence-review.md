@@ -56,3 +56,41 @@
   仅支持 "defaults to / default value is" 紧邻句式。
 - 1 个展示改进（忽略到期日不入报告）记录在案。
 - 全部产物路径与命令可复现；本记录待 C 人工复核签字。
+
+## 四、B-N2 英文默认句式修复技术复验（2026-10-05）
+
+- 执行人：AI 助手代为执行命令并整理证据；C 本人复核签字待补。
+- 复验基线：`346f5dd2d88b30648ce5f40b5ab3d8f63dbe7442`（已合入 B-N2 提交 `f561b9c`）
+- 环境：Windows 11，Python 3.12.1，项目 `.venv`
+- 命令：`.venv\Scripts\python.exe -m pytest tests/integration/test_b_n2_english_defaults.py -q -p no:cacheprovider`
+- 结果：`6 passed`
+
+技术复验结论：
+
+- 英文 `The default value of X is Y` 正例已能提取，并分别覆盖一致和冲突样例。
+- 旧版标题语境仍保持 `UNCERTAIN / VERSION_UNRESOLVED`，不会强行确认。
+- 同名符号歧义仍保持 `UNCERTAIN / AMBIGUOUS`，不会选择 top-1 硬判。
+- 显式源码链接归属、合法调用样例、行号、字节范围和 blob hash 由专项测试覆盖并通过。
+
+待 C 本人复核后，可据此判断是否关闭 C1 缺陷 D-1。
+
+## 五、B-N3 忽略到期日展示技术复验（2026-10-05）
+
+- 执行人：AI 助手代为执行命令并整理证据；C 本人复核签字待补。
+- 复验基线：`346f5dd2d88b30648ce5f40b5ab3d8f63dbe7442`（已合入 B-N3 提交 `1edda88`）
+- C 展示修改：`src/docsync/reporting/__init__.py`
+- C 展示测试：`tests/integration/test_b_n3_ignore_expiry.py::test_markdown_report_explains_ignore_expiry_states`
+- 命令：`.venv\Scripts\python.exe -m pytest tests/integration/test_b_n3_ignore_expiry.py tests/unit/test_patch_guards.py -q -p no:cacheprovider`
+- 结果：`21 passed, 2 skipped`
+- 跳过说明：`tests/unit/test_patch_guards.py` 中两个真实 symlink 场景因当前 Windows 进程没有创建文件系统符号链接权限而跳过；不能写成已通过。
+
+Markdown 展示复验结果：
+
+- 无匹配规则：显示 `忽略状态：未忽略`，不编造原因或到期日。
+- 匹配无期限规则：显示 `当前忽略`、规则原因和 `无期限`。
+- 匹配有效到期日规则：显示 `当前忽略`、规则原因和到期日。
+- 匹配已过期规则：显示 `规则已过期，告警未忽略`、规则原因和到期日。
+
+技术复验显示：JSON 字段含义由 B-N3 契约测试覆盖，Markdown 能区分无期限、有效期、规则已过期和无匹配四种状态；过期规则显示“规则已过期，告警未忽略”，未按阅读日期重新计算历史报告。专项测试和补丁守卫测试通过；真实 symlink 场景因权限跳过，保留为后续有权限环境复核项。待 C 本人复核后，可提交给 A 做最终验收。
+
+C 本人已复核上述 B-N2/B-N3 技术复验记录，确认同意关闭 C1 缺陷 D-1，并同意 B-N3 字段、匹配和报告展示进入 A 的最终验收。

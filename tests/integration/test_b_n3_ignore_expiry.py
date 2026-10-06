@@ -10,6 +10,7 @@ from docsync.config import IgnoreRule, RepoSpec, ScanConfig, ScanOptions
 from docsync.models import ScanReport
 from docsync.patches import apply_patch
 from docsync.pipeline import scan
+from docsync.reporting import markdown_report
 from docsync.utils import DocSyncError
 
 SCAN_DATE = date(2026, 10, 4)
@@ -162,3 +163,34 @@ def test_disappeared_patch_target_returns_structured_error(commit_files):
 
     assert error.value.code == "UNSAFE_PATCH"
     assert error.value.stage == "apply"
+
+
+@pytest.mark.parametrize(
+    ("rules", "expected", "unexpected"),
+    [
+        ([IgnoreRule(path="other.md", reason="not matched")], "忽略状态：未忽略", "到期日"),
+        (
+            [IgnoreRule(reason="no deadline")],
+            "忽略状态：当前忽略；原因：no deadline；无期限",
+            "到期日",
+        ),
+        (
+            [IgnoreRule(reason="future", expires=date(2026, 10, 5))],
+            "忽略状态：当前忽略；原因：future；到期日：2026-10-05",
+            None,
+        ),
+        (
+            [IgnoreRule(reason="expired", expires=date(2026, 10, 3))],
+            "忽略状态：规则已过期，告警未忽略；原因：expired；到期日：2026-10-03",
+            None,
+        ),
+    ],
+)
+def test_markdown_report_explains_ignore_expiry_states(commit_files, rules, expected, unexpected):
+    report = scan(RepoSpec(repo=drift_repo(commit_files)), ScanConfig(ignores=rules))
+
+    markdown = markdown_report(report)
+
+    assert expected in markdown
+    if unexpected is not None:
+        assert unexpected not in markdown

@@ -140,3 +140,47 @@ e6315f2  docs(c): record local Action scenario verification (6 scenarios pass)
 | C3 权利审核有可追溯记录 | 4 个 CSV 已签字（`ffbf58b`），预审工作单 `docs/c3-preaudit-worksheet.md` |
 
 > 备注：Action 示例中的可信工具 SHA 替换需在**首次发布**后进行（对应 checklist 相关项），当前尚未发布，故保持原状并记录为未完成原因。
+
+---
+
+## 七、2026-10-05 对齐更新（AI 技术复核，C 本人签字待补）
+
+本地分支 `c2-action-verification` 当前已合入 `origin/member-b-tasks`，包含 B-N1/B-N2/B-N3 更新；`origin/main` 尚未包含这些本地合并后的 B/C 后续内容。当前本地 HEAD 为 `346f5dd2d88b30648ce5f40b5ab3d8f63dbe7442`，`origin/c2-action-verification` 停在 `61df446`，需要后续提交并推送本地新增记录和报告展示改动。
+
+### 已新增技术证据
+
+| 事项 | 当前状态 | 证据 |
+|------|----------|------|
+| B-N2 英文默认句式复验 | 技术复验通过，C 本人已确认关闭 D-1 | `.venv\Scripts\python.exe -m pytest tests/integration/test_b_n2_english_defaults.py -q -p no:cacheprovider` -> `6 passed` |
+| B-N3 忽略到期日 Markdown 展示 | 代码和测试已补，本地技术复验通过，C 本人已确认进入 A 最终验收 | `.venv\Scripts\python.exe -m pytest tests/integration/test_b_n3_ignore_expiry.py tests/unit/test_patch_guards.py -q -p no:cacheprovider` -> `21 passed, 2 skipped` |
+
+### 当前不能代办、仍需 C 本人完成
+
+| 事项 | 说明 |
+|------|------|
+| C-N1 20 个种子独立标注 | 已完成正式交接文件 `bench/annotations/individual-C-20261005.csv`，20 行全覆盖，hash 见第八节。 |
+| C-N2 最终人工验收签字 | 已在 `docs/c1-markdown-evidence-review.md` 追加 C 本人确认语句。 |
+| C-N3 Action 专项更正 | `tasks.md` 已要求纠正 S6：非本地 HTTP 地址预检拒绝不能当作网络超时；还需要受控 transport 超时证据和 `Documentation consistency` 工作流真实运行记录。 |
+| C-N4 第二设备与匿名化 | 仍需按 README 在第二台设备复现安装、扫描、补丁预览/应用及复扫，并对发布材料做匿名化核查。 |
+
+### 对齐结论
+
+旧摘要中“C2 完成”的说法只覆盖早期 Core CI/本地场景验证；按当前 `docs/tasks.md`，C-N1/C-N2 已补齐，C-N3 仍缺 GitHub `Documentation consistency` 实际运行记录，C-N4 仍缺第二设备复现和匿名化核查。
+
+## 八、C-N1 独立标注交接记录（2026-10-05）
+
+- 标注文件：`bench/annotations/individual-C-20261005.csv`
+- 行数：20 条 seed 全覆盖
+- reviewer：`C`
+- reviewed_at：`2026-10-05`
+- 标签集合：`CONSISTENT` / `INCONSISTENT` / `INSUFFICIENT`
+- SHA-256：`FAD0438517CC9AF137915A64B607B7A763250CC3E617B87914A6E54B29C9E664`
+- 修正项：seed-07 / seed-08 的 `document_lines` 已补为 `3-5`；seed-20 的 `document_lines` 已补为 `1-3`，`target_entity` 已补为 `client.connect/open_connection`。
+- 说明：`bench/annotations/individual-C-20261005.csv` 已由 final 草稿覆盖为正式交接文件。
+
+## 九、C-N3 Action 专项更正进展（2026-10-06）
+
+- S6 历史证据已更正：`http://10.255.255.1:9999` 会被 Provider 在请求前拒绝为 `UNSAFE_MODEL_ENDPOINT`，请求数 0；该场景不能证明网络超时。
+- 已补受控 transport 超时复验：`.venv\Scripts\python.exe -m pytest tests/integration/test_action_scenarios.py tests/integration/test_model_pipeline.py::test_model_timeout_is_partial_uncertain -q -p no:cacheprovider` -> `7 passed`。
+- 证据性质：受控故障测试，不是实际模型服务调用，不声明真实模型实验完成。
+- 待完成：在 GitHub 实际运行 `Documentation consistency` 工作流（`.github/workflows/docsync.yml`），记录完整 SHA、run 链接、状态和 `docsync-evidence` 工件。

@@ -66,3 +66,26 @@
 ## A 后续复核（2026-09-30）
 
 本记录 S6 所列非本地 HTTP endpoint 被当前 Provider 在发送请求前拒绝，不能证明真实网络超时；见 [A 复核及实测](a-acceptance-20260930.md)。历史记录保留，以复核结论限定其证据范围。
+
+## C-N3 更正与受控超时复验（2026-10-06）
+
+### S6 历史记录更正
+
+原 S6 使用 `http://10.255.255.1:9999` 作为 endpoint。经 A 在 `docs/a-acceptance-20260930.md` 复核，当前 Provider 会在发起请求前拒绝非本地 HTTP endpoint，实际得到 `UNSAFE_MODEL_ENDPOINT`，请求数为 0。因此该历史场景只能证明“不安全地址被拒绝，扫描不会伪造完整成功”，不能证明真实网络超时。
+
+历史 S6/S6b 记录保留，但其证据范围限定为 endpoint 安全校验与 PARTIAL/require-complete 行为，不再表述为真实模型网络超时。
+
+### 受控 transport 超时复验
+
+- 执行日期：2026-10-06
+- 执行命令：`.venv\Scripts\python.exe -m pytest tests/integration/test_action_scenarios.py tests/integration/test_model_pipeline.py::test_model_timeout_is_partial_uncertain -q -p no:cacheprovider`
+- 结果：`7 passed`
+- 覆盖测试：
+  - `tests/integration/test_action_scenarios.py::test_action_timeout_artifacts_use_real_pipeline_with_controlled_transport`
+  - `tests/integration/test_model_pipeline.py::test_model_timeout_is_partial_uncertain`
+- 证据性质：受控故障测试。测试通过注入 transport 抛出 `ProviderError("MODEL_TIMEOUT_OR_NETWORK_ERROR", True)` 来覆盖超时/网络错误路径，不是实际模型服务调用，不产生线上模型效果结论。
+- 复验结论：受控 transport 超时时，扫描保持 `PARTIAL`，不会伪造模型成功；Action 输出能保留 `scan-status=PARTIAL`，并保存报告路径和 usage 中的未知请求记录。`--require-complete` 路径通过 Action 测试返回退出码 3。
+
+### Documentation consistency 工作流待跑
+
+仓库存在 `.github/workflows/docsync.yml`，工作流名称为 `Documentation consistency`，触发条件包含 `workflow_dispatch` 和 `pull_request`。该工作流不同于 Core CI，仍需在 GitHub 上对确定提交实际运行，并记录完整 SHA、run 链接、状态和 `docsync-evidence` 工件。Core CI 记录不能替代本项。
