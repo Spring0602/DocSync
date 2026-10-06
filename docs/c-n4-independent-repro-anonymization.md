@@ -66,3 +66,32 @@ README 中的安装、CLI help、demo 构建、扫描、补丁预览、显式应
 
 - 如最终验收要求严格“第二台物理设备”，需换另一台电脑重复 README 流程并补记录。
 - 最终演示、截图、视频和提交链接确定后，再做一次匿名化与链接可访问性复核。
+
+## 七、当前仓库匿名化与缺项汇总（2026-10-06）
+
+### 已执行的仓库扫描
+
+- `git ls-files`：已跟踪文件中未发现 `.docx`、`.pdf`、`.zip` 原始材料入库。
+- 敏感词/路径/密钥模式扫描范围：`docs compliance README.md bench .github action examples src tests`。
+- 命中项复核：
+  - `.github`、`action`、`examples/workflows` 中的长 SHA 为固定 GitHub Action 版本，不是密钥。
+  - `tests@example.invalid`、`fixture@example.invalid` 为测试用假邮箱。
+  - `DOCSYNC_API_KEY`、`OPENAI_API_KEY`、`sk-fake-dummy` 为文档或测试中的变量名/假值，不是真实密钥。
+  - `C:/README.md`、`C:\Users\...` 等为测试路径或本地复现记录；对外截图/视频仍需打码本机用户名和绝对路径。
+  - `学号`、`真实姓名` 等命中来自待办/核查说明本身，不是实际个人信息。
+
+当前仓库材料可作为代码仓库提交；最终演示、截图、视频、压缩包或外部提交链接确定后，仍需再做一次面向最终材料的匿名化核查。
+
+### AI assistance log 缺项汇总
+
+`compliance/ai_assistance_log.csv` 当前仍有 5 行 `human_reviewer` / `human_changes` 为 `pending`：
+
+| 日期 | 阶段 | commit | 当前状态 |
+| --- | --- | --- | --- |
+| 2026-09-17 | framework | `85e9d71` | pending，需实际参与成员补人工复核 |
+| 2026-09-18 | core extensions | `85e9d71` | pending，需实际参与成员补人工复核 |
+| 2026-09-19 | release verification | `85e9d71` | pending，需实际参与成员补人工复核 |
+| 2026-09-20 | member A contract review | `1be73fe` | pending，需实际参与成员补人工复核 |
+| 2026-09-30 | A acceptance and license | `uncommitted` | pending，需 A 按真实经历补人工复核和修改说明 |
+
+C 的处理结论：已汇总缺项，不代 A/B 或历史 AI 使用者填写人工复核意见。该项仍是最终发布前待关闭事项。
