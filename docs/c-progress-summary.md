@@ -15,7 +15,7 @@
 | **C1** | Markdown 提取和证据报告审核 | ✅ 完成（发现 1 个真实缺陷并移交 B） |
 | **C3-1** | 20 个种子独立标注 | 🟡 标注材料已就绪，标签待 C 本人填写 |
 | **C3-2** | 4 个合规台账逐行审核签字 | ✅ 完成 |
-| **C3-3** | 许可证确认 / 第二设备复现 / 材料匿名化 | 🟡 部分完成，详见第五节 |
+| **C3-3** | 许可证确认 / 独立环境复现 / 材料匿名化 | 🟡 复现已按当前验收目的完成；最终材料匿名化待发布前复核 |
 
 分支提交记录（`main` 之后共 6 个提交）：
 
@@ -125,7 +125,7 @@ e6315f2  docs(c): record local Action scenario verification (6 scenarios pass)
 |------|------|------|
 | 20 个种子独立标注（C3-1） | 🟡 材料就绪 | `bench/annotations/individual-C-20260929.csv` 已提交：`sample_id`/`head_sha`/文档与代码路径/行号/证据原句已预填，`label`/`reason`/`reviewer`/`reviewed_at` 须 C 本人独立填写（三选一：`INCONSISTENT` / `CONSISTENT` / `INSUFFICIENT`）。按协议不得使用 Agent 代签 |
 | Apache-2.0 许可证确认（C3-3） | ⬜ 待全队确认 | 群内确认后更新 `data_rights.csv` 与 `docs/release-checklist.md` 第 9 行 |
-| 第二台设备复现（C3-3） | ⬜ 待执行 | 按 README 跑通安装 → demo → 扫描后补记录（checklist 第 15 行） |
+| 独立环境复现（C3-3） | ✅ 已完成 | 已用同机全新 clone + 全新 venv 按 README 跑通安装 → demo → 扫描 → 补丁预览/显式应用 → 复扫；队友确认当前验收目的为独立环境复现。 |
 | 材料匿名化复核（C3-3） | ⬜ 待执行 | 对外材料中不出现真实姓名/学号 |
 
 ---
@@ -161,11 +161,11 @@ e6315f2  docs(c): record local Action scenario verification (6 scenarios pass)
 | C-N1 20 个种子独立标注 | 已完成正式交接文件 `bench/annotations/individual-C-20261005.csv`，20 行全覆盖，hash 见第八节。 |
 | C-N2 最终人工验收签字 | 已在 `docs/c1-markdown-evidence-review.md` 追加 C 本人确认语句。 |
 | C-N3 Action 专项更正 | `tasks.md` 已要求纠正 S6：非本地 HTTP 地址预检拒绝不能当作网络超时；还需要受控 transport 超时证据和 `Documentation consistency` 工作流真实运行记录。 |
-| C-N4 第二设备与匿名化 | 仍需按 README 在第二台设备复现安装、扫描、补丁预览/应用及复扫，并对发布材料做匿名化核查。 |
+| C-N4 独立环境复现与匿名化 | 独立环境复现已完成并记录；最终发布材料确定后仍需做匿名化和链接复核。 |
 
 ### 对齐结论
 
-旧摘要中“C2 完成”的说法只覆盖早期 Core CI/本地场景验证；按当前 `docs/tasks.md`，C-N1/C-N2 已补齐，C-N3 仍缺 GitHub `Documentation consistency` 实际运行记录，C-N4 仍缺第二设备复现和匿名化核查。
+旧摘要中“C2 完成”的说法只覆盖早期 Core CI/本地场景验证；按当前补充记录，C-N1/C-N2/C-N3 已补齐，C-N4 的独立环境复现已按队友反馈满足当前验收目的，最终材料匿名化和链接复核仍需在发布材料确定后完成。
 
 ## 八、C-N1 独立标注交接记录（2026-10-05）
 
@@ -203,4 +203,4 @@ e6315f2  docs(c): record local Action scenario verification (6 scenarios pass)
 - Completed the team-approved same-machine independent environment reproduction: fresh clone from GitHub on branch `c2-action-verification`, fixed commit `002b076efe145d0c35ea26669aff516eb4e09990`, fresh `.venv`, and README flow for install, CLI help, demo creation, scan, patch preview, explicit apply, and working-tree rescan.
 - Result: install succeeded; first scan returned `COMPLETED, confirmed_count=1`; patch preview and explicit apply succeeded; rescan returned `COMPLETED, confirmed_count=0`.
 - Record file: `docs/c-n4-independent-repro-anonymization.md`.
-- Limitation: this is a same-machine independent environment reproduction, not a second physical device reproduction. Cross-device verification, final material anonymization, and final link checks remain open.
+- Status update: teammate confirmed on 2026-10-06 that the acceptance purpose is independent environment reproduction. This same-machine fresh clone + fresh venv run satisfies that purpose while remaining documented as not a second physical device run. Final material anonymization and final link checks remain open.
