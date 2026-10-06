@@ -1,8 +1,8 @@
 # C 成员任务完成情况汇总
 
 - 项目：DocSync（文档—代码一致性检测工具）
-- 分支：`c2-action-verification`（远程已同步，最新提交 `20f6960`）
-- 汇总日期：2026-10-05
+- 分支：`c2-action-verification`（远程已同步，最新提交 `465ee57`）
+- 汇总日期：2026-10-06
 - 依据：`docs/tasks.md` 中 C1 / C2 / C3 三项任务的完成标准
 
 ---
@@ -13,11 +13,11 @@
 |------|------|------|
 | **C2** | Action 和 CI 验证 | ✅ 完成 |
 | **C1** | Markdown 提取和证据报告审核 | ✅ 完成（发现 1 个真实缺陷并移交 B） |
-| **C3-1** | 20 个种子独立标注 | 🟡 标注材料已就绪，标签待 C 本人填写 |
+| **C3-1** | 20 个种子独立标注 | ✅ 完成，正式文件为 `bench/annotations/individual-C-20261005.csv` |
 | **C3-2** | 4 个合规台账逐行审核签字 | ✅ 完成 |
 | **C3-3** | 许可证确认 / 独立环境复现 / 材料匿名化 | 🟡 复现已按当前验收目的完成；最终材料匿名化待发布前复核 |
 
-分支提交记录（`main` 之后共 6 个提交）：
+早期分支提交记录（历史快照）：
 
 ```
 20f6960  bench(c): C annotation file prepared (20 seeds, objective columns pre-filled)
@@ -119,12 +119,12 @@ e6315f2  docs(c): record local Action scenario verification (6 scenarios pass)
 
 ---
 
-## 五、C3 剩余事项（待人工完成）
+## 五、C3 剩余事项与当前状态
 
 | 事项 | 状态 | 说明 |
 |------|------|------|
-| 20 个种子独立标注（C3-1） | 🟡 材料就绪 | `bench/annotations/individual-C-20260929.csv` 已提交：`sample_id`/`head_sha`/文档与代码路径/行号/证据原句已预填，`label`/`reason`/`reviewer`/`reviewed_at` 须 C 本人独立填写（三选一：`INCONSISTENT` / `CONSISTENT` / `INSUFFICIENT`）。按协议不得使用 Agent 代签 |
-| Apache-2.0 许可证确认（C3-3） | ⬜ 待全队确认 | 群内确认后更新 `data_rights.csv` 与 `docs/release-checklist.md` 第 9 行 |
+| 20 个种子独立标注（C3-1） | ✅ 已完成 | 正式交接文件为 `bench/annotations/individual-C-20261005.csv`，20 条 seed 全覆盖，hash 见第八节。 |
+| Apache-2.0 许可证确认（C3-3） | ✅ 已完成 | 团队确认原创代码/自建样本采用 Apache-2.0；发布清单已记录。 |
 | 独立环境复现（C3-3） | ✅ 已完成 | 已用同机全新 clone + 全新 venv 按 README 跑通安装 → demo → 扫描 → 补丁预览/显式应用 → 复扫；队友确认当前验收目的为独立环境复现。 |
 | 材料匿名化复核（C3-3） | ⬜ 待执行 | 对外材料中不出现真实姓名/学号 |
 
@@ -183,7 +183,7 @@ e6315f2  docs(c): record local Action scenario verification (6 scenarios pass)
 - S6 历史证据已更正：`http://10.255.255.1:9999` 会被 Provider 在请求前拒绝为 `UNSAFE_MODEL_ENDPOINT`，请求数 0；该场景不能证明网络超时。
 - 已补受控 transport 超时复验：`.venv\Scripts\python.exe -m pytest tests/integration/test_action_scenarios.py tests/integration/test_model_pipeline.py::test_model_timeout_is_partial_uncertain -q -p no:cacheprovider` -> `7 passed`。
 - 证据性质：受控故障测试，不是实际模型服务调用，不声明真实模型实验完成。
-- 待完成：在 GitHub 实际运行 `Documentation consistency` 工作流（`.github/workflows/docsync.yml`），记录完整 SHA、run 链接、状态和 `docsync-evidence` 工件。
+- 已完成：GitHub `Documentation consistency` 工作流已实际运行，完整记录见第十节。
 
 ## 十、Documentation consistency 实际运行记录（2026-10-06）
 
