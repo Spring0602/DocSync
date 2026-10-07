@@ -1,0 +1,225 @@
+{
+  "schema_version": "2.0",
+  "manifest": {
+    "schema_version": "2.0",
+    "run_id": "a155da5e82e445659130b2613757ddea",
+    "versions": {
+      "docsync": "0.2.0",
+      "schema": "2.0",
+      "extractor": "python-static/2",
+      "claims": "markdown/2",
+      "verifier": "verifier/2",
+      "method": "llm",
+      "pydantic": "2.11.7",
+      "markdown-it-py": "3.0.0"
+    },
+    "config_hash": "f4504daf93f76e44e1fbcb3aaf0a2d4616c146016d1c35b56e8f0f1901c23c92",
+    "mode": "hybrid",
+    "status": "COMPLETED",
+    "enabled_types": [
+      "DEFAULT_VALUE",
+      "SIGNATURE",
+      "CONFIG"
+    ],
+    "semantic_coverage": "supported-static-claims-only",
+    "budget": {
+      "max_requests": 1,
+      "max_total_tokens": 100000
+    },
+    "usage": {
+      "requests": 1,
+      "input_tokens": 605,
+      "output_tokens": 184,
+      "cache_hits": 0,
+      "reserved_tokens": 5586,
+      "unknown_usage_requests": 0
+    },
+    "diagnostics": [],
+    "stage_seconds": {
+      "extraction": 0.000495200000159457,
+      "alignment": 0.000016899999991437653,
+      "judging": 6.391745200000059,
+      "verification": 6.399999847417348e-6,
+      "analysis_total": 6.392565000000104,
+      "repository": 0.23252549999983785,
+      "patch_validation": 0.00003100000003541936,
+      "total": 6.62946009999996
+    },
+    "model": {
+      "provider": "chat-completions",
+      "model": "deepseek-flash",
+      "temperature": 0.0
+    },
+    "events": [
+      "CREATED",
+      "ANALYZING",
+      "EXTRACTING",
+      "ALIGNING",
+      "JUDGING",
+      "VERIFYING",
+      "REPORTING",
+      "COMPLETED"
+    ],
+    "model_calls": [
+      {
+        "request_hash": "2bf513aafecefcead57f961ba04dfbaaf42f768ac1a31a0b998ae7795ee26004",
+        "attempt": 1,
+        "cache_hit": false,
+        "model": "deepseek-flash",
+        "prompt_version": "semantic-judge/2",
+        "response_hash": "27969aa153f3805f9b2d8166c9e3b67271b8824d53c2e83d5310d0fa79367210",
+        "returned_model": "deepseek-flash",
+        "input_tokens": 605,
+        "output_tokens": 184,
+        "status": "SUCCEEDED",
+        "elapsed_seconds": 6.391025
+      }
+    ]
+  },
+  "snapshot": {
+    "repo_id": "27c3e447490e987d8e35a13b",
+    "head_sha": "4c5a8deb8d27ed524c548021d10ac812a46a0da2",
+    "base_sha": null,
+    "mode": "commit",
+    "files_hash": "b2acdacccd5dcc155b332a7b",
+    "dirty": false,
+    "files": [
+      {
+        "path": "README.md",
+        "blob_hash": "76f9e75bd510142f1164d51045443fe42e11f13c1206009c4074d8625b6785d4",
+        "size": 36,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "client.py",
+        "blob_hash": "1e35a9177400b7cedd1c488633a9e45a8f9b151df625c00d1bf9fae30e35e464",
+        "size": 28,
+        "encoding": "utf-8"
+      }
+    ],
+    "changed_paths": []
+  },
+  "entities": [
+    {
+      "entity_id": "0652e0379f3e9f3cddc797d5",
+      "kind": "function",
+      "qualified_name": "client.connect",
+      "module": "client",
+      "signature": [
+        {
+          "name": "kwargs",
+          "kind": "VAR_KEYWORD",
+          "required": false,
+          "value_state": "ABSENT",
+          "typed_value": null,
+          "expression": null
+        }
+      ],
+      "decorators": [],
+      "span": {
+        "path": "client.py",
+        "start_line": 1,
+        "end_line": 1,
+        "start_byte": 0,
+        "end_byte": 27,
+        "blob_hash": "1e35a9177400b7cedd1c488633a9e45a8f9b151df625c00d1bf9fae30e35e464"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "cc2fc632b5e8e9bf9116433e",
+      "entity_id": "0652e0379f3e9f3cddc797d5",
+      "subject": "client.connect",
+      "property": "__signature__",
+      "value_state": "KNOWN",
+      "typed_value": null,
+      "expression": "def connect(**kwargs): pass",
+      "span": {
+        "path": "client.py",
+        "start_line": 1,
+        "end_line": 1,
+        "start_byte": 0,
+        "end_byte": 27,
+        "blob_hash": "1e35a9177400b7cedd1c488633a9e45a8f9b151df625c00d1bf9fae30e35e464"
+      },
+      "fact_kind": "SIGNATURE",
+      "parameters": [
+        {
+          "name": "kwargs",
+          "kind": "VAR_KEYWORD",
+          "required": false,
+          "value_state": "ABSENT",
+          "typed_value": null,
+          "expression": null
+        }
+      ],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "1db42d3cdcda83dffa737e09",
+      "subject": "connect",
+      "predicate": "__signature__",
+      "kind": "CALL_EXAMPLE",
+      "value": null,
+      "qualifiers": [],
+      "version_scope": "current",
+      "span": {
+        "path": "README.md",
+        "start_line": 1,
+        "end_line": 3,
+        "start_byte": 0,
+        "end_byte": 36,
+        "blob_hash": "76f9e75bd510142f1164d51045443fe42e11f13c1206009c4074d8625b6785d4"
+      },
+      "value_span": null,
+      "quote": "```python\nconnect(host='local')\n```\n",
+      "extraction_method": "markdown-call/2",
+      "source_hint": null,
+      "positional_count": 0,
+      "keyword_names": [
+        "host"
+      ],
+      "unpacking": false,
+      "bound_receiver": false
+    }
+  ],
+  "candidates": [
+    {
+      "claim_id": "1db42d3cdcda83dffa737e09",
+      "candidates": [
+        {
+          "fact_id": "cc2fc632b5e8e9bf9116433e",
+          "rank": 1,
+          "score": 1.0,
+          "features": [
+            "exact_symbol",
+            "parameter_owner"
+          ]
+        }
+      ],
+      "ambiguity": false,
+      "reason": "MATCH"
+    }
+  ],
+  "judgments": [
+    {
+      "claim_id": "1db42d3cdcda83dffa737e09",
+      "decision": "UNCERTAIN",
+      "fact_ids": [],
+      "reason_code": "INSUFFICIENT_EVIDENCE",
+      "reason_text": "The only supplied fact is a file path (client.py) with no content or call-binding information. The code snippet defines connect(**kwargs), which accepts a keyword argument host='local', but the claim that this example is the default or documented invocation cannot be confirmed from the provided evidence. No call-example binding fact or runtime result is supplied.",
+      "claim_type_check": true,
+      "version_compatible": true,
+      "score": null,
+      "uncertainty_reason": "No fact establishes that connect(host='local') is an intended, default, or supported usage; only a bare file path is available.",
+      "model_run_id": "1ee90ff1453c8bb44e01f347"
+    }
+  ],
+  "findings": [],
+  "rejected": [],
+  "patches": []
+}

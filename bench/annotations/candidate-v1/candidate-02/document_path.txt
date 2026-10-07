@@ -1,0 +1,5 @@
+# API reference
+
+## `download_resource`
+
+`retries` 默认值为 `4`。

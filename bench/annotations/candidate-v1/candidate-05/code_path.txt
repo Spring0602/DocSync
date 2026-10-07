@@ -1,0 +1,6 @@
+BATCH_LIMIT = 12
+
+def read_batch(limit=BATCH_LIMIT):
+    return limit
+
+BATCH_LIMIT = 24

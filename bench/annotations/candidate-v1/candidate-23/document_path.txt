@@ -1,0 +1,5 @@
+# API reference
+
+## `case23.STORAGE.local`
+
+`root` 默认值为 `./cache`。

@@ -1,0 +1,37 @@
+{
+  "scan": {
+    "mode": "hybrid",
+    "fail_on": "none",
+    "require_complete": true,
+    "analysis_method": "full",
+    "include": [
+      "**/*.py",
+      "**/*.md"
+    ],
+    "exclude": [],
+    "max_file_bytes": 1048576,
+    "max_total_bytes": 52428800
+  },
+  "alignment": {
+    "top_k": 5
+  },
+  "llm": {
+    "provider": "chat-completions",
+    "endpoint": "https://api.deepseek.com/chat/completions",
+    "model": "deepseek-flash",
+    "api_key_env": "DOCSYNC_API_KEY",
+    "temperature": 0.0,
+    "send_temperature": false,
+    "thinking": "disabled",
+    "response_format": "json_object",
+    "token_parameter": "max_tokens",
+    "max_output_tokens": 2048,
+    "max_input_bytes": 32000,
+    "max_total_tokens": 100000,
+    "cache_dir": null,
+    "timeout_seconds": 120,
+    "max_retries": 0,
+    "max_requests": 1
+  },
+  "ignores": []
+}

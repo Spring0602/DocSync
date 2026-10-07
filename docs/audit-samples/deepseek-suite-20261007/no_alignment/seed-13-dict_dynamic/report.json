@@ -1,0 +1,216 @@
+{
+  "schema_version": "2.0",
+  "manifest": {
+    "schema_version": "2.0",
+    "run_id": "f2f6d32c4a124f839d5698ccc90f59fc",
+    "versions": {
+      "docsync": "0.2.0",
+      "schema": "2.0",
+      "extractor": "python-static/2",
+      "claims": "markdown/2",
+      "verifier": "verifier/2",
+      "method": "no_alignment",
+      "pydantic": "2.11.7",
+      "markdown-it-py": "3.0.0"
+    },
+    "config_hash": "4723c928100a2a1754d8bee6eec881e9f362d2b3ceca3d2ff5bddf30e538102d",
+    "mode": "hybrid",
+    "status": "COMPLETED",
+    "enabled_types": [
+      "DEFAULT_VALUE",
+      "SIGNATURE",
+      "CONFIG"
+    ],
+    "semantic_coverage": "supported-static-claims-only",
+    "budget": {
+      "max_requests": 1,
+      "max_total_tokens": 100000
+    },
+    "usage": {
+      "requests": 1,
+      "input_tokens": 1027,
+      "output_tokens": 179,
+      "cache_hits": 0,
+      "reserved_tokens": 6768,
+      "unknown_usage_requests": 0
+    },
+    "diagnostics": [],
+    "stage_seconds": {
+      "extraction": 0.0007027000001471606,
+      "alignment": 0.00002300000005561742,
+      "judging": 6.6007103000001734,
+      "verification": 9.499999805484549e-6,
+      "analysis_total": 6.601833200000101,
+      "repository": 0.23122650000004796,
+      "patch_validation": 0.00003909999986717594,
+      "total": 6.838621099999955
+    },
+    "model": {
+      "provider": "chat-completions",
+      "model": "deepseek-flash",
+      "temperature": 0.0
+    },
+    "events": [
+      "CREATED",
+      "ANALYZING",
+      "EXTRACTING",
+      "ALIGNING",
+      "JUDGING",
+      "VERIFYING",
+      "REPORTING",
+      "COMPLETED"
+    ],
+    "model_calls": [
+      {
+        "request_hash": "891bf263891fa07dc9157b8aaa92b986933a0e58c947f681df3e7e89090cf5aa",
+        "attempt": 1,
+        "cache_hit": false,
+        "model": "deepseek-flash",
+        "prompt_version": "semantic-judge/2",
+        "response_hash": "f8bbe43be19f6d6505f80927bf6ecaf6871a3a80be025e8460bd7e6855a6e02a",
+        "returned_model": "deepseek-flash",
+        "input_tokens": 1027,
+        "output_tokens": 179,
+        "status": "SUCCEEDED",
+        "elapsed_seconds": 6.599955
+      }
+    ]
+  },
+  "snapshot": {
+    "repo_id": "c363e85da7a9231168873f70",
+    "head_sha": "2524e5f3c443b08ba170875da8d20b2299808f42",
+    "base_sha": null,
+    "mode": "commit",
+    "files_hash": "3e936fcfbbf2a195d1594b22",
+    "dirty": false,
+    "files": [
+      {
+        "path": "README.md",
+        "blob_hash": "adaa9b546b2fdee8a19745019f329a09b1241a49533edfeb63d52eeb1f65fa42",
+        "size": 53,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "settings.py",
+        "blob_hash": "44b32c3ef7878c1f3bac3463ccc6ca4ef644d969c90302319d508b3f5f77a645",
+        "size": 28,
+        "encoding": "utf-8"
+      }
+    ],
+    "changed_paths": []
+  },
+  "entities": [
+    {
+      "entity_id": "c6045fa4f969425da1343353",
+      "kind": "config",
+      "qualified_name": "settings.CONFIG",
+      "module": "settings",
+      "signature": [],
+      "decorators": [],
+      "span": {
+        "path": "settings.py",
+        "start_line": 1,
+        "end_line": 1,
+        "start_byte": 0,
+        "end_byte": 27,
+        "blob_hash": "44b32c3ef7878c1f3bac3463ccc6ca4ef644d969c90302319d508b3f5f77a645"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "00b844f041431ace354c8c26",
+      "entity_id": "c6045fa4f969425da1343353",
+      "subject": "settings.CONFIG",
+      "property": "timeout",
+      "value_state": "UNKNOWN",
+      "typed_value": null,
+      "expression": "env()",
+      "span": {
+        "path": "settings.py",
+        "start_line": 1,
+        "end_line": 1,
+        "start_byte": 21,
+        "end_byte": 26,
+        "blob_hash": "44b32c3ef7878c1f3bac3463ccc6ca4ef644d969c90302319d508b3f5f77a645"
+      },
+      "fact_kind": "CONFIG",
+      "parameters": [],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "52fabe3a652aeb19c8b9614b",
+      "subject": "settings.CONFIG",
+      "predicate": "timeout",
+      "kind": "CONFIG_ASSERTION",
+      "value": {
+        "type": "int",
+        "canonical": "[\"int\",30]"
+      },
+      "qualifiers": [],
+      "version_scope": "current",
+      "span": {
+        "path": "README.md",
+        "start_line": 3,
+        "end_line": 3,
+        "start_byte": 22,
+        "end_byte": 52,
+        "blob_hash": "adaa9b546b2fdee8a19745019f329a09b1241a49533edfeb63d52eeb1f65fa42"
+      },
+      "value_span": {
+        "path": "README.md",
+        "start_line": 3,
+        "end_line": 3,
+        "start_byte": 46,
+        "end_byte": 48,
+        "blob_hash": "adaa9b546b2fdee8a19745019f329a09b1241a49533edfeb63d52eeb1f65fa42"
+      },
+      "quote": "`timeout` 默认值为 `30`。",
+      "extraction_method": "markdown-rules/2",
+      "source_hint": null,
+      "positional_count": null,
+      "keyword_names": [],
+      "unpacking": false,
+      "bound_receiver": false
+    }
+  ],
+  "candidates": [
+    {
+      "claim_id": "52fabe3a652aeb19c8b9614b",
+      "candidates": [
+        {
+          "fact_id": "00b844f041431ace354c8c26",
+          "rank": 1,
+          "score": 0.0,
+          "features": [
+            "property_only"
+          ]
+        }
+      ],
+      "ambiguity": false,
+      "reason": "EXPERIMENT_NO_ALIGNMENT"
+    }
+  ],
+  "judgments": [
+    {
+      "claim_id": "52fabe3a652aeb19c8b9614b",
+      "decision": "UNCERTAIN",
+      "fact_ids": [
+        "00b844f041431ace354c8c26"
+      ],
+      "reason_code": "VALUE_UNKNOWN",
+      "reason_text": "The README states settings.CONFIG timeout defaults to 30, but the only supporting fact shows the value_state as UNKNOWN with expression env(), meaning the runtime value is not determinable from static evidence. The claim cannot be confirmed or refuted.",
+      "claim_type_check": true,
+      "version_compatible": true,
+      "score": null,
+      "uncertainty_reason": "Fact 00b844f041431ace354c8c26 reports value_state UNKNOWN with expression env(), so the actual timeout value is not established.",
+      "model_run_id": "01cce61fccb5fc31f145f1f4"
+    }
+  ],
+  "findings": [],
+  "rejected": [],
+  "patches": []
+}

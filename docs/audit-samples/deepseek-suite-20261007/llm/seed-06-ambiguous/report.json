@@ -1,0 +1,372 @@
+{
+  "schema_version": "2.0",
+  "manifest": {
+    "schema_version": "2.0",
+    "run_id": "aabbc5c5fe904271b400441d11deb848",
+    "versions": {
+      "docsync": "0.2.0",
+      "schema": "2.0",
+      "extractor": "python-static/2",
+      "claims": "markdown/2",
+      "verifier": "verifier/2",
+      "method": "llm",
+      "pydantic": "2.11.7",
+      "markdown-it-py": "3.0.0"
+    },
+    "config_hash": "f4504daf93f76e44e1fbcb3aaf0a2d4616c146016d1c35b56e8f0f1901c23c92",
+    "mode": "hybrid",
+    "status": "COMPLETED",
+    "enabled_types": [
+      "DEFAULT_VALUE",
+      "SIGNATURE",
+      "CONFIG"
+    ],
+    "semantic_coverage": "supported-static-claims-only",
+    "budget": {
+      "max_requests": 1,
+      "max_total_tokens": 100000
+    },
+    "usage": {
+      "requests": 1,
+      "input_tokens": 653,
+      "output_tokens": 203,
+      "cache_hits": 0,
+      "reserved_tokens": 5729,
+      "unknown_usage_requests": 0
+    },
+    "diagnostics": [],
+    "stage_seconds": {
+      "extraction": 0.0007720999999492051,
+      "alignment": 0.000020499999891399057,
+      "judging": 6.378245200000038,
+      "verification": 0.000056699999959164415,
+      "analysis_total": 6.379577799999879,
+      "repository": 0.25596459999997023,
+      "patch_validation": 0.00003779999997277628,
+      "total": 6.640932600000042
+    },
+    "model": {
+      "provider": "chat-completions",
+      "model": "deepseek-flash",
+      "temperature": 0.0
+    },
+    "events": [
+      "CREATED",
+      "ANALYZING",
+      "EXTRACTING",
+      "ALIGNING",
+      "JUDGING",
+      "VERIFYING",
+      "REPORTING",
+      "COMPLETED"
+    ],
+    "model_calls": [
+      {
+        "request_hash": "3099be6302f479b269f204a8a93f8157841f5fe07fa9315ee5b9a840ceec3f35",
+        "attempt": 1,
+        "cache_hit": false,
+        "model": "deepseek-flash",
+        "prompt_version": "semantic-judge/2",
+        "response_hash": "080e135a7af0f4cd10b7161f01960130b8ab19b37bb07ecd09807f4bbb58dfd9",
+        "returned_model": "deepseek-flash",
+        "input_tokens": 653,
+        "output_tokens": 203,
+        "status": "SUCCEEDED",
+        "elapsed_seconds": 6.377538
+      }
+    ]
+  },
+  "snapshot": {
+    "repo_id": "7a0e0d94126c672786ef5aaf",
+    "head_sha": "6d9ed71fa83b3bf747a080dfaf33d411e968d2f7",
+    "base_sha": null,
+    "mode": "commit",
+    "files_hash": "5b286e6d313779083918d9e2",
+    "dirty": false,
+    "files": [
+      {
+        "path": "README.md",
+        "blob_hash": "8447d6d7c9c81e0fea23406e867f857d7894009f578de15516b98cf937aa5c74",
+        "size": 45,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "client.py",
+        "blob_hash": "ae4ec283ec97acbde5f65ecb71e61a96e50eb35a216d0382051e41d53bd2f7d0",
+        "size": 44,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "other.py",
+        "blob_hash": "ae4ec283ec97acbde5f65ecb71e61a96e50eb35a216d0382051e41d53bd2f7d0",
+        "size": 44,
+        "encoding": "utf-8"
+      }
+    ],
+    "changed_paths": []
+  },
+  "entities": [
+    {
+      "entity_id": "0652e0379f3e9f3cddc797d5",
+      "kind": "function",
+      "qualified_name": "client.connect",
+      "module": "client",
+      "signature": [
+        {
+          "name": "timeout",
+          "kind": "POSITIONAL_OR_KEYWORD",
+          "required": false,
+          "value_state": "KNOWN",
+          "typed_value": {
+            "type": "int",
+            "canonical": "[\"int\",60]"
+          },
+          "expression": "60"
+        }
+      ],
+      "decorators": [],
+      "span": {
+        "path": "client.py",
+        "start_line": 1,
+        "end_line": 2,
+        "start_byte": 0,
+        "end_byte": 43,
+        "blob_hash": "ae4ec283ec97acbde5f65ecb71e61a96e50eb35a216d0382051e41d53bd2f7d0"
+      }
+    },
+    {
+      "entity_id": "08964022e954875784626357",
+      "kind": "function",
+      "qualified_name": "other.connect",
+      "module": "other",
+      "signature": [
+        {
+          "name": "timeout",
+          "kind": "POSITIONAL_OR_KEYWORD",
+          "required": false,
+          "value_state": "KNOWN",
+          "typed_value": {
+            "type": "int",
+            "canonical": "[\"int\",60]"
+          },
+          "expression": "60"
+        }
+      ],
+      "decorators": [],
+      "span": {
+        "path": "other.py",
+        "start_line": 1,
+        "end_line": 2,
+        "start_byte": 0,
+        "end_byte": 43,
+        "blob_hash": "ae4ec283ec97acbde5f65ecb71e61a96e50eb35a216d0382051e41d53bd2f7d0"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "c91ae0bc91b89f2b6ba30bb6",
+      "entity_id": "0652e0379f3e9f3cddc797d5",
+      "subject": "client.connect",
+      "property": "timeout",
+      "value_state": "KNOWN",
+      "typed_value": {
+        "type": "int",
+        "canonical": "[\"int\",60]"
+      },
+      "expression": "60",
+      "span": {
+        "path": "client.py",
+        "start_line": 1,
+        "end_line": 1,
+        "start_byte": 20,
+        "end_byte": 22,
+        "blob_hash": "ae4ec283ec97acbde5f65ecb71e61a96e50eb35a216d0382051e41d53bd2f7d0"
+      },
+      "fact_kind": "DEFAULT_VALUE",
+      "parameters": [],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    },
+    {
+      "fact_id": "cc1abf138dfac06bef3bdd42",
+      "entity_id": "0652e0379f3e9f3cddc797d5",
+      "subject": "client.connect",
+      "property": "__signature__",
+      "value_state": "KNOWN",
+      "typed_value": null,
+      "expression": "def connect(timeout=60):\n    return timeout",
+      "span": {
+        "path": "client.py",
+        "start_line": 1,
+        "end_line": 2,
+        "start_byte": 0,
+        "end_byte": 43,
+        "blob_hash": "ae4ec283ec97acbde5f65ecb71e61a96e50eb35a216d0382051e41d53bd2f7d0"
+      },
+      "fact_kind": "SIGNATURE",
+      "parameters": [
+        {
+          "name": "timeout",
+          "kind": "POSITIONAL_OR_KEYWORD",
+          "required": false,
+          "value_state": "KNOWN",
+          "typed_value": {
+            "type": "int",
+            "canonical": "[\"int\",60]"
+          },
+          "expression": "60"
+        }
+      ],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    },
+    {
+      "fact_id": "ff0e64db478e56ac74232016",
+      "entity_id": "08964022e954875784626357",
+      "subject": "other.connect",
+      "property": "timeout",
+      "value_state": "KNOWN",
+      "typed_value": {
+        "type": "int",
+        "canonical": "[\"int\",60]"
+      },
+      "expression": "60",
+      "span": {
+        "path": "other.py",
+        "start_line": 1,
+        "end_line": 1,
+        "start_byte": 20,
+        "end_byte": 22,
+        "blob_hash": "ae4ec283ec97acbde5f65ecb71e61a96e50eb35a216d0382051e41d53bd2f7d0"
+      },
+      "fact_kind": "DEFAULT_VALUE",
+      "parameters": [],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    },
+    {
+      "fact_id": "d53f169470a6c77698914c9f",
+      "entity_id": "08964022e954875784626357",
+      "subject": "other.connect",
+      "property": "__signature__",
+      "value_state": "KNOWN",
+      "typed_value": null,
+      "expression": "def connect(timeout=60):\n    return timeout",
+      "span": {
+        "path": "other.py",
+        "start_line": 1,
+        "end_line": 2,
+        "start_byte": 0,
+        "end_byte": 43,
+        "blob_hash": "ae4ec283ec97acbde5f65ecb71e61a96e50eb35a216d0382051e41d53bd2f7d0"
+      },
+      "fact_kind": "SIGNATURE",
+      "parameters": [
+        {
+          "name": "timeout",
+          "kind": "POSITIONAL_OR_KEYWORD",
+          "required": false,
+          "value_state": "KNOWN",
+          "typed_value": {
+            "type": "int",
+            "canonical": "[\"int\",60]"
+          },
+          "expression": "60"
+        }
+      ],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "0cac552c374951c8b22e8ddb",
+      "subject": "connect",
+      "predicate": "timeout",
+      "kind": "DEFAULT_ASSERTION",
+      "value": {
+        "type": "int",
+        "canonical": "[\"int\",30]"
+      },
+      "qualifiers": [],
+      "version_scope": "current",
+      "span": {
+        "path": "README.md",
+        "start_line": 3,
+        "end_line": 3,
+        "start_byte": 14,
+        "end_byte": 44,
+        "blob_hash": "8447d6d7c9c81e0fea23406e867f857d7894009f578de15516b98cf937aa5c74"
+      },
+      "value_span": {
+        "path": "README.md",
+        "start_line": 3,
+        "end_line": 3,
+        "start_byte": 38,
+        "end_byte": 40,
+        "blob_hash": "8447d6d7c9c81e0fea23406e867f857d7894009f578de15516b98cf937aa5c74"
+      },
+      "quote": "`timeout` 默认值为 `30`。",
+      "extraction_method": "markdown-rules/2",
+      "source_hint": null,
+      "positional_count": null,
+      "keyword_names": [],
+      "unpacking": false,
+      "bound_receiver": false
+    }
+  ],
+  "candidates": [
+    {
+      "claim_id": "0cac552c374951c8b22e8ddb",
+      "candidates": [
+        {
+          "fact_id": "c91ae0bc91b89f2b6ba30bb6",
+          "rank": 1,
+          "score": 1.0,
+          "features": [
+            "exact_symbol",
+            "parameter_owner"
+          ]
+        },
+        {
+          "fact_id": "ff0e64db478e56ac74232016",
+          "rank": 2,
+          "score": 1.0,
+          "features": [
+            "exact_symbol",
+            "parameter_owner"
+          ]
+        }
+      ],
+      "ambiguity": true,
+      "reason": "AMBIGUOUS"
+    }
+  ],
+  "judgments": [
+    {
+      "claim_id": "0cac552c374951c8b22e8ddb",
+      "decision": "INCONSISTENT",
+      "fact_ids": [
+        "c91ae0bc91b89f2b6ba30bb6",
+        "ff0e64db478e56ac74232016"
+      ],
+      "reason_code": "DEFAULT_VALUE_MISMATCH",
+      "reason_text": "The claim states that the default value of `timeout` is 30. Both supplied code snippets (client.py, fact c91ae0bc91b89f2b6ba30bb6, and other.py, fact ff0e64db478e56ac74232016) define `connect(timeout=60)`, so the default is 60, not 30.",
+      "claim_type_check": true,
+      "version_compatible": true,
+      "score": 0.95,
+      "uncertainty_reason": null,
+      "model_run_id": "32bea9a0a9f27ed972ba5121"
+    }
+  ],
+  "findings": [],
+  "rejected": [
+    {
+      "claim_id": "0cac552c374951c8b22e8ddb",
+      "reason": "INVALID_REFERENCE",
+      "decision": "UNCERTAIN"
+    }
+  ],
+  "patches": []
+}

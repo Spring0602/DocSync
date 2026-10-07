@@ -1,0 +1,5 @@
+# API reference
+
+## `case22`
+
+`RETRY_DELAYS` 默认值为 `(1, 3, 9)`。

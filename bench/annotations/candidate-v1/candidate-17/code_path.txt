@@ -1,0 +1,2 @@
+RETRY_WINDOW: int = 6
+RETRY_WINDOW = 14

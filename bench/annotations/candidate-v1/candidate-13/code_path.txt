@@ -1,0 +1,4 @@
+class ArtifactStore:
+    @classmethod
+    def open(cls, root, *, create=False):
+        return cls(), root, create

@@ -1,0 +1,76 @@
+{
+  "schema_version": "2.0",
+  "run_id": "0f2aba25c867416a91cccd6d87a3ff80",
+  "versions": {
+    "docsync": "0.2.0",
+    "schema": "2.0",
+    "extractor": "python-static/2",
+    "claims": "markdown/2",
+    "verifier": "verifier/2",
+    "method": "no_static",
+    "pydantic": "2.11.7",
+    "markdown-it-py": "3.0.0"
+  },
+  "config_hash": "9ae0f290ee4b313e7e6fa2b4a8550d7092aed5840543e929322e941ee008bca1",
+  "mode": "hybrid",
+  "status": "COMPLETED",
+  "enabled_types": [
+    "DEFAULT_VALUE",
+    "SIGNATURE",
+    "CONFIG"
+  ],
+  "semantic_coverage": "supported-static-claims-only",
+  "budget": {
+    "max_requests": 1,
+    "max_total_tokens": 100000
+  },
+  "usage": {
+    "requests": 1,
+    "input_tokens": 611,
+    "output_tokens": 170,
+    "cache_hits": 0,
+    "reserved_tokens": 5599,
+    "unknown_usage_requests": 0
+  },
+  "diagnostics": [],
+  "stage_seconds": {
+    "extraction": 0.0016613000000234024,
+    "alignment": 0.00004069999999956053,
+    "judging": 5.7178453000001355,
+    "verification": 4.79999994240643e-6,
+    "analysis_total": 5.720916400000078,
+    "repository": 0.5901618000000326,
+    "patch_validation": 0.00005180000016480335,
+    "total": 6.3160124999999425
+  },
+  "model": {
+    "provider": "chat-completions",
+    "model": "deepseek-flash",
+    "temperature": 0.0
+  },
+  "events": [
+    "CREATED",
+    "ANALYZING",
+    "EXTRACTING",
+    "ALIGNING",
+    "JUDGING",
+    "VERIFYING",
+    "REPORTING",
+    "COMPLETED"
+  ],
+  "model_calls": [
+    {
+      "request_hash": "bf9b2b012bbbac6122e1dc1e8224c54f0c29131108ea9bc13c07deff904df52a",
+      "attempt": 1,
+      "cache_hit": false,
+      "model": "deepseek-flash",
+      "prompt_version": "semantic-judge/2",
+      "response_hash": "35c04ca2e9a2de56dde500e365f81bfd8a6d3868f2bf934c77aa5f2bbca66e0e",
+      "returned_model": "deepseek-flash",
+      "input_tokens": 611,
+      "output_tokens": 170,
+      "status": "SUCCEEDED",
+      "elapsed_seconds": 5.715858
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+def place_marker(x, y, /, *, color="red"):
+    return x, y, color

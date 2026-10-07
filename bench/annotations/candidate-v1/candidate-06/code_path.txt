@@ -1,0 +1,4 @@
+def encode_packet(payload, codec="latin-1"):
+    return payload, codec
+
+encode_packet.__defaults__ = ("utf-8",)

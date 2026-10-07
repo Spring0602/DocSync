@@ -1,0 +1,251 @@
+{
+  "schema_version": "2.0",
+  "manifest": {
+    "schema_version": "2.0",
+    "run_id": "9d0ec9fb245d4da6a02da0b1c1e2240d",
+    "versions": {
+      "docsync": "0.2.0",
+      "schema": "2.0",
+      "extractor": "python-static/2",
+      "claims": "markdown/2",
+      "verifier": "verifier/2",
+      "method": "full",
+      "pydantic": "2.11.7",
+      "markdown-it-py": "3.0.0"
+    },
+    "config_hash": "37a959a06dad80b416b91ee9504f300b698c86d460495c98fc40fc6fdc67fdbb",
+    "mode": "hybrid",
+    "status": "COMPLETED",
+    "enabled_types": [
+      "DEFAULT_VALUE",
+      "SIGNATURE",
+      "CONFIG"
+    ],
+    "semantic_coverage": "supported-static-claims-only",
+    "budget": {
+      "max_requests": 1,
+      "max_total_tokens": 100000
+    },
+    "usage": {
+      "requests": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_hits": 0,
+      "reserved_tokens": 0,
+      "unknown_usage_requests": 0
+    },
+    "diagnostics": [],
+    "stage_seconds": {
+      "extraction": 0.0006743000001279142,
+      "alignment": 0.000016799999912109342,
+      "judging": 0.000017899999875226058,
+      "verification": 2.6000000161729986e-6,
+      "analysis_total": 0.0011450000001786975,
+      "repository": 0.23242030000005798,
+      "patch_validation": 0.000016399999822169775,
+      "total": 0.23523440000008122
+    },
+    "model": {
+      "provider": "chat-completions",
+      "model": "deepseek-flash",
+      "temperature": 0.0
+    },
+    "events": [
+      "CREATED",
+      "ANALYZING",
+      "EXTRACTING",
+      "ALIGNING",
+      "JUDGING",
+      "VERIFYING",
+      "REPORTING",
+      "COMPLETED"
+    ],
+    "model_calls": []
+  },
+  "snapshot": {
+    "repo_id": "5f545d0e77311e65dfa706db",
+    "head_sha": "af9fbfe9d2715b403d7b37758863a238e9be56bb",
+    "base_sha": null,
+    "mode": "commit",
+    "files_hash": "29634ab178c3149c6cf5e38d",
+    "dirty": false,
+    "files": [
+      {
+        "path": "README.md",
+        "blob_hash": "cef7ed39b0550886b34d4f8e16f215904bfa1609fb03ee3eced8e26793d114b9",
+        "size": 61,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "client.py",
+        "blob_hash": "ae4ec283ec97acbde5f65ecb71e61a96e50eb35a216d0382051e41d53bd2f7d0",
+        "size": 44,
+        "encoding": "utf-8"
+      }
+    ],
+    "changed_paths": []
+  },
+  "entities": [
+    {
+      "entity_id": "0652e0379f3e9f3cddc797d5",
+      "kind": "function",
+      "qualified_name": "client.connect",
+      "module": "client",
+      "signature": [
+        {
+          "name": "timeout",
+          "kind": "POSITIONAL_OR_KEYWORD",
+          "required": false,
+          "value_state": "KNOWN",
+          "typed_value": {
+            "type": "int",
+            "canonical": "[\"int\",60]"
+          },
+          "expression": "60"
+        }
+      ],
+      "decorators": [],
+      "span": {
+        "path": "client.py",
+        "start_line": 1,
+        "end_line": 2,
+        "start_byte": 0,
+        "end_byte": 43,
+        "blob_hash": "ae4ec283ec97acbde5f65ecb71e61a96e50eb35a216d0382051e41d53bd2f7d0"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "c91ae0bc91b89f2b6ba30bb6",
+      "entity_id": "0652e0379f3e9f3cddc797d5",
+      "subject": "client.connect",
+      "property": "timeout",
+      "value_state": "KNOWN",
+      "typed_value": {
+        "type": "int",
+        "canonical": "[\"int\",60]"
+      },
+      "expression": "60",
+      "span": {
+        "path": "client.py",
+        "start_line": 1,
+        "end_line": 1,
+        "start_byte": 20,
+        "end_byte": 22,
+        "blob_hash": "ae4ec283ec97acbde5f65ecb71e61a96e50eb35a216d0382051e41d53bd2f7d0"
+      },
+      "fact_kind": "DEFAULT_VALUE",
+      "parameters": [],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    },
+    {
+      "fact_id": "cc1abf138dfac06bef3bdd42",
+      "entity_id": "0652e0379f3e9f3cddc797d5",
+      "subject": "client.connect",
+      "property": "__signature__",
+      "value_state": "KNOWN",
+      "typed_value": null,
+      "expression": "def connect(timeout=60):\n    return timeout",
+      "span": {
+        "path": "client.py",
+        "start_line": 1,
+        "end_line": 2,
+        "start_byte": 0,
+        "end_byte": 43,
+        "blob_hash": "ae4ec283ec97acbde5f65ecb71e61a96e50eb35a216d0382051e41d53bd2f7d0"
+      },
+      "fact_kind": "SIGNATURE",
+      "parameters": [
+        {
+          "name": "timeout",
+          "kind": "POSITIONAL_OR_KEYWORD",
+          "required": false,
+          "value_state": "KNOWN",
+          "typed_value": {
+            "type": "int",
+            "canonical": "[\"int\",60]"
+          },
+          "expression": "60"
+        }
+      ],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "d6b1b7339daafba6db78e5a8",
+      "subject": "connect",
+      "predicate": "timeout",
+      "kind": "DEFAULT_ASSERTION",
+      "value": {
+        "type": "int",
+        "canonical": "[\"int\",60]"
+      },
+      "qualifiers": [],
+      "version_scope": "current",
+      "span": {
+        "path": "README.md",
+        "start_line": 5,
+        "end_line": 5,
+        "start_byte": 48,
+        "end_byte": 60,
+        "blob_hash": "cef7ed39b0550886b34d4f8e16f215904bfa1609fb03ee3eced8e26793d114b9"
+      },
+      "value_span": {
+        "path": "README.md",
+        "start_line": 5,
+        "end_line": 5,
+        "start_byte": 57,
+        "end_byte": 59,
+        "blob_hash": "cef7ed39b0550886b34d4f8e16f215904bfa1609fb03ee3eced8e26793d114b9"
+      },
+      "quote": "|timeout|60|",
+      "extraction_method": "markdown-table/1",
+      "source_hint": null,
+      "positional_count": null,
+      "keyword_names": [],
+      "unpacking": false,
+      "bound_receiver": false
+    }
+  ],
+  "candidates": [
+    {
+      "claim_id": "d6b1b7339daafba6db78e5a8",
+      "candidates": [
+        {
+          "fact_id": "c91ae0bc91b89f2b6ba30bb6",
+          "rank": 1,
+          "score": 1.0,
+          "features": [
+            "exact_symbol",
+            "parameter_owner"
+          ]
+        }
+      ],
+      "ambiguity": false,
+      "reason": "MATCH"
+    }
+  ],
+  "judgments": [
+    {
+      "claim_id": "d6b1b7339daafba6db78e5a8",
+      "decision": "CONSISTENT",
+      "fact_ids": [
+        "c91ae0bc91b89f2b6ba30bb6"
+      ],
+      "reason_code": "LITERAL_EQUAL",
+      "reason_text": "Compare explicit typed default values for the same parameter",
+      "claim_type_check": true,
+      "version_compatible": true,
+      "score": null,
+      "uncertainty_reason": null,
+      "model_run_id": null
+    }
+  ],
+  "findings": [],
+  "rejected": [],
+  "patches": []
+}

@@ -1,0 +1,7 @@
+import os
+
+def flush_interval():
+    return int(os.environ.get("FLUSH_INTERVAL", "8"))
+
+def flush_records(interval=flush_interval()):
+    return interval

@@ -1,0 +1,5 @@
+def choose_format():
+    return "json"
+
+def export_records(format_name=choose_format()):
+    return format_name

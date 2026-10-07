@@ -1,0 +1,3 @@
+class MemoryBuffer:
+    def __init__(self, capacity=None):
+        self.capacity = 32 if capacity is None else capacity

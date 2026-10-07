@@ -1,0 +1,94 @@
+{
+  "sample_count": 20,
+  "counts": {
+    "tp": 10,
+    "fp": 1,
+    "tn": 4,
+    "fn": 1,
+    "decidable": 16,
+    "decided": 14,
+    "insufficient": 4,
+    "improper_confirmation": 3,
+    "failed": 0,
+    "abstained": 3
+  },
+  "precision": 0.9090909090909091,
+  "recall": 0.9090909090909091,
+  "f1": 0.9090909090909091,
+  "false_positive_rate": 0.2,
+  "decision_coverage": 0.875,
+  "abstention_rate": 0.15,
+  "improper_confirmation_rate": 0.75,
+  "by_type": {
+    "CONFIG": {
+      "sample_count": 4,
+      "counts": {
+        "tp": 2,
+        "fp": 0,
+        "tn": 1,
+        "fn": 0,
+        "decidable": 3,
+        "decided": 3,
+        "insufficient": 1,
+        "improper_confirmation": 1,
+        "failed": 0,
+        "abstained": 0
+      },
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "false_positive_rate": 0.0,
+      "decision_coverage": 1.0,
+      "abstention_rate": 0.0,
+      "improper_confirmation_rate": 1.0
+    },
+    "DEFAULT_VALUE": {
+      "sample_count": 9,
+      "counts": {
+        "tp": 3,
+        "fp": 0,
+        "tn": 2,
+        "fn": 1,
+        "decidable": 6,
+        "decided": 5,
+        "insufficient": 3,
+        "improper_confirmation": 2,
+        "failed": 0,
+        "abstained": 2
+      },
+      "precision": 1.0,
+      "recall": 0.75,
+      "f1": 0.8571428571428571,
+      "false_positive_rate": 0.0,
+      "decision_coverage": 0.8333333333333334,
+      "abstention_rate": 0.2222222222222222,
+      "improper_confirmation_rate": 0.6666666666666666
+    },
+    "SIGNATURE": {
+      "sample_count": 7,
+      "counts": {
+        "tp": 5,
+        "fp": 1,
+        "tn": 1,
+        "fn": 0,
+        "decidable": 7,
+        "decided": 6,
+        "insufficient": 0,
+        "improper_confirmation": 0,
+        "failed": 0,
+        "abstained": 1
+      },
+      "precision": 0.8333333333333334,
+      "recall": 1.0,
+      "f1": 0.9090909090909091,
+      "false_positive_rate": 0.5,
+      "decision_coverage": 0.8571428571428571,
+      "abstention_rate": 0.14285714285714285,
+      "improper_confirmation_rate": null
+    }
+  },
+  "provisional_labels": false,
+  "manifest_hash": "fe5b4c21e3261de83137d1748651f9e54bc6b5fcb937eabee39108900f7dfab8",
+  "config_hash": "f4504daf93f76e44e1fbcb3aaf0a2d4616c146016d1c35b56e8f0f1901c23c92",
+  "method": "llm"
+}

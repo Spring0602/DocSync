@@ -1,0 +1,336 @@
+{
+  "schema_version": "2.0",
+  "manifest": {
+    "schema_version": "2.0",
+    "run_id": "d302bd7c854e42e8a0a86cf367dae71c",
+    "versions": {
+      "docsync": "0.2.0",
+      "schema": "2.0",
+      "extractor": "python-static/2",
+      "claims": "markdown/2",
+      "verifier": "verifier/2",
+      "method": "no_static",
+      "pydantic": "2.11.7",
+      "markdown-it-py": "3.0.0"
+    },
+    "config_hash": "9ae0f290ee4b313e7e6fa2b4a8550d7092aed5840543e929322e941ee008bca1",
+    "mode": "hybrid",
+    "status": "COMPLETED",
+    "enabled_types": [
+      "DEFAULT_VALUE",
+      "SIGNATURE",
+      "CONFIG"
+    ],
+    "semantic_coverage": "supported-static-claims-only",
+    "budget": {
+      "max_requests": 1,
+      "max_total_tokens": 100000
+    },
+    "usage": {
+      "requests": 1,
+      "input_tokens": 601,
+      "output_tokens": 150,
+      "cache_hits": 0,
+      "reserved_tokens": 5593,
+      "unknown_usage_requests": 0
+    },
+    "diagnostics": [],
+    "stage_seconds": {
+      "extraction": 0.0015857000000778498,
+      "alignment": 0.00003979999996772676,
+      "judging": 6.117603500000087,
+      "verification": 0.0003821000000243657,
+      "analysis_total": 6.120887300000049,
+      "repository": 0.500704899999846,
+      "patch_validation": 0.011680399999931979,
+      "total": 6.638561400000071
+    },
+    "model": {
+      "provider": "chat-completions",
+      "model": "deepseek-flash",
+      "temperature": 0.0
+    },
+    "events": [
+      "CREATED",
+      "ANALYZING",
+      "EXTRACTING",
+      "ALIGNING",
+      "JUDGING",
+      "VERIFYING",
+      "REPORTING",
+      "COMPLETED"
+    ],
+    "model_calls": [
+      {
+        "request_hash": "6c452a25f09242978b69a315507bedff1ecbaa9b64908d0a29c1eecc232e4713",
+        "attempt": 1,
+        "cache_hit": false,
+        "model": "deepseek-flash",
+        "prompt_version": "semantic-judge/2",
+        "response_hash": "2bb4c30090a3c66735edf74840fd89449c665609daec1a4452859768fea9838d",
+        "returned_model": "deepseek-flash",
+        "input_tokens": 601,
+        "output_tokens": 150,
+        "status": "SUCCEEDED",
+        "elapsed_seconds": 6.115557
+      }
+    ]
+  },
+  "snapshot": {
+    "repo_id": "f1e8855cc93fe5d45ef9abe0",
+    "head_sha": "8b42acebdad4fd16b1d02561228f27dc2c2ccc65",
+    "base_sha": null,
+    "mode": "commit",
+    "files_hash": "96c661ff95f24511ca6b5ba1",
+    "dirty": false,
+    "files": [
+      {
+        "path": "README.md",
+        "blob_hash": "6657b496944f84b4f85cef25f0d60da6c01fb5550ebd4ec37c7997c3563143d0",
+        "size": 44,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "client.py",
+        "blob_hash": "05e9ac10e2edd4b5aabff5f1f39cf33746d04682a36ed88d78e2c760b3bcea06",
+        "size": 46,
+        "encoding": "utf-8"
+      }
+    ],
+    "changed_paths": []
+  },
+  "entities": [
+    {
+      "entity_id": "0652e0379f3e9f3cddc797d5",
+      "kind": "function",
+      "qualified_name": "client.connect",
+      "module": "client",
+      "signature": [
+        {
+          "name": "timeout",
+          "kind": "POSITIONAL_OR_KEYWORD",
+          "required": false,
+          "value_state": "KNOWN",
+          "typed_value": {
+            "type": "bool",
+            "canonical": "[\"bool\",true]"
+          },
+          "expression": "True"
+        }
+      ],
+      "decorators": [],
+      "span": {
+        "path": "client.py",
+        "start_line": 1,
+        "end_line": 2,
+        "start_byte": 0,
+        "end_byte": 45,
+        "blob_hash": "05e9ac10e2edd4b5aabff5f1f39cf33746d04682a36ed88d78e2c760b3bcea06"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "5df259430232036d03f79b54",
+      "entity_id": "0652e0379f3e9f3cddc797d5",
+      "subject": "client.connect",
+      "property": "timeout",
+      "value_state": "KNOWN",
+      "typed_value": {
+        "type": "bool",
+        "canonical": "[\"bool\",true]"
+      },
+      "expression": "True",
+      "span": {
+        "path": "client.py",
+        "start_line": 1,
+        "end_line": 1,
+        "start_byte": 20,
+        "end_byte": 24,
+        "blob_hash": "05e9ac10e2edd4b5aabff5f1f39cf33746d04682a36ed88d78e2c760b3bcea06"
+      },
+      "fact_kind": "DEFAULT_VALUE",
+      "parameters": [],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    },
+    {
+      "fact_id": "9cc06c9c4260d19d9af96269",
+      "entity_id": "0652e0379f3e9f3cddc797d5",
+      "subject": "client.connect",
+      "property": "__signature__",
+      "value_state": "KNOWN",
+      "typed_value": null,
+      "expression": "def connect(timeout=True):\n    return timeout",
+      "span": {
+        "path": "client.py",
+        "start_line": 1,
+        "end_line": 2,
+        "start_byte": 0,
+        "end_byte": 45,
+        "blob_hash": "05e9ac10e2edd4b5aabff5f1f39cf33746d04682a36ed88d78e2c760b3bcea06"
+      },
+      "fact_kind": "SIGNATURE",
+      "parameters": [
+        {
+          "name": "timeout",
+          "kind": "POSITIONAL_OR_KEYWORD",
+          "required": false,
+          "value_state": "KNOWN",
+          "typed_value": {
+            "type": "bool",
+            "canonical": "[\"bool\",true]"
+          },
+          "expression": "True"
+        }
+      ],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "34a2ff67228fb4547981ede9",
+      "subject": "connect",
+      "predicate": "timeout",
+      "kind": "DEFAULT_ASSERTION",
+      "value": {
+        "type": "int",
+        "canonical": "[\"int\",1]"
+      },
+      "qualifiers": [],
+      "version_scope": "current",
+      "span": {
+        "path": "README.md",
+        "start_line": 3,
+        "end_line": 3,
+        "start_byte": 14,
+        "end_byte": 43,
+        "blob_hash": "6657b496944f84b4f85cef25f0d60da6c01fb5550ebd4ec37c7997c3563143d0"
+      },
+      "value_span": {
+        "path": "README.md",
+        "start_line": 3,
+        "end_line": 3,
+        "start_byte": 38,
+        "end_byte": 39,
+        "blob_hash": "6657b496944f84b4f85cef25f0d60da6c01fb5550ebd4ec37c7997c3563143d0"
+      },
+      "quote": "`timeout` 默认值为 `1`。",
+      "extraction_method": "markdown-rules/2",
+      "source_hint": null,
+      "positional_count": null,
+      "keyword_names": [],
+      "unpacking": false,
+      "bound_receiver": false
+    }
+  ],
+  "candidates": [
+    {
+      "claim_id": "34a2ff67228fb4547981ede9",
+      "candidates": [
+        {
+          "fact_id": "5df259430232036d03f79b54",
+          "rank": 1,
+          "score": 1.0,
+          "features": [
+            "exact_symbol",
+            "parameter_owner"
+          ]
+        }
+      ],
+      "ambiguity": false,
+      "reason": "MATCH"
+    }
+  ],
+  "judgments": [
+    {
+      "claim_id": "34a2ff67228fb4547981ede9",
+      "decision": "INCONSISTENT",
+      "fact_ids": [
+        "5df259430232036d03f79b54"
+      ],
+      "reason_code": "DEFAULT_VALUE_MISMATCH",
+      "reason_text": "The default value of `timeout` in `client.py` is `True`, not `1`. Although `True == 1` in Python, the documented default value `1` does not match the actual default `True`.",
+      "claim_type_check": true,
+      "version_compatible": true,
+      "score": 0.9,
+      "uncertainty_reason": null,
+      "model_run_id": "343df8ca8f005325b9c50abe"
+    }
+  ],
+  "findings": [
+    {
+      "finding_id": "2ff279f914f964da3e040838",
+      "drift_type": "DEFAULT_VALUE",
+      "claim_id": "34a2ff67228fb4547981ede9",
+      "fact_ids": [
+        "5df259430232036d03f79b54"
+      ],
+      "evidence": {
+        "head_sha": "8b42acebdad4fd16b1d02561228f27dc2c2ccc65",
+        "snapshot_hash": "96c661ff95f24511ca6b5ba1",
+        "entity_id": "0652e0379f3e9f3cddc797d5",
+        "document": {
+          "path": "README.md",
+          "start_line": 3,
+          "end_line": 3,
+          "start_byte": 14,
+          "end_byte": 43,
+          "blob_hash": "6657b496944f84b4f85cef25f0d60da6c01fb5550ebd4ec37c7997c3563143d0"
+        },
+        "code": {
+          "path": "client.py",
+          "start_line": 1,
+          "end_line": 1,
+          "start_byte": 20,
+          "end_byte": 24,
+          "blob_hash": "05e9ac10e2edd4b5aabff5f1f39cf33746d04682a36ed88d78e2c760b3bcea06"
+        },
+        "rule_id": "DEFAULT_VALUE/1",
+        "verifier_version": "verifier/2"
+      },
+      "severity": "warning",
+      "status": "INCONSISTENT",
+      "verification_status": "VERIFIED",
+      "ignored": false,
+      "ignore_reason": null,
+      "ignore_expires": null
+    }
+  ],
+  "rejected": [],
+  "patches": [
+    {
+      "patch_id": "e4b70c8072dd31f513a442a3",
+      "finding_ids": [
+        "2ff279f914f964da3e040838"
+      ],
+      "base_hashes": {
+        "README.md": "6657b496944f84b4f85cef25f0d60da6c01fb5550ebd4ec37c7997c3563143d0"
+      },
+      "edits": [
+        {
+          "span": {
+            "path": "README.md",
+            "start_line": 3,
+            "end_line": 3,
+            "start_byte": 38,
+            "end_byte": 39,
+            "blob_hash": "6657b496944f84b4f85cef25f0d60da6c01fb5550ebd4ec37c7997c3563143d0"
+          },
+          "old_text": "1",
+          "new_text": "True"
+        }
+      ],
+      "diff": "--- a/README.md\n+++ b/README.md\n@@ -1,3 +1,3 @@\n ## `connect`\n \n-`timeout` 默认值为 `1`。\n+`timeout` 默认值为 `True`。\n",
+      "validation": "VALIDATED",
+      "requires_review": true,
+      "validation_details": [
+        "All byte preimages match",
+        "Code fences unchanged",
+        "In-memory rescan: target conflicts removed; no new confirmed conflicts",
+        "Human semantic review still required"
+      ]
+    }
+  ]
+}

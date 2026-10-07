@@ -1,0 +1,59 @@
+{
+  "schema_version": "2.0",
+  "run_id": "0a145dea12cd457ca26124c8cd6619af",
+  "versions": {
+    "docsync": "0.2.0",
+    "schema": "2.0",
+    "extractor": "python-static/2",
+    "claims": "markdown/2",
+    "verifier": "verifier/2",
+    "method": "rules",
+    "pydantic": "2.11.7",
+    "markdown-it-py": "3.0.0"
+  },
+  "config_hash": "86b44df60004d4951d0b70a3b2ff5a57a0cc71beccbd1b5519b6b6ff0fa5657e",
+  "mode": "rules",
+  "status": "COMPLETED",
+  "enabled_types": [
+    "DEFAULT_VALUE",
+    "SIGNATURE",
+    "CONFIG"
+  ],
+  "semantic_coverage": "supported-static-claims-only",
+  "budget": {
+    "max_requests": 1,
+    "max_total_tokens": 100000
+  },
+  "usage": {
+    "requests": 0,
+    "input_tokens": 0,
+    "output_tokens": 0
+  },
+  "diagnostics": [],
+  "stage_seconds": {
+    "extraction": 0.0008338999998613872,
+    "alignment": 0.000018500000123822247,
+    "judging": 0.000024200000098062446,
+    "verification": 0.00008819999993647798,
+    "analysis_total": 0.0014496999999664695,
+    "repository": 1.168623000000025,
+    "patch_validation": 0.0038828000001558394,
+    "total": 1.1761169000001246
+  },
+  "model": {
+    "provider": "chat-completions",
+    "model": "deepseek-flash",
+    "temperature": 0.0
+  },
+  "events": [
+    "CREATED",
+    "ANALYZING",
+    "EXTRACTING",
+    "ALIGNING",
+    "JUDGING",
+    "VERIFYING",
+    "REPORTING",
+    "COMPLETED"
+  ],
+  "model_calls": []
+}

@@ -1,0 +1,10 @@
+# Usage
+
+以下示例展示当前版本的调用方式，仅检查参数绑定，不要求执行示例。
+
+```python
+from case11 import place_marker
+position = (3, 7)
+style = {"color": "blue"}
+place_marker(*position, **style)
+```

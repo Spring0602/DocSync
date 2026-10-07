@@ -1,0 +1,5 @@
+# API reference
+
+## `case20.SERVICE_OPTIONS`
+
+`workers` 默认值为 `6`。

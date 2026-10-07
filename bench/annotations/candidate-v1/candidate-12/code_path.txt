@@ -1,0 +1,8 @@
+import json
+import os
+
+def read_options():
+    return json.loads(os.environ.get("NOTICE_OPTIONS", "{}"))
+
+def queue_notice(topic, *, priority):
+    return topic, priority

@@ -1,0 +1,5 @@
+# API reference
+
+## `PageReader.__init__`
+
+`encoding` 默认值为 `utf-16`。

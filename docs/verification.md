@@ -1,5 +1,8 @@
 # 实际验收记录
 
+> 最新状态：七方法开发集真实实验已验收，85 次调用成功；[指标及差异分析](deepseek-suite-20261007.md)。后文准备步骤与历史待办保留作复现参考；当前待办以 tasks.md 为准。
+
+
 ## 最新本地验证（2026-10-07，A 实验准备）
 
 全量 pytest **211 passed，2 skipped，0 failed**（112.90 秒）。两项跳过均因 Windows 未授予文件系统符号链接创建权限。证据为 runs/a-ready-20261007/pytest-final.xml，入库摘要见 [final-validation.json](audit-samples/a-20261007/final-validation.json)。Ruff、48 文件格式检查、mypy 20 个源文件及 wheel/sdist 构建全部通过。
@@ -112,3 +115,11 @@ Apache 官方许可证原文已落地，wheel/sdist 构建成功，wheel 内 Lic
 ## A 执行（2026-10-07）
 
 40 项专项通过（runs/a-review-20261007/targeted.xml）；Ruff 和 46 文件格式检查通过。开发集实际重建及 rules/keyword/Recall@K 已跑通。最新结论见 [A 接收记录](a-acceptance-20261007.md)。不把专项数字累加成全量。
+
+## 正式样本交接工具（2026-10-07）
+
+新增 tests/unit/test_annotation_packet.py 专项 5 passed（2.43 秒），验证 Git 固定 blob 不受工作区未提交修改影响、输出不覆盖、开发 ID 重叠拒绝、禁止答案字段和越界路径、空白标注拒绝、人工分歧保留及证据坐标越界拒绝。该数字是新增专项，不冒充重跑全量。未调用模型，也未扫描未来测试样本。
+
+## 新候选采集与交接（2026-10-07）
+
+24 条候选、6 个受控组已固定；重建 Git SHA/清单一致，48 个源文件哈希与标注包一致，B/C 表各 24 行且人工字段为空。5 项标注工具测试通过（2.32 秒），Ruff 通过，两个分发 ZIP 完整性与表格隔离通过。仅做语法/结构/哈希检查，未扫描或调用模型；详见 [采集记录](candidate-intake-20261007.md)。

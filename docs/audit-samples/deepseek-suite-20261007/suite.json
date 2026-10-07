@@ -1,0 +1,505 @@
+{
+  "methods": [
+    "keyword",
+    "rules",
+    "llm",
+    "full",
+    "no_alignment",
+    "no_verifier",
+    "no_static"
+  ],
+  "samples": 20,
+  "sample_ids": [
+    "seed-01-default_drift",
+    "seed-02-default_equal",
+    "seed-03-typed_bool",
+    "seed-04-factory_unknown",
+    "seed-05-historical",
+    "seed-06-ambiguous",
+    "seed-07-table_drift",
+    "seed-08-table_equal",
+    "seed-09-linked_owner",
+    "seed-10-constant_drift",
+    "seed-11-constant_equal",
+    "seed-12-dict_drift",
+    "seed-13-dict_dynamic",
+    "seed-14-missing_required",
+    "seed-15-unexpected_keyword",
+    "seed-16-kwargs_legal",
+    "seed-17-positional_only",
+    "seed-18-keyword_only",
+    "seed-19-optional_added",
+    "seed-20-import_alias"
+  ],
+  "split_counts": {
+    "dev": 20
+  },
+  "formal_test_claim": false,
+  "manifest_sha256": "fe5b4c21e3261de83137d1748651f9e54bc6b5fcb937eabee39108900f7dfab8",
+  "config_sha256": "37a959a06dad80b416b91ee9504f300b698c86d460495c98fc40fc6fdc67fdbb",
+  "request_upper_bound": 100,
+  "output_token_upper_bound": 204800,
+  "request_limit": 100,
+  "cost_amount": null,
+  "cost_note": "Token reservation is not billed usage; provider invoice required.",
+  "provenance": {
+    "commit": "927f42c23670d86642f0afbe678411b858be97cb",
+    "dirty": true,
+    "source_hashes_lf": {
+      "bench/builders/build_reviewed_seed.py": "2d1c1eff48018a2d7d4a786346513fefa01b51dd7b458f16a86609fe7e04fa03",
+      "bench/builders/build_seed.py": "3d2df7323d4c5f5c7b9b5f00e7ba6603cd0d95cc4bf96449587f79c2d528ab10",
+      "bench/evaluate.py": "6e0ac590f9462d14e7cf40125ea03e06e3533f7241232bd3134abe8e1b92b952",
+      "bench/evaluate_alignment.py": "a0d9f143f63353594312ccb6671de9fdb095ea0212d140091fa819c17b386f12",
+      "bench/run_suite.py": "7de0290b3c8b1884e2ad0cf695ee028db79bf78697b63a2cb13efed93a59c3e7",
+      "pyproject.toml": "d9d3ba554f6b35d155b95ba82d5a918b96d7bab1b70b340ceff1a3254ff83534",
+      "src/docsync/__init__.py": "e389b13fb67195d45022336ff7cc3c98d3097b94755f209095b0f289c9ce1dd7",
+      "src/docsync/__main__.py": "d489c8565e10912585107711bb16a1e765109299bf5c6faf17e73f3321e73ab7",
+      "src/docsync/alignment/__init__.py": "67161aa0cf5eecab2fb7ffc88b2a7a2ac2e295b2ec413ff26d7e4ddaecf205c8",
+      "src/docsync/benchmark.py": "e7c5cfe31ec13d40ad807fd7a578b638a1326f3f33ab6a730bb4727231919872",
+      "src/docsync/cli.py": "6037aaffcabe18d9b04de253402617bf974f3ece7a6232d590566e3d7d1b2425",
+      "src/docsync/config.py": "2f29dce00a136714400cedc7fd8f92a7ee84961a6150a6986b1970443af00c10",
+      "src/docsync/extractors/__init__.py": "b40d44cab820d7a7bf09ac7d81780442bc6eea094f45862856de6a76bc9a0c4a",
+      "src/docsync/extractors/markdown.py": "bee67d0c338ec72e531ddb632183d3616c681270cc9b6b535da35357f8616ebd",
+      "src/docsync/extractors/python_ast.py": "9b7dc0ca4b566c545a051291ae751ca251cbffcb93639db195eff22fbb1fa398",
+      "src/docsync/llm/__init__.py": "9cf5aea7e846de96d911ddb9d87a547af803398cad44784b2010a660cfef12a0",
+      "src/docsync/llm/prompts.py": "021e6111ca33449888b3dfd5f468bf43753bab096ba23354a3a4c1a7d7f1fb1e",
+      "src/docsync/llm/provider.py": "7a613774f6f037585a36d727c8c0140da2edd11752a7454ae9b6960a9032ea18",
+      "src/docsync/metrics.py": "d130f5dcbb6f9c3bc4543ae08ead69f311d66b9896db0d07c8d5142fa8b88794",
+      "src/docsync/models.py": "3b272692830a9bb753cdacc178959a48c6358910b494f72034daaf09841098ae",
+      "src/docsync/patches/__init__.py": "72fb2665cf99e02a9771d7520af25188c2e65eed63609223faa7be43dd7d01fc",
+      "src/docsync/pipeline.py": "670054b1c8b0993449df751213a474f26f027bd76ab1aa89510c956f84bb946b",
+      "src/docsync/reporting/__init__.py": "a32ccc9d5bb93ef29fe3762579589d857c7c6d5fce66262efcdcd017134e63a1",
+      "src/docsync/repository/__init__.py": "03e14ae487eed6eadcb67cb9224b06fd7f92dbe08133edb0788975adf22421d1",
+      "src/docsync/utils.py": "a26eb8e71afc9f29c8206cdc5578dd99376693674223bcd1fd4d0891ba785c3e",
+      "src/docsync/verification/__init__.py": "a29a1a7c6cb28b29496096d7096cb124ee831235683e8ea7df774911779ac253"
+    }
+  },
+  "status": "COMPLETED",
+  "results": {
+    "keyword": {
+      "metrics": {
+        "sample_count": 20,
+        "counts": {
+          "tp": 4,
+          "fp": 1,
+          "tn": 4,
+          "fn": 7,
+          "decidable": 16,
+          "decided": 7,
+          "insufficient": 4,
+          "improper_confirmation": 3,
+          "failed": 0,
+          "abstained": 10
+        },
+        "precision": 0.8,
+        "recall": 0.36363636363636365,
+        "f1": 0.5,
+        "false_positive_rate": 0.2,
+        "decision_coverage": 0.4375,
+        "abstention_rate": 0.5,
+        "improper_confirmation_rate": 0.75
+      },
+      "status_counts": {
+        "COMPLETED": 20
+      },
+      "usage": {
+        "requests": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_hits": 0,
+        "unknown_usage_requests": 0
+      },
+      "elapsed_seconds": 6.88684760000001,
+      "review_items": [
+        {
+          "sample_id": "seed-04-factory_unknown",
+          "gold": "INSUFFICIENT",
+          "prediction": "INCONSISTENT",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "seed-05-historical",
+          "gold": "INSUFFICIENT",
+          "prediction": "INCONSISTENT",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "seed-06-ambiguous",
+          "gold": "INSUFFICIENT",
+          "prediction": "INCONSISTENT",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "seed-07-table_drift",
+          "gold": "INCONSISTENT",
+          "prediction": "SKIPPED",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "seed-08-table_equal",
+          "gold": "CONSISTENT",
+          "prediction": "SKIPPED",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "seed-12-dict_drift",
+          "gold": "INCONSISTENT",
+          "prediction": "SKIPPED",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "seed-13-dict_dynamic",
+          "gold": "INSUFFICIENT",
+          "prediction": "SKIPPED",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "seed-14-missing_required",
+          "gold": "INCONSISTENT",
+          "prediction": "SKIPPED",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "seed-15-unexpected_keyword",
+          "gold": "INCONSISTENT",
+          "prediction": "SKIPPED",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "seed-16-kwargs_legal",
+          "gold": "CONSISTENT",
+          "prediction": "SKIPPED",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "seed-17-positional_only",
+          "gold": "INCONSISTENT",
+          "prediction": "SKIPPED",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "seed-18-keyword_only",
+          "gold": "INCONSISTENT",
+          "prediction": "SKIPPED",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "seed-19-optional_added",
+          "gold": "CONSISTENT",
+          "prediction": "INCONSISTENT",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "seed-20-import_alias",
+          "gold": "INCONSISTENT",
+          "prediction": "SKIPPED",
+          "status": "COMPLETED",
+          "errors": []
+        }
+      ],
+      "cost_amount": null
+    },
+    "rules": {
+      "metrics": {
+        "sample_count": 20,
+        "counts": {
+          "tp": 11,
+          "fp": 0,
+          "tn": 5,
+          "fn": 0,
+          "decidable": 16,
+          "decided": 16,
+          "insufficient": 4,
+          "improper_confirmation": 0,
+          "failed": 0,
+          "abstained": 4
+        },
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "false_positive_rate": 0.0,
+        "decision_coverage": 1.0,
+        "abstention_rate": 0.2,
+        "improper_confirmation_rate": 0.0
+      },
+      "status_counts": {
+        "COMPLETED": 20
+      },
+      "usage": {
+        "requests": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_hits": 0,
+        "unknown_usage_requests": 0
+      },
+      "elapsed_seconds": 8.871245100000351,
+      "review_items": [],
+      "cost_amount": null
+    },
+    "llm": {
+      "metrics": {
+        "sample_count": 20,
+        "counts": {
+          "tp": 10,
+          "fp": 1,
+          "tn": 4,
+          "fn": 1,
+          "decidable": 16,
+          "decided": 14,
+          "insufficient": 4,
+          "improper_confirmation": 3,
+          "failed": 0,
+          "abstained": 3
+        },
+        "precision": 0.9090909090909091,
+        "recall": 0.9090909090909091,
+        "f1": 0.9090909090909091,
+        "false_positive_rate": 0.2,
+        "decision_coverage": 0.875,
+        "abstention_rate": 0.15,
+        "improper_confirmation_rate": 0.75
+      },
+      "status_counts": {
+        "COMPLETED": 20
+      },
+      "usage": {
+        "requests": 20,
+        "input_tokens": 12147,
+        "output_tokens": 3031,
+        "cache_hits": 0,
+        "unknown_usage_requests": 0
+      },
+      "elapsed_seconds": 127.73770880000097,
+      "review_items": [
+        {
+          "sample_id": "seed-05-historical",
+          "gold": "INSUFFICIENT",
+          "prediction": "INCONSISTENT",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "seed-06-ambiguous",
+          "gold": "INSUFFICIENT",
+          "prediction": "INCONSISTENT",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "seed-07-table_drift",
+          "gold": "INCONSISTENT",
+          "prediction": "UNCERTAIN",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "seed-13-dict_dynamic",
+          "gold": "INSUFFICIENT",
+          "prediction": "INCONSISTENT",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "seed-16-kwargs_legal",
+          "gold": "CONSISTENT",
+          "prediction": "UNCERTAIN",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "seed-19-optional_added",
+          "gold": "CONSISTENT",
+          "prediction": "INCONSISTENT",
+          "status": "COMPLETED",
+          "errors": []
+        }
+      ],
+      "cost_amount": null
+    },
+    "full": {
+      "metrics": {
+        "sample_count": 20,
+        "counts": {
+          "tp": 11,
+          "fp": 0,
+          "tn": 5,
+          "fn": 0,
+          "decidable": 16,
+          "decided": 16,
+          "insufficient": 4,
+          "improper_confirmation": 0,
+          "failed": 0,
+          "abstained": 4
+        },
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "false_positive_rate": 0.0,
+        "decision_coverage": 1.0,
+        "abstention_rate": 0.2,
+        "improper_confirmation_rate": 0.0
+      },
+      "status_counts": {
+        "COMPLETED": 20
+      },
+      "usage": {
+        "requests": 15,
+        "input_tokens": 15563,
+        "output_tokens": 2299,
+        "cache_hits": 0,
+        "unknown_usage_requests": 0
+      },
+      "elapsed_seconds": 95.08783719999951,
+      "review_items": [],
+      "cost_amount": null
+    },
+    "no_alignment": {
+      "metrics": {
+        "sample_count": 20,
+        "counts": {
+          "tp": 10,
+          "fp": 0,
+          "tn": 5,
+          "fn": 1,
+          "decidable": 16,
+          "decided": 15,
+          "insufficient": 4,
+          "improper_confirmation": 0,
+          "failed": 0,
+          "abstained": 5
+        },
+        "precision": 1.0,
+        "recall": 0.9090909090909091,
+        "f1": 0.9523809523809523,
+        "false_positive_rate": 0.0,
+        "decision_coverage": 0.9375,
+        "abstention_rate": 0.25,
+        "improper_confirmation_rate": 0.0
+      },
+      "status_counts": {
+        "COMPLETED": 20
+      },
+      "usage": {
+        "requests": 15,
+        "input_tokens": 15766,
+        "output_tokens": 2367,
+        "cache_hits": 0,
+        "unknown_usage_requests": 0
+      },
+      "elapsed_seconds": 94.5901788999995,
+      "review_items": [
+        {
+          "sample_id": "seed-09-linked_owner",
+          "gold": "INCONSISTENT",
+          "prediction": "UNCERTAIN",
+          "status": "COMPLETED",
+          "errors": []
+        }
+      ],
+      "cost_amount": null
+    },
+    "no_verifier": {
+      "metrics": {
+        "sample_count": 20,
+        "counts": {
+          "tp": 10,
+          "fp": 0,
+          "tn": 5,
+          "fn": 1,
+          "decidable": 16,
+          "decided": 15,
+          "insufficient": 4,
+          "improper_confirmation": 1,
+          "failed": 0,
+          "abstained": 4
+        },
+        "precision": 1.0,
+        "recall": 0.9090909090909091,
+        "f1": 0.9523809523809523,
+        "false_positive_rate": 0.0,
+        "decision_coverage": 0.9375,
+        "abstention_rate": 0.2,
+        "improper_confirmation_rate": 0.25
+      },
+      "status_counts": {
+        "COMPLETED": 20
+      },
+      "usage": {
+        "requests": 15,
+        "input_tokens": 15563,
+        "output_tokens": 2435,
+        "cache_hits": 0,
+        "unknown_usage_requests": 0
+      },
+      "elapsed_seconds": 98.44571499999984,
+      "review_items": [
+        {
+          "sample_id": "seed-05-historical",
+          "gold": "INSUFFICIENT",
+          "prediction": "INCONSISTENT",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "seed-18-keyword_only",
+          "gold": "INCONSISTENT",
+          "prediction": "UNCERTAIN",
+          "status": "COMPLETED",
+          "errors": []
+        }
+      ],
+      "cost_amount": null
+    },
+    "no_static": {
+      "metrics": {
+        "sample_count": 20,
+        "counts": {
+          "tp": 11,
+          "fp": 0,
+          "tn": 5,
+          "fn": 0,
+          "decidable": 16,
+          "decided": 16,
+          "insufficient": 4,
+          "improper_confirmation": 0,
+          "failed": 0,
+          "abstained": 4
+        },
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "false_positive_rate": 0.0,
+        "decision_coverage": 1.0,
+        "abstention_rate": 0.2,
+        "improper_confirmation_rate": 0.0
+      },
+      "status_counts": {
+        "COMPLETED": 20
+      },
+      "usage": {
+        "requests": 20,
+        "input_tokens": 12147,
+        "output_tokens": 2983,
+        "cache_hits": 0,
+        "unknown_usage_requests": 0
+      },
+      "elapsed_seconds": 131.29187449999972,
+      "review_items": [],
+      "cost_amount": null
+    }
+  },
+  "actual_requests": 85
+}

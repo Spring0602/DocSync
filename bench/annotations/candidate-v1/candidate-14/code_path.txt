@@ -1,0 +1,4 @@
+class Formatter:
+    @staticmethod
+    def render(text, *, width):
+        return text, width

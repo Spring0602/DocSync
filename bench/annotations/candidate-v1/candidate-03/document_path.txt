@@ -1,0 +1,5 @@
+# API reference
+
+## `emit_record`
+
+`tags` 默认值为 `("audit", "internal")`。

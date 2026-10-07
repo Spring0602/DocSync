@@ -1,0 +1,9 @@
+# Usage
+
+以下示例展示当前版本的调用方式，仅检查参数绑定，不要求执行示例。
+
+```python
+from case10 import send_notice
+arguments = ("ops@example.invalid", "email")
+send_notice(*arguments)
+```

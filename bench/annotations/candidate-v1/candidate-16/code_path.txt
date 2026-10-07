@@ -1,0 +1,14 @@
+import os
+
+class LocalDispatcher:
+    def deliver(self, message):
+        return message
+
+class RemoteDispatcher:
+    def deliver(self, message, *, token):
+        return message, token
+
+def dispatcher():
+    if os.environ.get("REMOTE_DELIVERY"):
+        return RemoteDispatcher()
+    return LocalDispatcher()

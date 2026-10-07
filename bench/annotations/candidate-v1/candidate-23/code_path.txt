@@ -1,0 +1,3 @@
+import os
+
+STORAGE = {"local": {"root": os.environ.get("STORAGE_ROOT", "./cache")}}

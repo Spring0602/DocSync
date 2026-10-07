@@ -1,0 +1,225 @@
+{
+  "schema_version": "2.0",
+  "manifest": {
+    "schema_version": "2.0",
+    "run_id": "5205fc2b85144c1e98ebd45243f54e89",
+    "versions": {
+      "docsync": "0.2.0",
+      "schema": "2.0",
+      "extractor": "python-static/2",
+      "claims": "markdown/2",
+      "verifier": "verifier/2",
+      "method": "no_verifier",
+      "pydantic": "2.11.7",
+      "markdown-it-py": "3.0.0"
+    },
+    "config_hash": "83e1861da3860eb90bc2de2cbc0db29390a7330dfc68914eaedee230aa5cf4c4",
+    "mode": "hybrid",
+    "status": "COMPLETED",
+    "enabled_types": [
+      "DEFAULT_VALUE",
+      "SIGNATURE",
+      "CONFIG"
+    ],
+    "semantic_coverage": "supported-static-claims-only",
+    "budget": {
+      "max_requests": 1,
+      "max_total_tokens": 100000
+    },
+    "usage": {
+      "requests": 1,
+      "input_tokens": 983,
+      "output_tokens": 215,
+      "cache_hits": 0,
+      "reserved_tokens": 6691,
+      "unknown_usage_requests": 0
+    },
+    "diagnostics": [],
+    "stage_seconds": {
+      "extraction": 0.0011147000000164553,
+      "alignment": 0.00003869999977723637,
+      "judging": 6.3321730999998636,
+      "verification": 2.900000026784255e-6,
+      "analysis_total": 6.336146799999824,
+      "repository": 0.7221021999998811,
+      "patch_validation": 0.0000380000001314329,
+      "total": 7.063304099999868
+    },
+    "model": {
+      "provider": "chat-completions",
+      "model": "deepseek-flash",
+      "temperature": 0.0
+    },
+    "events": [
+      "CREATED",
+      "ANALYZING",
+      "EXTRACTING",
+      "ALIGNING",
+      "JUDGING",
+      "VERIFYING",
+      "REPORTING",
+      "COMPLETED"
+    ],
+    "model_calls": [
+      {
+        "request_hash": "d9a79a651fa058f3dcd0e6367ad8dcdd6f9940cf3d4562ee85824ad14c4c4d57",
+        "attempt": 1,
+        "cache_hit": false,
+        "model": "deepseek-flash",
+        "prompt_version": "semantic-judge/2",
+        "response_hash": "9f0cd2f964f25e359dbfe8e043268a0c586bee7661e9b13b816c513564b19e61",
+        "returned_model": "deepseek-flash",
+        "input_tokens": 983,
+        "output_tokens": 215,
+        "status": "SUCCEEDED",
+        "elapsed_seconds": 6.330093
+      }
+    ]
+  },
+  "snapshot": {
+    "repo_id": "c19d5e56211f5de43d8a4d00",
+    "head_sha": "ca392b5052c1ddfac069dad57a143a8132f53a26",
+    "base_sha": null,
+    "mode": "commit",
+    "files_hash": "90f77c736db26934b6f46c0f",
+    "dirty": false,
+    "files": [
+      {
+        "path": "README.md",
+        "blob_hash": "e9aabbf8b27100287d34a2189812de4e5d912d73ed9d261fdb0c5fb5ed7804bf",
+        "size": 24,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "client.py",
+        "blob_hash": "78b7b82a5d9d3ffb2acdd10c42952864b30a7ad482522eb3fc2c17af10f01a81",
+        "size": 27,
+        "encoding": "utf-8"
+      }
+    ],
+    "changed_paths": []
+  },
+  "entities": [
+    {
+      "entity_id": "0652e0379f3e9f3cddc797d5",
+      "kind": "function",
+      "qualified_name": "client.connect",
+      "module": "client",
+      "signature": [
+        {
+          "name": "host",
+          "kind": "KEYWORD_ONLY",
+          "required": true,
+          "value_state": "ABSENT",
+          "typed_value": null,
+          "expression": null
+        }
+      ],
+      "decorators": [],
+      "span": {
+        "path": "client.py",
+        "start_line": 1,
+        "end_line": 1,
+        "start_byte": 0,
+        "end_byte": 26,
+        "blob_hash": "78b7b82a5d9d3ffb2acdd10c42952864b30a7ad482522eb3fc2c17af10f01a81"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "76107b93a0edbbd5ef1d6eb8",
+      "entity_id": "0652e0379f3e9f3cddc797d5",
+      "subject": "client.connect",
+      "property": "__signature__",
+      "value_state": "KNOWN",
+      "typed_value": null,
+      "expression": "def connect(*, host): pass",
+      "span": {
+        "path": "client.py",
+        "start_line": 1,
+        "end_line": 1,
+        "start_byte": 0,
+        "end_byte": 26,
+        "blob_hash": "78b7b82a5d9d3ffb2acdd10c42952864b30a7ad482522eb3fc2c17af10f01a81"
+      },
+      "fact_kind": "SIGNATURE",
+      "parameters": [
+        {
+          "name": "host",
+          "kind": "KEYWORD_ONLY",
+          "required": true,
+          "value_state": "ABSENT",
+          "typed_value": null,
+          "expression": null
+        }
+      ],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "e9d8725b6aaa7d50635d9051",
+      "subject": "connect",
+      "predicate": "__signature__",
+      "kind": "CALL_EXAMPLE",
+      "value": null,
+      "qualifiers": [],
+      "version_scope": "current",
+      "span": {
+        "path": "README.md",
+        "start_line": 1,
+        "end_line": 3,
+        "start_byte": 0,
+        "end_byte": 24,
+        "blob_hash": "e9aabbf8b27100287d34a2189812de4e5d912d73ed9d261fdb0c5fb5ed7804bf"
+      },
+      "value_span": null,
+      "quote": "```python\nconnect()\n```\n",
+      "extraction_method": "markdown-call/2",
+      "source_hint": null,
+      "positional_count": 0,
+      "keyword_names": [],
+      "unpacking": false,
+      "bound_receiver": false
+    }
+  ],
+  "candidates": [
+    {
+      "claim_id": "e9d8725b6aaa7d50635d9051",
+      "candidates": [
+        {
+          "fact_id": "76107b93a0edbbd5ef1d6eb8",
+          "rank": 1,
+          "score": 1.0,
+          "features": [
+            "exact_symbol",
+            "parameter_owner"
+          ]
+        }
+      ],
+      "ambiguity": false,
+      "reason": "MATCH"
+    }
+  ],
+  "judgments": [
+    {
+      "claim_id": "e9d8725b6aaa7d50635d9051",
+      "decision": "UNCERTAIN",
+      "fact_ids": [
+        "76107b93a0edbbd5ef1d6eb8"
+      ],
+      "reason_code": "SUBJECT_AMBIGUOUS",
+      "reason_text": "The claim is a CALL_EXAMPLE for 'connect' with no receiver, but the only provided signature fact is for 'client.connect' with a required keyword-only parameter 'host'. There is no fact establishing that the example's 'connect' refers to the same entity as 'client.connect', nor facts about a bare 'connect' symbol. Without evidence binding the subject, the claim cannot be judged.",
+      "claim_type_check": true,
+      "version_compatible": true,
+      "score": null,
+      "uncertainty_reason": "No fact links subject 'connect' to entity 'client.connect'; the receiver is absent in the example while the known signature belongs to an attribute on a receiver.",
+      "model_run_id": "151e7cf5c8ade7370211d427"
+    }
+  ],
+  "findings": [],
+  "rejected": [],
+  "patches": []
+}

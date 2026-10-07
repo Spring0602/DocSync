@@ -1,0 +1,6 @@
+import os
+
+if os.environ.get("ARCHIVE_PROFILE") == "compact":
+    ARCHIVE_LEVEL = 2
+else:
+    ARCHIVE_LEVEL = 7

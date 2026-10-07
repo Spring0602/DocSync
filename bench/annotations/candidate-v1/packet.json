@@ -1,0 +1,584 @@
+{
+  "status": "AWAITING_INDEPENDENT_ANNOTATION",
+  "formal_test_ready": false,
+  "intake_sha256": "e0054882329d62a828634feecf44497418ded6ec17d65486ccd0a7909d90f1ed",
+  "samples": [
+    {
+      "sample_id": "candidate-01",
+      "repo_id": "candidate-family-01",
+      "group_id": "candidate-family-01",
+      "head_sha": "97978fc406e9a2b05717d9ed6e55a747a94be41c",
+      "code_path": "case01.py",
+      "document_path": "case01.md",
+      "origin": "controlled",
+      "source": "AI-assisted original fixture; bench/candidates/controlled-v1/spec.json",
+      "license": "Apache-2.0",
+      "rights_evidence": "Team original-material approval in docs/license-scope.md; repository LICENSE",
+      "prior_exposure": "Authoring assistant has seen seed-dev-v1 and its seven-method results; no scan of these candidates. B/C must disclose prior exposure. Template independence pending human review.",
+      "collected_at": "2026-10-07",
+      "files": {
+        "code_path": {
+          "sha256": "51814d481fc5e9613639cb44ccf0d9654f4493467f6ad59e7690a3ebc03e78f0",
+          "lines": 3
+        },
+        "document_path": {
+          "sha256": "3a9ec984d4d5557ffcc9c128fd4cb0f6d81d19e44af834fc72faa07c224aae4a",
+          "lines": 5
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-02",
+      "repo_id": "candidate-family-01",
+      "group_id": "candidate-family-01",
+      "head_sha": "97978fc406e9a2b05717d9ed6e55a747a94be41c",
+      "code_path": "case02.py",
+      "document_path": "case02.md",
+      "origin": "controlled",
+      "source": "AI-assisted original fixture; bench/candidates/controlled-v1/spec.json",
+      "license": "Apache-2.0",
+      "rights_evidence": "Team original-material approval in docs/license-scope.md; repository LICENSE",
+      "prior_exposure": "Authoring assistant has seen seed-dev-v1 and its seven-method results; no scan of these candidates. B/C must disclose prior exposure. Template independence pending human review.",
+      "collected_at": "2026-10-07",
+      "files": {
+        "code_path": {
+          "sha256": "86d6372f935e148d3fb1d532ef6f50efe9b775a5d277da0bf7a713029a01df15",
+          "lines": 2
+        },
+        "document_path": {
+          "sha256": "c5cd48b3009805286b9fb56ea4321edc631e8b9710b9b236b104ddef2b9b3fcd",
+          "lines": 5
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-03",
+      "repo_id": "candidate-family-01",
+      "group_id": "candidate-family-01",
+      "head_sha": "97978fc406e9a2b05717d9ed6e55a747a94be41c",
+      "code_path": "case03.py",
+      "document_path": "case03.md",
+      "origin": "controlled",
+      "source": "AI-assisted original fixture; bench/candidates/controlled-v1/spec.json",
+      "license": "Apache-2.0",
+      "rights_evidence": "Team original-material approval in docs/license-scope.md; repository LICENSE",
+      "prior_exposure": "Authoring assistant has seen seed-dev-v1 and its seven-method results; no scan of these candidates. B/C must disclose prior exposure. Template independence pending human review.",
+      "collected_at": "2026-10-07",
+      "files": {
+        "code_path": {
+          "sha256": "7d2db77e30a150d7dfe913d18360f19946a12b108aeb58ff0c3029336c870c25",
+          "lines": 2
+        },
+        "document_path": {
+          "sha256": "b7dbecac4d146250d712d06b512a1d25cd60204071b68fa9988e77c2c5ad0bac",
+          "lines": 5
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-04",
+      "repo_id": "candidate-family-01",
+      "group_id": "candidate-family-01",
+      "head_sha": "97978fc406e9a2b05717d9ed6e55a747a94be41c",
+      "code_path": "case04.py",
+      "document_path": "case04.md",
+      "origin": "controlled",
+      "source": "AI-assisted original fixture; bench/candidates/controlled-v1/spec.json",
+      "license": "Apache-2.0",
+      "rights_evidence": "Team original-material approval in docs/license-scope.md; repository LICENSE",
+      "prior_exposure": "Authoring assistant has seen seed-dev-v1 and its seven-method results; no scan of these candidates. B/C must disclose prior exposure. Template independence pending human review.",
+      "collected_at": "2026-10-07",
+      "files": {
+        "code_path": {
+          "sha256": "e59e37dec24024969d5eafc89768cc92ad07532b8e8f8954f98be8edb700cc1f",
+          "lines": 3
+        },
+        "document_path": {
+          "sha256": "e19607fb02efec53563e454eadc4cdd79400bb0584b7bc83b973e90653fe96b1",
+          "lines": 5
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-05",
+      "repo_id": "candidate-family-02",
+      "group_id": "candidate-family-02",
+      "head_sha": "c41084643fa443a73111d1ce3940c5508ca4de31",
+      "code_path": "case05.py",
+      "document_path": "case05.md",
+      "origin": "controlled",
+      "source": "AI-assisted original fixture; bench/candidates/controlled-v1/spec.json",
+      "license": "Apache-2.0",
+      "rights_evidence": "Team original-material approval in docs/license-scope.md; repository LICENSE",
+      "prior_exposure": "Authoring assistant has seen seed-dev-v1 and its seven-method results; no scan of these candidates. B/C must disclose prior exposure. Template independence pending human review.",
+      "collected_at": "2026-10-07",
+      "files": {
+        "code_path": {
+          "sha256": "8b817decad144f9c5d945d2aed542d326c5df07781c6891fcdb6a9343d1940a3",
+          "lines": 6
+        },
+        "document_path": {
+          "sha256": "29380d72b2a5be2d882d8ca595d3aa0161151e42811d904adb3942d275408ee8",
+          "lines": 5
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-06",
+      "repo_id": "candidate-family-02",
+      "group_id": "candidate-family-02",
+      "head_sha": "c41084643fa443a73111d1ce3940c5508ca4de31",
+      "code_path": "case06.py",
+      "document_path": "case06.md",
+      "origin": "controlled",
+      "source": "AI-assisted original fixture; bench/candidates/controlled-v1/spec.json",
+      "license": "Apache-2.0",
+      "rights_evidence": "Team original-material approval in docs/license-scope.md; repository LICENSE",
+      "prior_exposure": "Authoring assistant has seen seed-dev-v1 and its seven-method results; no scan of these candidates. B/C must disclose prior exposure. Template independence pending human review.",
+      "collected_at": "2026-10-07",
+      "files": {
+        "code_path": {
+          "sha256": "3e00d416a9c35431d6dbcc3732ff50dc12184c7fbf3854dc50deff7fa3ba4280",
+          "lines": 4
+        },
+        "document_path": {
+          "sha256": "c147ccf1cce0a2fd4eda053a6712834ebcf323826a92d015a305d3c48126b40c",
+          "lines": 5
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-07",
+      "repo_id": "candidate-family-02",
+      "group_id": "candidate-family-02",
+      "head_sha": "c41084643fa443a73111d1ce3940c5508ca4de31",
+      "code_path": "case07.py",
+      "document_path": "case07.md",
+      "origin": "controlled",
+      "source": "AI-assisted original fixture; bench/candidates/controlled-v1/spec.json",
+      "license": "Apache-2.0",
+      "rights_evidence": "Team original-material approval in docs/license-scope.md; repository LICENSE",
+      "prior_exposure": "Authoring assistant has seen seed-dev-v1 and its seven-method results; no scan of these candidates. B/C must disclose prior exposure. Template independence pending human review.",
+      "collected_at": "2026-10-07",
+      "files": {
+        "code_path": {
+          "sha256": "3dee0d78d5bd4486d6e498433e460b9101172b36f9810dd3e1ba7e054b2e2b70",
+          "lines": 7
+        },
+        "document_path": {
+          "sha256": "4361f7e728a70c260cdf25b13a8f18830fa96a111562c15feba784d3231fabf8",
+          "lines": 5
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-08",
+      "repo_id": "candidate-family-02",
+      "group_id": "candidate-family-02",
+      "head_sha": "c41084643fa443a73111d1ce3940c5508ca4de31",
+      "code_path": "case08.py",
+      "document_path": "case08.md",
+      "origin": "controlled",
+      "source": "AI-assisted original fixture; bench/candidates/controlled-v1/spec.json",
+      "license": "Apache-2.0",
+      "rights_evidence": "Team original-material approval in docs/license-scope.md; repository LICENSE",
+      "prior_exposure": "Authoring assistant has seen seed-dev-v1 and its seven-method results; no scan of these candidates. B/C must disclose prior exposure. Template independence pending human review.",
+      "collected_at": "2026-10-07",
+      "files": {
+        "code_path": {
+          "sha256": "6099a35b019b32483ae1ed27093fc53ce494fc30ec32137545133d2129ccd947",
+          "lines": 5
+        },
+        "document_path": {
+          "sha256": "67a887a13f5f60c67dfdf374322b05f0692b3636e191325f728ca65fd9646cf5",
+          "lines": 5
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-09",
+      "repo_id": "candidate-family-03",
+      "group_id": "candidate-family-03",
+      "head_sha": "16d3ac74221f2247c645ca1999d485bb9763d833",
+      "code_path": "case09.py",
+      "document_path": "case09.md",
+      "origin": "controlled",
+      "source": "AI-assisted original fixture; bench/candidates/controlled-v1/spec.json",
+      "license": "Apache-2.0",
+      "rights_evidence": "Team original-material approval in docs/license-scope.md; repository LICENSE",
+      "prior_exposure": "Authoring assistant has seen seed-dev-v1 and its seven-method results; no scan of these candidates. B/C must disclose prior exposure. Template independence pending human review.",
+      "collected_at": "2026-10-07",
+      "files": {
+        "code_path": {
+          "sha256": "18f3a6fcc00bff82634fd84dd3dd99c5aab19dafe8ad08dc59b0685cf897c5bd",
+          "lines": 2
+        },
+        "document_path": {
+          "sha256": "7641bb95409faef62548aeebf224423fc16b7600594ca45fc6955474c062068e",
+          "lines": 9
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-10",
+      "repo_id": "candidate-family-03",
+      "group_id": "candidate-family-03",
+      "head_sha": "16d3ac74221f2247c645ca1999d485bb9763d833",
+      "code_path": "case10.py",
+      "document_path": "case10.md",
+      "origin": "controlled",
+      "source": "AI-assisted original fixture; bench/candidates/controlled-v1/spec.json",
+      "license": "Apache-2.0",
+      "rights_evidence": "Team original-material approval in docs/license-scope.md; repository LICENSE",
+      "prior_exposure": "Authoring assistant has seen seed-dev-v1 and its seven-method results; no scan of these candidates. B/C must disclose prior exposure. Template independence pending human review.",
+      "collected_at": "2026-10-07",
+      "files": {
+        "code_path": {
+          "sha256": "36b4256aa253fc3e86a7e30a413f564b3470f5823d2f968e2451fa1cd81f53a3",
+          "lines": 2
+        },
+        "document_path": {
+          "sha256": "36440d1b04dd7cf5799804727234e67349fe1eb598a75bb907df41090896eafb",
+          "lines": 9
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-11",
+      "repo_id": "candidate-family-03",
+      "group_id": "candidate-family-03",
+      "head_sha": "16d3ac74221f2247c645ca1999d485bb9763d833",
+      "code_path": "case11.py",
+      "document_path": "case11.md",
+      "origin": "controlled",
+      "source": "AI-assisted original fixture; bench/candidates/controlled-v1/spec.json",
+      "license": "Apache-2.0",
+      "rights_evidence": "Team original-material approval in docs/license-scope.md; repository LICENSE",
+      "prior_exposure": "Authoring assistant has seen seed-dev-v1 and its seven-method results; no scan of these candidates. B/C must disclose prior exposure. Template independence pending human review.",
+      "collected_at": "2026-10-07",
+      "files": {
+        "code_path": {
+          "sha256": "4d684c72a6edeb2ff2ebe449ce5dbd2470920b6be9d220f958184998737693cb",
+          "lines": 2
+        },
+        "document_path": {
+          "sha256": "7466f87082368a1050f6c44d95931be1925d9764c6ea3a6a078c91d3ef032040",
+          "lines": 10
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-12",
+      "repo_id": "candidate-family-03",
+      "group_id": "candidate-family-03",
+      "head_sha": "16d3ac74221f2247c645ca1999d485bb9763d833",
+      "code_path": "case12.py",
+      "document_path": "case12.md",
+      "origin": "controlled",
+      "source": "AI-assisted original fixture; bench/candidates/controlled-v1/spec.json",
+      "license": "Apache-2.0",
+      "rights_evidence": "Team original-material approval in docs/license-scope.md; repository LICENSE",
+      "prior_exposure": "Authoring assistant has seen seed-dev-v1 and its seven-method results; no scan of these candidates. B/C must disclose prior exposure. Template independence pending human review.",
+      "collected_at": "2026-10-07",
+      "files": {
+        "code_path": {
+          "sha256": "df9ebb1a9ed10df59759162193c7c291f96e26f297130a65042c4f59b5c00f3f",
+          "lines": 8
+        },
+        "document_path": {
+          "sha256": "cb65ddb92d0ae2fbd92b9f092cd69234c241fda86c0d1715a874f260b40cc337",
+          "lines": 8
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-13",
+      "repo_id": "candidate-family-04",
+      "group_id": "candidate-family-04",
+      "head_sha": "9638d576f474294bbcb2ec37e34e998306f13cab",
+      "code_path": "case13.py",
+      "document_path": "case13.md",
+      "origin": "controlled",
+      "source": "AI-assisted original fixture; bench/candidates/controlled-v1/spec.json",
+      "license": "Apache-2.0",
+      "rights_evidence": "Team original-material approval in docs/license-scope.md; repository LICENSE",
+      "prior_exposure": "Authoring assistant has seen seed-dev-v1 and its seven-method results; no scan of these candidates. B/C must disclose prior exposure. Template independence pending human review.",
+      "collected_at": "2026-10-07",
+      "files": {
+        "code_path": {
+          "sha256": "20085d4226370ad8da9faca7baf2f26743b42a97456f25764561f4a3b2887416",
+          "lines": 4
+        },
+        "document_path": {
+          "sha256": "007aa20c1c33f0b3c800a75dc24e4e6be69909d63ab229e4d7d495e83b65749e",
+          "lines": 8
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-14",
+      "repo_id": "candidate-family-04",
+      "group_id": "candidate-family-04",
+      "head_sha": "9638d576f474294bbcb2ec37e34e998306f13cab",
+      "code_path": "case14.py",
+      "document_path": "case14.md",
+      "origin": "controlled",
+      "source": "AI-assisted original fixture; bench/candidates/controlled-v1/spec.json",
+      "license": "Apache-2.0",
+      "rights_evidence": "Team original-material approval in docs/license-scope.md; repository LICENSE",
+      "prior_exposure": "Authoring assistant has seen seed-dev-v1 and its seven-method results; no scan of these candidates. B/C must disclose prior exposure. Template independence pending human review.",
+      "collected_at": "2026-10-07",
+      "files": {
+        "code_path": {
+          "sha256": "be0759794ebf8528381494005ad450468aef0465a0daf5139ed76e9ca9b6b7d3",
+          "lines": 4
+        },
+        "document_path": {
+          "sha256": "4bfc2348c559998570f8e332dd6939e8445650e3c86d179e82d0b5ed037eac90",
+          "lines": 8
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-15",
+      "repo_id": "candidate-family-04",
+      "group_id": "candidate-family-04",
+      "head_sha": "9638d576f474294bbcb2ec37e34e998306f13cab",
+      "code_path": "case15.py",
+      "document_path": "case15.md",
+      "origin": "controlled",
+      "source": "AI-assisted original fixture; bench/candidates/controlled-v1/spec.json",
+      "license": "Apache-2.0",
+      "rights_evidence": "Team original-material approval in docs/license-scope.md; repository LICENSE",
+      "prior_exposure": "Authoring assistant has seen seed-dev-v1 and its seven-method results; no scan of these candidates. B/C must disclose prior exposure. Template independence pending human review.",
+      "collected_at": "2026-10-07",
+      "files": {
+        "code_path": {
+          "sha256": "af2460d5cc5ed21255a663600fd95a7b48721cfa4b7232d44185e6d683aa481b",
+          "lines": 3
+        },
+        "document_path": {
+          "sha256": "db4bdd7686d5e60d94340369651f524a8379f45aa78f7a1d36ba5e22c6108b55",
+          "lines": 9
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-16",
+      "repo_id": "candidate-family-04",
+      "group_id": "candidate-family-04",
+      "head_sha": "9638d576f474294bbcb2ec37e34e998306f13cab",
+      "code_path": "case16.py",
+      "document_path": "case16.md",
+      "origin": "controlled",
+      "source": "AI-assisted original fixture; bench/candidates/controlled-v1/spec.json",
+      "license": "Apache-2.0",
+      "rights_evidence": "Team original-material approval in docs/license-scope.md; repository LICENSE",
+      "prior_exposure": "Authoring assistant has seen seed-dev-v1 and its seven-method results; no scan of these candidates. B/C must disclose prior exposure. Template independence pending human review.",
+      "collected_at": "2026-10-07",
+      "files": {
+        "code_path": {
+          "sha256": "02df1b52ea61aab1d8b02c7d126edb7e017be70594937b5f720938b5ab15aeb8",
+          "lines": 14
+        },
+        "document_path": {
+          "sha256": "b4e01cb47f62888b6d74f00ecbc910613569887aab82745459af0c834c85bdd3",
+          "lines": 8
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-17",
+      "repo_id": "candidate-family-05",
+      "group_id": "candidate-family-05",
+      "head_sha": "8a8b003a0089b42edd4e692e76b5adaa5f52151d",
+      "code_path": "case17.py",
+      "document_path": "case17.md",
+      "origin": "controlled",
+      "source": "AI-assisted original fixture; bench/candidates/controlled-v1/spec.json",
+      "license": "Apache-2.0",
+      "rights_evidence": "Team original-material approval in docs/license-scope.md; repository LICENSE",
+      "prior_exposure": "Authoring assistant has seen seed-dev-v1 and its seven-method results; no scan of these candidates. B/C must disclose prior exposure. Template independence pending human review.",
+      "collected_at": "2026-10-07",
+      "files": {
+        "code_path": {
+          "sha256": "c1a306be7226d30bb07b8b617b7f646eeffe577d7ac1c37f7141afe2c2f269a1",
+          "lines": 2
+        },
+        "document_path": {
+          "sha256": "3fd26fde4360a099ac66c015981326c94084b867efa193261a8ddd5fec08e212",
+          "lines": 5
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-18",
+      "repo_id": "candidate-family-05",
+      "group_id": "candidate-family-05",
+      "head_sha": "8a8b003a0089b42edd4e692e76b5adaa5f52151d",
+      "code_path": "case18.py",
+      "document_path": "case18.md",
+      "origin": "controlled",
+      "source": "AI-assisted original fixture; bench/candidates/controlled-v1/spec.json",
+      "license": "Apache-2.0",
+      "rights_evidence": "Team original-material approval in docs/license-scope.md; repository LICENSE",
+      "prior_exposure": "Authoring assistant has seen seed-dev-v1 and its seven-method results; no scan of these candidates. B/C must disclose prior exposure. Template independence pending human review.",
+      "collected_at": "2026-10-07",
+      "files": {
+        "code_path": {
+          "sha256": "0d3152db908c4204e280c6d21909083747ca48d880ed04872a2b45f778413e03",
+          "lines": 2
+        },
+        "document_path": {
+          "sha256": "0fccbe32b444368506c7f1491916a097fca1aeea8af7201b4a528d6265449f9c",
+          "lines": 5
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-19",
+      "repo_id": "candidate-family-05",
+      "group_id": "candidate-family-05",
+      "head_sha": "8a8b003a0089b42edd4e692e76b5adaa5f52151d",
+      "code_path": "case19.py",
+      "document_path": "case19.md",
+      "origin": "controlled",
+      "source": "AI-assisted original fixture; bench/candidates/controlled-v1/spec.json",
+      "license": "Apache-2.0",
+      "rights_evidence": "Team original-material approval in docs/license-scope.md; repository LICENSE",
+      "prior_exposure": "Authoring assistant has seen seed-dev-v1 and its seven-method results; no scan of these candidates. B/C must disclose prior exposure. Template independence pending human review.",
+      "collected_at": "2026-10-07",
+      "files": {
+        "code_path": {
+          "sha256": "67f3080d32de92954c1afc0a1937859d22518526c818187aa0dfee7ae62a2083",
+          "lines": 6
+        },
+        "document_path": {
+          "sha256": "978bb26b8295ae9816e7cace017624049109b5e2e69cd4b6a71aee6cd1e98528",
+          "lines": 5
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-20",
+      "repo_id": "candidate-family-05",
+      "group_id": "candidate-family-05",
+      "head_sha": "8a8b003a0089b42edd4e692e76b5adaa5f52151d",
+      "code_path": "case20.py",
+      "document_path": "case20.md",
+      "origin": "controlled",
+      "source": "AI-assisted original fixture; bench/candidates/controlled-v1/spec.json",
+      "license": "Apache-2.0",
+      "rights_evidence": "Team original-material approval in docs/license-scope.md; repository LICENSE",
+      "prior_exposure": "Authoring assistant has seen seed-dev-v1 and its seven-method results; no scan of these candidates. B/C must disclose prior exposure. Template independence pending human review.",
+      "collected_at": "2026-10-07",
+      "files": {
+        "code_path": {
+          "sha256": "17e33f2386af29f80939eceaf7bce44ff32246e36bd5f9b93b30841d70645328",
+          "lines": 2
+        },
+        "document_path": {
+          "sha256": "d3dac0ef9af9a4a3a292eadc49fc90daa4f90cd9c39f81996eb824b520b0c9bb",
+          "lines": 5
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-21",
+      "repo_id": "candidate-family-06",
+      "group_id": "candidate-family-06",
+      "head_sha": "05e0224c9d9b66564f45b228f7374f4e083f0f76",
+      "code_path": "case21.py",
+      "document_path": "case21.md",
+      "origin": "controlled",
+      "source": "AI-assisted original fixture; bench/candidates/controlled-v1/spec.json",
+      "license": "Apache-2.0",
+      "rights_evidence": "Team original-material approval in docs/license-scope.md; repository LICENSE",
+      "prior_exposure": "Authoring assistant has seen seed-dev-v1 and its seven-method results; no scan of these candidates. B/C must disclose prior exposure. Template independence pending human review.",
+      "collected_at": "2026-10-07",
+      "files": {
+        "code_path": {
+          "sha256": "b659a66d4a24131d2b4efe45b1b49f7e969c4b9939866bb304528644617b0bdd",
+          "lines": 1
+        },
+        "document_path": {
+          "sha256": "099eec9bd8712e2ed092528d9597ac7d8c3184b8bd6a4a3abadaf579d43f3165",
+          "lines": 5
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-22",
+      "repo_id": "candidate-family-06",
+      "group_id": "candidate-family-06",
+      "head_sha": "05e0224c9d9b66564f45b228f7374f4e083f0f76",
+      "code_path": "case22.py",
+      "document_path": "case22.md",
+      "origin": "controlled",
+      "source": "AI-assisted original fixture; bench/candidates/controlled-v1/spec.json",
+      "license": "Apache-2.0",
+      "rights_evidence": "Team original-material approval in docs/license-scope.md; repository LICENSE",
+      "prior_exposure": "Authoring assistant has seen seed-dev-v1 and its seven-method results; no scan of these candidates. B/C must disclose prior exposure. Template independence pending human review.",
+      "collected_at": "2026-10-07",
+      "files": {
+        "code_path": {
+          "sha256": "4d9d1724dcc855694a71f8585fcb87d966ad7b90d8377a87640e511af46f93ad",
+          "lines": 1
+        },
+        "document_path": {
+          "sha256": "350b57724f4e0cd8b40cb91eccf409464ef0bf1be9347b62fd50adff659628e7",
+          "lines": 5
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-23",
+      "repo_id": "candidate-family-06",
+      "group_id": "candidate-family-06",
+      "head_sha": "05e0224c9d9b66564f45b228f7374f4e083f0f76",
+      "code_path": "case23.py",
+      "document_path": "case23.md",
+      "origin": "controlled",
+      "source": "AI-assisted original fixture; bench/candidates/controlled-v1/spec.json",
+      "license": "Apache-2.0",
+      "rights_evidence": "Team original-material approval in docs/license-scope.md; repository LICENSE",
+      "prior_exposure": "Authoring assistant has seen seed-dev-v1 and its seven-method results; no scan of these candidates. B/C must disclose prior exposure. Template independence pending human review.",
+      "collected_at": "2026-10-07",
+      "files": {
+        "code_path": {
+          "sha256": "4acda8393104d3a67b20eb60f3902b5c644706febeae18ffa1c873901710211b",
+          "lines": 3
+        },
+        "document_path": {
+          "sha256": "1e0347dfce2f8ef642378528766f627c6e2182d60b711315b13d530fe6dd3f06",
+          "lines": 5
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-24",
+      "repo_id": "candidate-family-06",
+      "group_id": "candidate-family-06",
+      "head_sha": "05e0224c9d9b66564f45b228f7374f4e083f0f76",
+      "code_path": "case24.py",
+      "document_path": "case24.md",
+      "origin": "controlled",
+      "source": "AI-assisted original fixture; bench/candidates/controlled-v1/spec.json",
+      "license": "Apache-2.0",
+      "rights_evidence": "Team original-material approval in docs/license-scope.md; repository LICENSE",
+      "prior_exposure": "Authoring assistant has seen seed-dev-v1 and its seven-method results; no scan of these candidates. B/C must disclose prior exposure. Template independence pending human review.",
+      "collected_at": "2026-10-07",
+      "files": {
+        "code_path": {
+          "sha256": "f32dfefee52664973123858ed130e7fc0777f76a20781f0ea312f6d62d21c572",
+          "lines": 1
+        },
+        "document_path": {
+          "sha256": "ac542651c4f29b9c0850e7f1c1edee5d5b214129fa21b269b07cf1fa46a059fb",
+          "lines": 5
+        }
+      }
+    }
+  ],
+  "limits": "Overlap check only detects declared IDs; A must review provenance and template families."
+}

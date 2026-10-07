@@ -1,0 +1,5 @@
+# API reference
+
+## `encode_packet`
+
+`codec` 默认值为 `utf-8`。

@@ -1,0 +1,3 @@
+class Registry:
+    def register(self, name, /, *, replace=False):
+        return name, replace

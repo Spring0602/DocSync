@@ -1,0 +1,291 @@
+{
+  "schema_version": "2.0",
+  "manifest": {
+    "schema_version": "2.0",
+    "run_id": "f2302f3709af4387b784d4e6154778ff",
+    "versions": {
+      "docsync": "0.2.0",
+      "schema": "2.0",
+      "extractor": "python-static/2",
+      "claims": "markdown/2",
+      "verifier": "verifier/2",
+      "method": "full",
+      "pydantic": "2.11.7",
+      "markdown-it-py": "3.0.0"
+    },
+    "config_hash": "37a959a06dad80b416b91ee9504f300b698c86d460495c98fc40fc6fdc67fdbb",
+    "mode": "hybrid",
+    "status": "COMPLETED",
+    "enabled_types": [
+      "DEFAULT_VALUE",
+      "SIGNATURE",
+      "CONFIG"
+    ],
+    "semantic_coverage": "supported-static-claims-only",
+    "budget": {
+      "max_requests": 1,
+      "max_total_tokens": 100000
+    },
+    "usage": {
+      "requests": 1,
+      "input_tokens": 1037,
+      "output_tokens": 125,
+      "cache_hits": 0,
+      "reserved_tokens": 6801,
+      "unknown_usage_requests": 0
+    },
+    "diagnostics": [],
+    "stage_seconds": {
+      "extraction": 0.0006470000000717846,
+      "alignment": 0.00001550000001770968,
+      "judging": 6.800037699999848,
+      "verification": 0.00026170000001002336,
+      "analysis_total": 6.801356500000111,
+      "repository": 0.23733539999989262,
+      "patch_validation": 0.006141399999933128,
+      "total": 7.048671999999897
+    },
+    "model": {
+      "provider": "chat-completions",
+      "model": "deepseek-flash",
+      "temperature": 0.0
+    },
+    "events": [
+      "CREATED",
+      "ANALYZING",
+      "EXTRACTING",
+      "ALIGNING",
+      "JUDGING",
+      "VERIFYING",
+      "REPORTING",
+      "COMPLETED"
+    ],
+    "model_calls": [
+      {
+        "request_hash": "7fe947fa620e2a0550710f2ae14bf03dd115ae322be8292f81e7348786bf44ac",
+        "attempt": 1,
+        "cache_hit": false,
+        "model": "deepseek-flash",
+        "prompt_version": "semantic-judge/2",
+        "response_hash": "3656d06e59b7d3772f1454352f4b3560eacdee1b260807a4b004448369557d56",
+        "returned_model": "deepseek-flash",
+        "input_tokens": 1037,
+        "output_tokens": 125,
+        "status": "SUCCEEDED",
+        "elapsed_seconds": 6.798817
+      }
+    ]
+  },
+  "snapshot": {
+    "repo_id": "877dafe7dc40bb07d0b25bc6",
+    "head_sha": "ab57f9585b67276cead2e786f4aa4b4f94ac5c26",
+    "base_sha": null,
+    "mode": "commit",
+    "files_hash": "00fe1b1479e3cfc0a403eb85",
+    "dirty": false,
+    "files": [
+      {
+        "path": "README.md",
+        "blob_hash": "385c0bc9ae5bbba8167ba25b25263ae2c40f2cedb57f2c5c74424982efa20d86",
+        "size": 53,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "settings.py",
+        "blob_hash": "9eb379c8a3d2931ffb28132e4ffbcf33aa9b20c3624432f570db09b2862ef72e",
+        "size": 13,
+        "encoding": "utf-8"
+      }
+    ],
+    "changed_paths": []
+  },
+  "entities": [
+    {
+      "entity_id": "640df0e1cded7bc9536ba6e5",
+      "kind": "config",
+      "qualified_name": "settings.TIMEOUT",
+      "module": "settings",
+      "signature": [],
+      "decorators": [],
+      "span": {
+        "path": "settings.py",
+        "start_line": 1,
+        "end_line": 1,
+        "start_byte": 0,
+        "end_byte": 12,
+        "blob_hash": "9eb379c8a3d2931ffb28132e4ffbcf33aa9b20c3624432f570db09b2862ef72e"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "35096147ebe76ec1780991fb",
+      "entity_id": "640df0e1cded7bc9536ba6e5",
+      "subject": "settings",
+      "property": "TIMEOUT",
+      "value_state": "KNOWN",
+      "typed_value": {
+        "type": "int",
+        "canonical": "[\"int\",60]"
+      },
+      "expression": "60",
+      "span": {
+        "path": "settings.py",
+        "start_line": 1,
+        "end_line": 1,
+        "start_byte": 10,
+        "end_byte": 12,
+        "blob_hash": "9eb379c8a3d2931ffb28132e4ffbcf33aa9b20c3624432f570db09b2862ef72e"
+      },
+      "fact_kind": "CONFIG",
+      "parameters": [],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "addf85425587d7d7ca3cc281",
+      "subject": "settings",
+      "predicate": "TIMEOUT",
+      "kind": "CONFIG_ASSERTION",
+      "value": {
+        "type": "int",
+        "canonical": "[\"int\",30]"
+      },
+      "qualifiers": [],
+      "version_scope": "current",
+      "span": {
+        "path": "README.md",
+        "start_line": 3,
+        "end_line": 3,
+        "start_byte": 22,
+        "end_byte": 52,
+        "blob_hash": "385c0bc9ae5bbba8167ba25b25263ae2c40f2cedb57f2c5c74424982efa20d86"
+      },
+      "value_span": {
+        "path": "README.md",
+        "start_line": 3,
+        "end_line": 3,
+        "start_byte": 46,
+        "end_byte": 48,
+        "blob_hash": "385c0bc9ae5bbba8167ba25b25263ae2c40f2cedb57f2c5c74424982efa20d86"
+      },
+      "quote": "`TIMEOUT` 默认值为 `30`。",
+      "extraction_method": "markdown-rules/2",
+      "source_hint": null,
+      "positional_count": null,
+      "keyword_names": [],
+      "unpacking": false,
+      "bound_receiver": false
+    }
+  ],
+  "candidates": [
+    {
+      "claim_id": "addf85425587d7d7ca3cc281",
+      "candidates": [
+        {
+          "fact_id": "35096147ebe76ec1780991fb",
+          "rank": 1,
+          "score": 1.0,
+          "features": [
+            "exact_symbol",
+            "parameter_owner"
+          ]
+        }
+      ],
+      "ambiguity": false,
+      "reason": "MATCH"
+    }
+  ],
+  "judgments": [
+    {
+      "claim_id": "addf85425587d7d7ca3cc281",
+      "decision": "INCONSISTENT",
+      "fact_ids": [
+        "35096147ebe76ec1780991fb"
+      ],
+      "reason_code": "VALUE_MISMATCH",
+      "reason_text": "The claim states settings.TIMEOUT defaults to 30, but the cited fact shows TIMEOUT = 60.",
+      "claim_type_check": true,
+      "version_compatible": true,
+      "score": 1.0,
+      "uncertainty_reason": null,
+      "model_run_id": "49516b725bdb15430bdf336b"
+    }
+  ],
+  "findings": [
+    {
+      "finding_id": "9e1771bbb1e6f48ebaed510a",
+      "drift_type": "CONFIG",
+      "claim_id": "addf85425587d7d7ca3cc281",
+      "fact_ids": [
+        "35096147ebe76ec1780991fb"
+      ],
+      "evidence": {
+        "head_sha": "ab57f9585b67276cead2e786f4aa4b4f94ac5c26",
+        "snapshot_hash": "00fe1b1479e3cfc0a403eb85",
+        "entity_id": "640df0e1cded7bc9536ba6e5",
+        "document": {
+          "path": "README.md",
+          "start_line": 3,
+          "end_line": 3,
+          "start_byte": 22,
+          "end_byte": 52,
+          "blob_hash": "385c0bc9ae5bbba8167ba25b25263ae2c40f2cedb57f2c5c74424982efa20d86"
+        },
+        "code": {
+          "path": "settings.py",
+          "start_line": 1,
+          "end_line": 1,
+          "start_byte": 10,
+          "end_byte": 12,
+          "blob_hash": "9eb379c8a3d2931ffb28132e4ffbcf33aa9b20c3624432f570db09b2862ef72e"
+        },
+        "rule_id": "CONFIG/1",
+        "verifier_version": "verifier/2"
+      },
+      "severity": "warning",
+      "status": "INCONSISTENT",
+      "verification_status": "VERIFIED",
+      "ignored": false,
+      "ignore_reason": null,
+      "ignore_expires": null
+    }
+  ],
+  "rejected": [],
+  "patches": [
+    {
+      "patch_id": "a8acc7d774f5fbec40102086",
+      "finding_ids": [
+        "9e1771bbb1e6f48ebaed510a"
+      ],
+      "base_hashes": {
+        "README.md": "385c0bc9ae5bbba8167ba25b25263ae2c40f2cedb57f2c5c74424982efa20d86"
+      },
+      "edits": [
+        {
+          "span": {
+            "path": "README.md",
+            "start_line": 3,
+            "end_line": 3,
+            "start_byte": 46,
+            "end_byte": 48,
+            "blob_hash": "385c0bc9ae5bbba8167ba25b25263ae2c40f2cedb57f2c5c74424982efa20d86"
+          },
+          "old_text": "30",
+          "new_text": "60"
+        }
+      ],
+      "diff": "--- a/README.md\n+++ b/README.md\n@@ -1,3 +1,3 @@\n ## 配置 `settings`\n \n-`TIMEOUT` 默认值为 `30`。\n+`TIMEOUT` 默认值为 `60`。\n",
+      "validation": "VALIDATED",
+      "requires_review": true,
+      "validation_details": [
+        "All byte preimages match",
+        "Code fences unchanged",
+        "In-memory rescan: target conflicts removed; no new confirmed conflicts",
+        "Human semantic review still required"
+      ]
+    }
+  ]
+}

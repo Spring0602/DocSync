@@ -1,0 +1,152 @@
+{
+  "version": "controlled-candidates-v1",
+  "status": "unlabelled-candidates",
+  "authorship": "AI-assisted original controlled fixtures; not independent real-world sources",
+  "collected_at": "2026-10-07",
+  "samples": [
+    {
+      "sample_id": "candidate-01",
+      "group_id": "candidate-family-01",
+      "code": "class PageReader:\n    def __init__(self, encoding: str = \"utf-8\"):\n        self.encoding = encoding\n",
+      "document": "# API reference\n\n## `PageReader.__init__`\n\n`encoding` 默认值为 `utf-16`。\n"
+    },
+    {
+      "sample_id": "candidate-02",
+      "group_id": "candidate-family-01",
+      "code": "async def download_resource(url, *, retries: int = 4, decode: bool = False):\n    return url, retries, decode\n",
+      "document": "# API reference\n\n## `download_resource`\n\n`retries` 默认值为 `4`。\n"
+    },
+    {
+      "sample_id": "candidate-03",
+      "group_id": "candidate-family-01",
+      "code": "def emit_record(payload, *, tags: tuple[str, ...] = (\"audit\", \"public\")):\n    return payload, tags\n",
+      "document": "# API reference\n\n## `emit_record`\n\n`tags` 默认值为 `(\"audit\", \"internal\")`。\n"
+    },
+    {
+      "sample_id": "candidate-04",
+      "group_id": "candidate-family-01",
+      "code": "class MemoryBuffer:\n    def __init__(self, capacity=None):\n        self.capacity = 32 if capacity is None else capacity\n",
+      "document": "# API reference\n\n## `MemoryBuffer.__init__`\n\n`capacity` 默认值为 `None`。\n"
+    },
+    {
+      "sample_id": "candidate-05",
+      "group_id": "candidate-family-02",
+      "code": "BATCH_LIMIT = 12\n\ndef read_batch(limit=BATCH_LIMIT):\n    return limit\n\nBATCH_LIMIT = 24\n",
+      "document": "# API reference\n\n## `read_batch`\n\n`limit` 默认值为 `24`。\n"
+    },
+    {
+      "sample_id": "candidate-06",
+      "group_id": "candidate-family-02",
+      "code": "def encode_packet(payload, codec=\"latin-1\"):\n    return payload, codec\n\nencode_packet.__defaults__ = (\"utf-8\",)\n",
+      "document": "# API reference\n\n## `encode_packet`\n\n`codec` 默认值为 `utf-8`。\n"
+    },
+    {
+      "sample_id": "candidate-07",
+      "group_id": "candidate-family-02",
+      "code": "import os\n\ndef flush_interval():\n    return int(os.environ.get(\"FLUSH_INTERVAL\", \"8\"))\n\ndef flush_records(interval=flush_interval()):\n    return interval\n",
+      "document": "# API reference\n\n## `flush_records`\n\n`interval` 默认值为 `8`。\n"
+    },
+    {
+      "sample_id": "candidate-08",
+      "group_id": "candidate-family-02",
+      "code": "def choose_format():\n    return \"json\"\n\ndef export_records(format_name=choose_format()):\n    return format_name\n",
+      "document": "# API reference\n\n## `export_records`\n\n`format_name` 默认值为 `json`。\n"
+    },
+    {
+      "sample_id": "candidate-09",
+      "group_id": "candidate-family-03",
+      "code": "def attach_volume(name, *, readonly):\n    return name, readonly\n",
+      "document": "# Usage\n\n以下示例展示当前版本的调用方式，仅检查参数绑定，不要求执行示例。\n\n```python\nfrom case09 import attach_volume\noptions = {\"readonly\": True}\nattach_volume(\"logs\", **options)\n```\n"
+    },
+    {
+      "sample_id": "candidate-10",
+      "group_id": "candidate-family-03",
+      "code": "def send_notice(address, *, channel):\n    return address, channel\n",
+      "document": "# Usage\n\n以下示例展示当前版本的调用方式，仅检查参数绑定，不要求执行示例。\n\n```python\nfrom case10 import send_notice\narguments = (\"ops@example.invalid\", \"email\")\nsend_notice(*arguments)\n```\n"
+    },
+    {
+      "sample_id": "candidate-11",
+      "group_id": "candidate-family-03",
+      "code": "def place_marker(x, y, /, *, color=\"red\"):\n    return x, y, color\n",
+      "document": "# Usage\n\n以下示例展示当前版本的调用方式，仅检查参数绑定，不要求执行示例。\n\n```python\nfrom case11 import place_marker\nposition = (3, 7)\nstyle = {\"color\": \"blue\"}\nplace_marker(*position, **style)\n```\n"
+    },
+    {
+      "sample_id": "candidate-12",
+      "group_id": "candidate-family-03",
+      "code": "import json\nimport os\n\ndef read_options():\n    return json.loads(os.environ.get(\"NOTICE_OPTIONS\", \"{}\"))\n\ndef queue_notice(topic, *, priority):\n    return topic, priority\n",
+      "document": "# Usage\n\n以下示例展示当前版本的调用方式，仅检查参数绑定，不要求执行示例。\n\n```python\nfrom case12 import queue_notice, read_options\nqueue_notice(\"maintenance\", **read_options())\n```\n"
+    },
+    {
+      "sample_id": "candidate-13",
+      "group_id": "candidate-family-04",
+      "code": "class ArtifactStore:\n    @classmethod\n    def open(cls, root, *, create=False):\n        return cls(), root, create\n",
+      "document": "# Usage\n\n以下示例展示当前版本的调用方式，仅检查参数绑定，不要求执行示例。\n\n```python\nfrom case13 import ArtifactStore\nArtifactStore.open(\"artifacts\", create=True)\n```\n"
+    },
+    {
+      "sample_id": "candidate-14",
+      "group_id": "candidate-family-04",
+      "code": "class Formatter:\n    @staticmethod\n    def render(text, *, width):\n        return text, width\n",
+      "document": "# Usage\n\n以下示例展示当前版本的调用方式，仅检查参数绑定，不要求执行示例。\n\n```python\nfrom case14 import Formatter\nFormatter.render(\"status\", 72)\n```\n"
+    },
+    {
+      "sample_id": "candidate-15",
+      "group_id": "candidate-family-04",
+      "code": "class Registry:\n    def register(self, name, /, *, replace=False):\n        return name, replace\n",
+      "document": "# Usage\n\n以下示例展示当前版本的调用方式，仅检查参数绑定，不要求执行示例。\n\n```python\nfrom case15 import Registry\nregistry = Registry()\nregistry.register(name=\"worker\")\n```\n"
+    },
+    {
+      "sample_id": "candidate-16",
+      "group_id": "candidate-family-04",
+      "code": "import os\n\nclass LocalDispatcher:\n    def deliver(self, message):\n        return message\n\nclass RemoteDispatcher:\n    def deliver(self, message, *, token):\n        return message, token\n\ndef dispatcher():\n    if os.environ.get(\"REMOTE_DELIVERY\"):\n        return RemoteDispatcher()\n    return LocalDispatcher()\n",
+      "document": "# Usage\n\n以下示例展示当前版本的调用方式，仅检查参数绑定，不要求执行示例。\n\n```python\nfrom case16 import dispatcher\ndispatcher().deliver(\"ready\")\n```\n"
+    },
+    {
+      "sample_id": "candidate-17",
+      "group_id": "candidate-family-05",
+      "code": "RETRY_WINDOW: int = 6\nRETRY_WINDOW = 14\n",
+      "document": "# API reference\n\n## `case17`\n\n`RETRY_WINDOW` 默认值为 `6`。\n"
+    },
+    {
+      "sample_id": "candidate-18",
+      "group_id": "candidate-family-05",
+      "code": "PORT: int = 8020\nPORT += 3\n",
+      "document": "# API reference\n\n## `case18`\n\n`PORT` 默认值为 `8023`。\n"
+    },
+    {
+      "sample_id": "candidate-19",
+      "group_id": "candidate-family-05",
+      "code": "import os\n\nif os.environ.get(\"ARCHIVE_PROFILE\") == \"compact\":\n    ARCHIVE_LEVEL = 2\nelse:\n    ARCHIVE_LEVEL = 7\n",
+      "document": "# API reference\n\n## `case19`\n\n`ARCHIVE_LEVEL` 默认值为 `2`。\n"
+    },
+    {
+      "sample_id": "candidate-20",
+      "group_id": "candidate-family-05",
+      "code": "SERVICE_OPTIONS = {\"workers\": 2}\nSERVICE_OPTIONS.update({\"workers\": 6})\n",
+      "document": "# API reference\n\n## `case20.SERVICE_OPTIONS`\n\n`workers` 默认值为 `6`。\n"
+    },
+    {
+      "sample_id": "candidate-21",
+      "group_id": "candidate-family-06",
+      "code": "PIPELINE = {\"export\": {\"compression\": \"gzip\", \"level\": 3}}\n",
+      "document": "# API reference\n\n## `case21.PIPELINE.export`\n\n`compression` 默认值为 `zstd`。\n"
+    },
+    {
+      "sample_id": "candidate-22",
+      "group_id": "candidate-family-06",
+      "code": "RETRY_DELAYS = (1, 3, 9)\n",
+      "document": "# API reference\n\n## `case22`\n\n`RETRY_DELAYS` 默认值为 `(1, 3, 9)`。\n"
+    },
+    {
+      "sample_id": "candidate-23",
+      "group_id": "candidate-family-06",
+      "code": "import os\n\nSTORAGE = {\"local\": {\"root\": os.environ.get(\"STORAGE_ROOT\", \"./cache\")}}\n",
+      "document": "# API reference\n\n## `case23.STORAGE.local`\n\n`root` 默认值为 `./cache`。\n"
+    },
+    {
+      "sample_id": "candidate-24",
+      "group_id": "candidate-family-06",
+      "code": "CACHE = dict(enabled=True, capacity=128)\n",
+      "document": "# API reference\n\n## `case24.CACHE`\n\n`enabled` 默认值为 `True`。\n"
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+class PageReader:
+    def __init__(self, encoding: str = "utf-8"):
+        self.encoding = encoding

@@ -1,0 +1,5 @@
+# API reference
+
+## `MemoryBuffer.__init__`
+
+`capacity` 默认值为 `None`。

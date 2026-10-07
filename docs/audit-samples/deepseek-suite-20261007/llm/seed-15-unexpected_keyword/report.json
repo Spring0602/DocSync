@@ -1,0 +1,295 @@
+{
+  "schema_version": "2.0",
+  "manifest": {
+    "schema_version": "2.0",
+    "run_id": "99d00bf4c8544b299381ce4f2953569d",
+    "versions": {
+      "docsync": "0.2.0",
+      "schema": "2.0",
+      "extractor": "python-static/2",
+      "claims": "markdown/2",
+      "verifier": "verifier/2",
+      "method": "llm",
+      "pydantic": "2.11.7",
+      "markdown-it-py": "3.0.0"
+    },
+    "config_hash": "f4504daf93f76e44e1fbcb3aaf0a2d4616c146016d1c35b56e8f0f1901c23c92",
+    "mode": "hybrid",
+    "status": "COMPLETED",
+    "enabled_types": [
+      "DEFAULT_VALUE",
+      "SIGNATURE",
+      "CONFIG"
+    ],
+    "semantic_coverage": "supported-static-claims-only",
+    "budget": {
+      "max_requests": 1,
+      "max_total_tokens": 100000
+    },
+    "usage": {
+      "requests": 1,
+      "input_tokens": 609,
+      "output_tokens": 143,
+      "cache_hits": 0,
+      "reserved_tokens": 5604,
+      "unknown_usage_requests": 0
+    },
+    "diagnostics": [],
+    "stage_seconds": {
+      "extraction": 0.0006193000001530891,
+      "alignment": 0.000015899999880275573,
+      "judging": 6.213600499999984,
+      "verification": 0.000461399999949208,
+      "analysis_total": 6.215053600000147,
+      "repository": 0.2329128999999739,
+      "patch_validation": 0.000032500000088475645,
+      "total": 6.452808300000015
+    },
+    "model": {
+      "provider": "chat-completions",
+      "model": "deepseek-flash",
+      "temperature": 0.0
+    },
+    "events": [
+      "CREATED",
+      "ANALYZING",
+      "EXTRACTING",
+      "ALIGNING",
+      "JUDGING",
+      "VERIFYING",
+      "REPORTING",
+      "COMPLETED"
+    ],
+    "model_calls": [
+      {
+        "request_hash": "9aa29934f7dbffccd9ba16b4b7ec64935a42d10ff988f9b9dd2f422ead9ec0c2",
+        "attempt": 1,
+        "cache_hit": false,
+        "model": "deepseek-flash",
+        "prompt_version": "semantic-judge/2",
+        "response_hash": "a150af9d93dd5122ac5d8a94a8faa5cf8d512834c9071dae577255658da20f46",
+        "returned_model": "deepseek-flash",
+        "input_tokens": 609,
+        "output_tokens": 143,
+        "status": "SUCCEEDED",
+        "elapsed_seconds": 6.212881
+      }
+    ]
+  },
+  "snapshot": {
+    "repo_id": "e0b88ded1c1194ea78bd2a2e",
+    "head_sha": "a95d8228d35c88cae04b359c7c5e09cafa57fe3e",
+    "base_sha": null,
+    "mode": "commit",
+    "files_hash": "874d81cdfb9edebddf2e61da",
+    "dirty": false,
+    "files": [
+      {
+        "path": "README.md",
+        "blob_hash": "76f9e75bd510142f1164d51045443fe42e11f13c1206009c4074d8625b6785d4",
+        "size": 36,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "client.py",
+        "blob_hash": "ae4ec283ec97acbde5f65ecb71e61a96e50eb35a216d0382051e41d53bd2f7d0",
+        "size": 44,
+        "encoding": "utf-8"
+      }
+    ],
+    "changed_paths": []
+  },
+  "entities": [
+    {
+      "entity_id": "0652e0379f3e9f3cddc797d5",
+      "kind": "function",
+      "qualified_name": "client.connect",
+      "module": "client",
+      "signature": [
+        {
+          "name": "timeout",
+          "kind": "POSITIONAL_OR_KEYWORD",
+          "required": false,
+          "value_state": "KNOWN",
+          "typed_value": {
+            "type": "int",
+            "canonical": "[\"int\",60]"
+          },
+          "expression": "60"
+        }
+      ],
+      "decorators": [],
+      "span": {
+        "path": "client.py",
+        "start_line": 1,
+        "end_line": 2,
+        "start_byte": 0,
+        "end_byte": 43,
+        "blob_hash": "ae4ec283ec97acbde5f65ecb71e61a96e50eb35a216d0382051e41d53bd2f7d0"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "c91ae0bc91b89f2b6ba30bb6",
+      "entity_id": "0652e0379f3e9f3cddc797d5",
+      "subject": "client.connect",
+      "property": "timeout",
+      "value_state": "KNOWN",
+      "typed_value": {
+        "type": "int",
+        "canonical": "[\"int\",60]"
+      },
+      "expression": "60",
+      "span": {
+        "path": "client.py",
+        "start_line": 1,
+        "end_line": 1,
+        "start_byte": 20,
+        "end_byte": 22,
+        "blob_hash": "ae4ec283ec97acbde5f65ecb71e61a96e50eb35a216d0382051e41d53bd2f7d0"
+      },
+      "fact_kind": "DEFAULT_VALUE",
+      "parameters": [],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    },
+    {
+      "fact_id": "cc1abf138dfac06bef3bdd42",
+      "entity_id": "0652e0379f3e9f3cddc797d5",
+      "subject": "client.connect",
+      "property": "__signature__",
+      "value_state": "KNOWN",
+      "typed_value": null,
+      "expression": "def connect(timeout=60):\n    return timeout",
+      "span": {
+        "path": "client.py",
+        "start_line": 1,
+        "end_line": 2,
+        "start_byte": 0,
+        "end_byte": 43,
+        "blob_hash": "ae4ec283ec97acbde5f65ecb71e61a96e50eb35a216d0382051e41d53bd2f7d0"
+      },
+      "fact_kind": "SIGNATURE",
+      "parameters": [
+        {
+          "name": "timeout",
+          "kind": "POSITIONAL_OR_KEYWORD",
+          "required": false,
+          "value_state": "KNOWN",
+          "typed_value": {
+            "type": "int",
+            "canonical": "[\"int\",60]"
+          },
+          "expression": "60"
+        }
+      ],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "1db42d3cdcda83dffa737e09",
+      "subject": "connect",
+      "predicate": "__signature__",
+      "kind": "CALL_EXAMPLE",
+      "value": null,
+      "qualifiers": [],
+      "version_scope": "current",
+      "span": {
+        "path": "README.md",
+        "start_line": 1,
+        "end_line": 3,
+        "start_byte": 0,
+        "end_byte": 36,
+        "blob_hash": "76f9e75bd510142f1164d51045443fe42e11f13c1206009c4074d8625b6785d4"
+      },
+      "value_span": null,
+      "quote": "```python\nconnect(host='local')\n```\n",
+      "extraction_method": "markdown-call/2",
+      "source_hint": null,
+      "positional_count": 0,
+      "keyword_names": [
+        "host"
+      ],
+      "unpacking": false,
+      "bound_receiver": false
+    }
+  ],
+  "candidates": [
+    {
+      "claim_id": "1db42d3cdcda83dffa737e09",
+      "candidates": [
+        {
+          "fact_id": "cc1abf138dfac06bef3bdd42",
+          "rank": 1,
+          "score": 1.0,
+          "features": [
+            "exact_symbol",
+            "parameter_owner"
+          ]
+        }
+      ],
+      "ambiguity": false,
+      "reason": "MATCH"
+    }
+  ],
+  "judgments": [
+    {
+      "claim_id": "1db42d3cdcda83dffa737e09",
+      "decision": "INCONSISTENT",
+      "fact_ids": [
+        "cc1abf138dfac06bef3bdd42"
+      ],
+      "reason_code": "ARGUMENT_BINDING_ERROR",
+      "reason_text": "The example calls connect(host='local'), but the only available function is connect(timeout=60) in client.py; there is no 'host' parameter, so argument binding fails.",
+      "claim_type_check": true,
+      "version_compatible": true,
+      "score": 0.95,
+      "uncertainty_reason": null,
+      "model_run_id": "5ac380de9430ba80af468612"
+    }
+  ],
+  "findings": [
+    {
+      "finding_id": "587fc77bae5ae727f1ae9be4",
+      "drift_type": "SIGNATURE",
+      "claim_id": "1db42d3cdcda83dffa737e09",
+      "fact_ids": [
+        "cc1abf138dfac06bef3bdd42"
+      ],
+      "evidence": {
+        "head_sha": "a95d8228d35c88cae04b359c7c5e09cafa57fe3e",
+        "snapshot_hash": "874d81cdfb9edebddf2e61da",
+        "entity_id": "0652e0379f3e9f3cddc797d5",
+        "document": {
+          "path": "README.md",
+          "start_line": 1,
+          "end_line": 3,
+          "start_byte": 0,
+          "end_byte": 36,
+          "blob_hash": "76f9e75bd510142f1164d51045443fe42e11f13c1206009c4074d8625b6785d4"
+        },
+        "code": {
+          "path": "client.py",
+          "start_line": 1,
+          "end_line": 2,
+          "start_byte": 0,
+          "end_byte": 43,
+          "blob_hash": "ae4ec283ec97acbde5f65ecb71e61a96e50eb35a216d0382051e41d53bd2f7d0"
+        },
+        "rule_id": "SIGNATURE/1",
+        "verifier_version": "verifier/2"
+      },
+      "severity": "warning",
+      "status": "INCONSISTENT",
+      "verification_status": "VERIFIED",
+      "ignored": false,
+      "ignore_reason": null,
+      "ignore_expires": null
+    }
+  ],
+  "rejected": [],
+  "patches": []
+}

@@ -1,0 +1,5 @@
+# API reference
+
+## `case17`
+
+`RETRY_WINDOW` 默认值为 `6`。

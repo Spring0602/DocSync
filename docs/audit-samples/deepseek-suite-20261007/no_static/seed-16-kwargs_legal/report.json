@@ -1,0 +1,227 @@
+{
+  "schema_version": "2.0",
+  "manifest": {
+    "schema_version": "2.0",
+    "run_id": "a8ebcfc6a0a348049059343b3bb88448",
+    "versions": {
+      "docsync": "0.2.0",
+      "schema": "2.0",
+      "extractor": "python-static/2",
+      "claims": "markdown/2",
+      "verifier": "verifier/2",
+      "method": "no_static",
+      "pydantic": "2.11.7",
+      "markdown-it-py": "3.0.0"
+    },
+    "config_hash": "9ae0f290ee4b313e7e6fa2b4a8550d7092aed5840543e929322e941ee008bca1",
+    "mode": "hybrid",
+    "status": "COMPLETED",
+    "enabled_types": [
+      "DEFAULT_VALUE",
+      "SIGNATURE",
+      "CONFIG"
+    ],
+    "semantic_coverage": "supported-static-claims-only",
+    "budget": {
+      "max_requests": 1,
+      "max_total_tokens": 100000
+    },
+    "usage": {
+      "requests": 1,
+      "input_tokens": 605,
+      "output_tokens": 145,
+      "cache_hits": 0,
+      "reserved_tokens": 5586,
+      "unknown_usage_requests": 0
+    },
+    "diagnostics": [],
+    "stage_seconds": {
+      "extraction": 0.0012727999999242456,
+      "alignment": 0.00003990000004705507,
+      "judging": 6.029405999999881,
+      "verification": 7.099999947968172e-6,
+      "analysis_total": 6.031889200000023,
+      "repository": 0.4911098000000038,
+      "patch_validation": 0.00003969999988839845,
+      "total": 6.528280700000096
+    },
+    "model": {
+      "provider": "chat-completions",
+      "model": "deepseek-flash",
+      "temperature": 0.0
+    },
+    "events": [
+      "CREATED",
+      "ANALYZING",
+      "EXTRACTING",
+      "ALIGNING",
+      "JUDGING",
+      "VERIFYING",
+      "REPORTING",
+      "COMPLETED"
+    ],
+    "model_calls": [
+      {
+        "request_hash": "2bf513aafecefcead57f961ba04dfbaaf42f768ac1a31a0b998ae7795ee26004",
+        "attempt": 1,
+        "cache_hit": false,
+        "model": "deepseek-flash",
+        "prompt_version": "semantic-judge/2",
+        "response_hash": "ca676522e93a2b1b1849ca2a19ab425e6d90df9cf5e896708145854034b30341",
+        "returned_model": "deepseek-flash",
+        "input_tokens": 605,
+        "output_tokens": 145,
+        "status": "SUCCEEDED",
+        "elapsed_seconds": 6.027364
+      }
+    ]
+  },
+  "snapshot": {
+    "repo_id": "27c3e447490e987d8e35a13b",
+    "head_sha": "4c5a8deb8d27ed524c548021d10ac812a46a0da2",
+    "base_sha": null,
+    "mode": "commit",
+    "files_hash": "b2acdacccd5dcc155b332a7b",
+    "dirty": false,
+    "files": [
+      {
+        "path": "README.md",
+        "blob_hash": "76f9e75bd510142f1164d51045443fe42e11f13c1206009c4074d8625b6785d4",
+        "size": 36,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "client.py",
+        "blob_hash": "1e35a9177400b7cedd1c488633a9e45a8f9b151df625c00d1bf9fae30e35e464",
+        "size": 28,
+        "encoding": "utf-8"
+      }
+    ],
+    "changed_paths": []
+  },
+  "entities": [
+    {
+      "entity_id": "0652e0379f3e9f3cddc797d5",
+      "kind": "function",
+      "qualified_name": "client.connect",
+      "module": "client",
+      "signature": [
+        {
+          "name": "kwargs",
+          "kind": "VAR_KEYWORD",
+          "required": false,
+          "value_state": "ABSENT",
+          "typed_value": null,
+          "expression": null
+        }
+      ],
+      "decorators": [],
+      "span": {
+        "path": "client.py",
+        "start_line": 1,
+        "end_line": 1,
+        "start_byte": 0,
+        "end_byte": 27,
+        "blob_hash": "1e35a9177400b7cedd1c488633a9e45a8f9b151df625c00d1bf9fae30e35e464"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "cc2fc632b5e8e9bf9116433e",
+      "entity_id": "0652e0379f3e9f3cddc797d5",
+      "subject": "client.connect",
+      "property": "__signature__",
+      "value_state": "KNOWN",
+      "typed_value": null,
+      "expression": "def connect(**kwargs): pass",
+      "span": {
+        "path": "client.py",
+        "start_line": 1,
+        "end_line": 1,
+        "start_byte": 0,
+        "end_byte": 27,
+        "blob_hash": "1e35a9177400b7cedd1c488633a9e45a8f9b151df625c00d1bf9fae30e35e464"
+      },
+      "fact_kind": "SIGNATURE",
+      "parameters": [
+        {
+          "name": "kwargs",
+          "kind": "VAR_KEYWORD",
+          "required": false,
+          "value_state": "ABSENT",
+          "typed_value": null,
+          "expression": null
+        }
+      ],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "1db42d3cdcda83dffa737e09",
+      "subject": "connect",
+      "predicate": "__signature__",
+      "kind": "CALL_EXAMPLE",
+      "value": null,
+      "qualifiers": [],
+      "version_scope": "current",
+      "span": {
+        "path": "README.md",
+        "start_line": 1,
+        "end_line": 3,
+        "start_byte": 0,
+        "end_byte": 36,
+        "blob_hash": "76f9e75bd510142f1164d51045443fe42e11f13c1206009c4074d8625b6785d4"
+      },
+      "value_span": null,
+      "quote": "```python\nconnect(host='local')\n```\n",
+      "extraction_method": "markdown-call/2",
+      "source_hint": null,
+      "positional_count": 0,
+      "keyword_names": [
+        "host"
+      ],
+      "unpacking": false,
+      "bound_receiver": false
+    }
+  ],
+  "candidates": [
+    {
+      "claim_id": "1db42d3cdcda83dffa737e09",
+      "candidates": [
+        {
+          "fact_id": "cc2fc632b5e8e9bf9116433e",
+          "rank": 1,
+          "score": 1.0,
+          "features": [
+            "exact_symbol",
+            "parameter_owner"
+          ]
+        }
+      ],
+      "ambiguity": false,
+      "reason": "MATCH"
+    }
+  ],
+  "judgments": [
+    {
+      "claim_id": "1db42d3cdcda83dffa737e09",
+      "decision": "CONSISTENT",
+      "fact_ids": [
+        "cc2fc632b5e8e9bf9116433e"
+      ],
+      "reason_code": "ARGUMENT_BINDING_VALID",
+      "reason_text": "The example calls connect(host='local'). The only supplied fact (client.py) defines connect(**kwargs), which accepts arbitrary keyword arguments, so host='local' binds validly.",
+      "claim_type_check": true,
+      "version_compatible": true,
+      "score": 0.9,
+      "uncertainty_reason": null,
+      "model_run_id": "1ee90ff1453c8bb44e01f347"
+    }
+  ],
+  "findings": [],
+  "rejected": [],
+  "patches": []
+}

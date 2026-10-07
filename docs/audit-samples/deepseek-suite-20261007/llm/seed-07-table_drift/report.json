@@ -1,0 +1,265 @@
+{
+  "schema_version": "2.0",
+  "manifest": {
+    "schema_version": "2.0",
+    "run_id": "7c1033bbf2d949ce9f86e3ee98ae3c94",
+    "versions": {
+      "docsync": "0.2.0",
+      "schema": "2.0",
+      "extractor": "python-static/2",
+      "claims": "markdown/2",
+      "verifier": "verifier/2",
+      "method": "llm",
+      "pydantic": "2.11.7",
+      "markdown-it-py": "3.0.0"
+    },
+    "config_hash": "f4504daf93f76e44e1fbcb3aaf0a2d4616c146016d1c35b56e8f0f1901c23c92",
+    "mode": "hybrid",
+    "status": "COMPLETED",
+    "enabled_types": [
+      "DEFAULT_VALUE",
+      "SIGNATURE",
+      "CONFIG"
+    ],
+    "semantic_coverage": "supported-static-claims-only",
+    "budget": {
+      "max_requests": 1,
+      "max_total_tokens": 100000
+    },
+    "usage": {
+      "requests": 1,
+      "input_tokens": 604,
+      "output_tokens": 193,
+      "cache_hits": 0,
+      "reserved_tokens": 5574,
+      "unknown_usage_requests": 0
+    },
+    "diagnostics": [],
+    "stage_seconds": {
+      "extraction": 0.0016654000000926317,
+      "alignment": 0.000027600000066740904,
+      "judging": 5.869068599999991,
+      "verification": 7.300000106624793e-6,
+      "analysis_total": 5.871617600000036,
+      "repository": 0.2509132000000136,
+      "patch_validation": 0.00003179999998792482,
+      "total": 6.126833799999986
+    },
+    "model": {
+      "provider": "chat-completions",
+      "model": "deepseek-flash",
+      "temperature": 0.0
+    },
+    "events": [
+      "CREATED",
+      "ANALYZING",
+      "EXTRACTING",
+      "ALIGNING",
+      "JUDGING",
+      "VERIFYING",
+      "REPORTING",
+      "COMPLETED"
+    ],
+    "model_calls": [
+      {
+        "request_hash": "fced36b65c632163cea144a0617355bd45ada49428d8b92a2dd3364fa9201f3f",
+        "attempt": 1,
+        "cache_hit": false,
+        "model": "deepseek-flash",
+        "prompt_version": "semantic-judge/2",
+        "response_hash": "52be1c3fb057da0cb6f98b786695f50fa006b6b73fcd61ef5ec31c314146b279",
+        "returned_model": "deepseek-flash",
+        "input_tokens": 604,
+        "output_tokens": 193,
+        "status": "SUCCEEDED",
+        "elapsed_seconds": 5.86806
+      }
+    ]
+  },
+  "snapshot": {
+    "repo_id": "d7b7c697112133a33ac6dc7e",
+    "head_sha": "c131e00fcf344e565a4a30648c2c53392d9b7428",
+    "base_sha": null,
+    "mode": "commit",
+    "files_hash": "503ed70474e417e2a0c63841",
+    "dirty": false,
+    "files": [
+      {
+        "path": "README.md",
+        "blob_hash": "5899c7b1f3394a8fe09af732df79235e2178b0cf87e9e5fc24de5164c44ec08d",
+        "size": 61,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "client.py",
+        "blob_hash": "ae4ec283ec97acbde5f65ecb71e61a96e50eb35a216d0382051e41d53bd2f7d0",
+        "size": 44,
+        "encoding": "utf-8"
+      }
+    ],
+    "changed_paths": []
+  },
+  "entities": [
+    {
+      "entity_id": "0652e0379f3e9f3cddc797d5",
+      "kind": "function",
+      "qualified_name": "client.connect",
+      "module": "client",
+      "signature": [
+        {
+          "name": "timeout",
+          "kind": "POSITIONAL_OR_KEYWORD",
+          "required": false,
+          "value_state": "KNOWN",
+          "typed_value": {
+            "type": "int",
+            "canonical": "[\"int\",60]"
+          },
+          "expression": "60"
+        }
+      ],
+      "decorators": [],
+      "span": {
+        "path": "client.py",
+        "start_line": 1,
+        "end_line": 2,
+        "start_byte": 0,
+        "end_byte": 43,
+        "blob_hash": "ae4ec283ec97acbde5f65ecb71e61a96e50eb35a216d0382051e41d53bd2f7d0"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "c91ae0bc91b89f2b6ba30bb6",
+      "entity_id": "0652e0379f3e9f3cddc797d5",
+      "subject": "client.connect",
+      "property": "timeout",
+      "value_state": "KNOWN",
+      "typed_value": {
+        "type": "int",
+        "canonical": "[\"int\",60]"
+      },
+      "expression": "60",
+      "span": {
+        "path": "client.py",
+        "start_line": 1,
+        "end_line": 1,
+        "start_byte": 20,
+        "end_byte": 22,
+        "blob_hash": "ae4ec283ec97acbde5f65ecb71e61a96e50eb35a216d0382051e41d53bd2f7d0"
+      },
+      "fact_kind": "DEFAULT_VALUE",
+      "parameters": [],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    },
+    {
+      "fact_id": "cc1abf138dfac06bef3bdd42",
+      "entity_id": "0652e0379f3e9f3cddc797d5",
+      "subject": "client.connect",
+      "property": "__signature__",
+      "value_state": "KNOWN",
+      "typed_value": null,
+      "expression": "def connect(timeout=60):\n    return timeout",
+      "span": {
+        "path": "client.py",
+        "start_line": 1,
+        "end_line": 2,
+        "start_byte": 0,
+        "end_byte": 43,
+        "blob_hash": "ae4ec283ec97acbde5f65ecb71e61a96e50eb35a216d0382051e41d53bd2f7d0"
+      },
+      "fact_kind": "SIGNATURE",
+      "parameters": [
+        {
+          "name": "timeout",
+          "kind": "POSITIONAL_OR_KEYWORD",
+          "required": false,
+          "value_state": "KNOWN",
+          "typed_value": {
+            "type": "int",
+            "canonical": "[\"int\",60]"
+          },
+          "expression": "60"
+        }
+      ],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "d64735f79e41452f3802f2a1",
+      "subject": "connect",
+      "predicate": "timeout",
+      "kind": "DEFAULT_ASSERTION",
+      "value": {
+        "type": "int",
+        "canonical": "[\"int\",30]"
+      },
+      "qualifiers": [],
+      "version_scope": "current",
+      "span": {
+        "path": "README.md",
+        "start_line": 5,
+        "end_line": 5,
+        "start_byte": 48,
+        "end_byte": 60,
+        "blob_hash": "5899c7b1f3394a8fe09af732df79235e2178b0cf87e9e5fc24de5164c44ec08d"
+      },
+      "value_span": {
+        "path": "README.md",
+        "start_line": 5,
+        "end_line": 5,
+        "start_byte": 57,
+        "end_byte": 59,
+        "blob_hash": "5899c7b1f3394a8fe09af732df79235e2178b0cf87e9e5fc24de5164c44ec08d"
+      },
+      "quote": "|timeout|30|",
+      "extraction_method": "markdown-table/1",
+      "source_hint": null,
+      "positional_count": null,
+      "keyword_names": [],
+      "unpacking": false,
+      "bound_receiver": false
+    }
+  ],
+  "candidates": [
+    {
+      "claim_id": "d64735f79e41452f3802f2a1",
+      "candidates": [
+        {
+          "fact_id": "c91ae0bc91b89f2b6ba30bb6",
+          "rank": 1,
+          "score": 1.0,
+          "features": [
+            "exact_symbol",
+            "parameter_owner"
+          ]
+        }
+      ],
+      "ambiguity": false,
+      "reason": "MATCH"
+    }
+  ],
+  "judgments": [
+    {
+      "claim_id": "d64735f79e41452f3802f2a1",
+      "decision": "UNCERTAIN",
+      "fact_ids": [
+        "c91ae0bc91b89f2b6ba30bb6"
+      ],
+      "reason_code": "INSUFFICIENT_CONTEXT",
+      "reason_text": "The claim '|timeout|30|' appears to assert something about a timeout value of 30, but the supplied fact only shows client.py containing 'def connect(timeout=60)'. No fact confirms a timeout of 30, and the document/claim semantics are unclear without additional context.",
+      "claim_type_check": true,
+      "version_compatible": true,
+      "score": null,
+      "uncertainty_reason": "Insufficient evidence to determine what the claim '|timeout|30|' asserts or whether it relates to the shown code/fact.",
+      "model_run_id": "67ef451d10fab19f49cf5484"
+    }
+  ],
+  "findings": [],
+  "rejected": [],
+  "patches": []
+}

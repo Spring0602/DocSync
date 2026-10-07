@@ -1,0 +1,5 @@
+# API reference
+
+## `case24.CACHE`
+
+`enabled` 默认值为 `True`。

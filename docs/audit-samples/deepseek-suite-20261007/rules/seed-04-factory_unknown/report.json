@@ -1,0 +1,237 @@
+{
+  "schema_version": "2.0",
+  "manifest": {
+    "schema_version": "2.0",
+    "run_id": "a1a814e68b5a4b969c9ccc82580e5106",
+    "versions": {
+      "docsync": "0.2.0",
+      "schema": "2.0",
+      "extractor": "python-static/2",
+      "claims": "markdown/2",
+      "verifier": "verifier/2",
+      "method": "rules",
+      "pydantic": "2.11.7",
+      "markdown-it-py": "3.0.0"
+    },
+    "config_hash": "86b44df60004d4951d0b70a3b2ff5a57a0cc71beccbd1b5519b6b6ff0fa5657e",
+    "mode": "rules",
+    "status": "COMPLETED",
+    "enabled_types": [
+      "DEFAULT_VALUE",
+      "SIGNATURE",
+      "CONFIG"
+    ],
+    "semantic_coverage": "supported-static-claims-only",
+    "budget": {
+      "max_requests": 1,
+      "max_total_tokens": 100000
+    },
+    "usage": {
+      "requests": 0,
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "diagnostics": [],
+    "stage_seconds": {
+      "extraction": 0.0006669000001693348,
+      "alignment": 0.000013800000033370452,
+      "judging": 9.600000112186535e-6,
+      "verification": 2.7000000955013093e-6,
+      "analysis_total": 0.0010920000001988228,
+      "repository": 0.19437649999986206,
+      "patch_validation": 0.000015699999948992627,
+      "total": 0.19714759999988019
+    },
+    "model": {
+      "provider": "chat-completions",
+      "model": "deepseek-flash",
+      "temperature": 0.0
+    },
+    "events": [
+      "CREATED",
+      "ANALYZING",
+      "EXTRACTING",
+      "ALIGNING",
+      "JUDGING",
+      "VERIFYING",
+      "REPORTING",
+      "COMPLETED"
+    ],
+    "model_calls": []
+  },
+  "snapshot": {
+    "repo_id": "2959f9184b355e9524e9aeb6",
+    "head_sha": "a12996cb00b0bcc90c9458caf4a6db09838a0278",
+    "base_sha": null,
+    "mode": "commit",
+    "files_hash": "1c97c2a7c5015b677580fafc",
+    "dirty": false,
+    "files": [
+      {
+        "path": "README.md",
+        "blob_hash": "8447d6d7c9c81e0fea23406e867f857d7894009f578de15516b98cf937aa5c74",
+        "size": 45,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "client.py",
+        "blob_hash": "0d193e7fe5dccde1601e880815821b86753045aefa66e5e286771ec445d2ba85",
+        "size": 51,
+        "encoding": "utf-8"
+      }
+    ],
+    "changed_paths": []
+  },
+  "entities": [
+    {
+      "entity_id": "0652e0379f3e9f3cddc797d5",
+      "kind": "function",
+      "qualified_name": "client.connect",
+      "module": "client",
+      "signature": [
+        {
+          "name": "timeout",
+          "kind": "POSITIONAL_OR_KEYWORD",
+          "required": false,
+          "value_state": "UNKNOWN",
+          "typed_value": null,
+          "expression": "factory()"
+        }
+      ],
+      "decorators": [],
+      "span": {
+        "path": "client.py",
+        "start_line": 1,
+        "end_line": 2,
+        "start_byte": 0,
+        "end_byte": 50,
+        "blob_hash": "0d193e7fe5dccde1601e880815821b86753045aefa66e5e286771ec445d2ba85"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "dfee2f254fe0d5d5c90e20f6",
+      "entity_id": "0652e0379f3e9f3cddc797d5",
+      "subject": "client.connect",
+      "property": "timeout",
+      "value_state": "UNKNOWN",
+      "typed_value": null,
+      "expression": "factory()",
+      "span": {
+        "path": "client.py",
+        "start_line": 1,
+        "end_line": 1,
+        "start_byte": 20,
+        "end_byte": 29,
+        "blob_hash": "0d193e7fe5dccde1601e880815821b86753045aefa66e5e286771ec445d2ba85"
+      },
+      "fact_kind": "DEFAULT_VALUE",
+      "parameters": [],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    },
+    {
+      "fact_id": "ced8cbcddf2705416df2ebaa",
+      "entity_id": "0652e0379f3e9f3cddc797d5",
+      "subject": "client.connect",
+      "property": "__signature__",
+      "value_state": "KNOWN",
+      "typed_value": null,
+      "expression": "def connect(timeout=factory()):\n    return timeout",
+      "span": {
+        "path": "client.py",
+        "start_line": 1,
+        "end_line": 2,
+        "start_byte": 0,
+        "end_byte": 50,
+        "blob_hash": "0d193e7fe5dccde1601e880815821b86753045aefa66e5e286771ec445d2ba85"
+      },
+      "fact_kind": "SIGNATURE",
+      "parameters": [
+        {
+          "name": "timeout",
+          "kind": "POSITIONAL_OR_KEYWORD",
+          "required": false,
+          "value_state": "UNKNOWN",
+          "typed_value": null,
+          "expression": "factory()"
+        }
+      ],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "0cac552c374951c8b22e8ddb",
+      "subject": "connect",
+      "predicate": "timeout",
+      "kind": "DEFAULT_ASSERTION",
+      "value": {
+        "type": "int",
+        "canonical": "[\"int\",30]"
+      },
+      "qualifiers": [],
+      "version_scope": "current",
+      "span": {
+        "path": "README.md",
+        "start_line": 3,
+        "end_line": 3,
+        "start_byte": 14,
+        "end_byte": 44,
+        "blob_hash": "8447d6d7c9c81e0fea23406e867f857d7894009f578de15516b98cf937aa5c74"
+      },
+      "value_span": {
+        "path": "README.md",
+        "start_line": 3,
+        "end_line": 3,
+        "start_byte": 38,
+        "end_byte": 40,
+        "blob_hash": "8447d6d7c9c81e0fea23406e867f857d7894009f578de15516b98cf937aa5c74"
+      },
+      "quote": "`timeout` 默认值为 `30`。",
+      "extraction_method": "markdown-rules/2",
+      "source_hint": null,
+      "positional_count": null,
+      "keyword_names": [],
+      "unpacking": false,
+      "bound_receiver": false
+    }
+  ],
+  "candidates": [
+    {
+      "claim_id": "0cac552c374951c8b22e8ddb",
+      "candidates": [
+        {
+          "fact_id": "dfee2f254fe0d5d5c90e20f6",
+          "rank": 1,
+          "score": 1.0,
+          "features": [
+            "exact_symbol",
+            "parameter_owner"
+          ]
+        }
+      ],
+      "ambiguity": false,
+      "reason": "MATCH"
+    }
+  ],
+  "judgments": [
+    {
+      "claim_id": "0cac552c374951c8b22e8ddb",
+      "decision": "UNCERTAIN",
+      "fact_ids": [],
+      "reason_code": "UNKNOWN_VALUE",
+      "reason_text": "Insufficient evidence for a deterministic decision",
+      "claim_type_check": false,
+      "version_compatible": false,
+      "score": null,
+      "uncertainty_reason": "UNKNOWN_VALUE",
+      "model_run_id": null
+    }
+  ],
+  "findings": [],
+  "rejected": [],
+  "patches": []
+}

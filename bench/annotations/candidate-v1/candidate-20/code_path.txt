@@ -1,0 +1,2 @@
+SERVICE_OPTIONS = {"workers": 2}
+SERVICE_OPTIONS.update({"workers": 6})

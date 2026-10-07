@@ -1,0 +1,2 @@
+def send_notice(address, *, channel):
+    return address, channel

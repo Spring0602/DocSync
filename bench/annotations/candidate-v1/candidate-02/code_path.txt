@@ -1,0 +1,2 @@
+async def download_resource(url, *, retries: int = 4, decode: bool = False):
+    return url, retries, decode

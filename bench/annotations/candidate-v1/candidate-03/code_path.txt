@@ -1,0 +1,2 @@
+def emit_record(payload, *, tags: tuple[str, ...] = ("audit", "public")):
+    return payload, tags

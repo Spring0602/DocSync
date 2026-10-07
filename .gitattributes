@@ -1,1 +1,3 @@
 bench/frozen/** text eol=lf
+bench/candidates/** text eol=lf
+bench/annotations/candidate-v1/** text eol=lf

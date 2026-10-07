@@ -1,0 +1,1 @@
+PIPELINE = {"export": {"compression": "gzip", "level": 3}}

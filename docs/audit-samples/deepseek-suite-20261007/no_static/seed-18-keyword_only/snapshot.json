@@ -1,0 +1,23 @@
+{
+  "repo_id": "c19d5e56211f5de43d8a4d00",
+  "head_sha": "ca392b5052c1ddfac069dad57a143a8132f53a26",
+  "base_sha": null,
+  "mode": "commit",
+  "files_hash": "90f77c736db26934b6f46c0f",
+  "dirty": false,
+  "files": [
+    {
+      "path": "README.md",
+      "blob_hash": "e9aabbf8b27100287d34a2189812de4e5d912d73ed9d261fdb0c5fb5ed7804bf",
+      "size": 24,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "client.py",
+      "blob_hash": "78b7b82a5d9d3ffb2acdd10c42952864b30a7ad482522eb3fc2c17af10f01a81",
+      "size": 27,
+      "encoding": "utf-8"
+    }
+  ],
+  "changed_paths": []
+}
