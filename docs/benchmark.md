@@ -40,3 +40,7 @@ python bench/evaluate.py --input runs/my-benchmark/predictions.jsonl --out runs/
 B-N1/C-N1 各提交完整独立标注；A-N2 负责裁决、目标实体映射、数据分组及 Recall@K 口径/实现。C 的现有预填表不是已完成标注，A 已明确暂不冻结，见 [接收记录](a-acceptance-20260930.md)。
 
 开发数据可继续验证流程。正式实验 A-N3 等待数据、模型和相关代码修复准备好；固定同一版本运行并保留失败、拒答及 PARTIAL。当前分类 recall 不等于 Recall@K，后者尚未实现，不报告虚构数值。详细操作与交付物见 [任务清单](tasks.md)。
+
+## 已裁决开发版本与候选指标
+
+seed-dev-v1 已保存双人标注、技术裁决、固定 manifest 及 hash；原 build_seed.py 仍生成 provisional 样本。新入口为 bench/builders/build_reviewed_seed.py，候选指标为 bench/evaluate_alignment.py。16 个预定可判定样本、4 个排除及详细计分规则见 [冻结说明](../bench/frozen/seed-dev-v1/README.md)。正式独立测试与真实模型实验仍待完成。

@@ -1,0 +1,94 @@
+{
+  "sample_count": 20,
+  "counts": {
+    "tp": 11,
+    "fp": 0,
+    "tn": 5,
+    "fn": 0,
+    "decidable": 16,
+    "decided": 16,
+    "insufficient": 4,
+    "improper_confirmation": 0,
+    "failed": 0,
+    "abstained": 4
+  },
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "false_positive_rate": 0.0,
+  "decision_coverage": 1.0,
+  "abstention_rate": 0.2,
+  "improper_confirmation_rate": 0.0,
+  "by_type": {
+    "CONFIG": {
+      "sample_count": 4,
+      "counts": {
+        "tp": 2,
+        "fp": 0,
+        "tn": 1,
+        "fn": 0,
+        "decidable": 3,
+        "decided": 3,
+        "insufficient": 1,
+        "improper_confirmation": 0,
+        "failed": 0,
+        "abstained": 1
+      },
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "false_positive_rate": 0.0,
+      "decision_coverage": 1.0,
+      "abstention_rate": 0.25,
+      "improper_confirmation_rate": 0.0
+    },
+    "DEFAULT_VALUE": {
+      "sample_count": 9,
+      "counts": {
+        "tp": 4,
+        "fp": 0,
+        "tn": 2,
+        "fn": 0,
+        "decidable": 6,
+        "decided": 6,
+        "insufficient": 3,
+        "improper_confirmation": 0,
+        "failed": 0,
+        "abstained": 3
+      },
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "false_positive_rate": 0.0,
+      "decision_coverage": 1.0,
+      "abstention_rate": 0.3333333333333333,
+      "improper_confirmation_rate": 0.0
+    },
+    "SIGNATURE": {
+      "sample_count": 7,
+      "counts": {
+        "tp": 5,
+        "fp": 0,
+        "tn": 2,
+        "fn": 0,
+        "decidable": 7,
+        "decided": 7,
+        "insufficient": 0,
+        "improper_confirmation": 0,
+        "failed": 0,
+        "abstained": 0
+      },
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "false_positive_rate": 0.0,
+      "decision_coverage": 1.0,
+      "abstention_rate": 0.0,
+      "improper_confirmation_rate": null
+    }
+  },
+  "provisional_labels": false,
+  "manifest_hash": "fe5b4c21e3261de83137d1748651f9e54bc6b5fcb937eabee39108900f7dfab8",
+  "config_hash": "e5e6e1cfd796d260a8b104ed3199a9736f578b04d622927823bd48b439a2437c",
+  "method": "rules"
+}

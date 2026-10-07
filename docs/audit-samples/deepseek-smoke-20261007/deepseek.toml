@@ -1,0 +1,21 @@
+# First live smoke test; contains no API key. Budgets apply per scan.
+[scan]
+mode = "hybrid"
+fail_on = "none"
+require_complete = true
+
+[llm]
+provider = "chat-completions"
+endpoint = "https://api.deepseek.com/chat/completions"
+model = "deepseek-flash"
+api_key_env = "DOCSYNC_API_KEY"
+response_format = "json_object"
+token_parameter = "max_tokens"
+send_temperature = false
+thinking = "disabled"
+timeout_seconds = 120
+max_retries = 0
+max_requests = 1
+max_input_bytes = 32000
+max_output_tokens = 2048
+max_total_tokens = 100000

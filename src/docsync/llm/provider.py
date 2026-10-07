@@ -161,6 +161,8 @@ class ChatCompletionsProvider:
         }
         if self.cfg.send_temperature and self.cfg.temperature is not None:
             payload["temperature"] = self.cfg.temperature
+        if self.cfg.thinking is not None:
+            payload["thinking"] = {"type": self.cfg.thinking}
         body = json.dumps(payload, ensure_ascii=False, sort_keys=True).encode()
         if len(body) > self.cfg.max_input_bytes:
             raise ProviderError("CONTEXT_BUDGET_EXCEEDED")

@@ -1,0 +1,19 @@
+{
+  "version": "seed-dev-v1",
+  "code_sha": "ac8081d3de60f25b050d3ce6d1d5e7429ffe4f6c",
+  "split": "dev",
+  "formal_test_set": false,
+  "annotation_count_per_reviewer": 20,
+  "label_disagreements": 0,
+  "human_signoff": "B/C source annotations retained; A technical decision delegated to assistant",
+  "source_files": {
+    "bench/annotations/individual-B-20261003.csv": "b3e6c1ffbaafdf657ce726060fc63e3d2844e5bd412adc4854064684ad63c801",
+    "bench/annotations/individual-C-20261005.csv": "d9227824a20eeac754d38463b915c9b2a864abd7acafb1cd0acb909eb0bdfbde"
+  },
+  "hash_normalization": "annotation source hashes use UTF-8 bytes with CRLF normalized to LF",
+  "artifacts": {
+    "adjudication.jsonl": "9836ee947247cdcdec7c6d52fad5bcc2b0cc145a9cf23a4cfad6d703ec3df9a6",
+    "alignment-gold.jsonl": "fbdddbd2e7f2e0738f482a17a3753455709c1d95c74df56568724a5b6ece716e",
+    "manifest.jsonl": "fe5b4c21e3261de83137d1748651f9e54bc6b5fcb937eabee39108900f7dfab8"
+  }
+}

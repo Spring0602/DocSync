@@ -1,0 +1,40 @@
+{
+  "status": "PREPARED_NOT_RUN",
+  "method": "full",
+  "manifest": "runs/a-review-20261007/rebuilt/deepseek-smoke5.jsonl",
+  "manifest_sha256": "441ac48af1f2772d8745efaa2c409efbe4b9f648eb2cb5959e92221e6c41e22b",
+  "frozen_version": "seed-dev-v1",
+  "samples": [
+    {
+      "sample_id": "seed-01-default_drift",
+      "gold": "INCONSISTENT",
+      "head_sha": "e8701dddd7d559d0794afbcdd8b6ace8d8a1f2b0"
+    },
+    {
+      "sample_id": "seed-02-default_equal",
+      "gold": "CONSISTENT",
+      "head_sha": "6f3876f25a59976d116eb80d1a0220e2f3132be6"
+    },
+    {
+      "sample_id": "seed-04-factory_unknown",
+      "gold": "INSUFFICIENT",
+      "head_sha": "a12996cb00b0bcc90c9458caf4a6db09838a0278"
+    },
+    {
+      "sample_id": "seed-10-constant_drift",
+      "gold": "INCONSISTENT",
+      "head_sha": "ab57f9585b67276cead2e786f4aa4b4f94ac5c26"
+    },
+    {
+      "sample_id": "seed-14-missing_required",
+      "gold": "INCONSISTENT",
+      "head_sha": "59f09b9d8efff70eaebce74ae46589a697b14959"
+    }
+  ],
+  "max_requests_per_sample": 1,
+  "max_requests_total": 5,
+  "expected_model_requests": 4,
+  "rules_only_sample": "seed-02-default_equal",
+  "cost_amount": null,
+  "note": "Run in terminal with DOCSYNC_API_KEY; no live requests made during preparation."
+}

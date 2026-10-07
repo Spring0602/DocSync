@@ -1,0 +1,14 @@
+{
+  "tests": "213",
+  "failures": "0",
+  "errors": "0",
+  "skipped": "2",
+  "time": "112.824",
+  "passed": 211,
+  "checks": {
+    "ruff": "passed",
+    "format": "48 files passed",
+    "mypy": "20 source files passed",
+    "build": "wheel and sdist passed"
+  }
+}

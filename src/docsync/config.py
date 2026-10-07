@@ -34,6 +34,7 @@ class LLMOptions(Model):
     api_key_env: str = "DOCSYNC_API_KEY"
     temperature: float | None = Field(default=0, ge=0, le=2)
     send_temperature: bool = True
+    thinking: Literal["enabled", "disabled"] | None = None
     response_format: Literal["json_schema", "json_object"] = "json_schema"
     token_parameter: Literal["max_completion_tokens", "max_tokens"] = "max_completion_tokens"
     max_output_tokens: int = Field(default=1024, ge=64, le=16384)

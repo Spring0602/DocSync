@@ -157,3 +157,33 @@ def test_insecure_endpoint_and_missing_key(provider_inputs, monkeypatch):
     monkeypatch.delenv("DOCSYNC_TEST_KEY")
     with pytest.raises(ProviderError, match="AI_UNAVAILABLE"):
         ChatCompletionsProvider(cfg)
+
+
+@pytest.mark.parametrize("thinking", [None, "enabled", "disabled"])
+def test_optional_thinking_payload(provider_inputs, thinking):
+    cfg, claim, fact = provider_inputs
+    cfg = cfg.model_copy(
+        update={
+            "thinking": thinking,
+            "response_format": "json_object",
+            "token_parameter": "max_tokens",
+            "send_temperature": False,
+        }
+    )
+    captured = []
+
+    def transport(endpoint, headers, body, timeout):
+        captured.append(json.loads(body))
+        return response()
+
+    provider = ChatCompletionsProvider(cfg, transport)
+    provider.judge(claim, [fact])
+    payload = captured[0]
+    if thinking is None:
+        assert "thinking" not in payload
+    else:
+        assert payload["thinking"] == {"type": thinking}
+    assert payload["response_format"] == {"type": "json_object"}
+    assert payload["max_tokens"] == cfg.max_output_tokens
+    assert "max_completion_tokens" not in payload
+    assert "temperature" not in payload

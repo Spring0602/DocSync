@@ -1,0 +1,94 @@
+{
+  "sample_count": 5,
+  "counts": {
+    "tp": 3,
+    "fp": 0,
+    "tn": 1,
+    "fn": 0,
+    "decidable": 4,
+    "decided": 4,
+    "insufficient": 1,
+    "improper_confirmation": 0,
+    "failed": 0,
+    "abstained": 1
+  },
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "false_positive_rate": 0.0,
+  "decision_coverage": 1.0,
+  "abstention_rate": 0.2,
+  "improper_confirmation_rate": 0.0,
+  "by_type": {
+    "CONFIG": {
+      "sample_count": 1,
+      "counts": {
+        "tp": 1,
+        "fp": 0,
+        "tn": 0,
+        "fn": 0,
+        "decidable": 1,
+        "decided": 1,
+        "insufficient": 0,
+        "improper_confirmation": 0,
+        "failed": 0,
+        "abstained": 0
+      },
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "false_positive_rate": null,
+      "decision_coverage": 1.0,
+      "abstention_rate": 0.0,
+      "improper_confirmation_rate": null
+    },
+    "DEFAULT_VALUE": {
+      "sample_count": 3,
+      "counts": {
+        "tp": 1,
+        "fp": 0,
+        "tn": 1,
+        "fn": 0,
+        "decidable": 2,
+        "decided": 2,
+        "insufficient": 1,
+        "improper_confirmation": 0,
+        "failed": 0,
+        "abstained": 1
+      },
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "false_positive_rate": 0.0,
+      "decision_coverage": 1.0,
+      "abstention_rate": 0.3333333333333333,
+      "improper_confirmation_rate": 0.0
+    },
+    "SIGNATURE": {
+      "sample_count": 1,
+      "counts": {
+        "tp": 1,
+        "fp": 0,
+        "tn": 0,
+        "fn": 0,
+        "decidable": 1,
+        "decided": 1,
+        "insufficient": 0,
+        "improper_confirmation": 0,
+        "failed": 0,
+        "abstained": 0
+      },
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "false_positive_rate": null,
+      "decision_coverage": 1.0,
+      "abstention_rate": 0.0,
+      "improper_confirmation_rate": null
+    }
+  },
+  "provisional_labels": false,
+  "manifest_hash": "441ac48af1f2772d8745efaa2c409efbe4b9f648eb2cb5959e92221e6c41e22b",
+  "config_hash": "37a959a06dad80b416b91ee9504f300b698c86d460495c98fc40fc6fdc67fdbb",
+  "method": "full"
+}

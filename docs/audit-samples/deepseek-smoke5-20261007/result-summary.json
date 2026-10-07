@@ -1,0 +1,42 @@
+{
+  "status": "COMPLETED",
+  "live_run_path": "runs/deepseek-smoke5-20261007-151734",
+  "samples": 5,
+  "model_reviewed_samples": 4,
+  "rules_only_samples": 1,
+  "usage": {
+    "requests": 4,
+    "input_tokens": 4088,
+    "output_tokens": 684,
+    "cache_hits": 0,
+    "unknown_usage_requests": 0
+  },
+  "actual_total_tokens": 4772,
+  "elapsed_seconds_sum": 26.429984799997328,
+  "cost_amount": null,
+  "cost_note": "Provider invoice not checked; earlier timeout remains unknown usage.",
+  "counts": {
+    "tp": 3,
+    "fp": 0,
+    "tn": 1,
+    "fn": 0,
+    "decidable": 4,
+    "decided": 4,
+    "insufficient": 1,
+    "improper_confirmation": 0,
+    "failed": 0,
+    "abstained": 1
+  },
+  "manifest_hash": "441ac48af1f2772d8745efaa2c409efbe4b9f648eb2cb5959e92221e6c41e22b",
+  "config_hash": "37a959a06dad80b416b91ee9504f300b698c86d460495c98fc40fc6fdc67fdbb",
+  "limitations": [
+    "reviewed development samples, not independent test data",
+    "one sample handled only by rules",
+    "uncertain sample explanation contains an unsupported owner-mismatch claim"
+  ],
+  "code_sha256": {
+    "src/docsync/config.py": "a24e20bb5907ec4e0c349992fcc615bff914ff02b405724e0245c0ad60c9702d",
+    "src/docsync/llm/provider.py": "7880110a24e9a96f1e8a23cfb931b0753279d94ce3c4e936a3d1d619dfd7958a",
+    "src/docsync/llm/prompts.py": "021e6111ca33449888b3dfd5f468bf43753bab096ba23354a3a4c1a7d7f1fb1e"
+  }
+}

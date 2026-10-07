@@ -1,0 +1,188 @@
+{
+  "status": "COMPLETED",
+  "samples": 20,
+  "methods": [
+    "rules",
+    "keyword"
+  ],
+  "manifest_sha256": "fe5b4c21e3261de83137d1748651f9e54bc6b5fcb937eabee39108900f7dfab8",
+  "config_sha256": "37a959a06dad80b416b91ee9504f300b698c86d460495c98fc40fc6fdc67fdbb",
+  "request_upper_bound": 0,
+  "actual_requests": 0,
+  "results": {
+    "rules": {
+      "metrics": {
+        "sample_count": 20,
+        "counts": {
+          "tp": 11,
+          "fp": 0,
+          "tn": 5,
+          "fn": 0,
+          "decidable": 16,
+          "decided": 16,
+          "insufficient": 4,
+          "improper_confirmation": 0,
+          "failed": 0,
+          "abstained": 4
+        },
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "false_positive_rate": 0.0,
+        "decision_coverage": 1.0,
+        "abstention_rate": 0.2,
+        "improper_confirmation_rate": 0.0
+      },
+      "status_counts": {
+        "COMPLETED": 20
+      },
+      "usage": {
+        "requests": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_hits": 0,
+        "unknown_usage_requests": 0
+      },
+      "elapsed_seconds": 4.414419600001565,
+      "review_items": [],
+      "cost_amount": null
+    },
+    "keyword": {
+      "metrics": {
+        "sample_count": 20,
+        "counts": {
+          "tp": 4,
+          "fp": 1,
+          "tn": 4,
+          "fn": 7,
+          "decidable": 16,
+          "decided": 7,
+          "insufficient": 4,
+          "improper_confirmation": 3,
+          "failed": 0,
+          "abstained": 10
+        },
+        "precision": 0.8,
+        "recall": 0.36363636363636365,
+        "f1": 0.5,
+        "false_positive_rate": 0.2,
+        "decision_coverage": 0.4375,
+        "abstention_rate": 0.5,
+        "improper_confirmation_rate": 0.75
+      },
+      "status_counts": {
+        "COMPLETED": 20
+      },
+      "usage": {
+        "requests": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_hits": 0,
+        "unknown_usage_requests": 0
+      },
+      "elapsed_seconds": 4.138963400004286,
+      "review_items": [
+        {
+          "sample_id": "seed-04-factory_unknown",
+          "gold": "INSUFFICIENT",
+          "prediction": "INCONSISTENT",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "seed-05-historical",
+          "gold": "INSUFFICIENT",
+          "prediction": "INCONSISTENT",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "seed-06-ambiguous",
+          "gold": "INSUFFICIENT",
+          "prediction": "INCONSISTENT",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "seed-07-table_drift",
+          "gold": "INCONSISTENT",
+          "prediction": "SKIPPED",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "seed-08-table_equal",
+          "gold": "CONSISTENT",
+          "prediction": "SKIPPED",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "seed-12-dict_drift",
+          "gold": "INCONSISTENT",
+          "prediction": "SKIPPED",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "seed-13-dict_dynamic",
+          "gold": "INSUFFICIENT",
+          "prediction": "SKIPPED",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "seed-14-missing_required",
+          "gold": "INCONSISTENT",
+          "prediction": "SKIPPED",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "seed-15-unexpected_keyword",
+          "gold": "INCONSISTENT",
+          "prediction": "SKIPPED",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "seed-16-kwargs_legal",
+          "gold": "CONSISTENT",
+          "prediction": "SKIPPED",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "seed-17-positional_only",
+          "gold": "INCONSISTENT",
+          "prediction": "SKIPPED",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "seed-18-keyword_only",
+          "gold": "INCONSISTENT",
+          "prediction": "SKIPPED",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "seed-19-optional_added",
+          "gold": "CONSISTENT",
+          "prediction": "INCONSISTENT",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "seed-20-import_alias",
+          "gold": "INCONSISTENT",
+          "prediction": "SKIPPED",
+          "status": "COMPLETED",
+          "errors": []
+        }
+      ],
+      "cost_amount": null
+    }
+  },
+  "note": "Offline validation before final local commit; full source provenance remains in the local run directory."
+}

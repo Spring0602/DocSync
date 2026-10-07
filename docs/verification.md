@@ -1,5 +1,18 @@
 # 实际验收记录
 
+## 最新本地验证（2026-10-07，A 实验准备）
+
+全量 pytest **211 passed，2 skipped，0 failed**（112.90 秒）。两项跳过均因 Windows 未授予文件系统符号链接创建权限。证据为 runs/a-ready-20261007/pytest-final.xml，入库摘要见 [final-validation.json](audit-samples/a-20261007/final-validation.json)。Ruff、48 文件格式检查、mypy 20 个源文件及 wheel/sdist 构建全部通过。
+
+新增验证覆盖 DeepSeek thinking 可选字段、候选指标边界、批量请求上限、缺密钥不启动、失败结果保留和原始预测重算。统一运行器 rules/keyword 各 20 例实跑完成，0 模型请求；[比较表](audit-samples/a-20261007/suite-offline-comparison.md)和[汇总](audit-samples/a-20261007/suite-offline-summary.json)已归档。
+
+本轮代码将由本地提交固定，实验运行器自动记录运行时完整 SHA 和源码哈希。已有远程 CI 仅覆盖 ac8081d，不代表本轮改动已经通过远程 CI。真实五方法批量实验、独立测试集、费用对账和人工审核仍待完成；按 [tasks](tasks.md) 交接。
+
+
+> 最新进展（2026-10-07）：5 例已标注开发样本的真实 Full 试运行已验收，4 次 API 调用成功，1 例规则直接处理，证据不足样本正确拒答。A-N1 小样本技术部分完成；待费用对账、固定实验提交、独立测试集及 Full/LLM/消融。详见 [5 例试运行记录](deepseek-smoke5-20261007.md)。
+
+> 下方按日期保留历史验证，不将旧版本的未完成项作为当前状态；当前任务见 [tasks](tasks.md)。
+
 ## 成员 B：到期日契约与坏链接复核（B-N3，2026-10-04）
 
 A 已确认保持 Schema 2.0，并以非必填 `ignore_expires: date | null` 扩展 Finding。B 已完成模型、忽略匹配、固定扫描日期、Schema 和真实 1.0/2.0 旧报告兼容测试；过期规则保留原因/日期但不忽略告警，多规则不会混用元数据。异常补丁目标现在稳定转换为 `UNSAFE_PATCH`，Git symlink blob 继续拒绝；本机真实越界/dangling symlink 因系统权限无法创建，保留给有权限环境复验。
@@ -95,3 +108,7 @@ Apache 官方许可证原文已落地，wheel/sdist 构建成功，wheel 内 Lic
 可查看本机证据：`runs/demo/report.json`、`runs/demo/report.md`、`runs/fixes.patch`、`runs/after/report.json`、`runs/installed-demo/report.json`、`runs/verification/pytest.xml`。这些是本地生成产物，已被 Git 忽略。测试用例使用自建内容，不是历史开源评测数据。
 
 未验收：生产模型请求、超时/限流网络适配、真实模型样本、完整签名和配置检测、20 例人工标注种子集、Benchmark/消融运行器、远程 GitHub Actions、完整传递资源人工许可核查、团队版权确认、Linux/第二设备实际执行。责任与后续步骤见 [tasks.md](tasks.md)。
+
+## A 执行（2026-10-07）
+
+40 项专项通过（runs/a-review-20261007/targeted.xml）；Ruff 和 46 文件格式检查通过。开发集实际重建及 rules/keyword/Recall@K 已跑通。最新结论见 [A 接收记录](a-acceptance-20261007.md)。不把专项数字累加成全量。

@@ -1,0 +1,54 @@
+{
+  "run_path": "runs/deepseek-retry-20261007-151326",
+  "baseline_commit": "ac8081d3de60f25b050d3ce6d1d5e7429ffe4f6c",
+  "working_tree_changes_present": true,
+  "code_sha256": {
+    "src/docsync/config.py": "a24e20bb5907ec4e0c349992fcc615bff914ff02b405724e0245c0ad60c9702d",
+    "src/docsync/llm/provider.py": "7880110a24e9a96f1e8a23cfb931b0753279d94ce3c4e936a3d1d619dfd7958a",
+    "src/docsync/llm/prompts.py": "021e6111ca33449888b3dfd5f468bf43753bab096ba23354a3a4c1a7d7f1fb1e"
+  },
+  "config_file_sha256": "8a7ea6d0daa8c4c4f383ea7bb1e8a2c28c0497b8349bcb63e98ab589b666c3e8",
+  "config_hash": "37a959a06dad80b416b91ee9504f300b698c86d460495c98fc40fc6fdc67fdbb",
+  "snapshot_head": "130b368837e79342ace5322e979ddb5191662213",
+  "status": "COMPLETED",
+  "usage": {
+    "requests": 1,
+    "input_tokens": 1032,
+    "output_tokens": 133,
+    "cache_hits": 0,
+    "reserved_tokens": 6820,
+    "unknown_usage_requests": 0
+  },
+  "model_calls": [
+    {
+      "request_hash": "288b081e4a252281a5cabfee57bf9f35617dac668f53037f99900261bf169c67",
+      "attempt": 1,
+      "cache_hit": false,
+      "model": "deepseek-flash",
+      "prompt_version": "semantic-judge/2",
+      "response_hash": "1d1ea6ed861db615e28c6630b5058c238b5ea37d6b90081d4c6074d103dbe376",
+      "returned_model": "deepseek-flash",
+      "input_tokens": 1032,
+      "output_tokens": 133,
+      "status": "SUCCEEDED",
+      "elapsed_seconds": 5.772578
+    }
+  ],
+  "stage_seconds": {
+    "extraction": 0.0013467999997374136,
+    "alignment": 2.609999864944257e-05,
+    "judging": 5.775711700000102,
+    "verification": 0.0002606999951240141,
+    "analysis_total": 5.777970299997833,
+    "repository": 0.2648086000008334,
+    "patch_validation": 0.008893899997929111,
+    "total": 6.05563329999859
+  },
+  "confirmed_count": 1,
+  "patch_validation": [
+    "VALIDATED"
+  ],
+  "cost_amount": null,
+  "cost_note": "Provider billing not checked; earlier timed-out request has unknown usage.",
+  "scope": "One live model-reviewed default conflict; consistent call example was handled by rules."
+}
