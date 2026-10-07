@@ -18,6 +18,11 @@ DEFAULT = re.compile(
     rf"(?:默认值?(?:为|是)?|defaults?\s+to|default(?:\s+value)?\s*(?:is|:|=))\s*{VALUE}",
     re.I,
 )
+DEFAULT_VALUE_OF = re.compile(
+    rf"(?:the\s+)?default\s+value\s+of\s+`?(?P<param>[A-Za-z_]\w*)`?\s*"
+    rf"(?:is|:|=)\s*{VALUE}",
+    re.I,
+)
 HISTORICAL = re.compile(
     r"旧版|历史|迁移|反例|错误示例|legacy|historical|migration|invalid example|old(?:er)? version|\bv\d+(?:\.\d+)*\b",
     re.I,
@@ -153,14 +158,15 @@ def extract_claims(snapshot: SnapshotData) -> ClaimExtractionResult:
             )
             if number in excluded or number in heading_at:
                 continue
-            for match in DEFAULT.finditer(line):
-                group = "tick" if match.group("tick") is not None else "plain"
-                if group == "plain" and re.match(r"(?:\w|\.(?=\w))", line[match.end() :]):
-                    continue
-                subject = subject_from(line[: match.start()]) or subjects[number]
-                add_value(
-                    number, subject, match.group("param"), match.start(group), match.end(group)
-                )
+            for pattern in (DEFAULT, DEFAULT_VALUE_OF):
+                for match in pattern.finditer(line):
+                    group = "tick" if match.group("tick") is not None else "plain"
+                    if group == "plain" and re.match(r"(?:\w|\.(?=\w))", line[match.end() :]):
+                        continue
+                    subject = subject_from(line[: match.start()]) or subjects[number]
+                    add_value(
+                        number, subject, match.group("param"), match.start(group), match.end(group)
+                    )
         for start, end in tables:
 
             def cells(line: str) -> list[tuple[str, int, int]]:

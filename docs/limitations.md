@@ -27,4 +27,6 @@
 
 2026-09-30 已核验合并提交的双平台 Core CI 成功，详见 [A 接收与裁决记录](a-acceptance-20260930.md)。这不等于 Documentation consistency 工作流或真实模型实验已验收。团队已确认原创代码和自建样本采用 Apache-2.0；原始 DOCX/PDF 不进入授权及发布范围。
 
-C1 已报告的缺口：英文 “The default value of X is Y” 句式未被支持，未提取不等于一致；当前 Finding 不保存忽略到期日，不能宣称报告完整展示此字段。两项由 B/C 后续补充实现与回归。
+C1 缺陷 D-1 的英文 “The default value of X is Y” 明确句式已由 B-N2 实现并完成本地回归，证据见 [B-N2 修复记录](b-n2-english-defaults-review.md)；仍需 C 独立复验后才能关闭缺陷。支持该明确模板不代表支持任意英文自然语言，未提取不等于一致。
+
+B-N3 已让 Finding 保存可选 `ignore_expires`：过期匹配保留原因和日期但不忽略告警，一次扫描固定同一日期，真实 1.0/2.0 旧报告缺失字段时默认 `null` 且不重算。Schema 保持 2.0，只承诺新程序读取旧报告；使用 `extra="forbid"` 的旧程序不保证读取含新字段的报告。C 尚未完成 JSON/Markdown 到期状态展示，因此当前不能宣称人类可读报告已完整呈现该字段。坏链接加固与本机无法复现的环境边界见 [B-N3 复核记录](b-n3-ignore-expiry-symlink-review.md)。

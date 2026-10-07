@@ -533,6 +533,19 @@
           ],
           "default": null,
           "title": "Ignore Reason"
+        },
+        "ignore_expires": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ignore Expires"
         }
       },
       "required": [

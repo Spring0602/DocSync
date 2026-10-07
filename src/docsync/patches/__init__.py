@@ -2,6 +2,7 @@
 
 import difflib
 import os
+import stat
 import tempfile
 from collections import defaultdict
 from collections.abc import Callable
@@ -172,21 +173,48 @@ def propose_patch(
 
 def safe_target(root: Path, relative: str) -> Path:
     target = root / relative
+    relative_path = Path(relative)
     if (
         not relative.endswith(".md")
-        or Path(relative).is_absolute()
-        or ".." in Path(relative).parts
+        or relative_path.is_absolute()
+        or ".." in relative_path.parts
         or "\\" in relative
         or ":" in relative
-        or ".git" in Path(relative).parts
-        or not target.resolve().is_relative_to(root)
-        or target.is_symlink()
+        or ".git" in relative_path.parts
     ):
         raise DocSyncError("UNSAFE_PATCH", "Patch path is not an allowed Markdown file", "apply")
+
+    def inspect(path: Path) -> os.stat_result:
+        try:
+            return path.lstat()
+        except OSError as exc:
+            raise DocSyncError(
+                "UNSAFE_PATCH", "Patch target is missing or inaccessible", "apply"
+            ) from exc
+
+    details = inspect(target)
+    reparse_flag = getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", 0)
+    if (
+        not stat.S_ISREG(details.st_mode)
+        or stat.S_ISLNK(details.st_mode)
+        or bool(getattr(details, "st_file_attributes", 0) & reparse_flag)
+    ):
+        raise DocSyncError("UNSAFE_PATCH", "Patch target is not a regular file", "apply")
+    try:
+        resolved = target.resolve(strict=True)
+    except OSError as exc:
+        raise DocSyncError(
+            "UNSAFE_PATCH", "Patch target cannot be resolved safely", "apply"
+        ) from exc
+    if not resolved.is_relative_to(root):
+        raise DocSyncError("UNSAFE_PATCH", "Patch path leaves the repository", "apply")
     for parent in target.parents:
         if parent == root:
             break
-        if parent.is_symlink():
+        details = inspect(parent)
+        if stat.S_ISLNK(details.st_mode) or bool(
+            getattr(details, "st_file_attributes", 0) & reparse_flag
+        ):
             raise DocSyncError("UNSAFE_PATCH", "Symlinked parent directory", "apply")
     return target
 
