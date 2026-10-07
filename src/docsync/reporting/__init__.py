@@ -2,10 +2,10 @@ import html
 import json
 from pathlib import Path
 
-from docsync.models import ScanReport
+from docsync.models import Finding, ScanReport
 
 
-def _ignore_status_text(finding) -> str:
+def _ignore_status_text(finding: Finding) -> str:
     if finding.ignored and finding.ignore_expires is None:
         return f"当前忽略；原因：{finding.ignore_reason or '未说明'}；无期限"
     if finding.ignored:
