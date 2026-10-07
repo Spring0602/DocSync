@@ -5,6 +5,21 @@ from pathlib import Path
 from docsync.models import ScanReport
 
 
+def _ignore_status_text(finding) -> str:
+    if finding.ignored and finding.ignore_expires is None:
+        return f"当前忽略；原因：{finding.ignore_reason or '未说明'}；无期限"
+    if finding.ignored:
+        return (
+            f"当前忽略；原因：{finding.ignore_reason or '未说明'}；到期日：{finding.ignore_expires}"
+        )
+    if finding.ignore_expires is not None:
+        return (
+            f"规则已过期，告警未忽略；原因：{finding.ignore_reason or '未说明'}；"
+            f"到期日：{finding.ignore_expires}"
+        )
+    return "未忽略"
+
+
 def markdown_report(report: ScanReport) -> str:
     manifest, snapshot = report.manifest, report.snapshot
     lines = [
@@ -29,6 +44,7 @@ def markdown_report(report: ScanReport) -> str:
                 f"## {finding.finding_id}",
                 "",
                 f"类型：{finding.drift_type}；证据：VERIFIED；忽略：{finding.ignored}",
+                f"忽略状态：{_ignore_status_text(finding)}",
                 "",
                 f"文档：{html.escape(claim.span.path)}:{claim.span.start_line}",
                 "",
