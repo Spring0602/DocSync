@@ -3,6 +3,6 @@ bench/candidates/** text eol=lf
 bench/annotations/candidate-v1/** text eol=lf
 
 # Preserve byte hashes of frozen annotation CSVs (including their CRLF records).
-bench/annotations/candidate-v1/*.csv -text
+bench/annotations/candidate-v1/*.csv -text whitespace=cr-at-eol
 # Numbered source transcripts intentionally retain the space after an empty line marker.
-bench/annotations/candidate-v1/context.md whitespace=-blank-at-eol
+bench/annotations/candidate-v1/context.md whitespace=-blank-at-eol,-blank-at-eof
