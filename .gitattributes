@@ -6,3 +6,6 @@ bench/annotations/candidate-v1/** text eol=lf
 bench/annotations/candidate-v1/*.csv -text whitespace=cr-at-eol
 # Numbered source transcripts intentionally retain the space after an empty line marker.
 bench/annotations/candidate-v1/context.md whitespace=-blank-at-eol,-blank-at-eof
+
+# Preserve the received B annotation attachment hash.
+docs/audit-samples/b-20261009/*.csv -text whitespace=cr-at-eol
