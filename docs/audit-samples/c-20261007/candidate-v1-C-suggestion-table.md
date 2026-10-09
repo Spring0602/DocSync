@@ -1,0 +1,32 @@
+# candidate-v1 C 标注建议表（供人工确认）
+
+生成日期：2026-10-07。此表是技术审查建议，不是 C 本人的最终签字表。正式提交前请 C 逐条确认。
+
+建议口径：依赖未固定环境变量或运行时外部输入才能成立的样本，先标为 `INSUFFICIENT`，并在 questions 中说明需 A 统一口径。
+
+| sample_id | 建议标签 | 类型 | 文档行 | 代码行 | 目标 | 证据与理由 | 疑问 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| candidate-01 | INCONSISTENT | DEFAULT_VALUE | case01.md:5 | case01.py:2 | PageReader.__init__.encoding | 文档写 `encoding` 默认值为 `utf-16`；代码签名为 `encoding: str = "utf-8"`。 文档默认值与代码签名默认值不一致。 |  |
+| candidate-02 | CONSISTENT | DEFAULT_VALUE | case02.md:5 | case02.py:1 | download_resource.retries | 文档写 `retries` 默认值为 `4`；代码签名为 `retries: int = 4`。 文档默认值与代码一致。 |  |
+| candidate-03 | INCONSISTENT | DEFAULT_VALUE | case03.md:5 | case03.py:1 | emit_record.tags | 文档写 `tags` 默认值为 `("audit", "internal")`；代码为 `("audit", "public")`。 元组第二项不一致。 |  |
+| candidate-04 | CONSISTENT | DEFAULT_VALUE | case04.md:5 | case04.py:2 | MemoryBuffer.__init__.capacity | 文档写 `capacity` 默认值为 `None`；代码签名为 `capacity=None`。 按 API 参数默认值判断一致；代码内部把 None 转为 32 属运行逻辑。 |  |
+| candidate-05 | INCONSISTENT | DEFAULT_VALUE | case05.md:5 | case05.py:1-6 | read_batch.limit | 函数定义时 `BATCH_LIMIT` 为 12，`limit=BATCH_LIMIT` 已绑定；后续 `BATCH_LIMIT = 24` 不改变函数默认值。 文档写 24，但函数默认参数实际绑定为 12。 |  |
+| candidate-06 | CONSISTENT | DEFAULT_VALUE | case06.md:5 | case06.py:1-4 | encode_packet.codec | 代码先定义 `codec="latin-1"`，随后 `encode_packet.__defaults__ = ("utf-8",)`。 运行后的函数默认值被显式改为 utf-8，与文档一致。 |  |
+| candidate-07 | INSUFFICIENT | DEFAULT_VALUE | case07.md:5 | case07.py:1-7 | flush_records.interval | 默认值来自 `flush_interval()`，该函数读取环境变量 `FLUSH_INTERVAL`，未固定运行环境。 固定源码能看到 fallback 为 8，但导入时环境变量可能改变实际默认值，证据不足。 | 是否按“无环境变量时 fallback”记 CONSISTENT，需 A 统一口径。 |
+| candidate-08 | CONSISTENT | DEFAULT_VALUE | case08.md:5 | case08.py:1-5 | export_records.format_name | `choose_format()` 固定返回 `"json"`，`format_name=choose_format()`。 源码内可确定默认值为 json，与文档一致。 |  |
+| candidate-09 | CONSISTENT | SIGNATURE | case09.md:5-8 | case09.py:1 | attach_volume | `attach_volume(name, *, readonly)`；示例 `attach_volume("logs", **options)` 且 options 含 readonly。 keyword-only 参数通过 **options 绑定，调用方式与签名一致。 |  |
+| candidate-10 | INCONSISTENT | SIGNATURE | case10.md:5-8 | case10.py:1 | send_notice | `send_notice(address, *, channel)` 要求 channel 为 keyword-only；示例用 `send_notice(*arguments)` 传两个位置参数。 第二个位置参数不能绑定 keyword-only 参数 channel。 |  |
+| candidate-11 | CONSISTENT | SIGNATURE | case11.md:5-9 | case11.py:1 | place_marker | `place_marker(x, y, /, *, color="red")`；示例 `*position` 提供 x/y，`**style` 提供 color。 位置专用和关键字专用参数均按签名正确绑定。 |  |
+| candidate-12 | INSUFFICIENT | SIGNATURE | case12.md:5-7 | case12.py:1-8 | queue_notice | `queue_notice(topic, *, priority)` 需要 priority；示例 `**read_options()` 来自环境变量 NOTICE_OPTIONS。 固定源码不能确定 read_options() 是否提供 priority。 | 需披露依赖运行环境。 |
+| candidate-13 | CONSISTENT | SIGNATURE | case13.md:5-7 | case13.py:1-4 | ArtifactStore.open | classmethod `open(cls, root, *, create=False)`；示例 `ArtifactStore.open("artifacts", create=True)`。 root 和 create 绑定正确。 |  |
+| candidate-14 | INCONSISTENT | SIGNATURE | case14.md:5-7 | case14.py:1-4 | Formatter.render | staticmethod `render(text, *, width)` 要求 width 为 keyword-only；示例 `Formatter.render("status", 72)`。 width 被作为位置参数传入，调用方式与签名不一致。 |  |
+| candidate-15 | INCONSISTENT | SIGNATURE | case15.md:5-8 | case15.py:1-3 | Registry.register | `register(self, name, /, *, replace=False)` 中 name 为 positional-only；示例 `registry.register(name="worker")`。 positional-only 参数不能用关键字 name 传入。 |  |
+| candidate-16 | INSUFFICIENT | SIGNATURE | case16.md:5-7 | case16.py:1-14 | dispatcher().deliver | `dispatcher()` 根据环境变量返回 LocalDispatcher 或 RemoteDispatcher；RemoteDispatcher.deliver 需要 keyword-only token。 固定源码不能确定运行时返回哪种 dispatcher，因此无法确认示例是否一定可绑定。 | 需披露依赖 REMOTE_DELIVERY 环境变量。 |
+| candidate-17 | INCONSISTENT | CONFIG | case17.md:5 | case17.py:1-2 | RETRY_WINDOW | 代码先注解赋值 6，随后 `RETRY_WINDOW = 14`；文档写默认值 6。 最终模块值为 14，文档仍写 6。 |  |
+| candidate-18 | CONSISTENT | CONFIG | case18.md:5 | case18.py:1-2 | PORT | 代码 `PORT: int = 8020` 后执行 `PORT += 3`；文档写默认值 8023。 最终模块值为 8023，与文档一致。 |  |
+| candidate-19 | INSUFFICIENT | CONFIG | case19.md:5 | case19.py:1-6 | ARCHIVE_LEVEL | `ARCHIVE_LEVEL` 取 2 或 7 取决于环境变量 ARCHIVE_PROFILE。 固定源码不能确定运行时环境，无法确认默认值一定为 2。 | 需 A 确认是否把无环境变量场景作为默认。 |
+| candidate-20 | CONSISTENT | CONFIG | case20.md:5 | case20.py:1-2 | SERVICE_OPTIONS.workers | `SERVICE_OPTIONS` 初始 workers 为 2，随后 update 为 6；文档写 workers 默认值 6。 最终字典值为 6，与文档一致。 |  |
+| candidate-21 | INCONSISTENT | CONFIG | case21.md:5 | case21.py:1 | PIPELINE.export.compression | 代码 `compression` 为 `gzip`；文档写默认值 `zstd`。 配置值不一致。 |  |
+| candidate-22 | CONSISTENT | CONFIG | case22.md:5 | case22.py:1 | RETRY_DELAYS | 代码 `RETRY_DELAYS = (1, 3, 9)`；文档写默认值 `(1, 3, 9)`。 配置值一致。 |  |
+| candidate-23 | INSUFFICIENT | CONFIG | case23.md:5 | case23.py:1-3 | STORAGE.local.root | `root` 来自 `os.environ.get("STORAGE_ROOT", "./cache")`；文档写默认值 `./cache`。 源码能看到 fallback，但实际模块值依赖环境变量，固定源码不足以确认运行值。 | 若 A 口径接受 fallback 默认，可改为 CONSISTENT。 |
+| candidate-24 | CONSISTENT | CONFIG | case24.md:5 | case24.py:1 | CACHE.enabled | 代码 `CACHE = dict(enabled=True, capacity=128)`；文档写 enabled 默认值 True。 配置值一致。 |  |
