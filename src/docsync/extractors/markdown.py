@@ -7,9 +7,9 @@ from dataclasses import dataclass
 
 from markdown_it import MarkdownIt
 
-from docsync.models import Diagnostic, DocumentClaim
+from docsync.models import Diagnostic, DocumentClaim, LiteralValue
 from docsync.repository import SnapshotData
-from docsync.utils import span_for, stable_id, typed_literal
+from docsync.utils import literal_value, span_for, stable_id, typed_literal
 
 IDENT = r"[A-Za-z_]\w*(?:\.[A-Za-z_]\w*)*"
 VALUE = r"(?:`(?P<tick>[^`\r\n]+)`|(?P<plain>None|True|False|[+-]?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?|'[^'\r\n]*'|\"[^\"\r\n]*\"))"
@@ -28,6 +28,17 @@ HISTORICAL = re.compile(
     re.I,
 )
 QUALIFIED = re.compile(r"通常|可能|如果|当.+时|usually|sometimes|\bif\b|depending", re.I)
+
+
+def documented_literal(raw: str) -> LiteralValue | None:
+    value = typed_literal(raw)
+    if value is not None:
+        return value
+    # API documentation commonly renders string values as code without Python quotes,
+    # for example `utf-8`, `json` or `./cache`. Keep expression-like text unresolved.
+    if re.fullmatch(r"[A-Za-z0-9_./:@-]+", raw) and not raw.startswith(("+", "-")):
+        return literal_value(raw)
+    return None
 
 
 @dataclass(frozen=True)
@@ -133,7 +144,7 @@ def extract_claims(snapshot: SnapshotData) -> ClaimExtractionResult:
                     kind="CONFIG_ASSERTION"
                     if re.search(r"配置|\bconfig(?:uration)?\b", context, re.I)
                     else "DEFAULT_ASSERTION",
-                    value=typed_literal(raw_value),
+                    value=documented_literal(raw_value),
                     qualifiers=["conditional"] if QUALIFIED.search(context + line) else [],
                     version_scope="unresolved"
                     if HISTORICAL.search(context + " " + line)
@@ -234,13 +245,46 @@ def extract_claims(snapshot: SnapshotData) -> ClaimExtractionResult:
                 continue
             aliases: dict[str, str] = {}
             instances: dict[str, str] = {}
+            literal_bindings: dict[str, object] = {}
             blocked: set[str] = set()
-            bindings: list[tuple[ast.Call, str, bool, bool]] = []
+            bindings: list[tuple[ast.Call, str, bool, bool, int, list[str], bool]] = []
             star_import = False
 
             def resolve(name: str) -> str:
                 first, _, rest = name.partition(".")
                 return aliases.get(first, first) + ("." + rest if rest else "")
+
+            def literal(node: ast.expr) -> object | None:
+                if isinstance(node, ast.Name):
+                    return literal_bindings.get(node.id)
+                try:
+                    return ast.literal_eval(node)
+                except (ValueError, TypeError, SyntaxError, MemoryError, RecursionError):
+                    return None
+
+            def call_shape(call: ast.Call) -> tuple[int, list[str], bool]:
+                positional_count = 0
+                keyword_names: list[str] = []
+                unpacking = False
+                for argument in call.args:
+                    if not isinstance(argument, ast.Starred):
+                        positional_count += 1
+                        continue
+                    value = literal(argument.value)
+                    if isinstance(value, tuple | list):
+                        positional_count += len(value)
+                    else:
+                        unpacking = True
+                for keyword in call.keywords:
+                    if keyword.arg is not None:
+                        keyword_names.append(keyword.arg)
+                        continue
+                    value = literal(keyword.value)
+                    if type(value) is dict and all(type(key) is str for key in value):
+                        keyword_names.extend(value)
+                    else:
+                        unpacking = True
+                return positional_count, keyword_names, unpacking
 
             for statement in tree.body:
                 dynamic = not isinstance(statement, ast.Expr | ast.Assign | ast.AnnAssign)
@@ -251,7 +295,18 @@ def extract_claims(snapshot: SnapshotData) -> ClaimExtractionResult:
                     subject = instances[first] + "." + rest if bound else resolve(name)
                     if first in blocked:
                         subject = ""
-                    bindings.append((call, subject, bound, dynamic or star_import))
+                    positional_count, keyword_names, unpacking = call_shape(call)
+                    bindings.append(
+                        (
+                            call,
+                            subject,
+                            bound,
+                            dynamic or star_import,
+                            positional_count,
+                            keyword_names,
+                            unpacking,
+                        )
+                    )
                 if (
                     isinstance(statement, ast.ImportFrom)
                     and statement.module
@@ -262,6 +317,7 @@ def extract_claims(snapshot: SnapshotData) -> ClaimExtractionResult:
                             binding = alias.asname or alias.name
                             blocked.discard(binding)
                             instances.pop(binding, None)
+                            literal_bindings.pop(binding, None)
                             aliases[binding] = statement.module + "." + alias.name
                         else:
                             star_import = True
@@ -270,6 +326,7 @@ def extract_claims(snapshot: SnapshotData) -> ClaimExtractionResult:
                         binding = alias.asname or alias.name.split(".")[0]
                         blocked.discard(binding)
                         instances.pop(binding, None)
+                        literal_bindings.pop(binding, None)
                         aliases[binding] = alias.name if alias.asname else alias.name.split(".")[0]
                 elif isinstance(statement, ast.Assign | ast.AnnAssign):
                     targets = (
@@ -283,12 +340,24 @@ def extract_claims(snapshot: SnapshotData) -> ClaimExtractionResult:
                         else ""
                     )
                     resolved = resolve(constructor) if re.fullmatch(IDENT, constructor) else ""
+                    try:
+                        assigned_literal = (
+                            ast.literal_eval(statement.value)
+                            if statement.value is not None
+                            else None
+                        )
+                    except (ValueError, TypeError, SyntaxError, MemoryError, RecursionError):
+                        assigned_literal = None
                     for target in targets:
                         if isinstance(target, ast.Name):
                             aliases.pop(target.id, None)
                             instances.pop(target.id, None)
+                            literal_bindings.pop(target.id, None)
                             blocked.add(target.id)
-                            if resolved:
+                            if type(assigned_literal) in {tuple, list, dict}:
+                                blocked.discard(target.id)
+                                literal_bindings[target.id] = assigned_literal
+                            elif resolved:
                                 blocked.discard(target.id)
                                 instances[target.id] = resolved
                 elif not isinstance(statement, ast.Expr):
@@ -298,9 +367,25 @@ def extract_claims(snapshot: SnapshotData) -> ClaimExtractionResult:
                         for n in ast.walk(statement)
                         if isinstance(n, ast.Name) and isinstance(n.ctx, ast.Store | ast.Del)
                     )
+                    for name in blocked:
+                        literal_bindings.pop(name, None)
+                elif isinstance(statement.value, ast.Call) and isinstance(
+                    statement.value.func, ast.Attribute
+                ):
+                    owner = statement.value.func.value
+                    if isinstance(owner, ast.Name):
+                        literal_bindings.pop(owner.id, None)
             start, end = token.map
             span = span_for(path, data, offsets[start], offsets[end])
-            for call_index, (node, subject, bound, dynamic) in enumerate(bindings):
+            for call_index, (
+                node,
+                subject,
+                bound,
+                dynamic,
+                positional_count,
+                keyword_names,
+                unpacking,
+            ) in enumerate(bindings):
                 context = contexts[start]
                 claims.append(
                     DocumentClaim(
@@ -313,10 +398,9 @@ def extract_claims(snapshot: SnapshotData) -> ClaimExtractionResult:
                         value=None,
                         span=span,
                         quote=data[span.start_byte : span.end_byte].decode(),
-                        positional_count=len(node.args),
-                        keyword_names=[k.arg for k in node.keywords if k.arg is not None],
-                        unpacking=any(isinstance(a, ast.Starred) for a in node.args)
-                        or any(k.arg is None for k in node.keywords),
+                        positional_count=positional_count,
+                        keyword_names=keyword_names,
+                        unpacking=unpacking,
                         bound_receiver=bound,
                         version_scope="unresolved" if HISTORICAL.search(context) else "current",
                         qualifiers=(["conditional"] if QUALIFIED.search(context) else [])

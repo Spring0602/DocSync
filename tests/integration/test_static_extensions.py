@@ -98,7 +98,7 @@ def test_import_alias_resolves_call(commit_files):
             "30",
             "UNCERTAIN",
         ),
-        ("TIMEOUT = 60\nTIMEOUT = 30", "settings", "TIMEOUT", "30", "UNCERTAIN"),
+        ("TIMEOUT = 60\nTIMEOUT = 30", "settings", "TIMEOUT", "30", "CONSISTENT"),
     ],
 )
 def test_config_defaults(commit_files, code, subject, prop, value, expected):

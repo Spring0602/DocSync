@@ -15,14 +15,10 @@ def stable_id(*parts: str) -> str:
     return digest(json.dumps(parts, ensure_ascii=False).encode())[:24]
 
 
-def typed_literal(expression: str) -> LiteralValue | None:
-    if len(expression) > 4096:
-        return None
+def literal_value(value: Any) -> LiteralValue | None:
+    """Encode an already proven Python literal without collapsing its runtime type."""
+
     try:
-        node = ast.parse(expression, mode="eval")
-        if sum(1 for _ in ast.walk(node)) > 128:
-            return None
-        value = ast.literal_eval(node)
 
         def encode(item: Any, depth: int = 0) -> Any:
             if depth > 8:
@@ -45,6 +41,18 @@ def typed_literal(expression: str) -> LiteralValue | None:
 
         canonical = json.dumps(encode(value), ensure_ascii=False, separators=(",", ":"))
         return LiteralValue(type=cast(LiteralType, type(value).__name__), canonical=canonical)
+    except (ValueError, TypeError, RecursionError, MemoryError):
+        return None
+
+
+def typed_literal(expression: str) -> LiteralValue | None:
+    if len(expression) > 4096:
+        return None
+    try:
+        node = ast.parse(expression, mode="eval")
+        if sum(1 for _ in ast.walk(node)) > 128:
+            return None
+        return literal_value(ast.literal_eval(node))
     except (ValueError, SyntaxError, TypeError, RecursionError, MemoryError):
         return None
 

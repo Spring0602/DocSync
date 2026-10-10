@@ -6,4 +6,4 @@
 - [可读汇总](../docs/a-historical-review-guide.md)：H1—H6 指定范围反馈已记录。
 - [原始日志快照](../docs/audit-samples/billing-review-20261010/ai_assistance_log-before-historical-review.csv)：用于核对源行及哈希。
 
-当前状态以原始声明和补充台账共同解释，不能只凭旧 CSV 的 pending 判定无人复核，也不能把 SCOPED_REVIEW_COMPLETED 解读为全量代码或历史提交通过。24 条标签均已获成员A逐条反馈，11 一致、8 冲突、5 证据不足；[全量复核索引](../docs/audit-samples/release-readiness-20261010/candidate-human-review-complete.json)补充冻结时的 pending 状态，后续逐条反馈见 [当前裁决复核台账](../docs/audit-samples/release-readiness-20261010/remaining-adjudications.json)；B/C 本人复核、独立正式评测和最终发布验收仍独立保留。实际审核日期未由用户填写，反馈接收日期与审核日期分开。
+当前状态以原始声明和补充台账共同解释，不能只凭旧 CSV 的 pending 判定无人复核，也不能把 SCOPED_REVIEW_COMPLETED 解读为全量代码或历史提交通过。24 条标签均已获成员A逐条反馈，11 一致、8 冲突、5 证据不足；[全量复核索引](../docs/audit-samples/release-readiness-20261010/candidate-human-review-complete.json)补充冻结时的 pending 状态，后续逐条反馈见 [当前裁决复核台账](../docs/audit-samples/release-readiness-20261010/remaining-adjudications.json)。成员 B 已于 2026-10-10 完成扩展覆盖提交 `7a16354` 的五项本人复核，见 [B 复核记录](../docs/audit-samples/b-release-coverage-20261010/human-review.json)。C 本人复核、独立正式评测和最终发布验收仍独立保留；各记录的范围不得相互替代。
