@@ -1,0 +1,406 @@
+{
+  "methods": [
+    "rules",
+    "keyword"
+  ],
+  "samples": 24,
+  "sample_ids": [
+    "candidate-01",
+    "candidate-02",
+    "candidate-03",
+    "candidate-04",
+    "candidate-05",
+    "candidate-06",
+    "candidate-07",
+    "candidate-08",
+    "candidate-09",
+    "candidate-10",
+    "candidate-11",
+    "candidate-12",
+    "candidate-13",
+    "candidate-14",
+    "candidate-15",
+    "candidate-16",
+    "candidate-17",
+    "candidate-18",
+    "candidate-19",
+    "candidate-20",
+    "candidate-21",
+    "candidate-22",
+    "candidate-23",
+    "candidate-24"
+  ],
+  "split_counts": {
+    "dev": 24
+  },
+  "formal_test_claim": false,
+  "manifest_sha256": "c8fcf3cfb3cdfb38b89266b2d7926038e774fa68293f5f3edbd8939fa8a51aae",
+  "config_sha256": "37a959a06dad80b416b91ee9504f300b698c86d460495c98fc40fc6fdc67fdbb",
+  "request_upper_bound": 0,
+  "output_token_upper_bound": 0,
+  "request_limit": 0,
+  "cost_amount": null,
+  "cost_note": "Token reservation is not billed usage; provider invoice required.",
+  "provenance": {
+    "commit": "0465c93c5d75a8508223a808d59711c045d3b3d7",
+    "dirty": true,
+    "source_hashes_lf": {
+      "bench/annotation_packet.py": "41d081a8762ceb17633415e941c236707cc9f9127183db31f3185dc85b38b34e",
+      "bench/builders/build_candidates.py": "ded69dc6e5a17808f193892d6c1cc5cf17a72fab4d93bed13340787c2814ec53",
+      "bench/builders/build_reviewed_candidates.py": "dabef341b09f89fa73dc898c68b684fa16004d6a76a4fc2378638f67aa803e7a",
+      "bench/builders/build_reviewed_seed.py": "2d1c1eff48018a2d7d4a786346513fefa01b51dd7b458f16a86609fe7e04fa03",
+      "bench/builders/build_seed.py": "3d2df7323d4c5f5c7b9b5f00e7ba6603cd0d95cc4bf96449587f79c2d528ab10",
+      "bench/evaluate.py": "6e0ac590f9462d14e7cf40125ea03e06e3533f7241232bd3134abe8e1b92b952",
+      "bench/evaluate_alignment.py": "a0d9f143f63353594312ccb6671de9fdb095ea0212d140091fa819c17b386f12",
+      "bench/run_suite.py": "7de0290b3c8b1884e2ad0cf695ee028db79bf78697b63a2cb13efed93a59c3e7",
+      "pyproject.toml": "d9d3ba554f6b35d155b95ba82d5a918b96d7bab1b70b340ceff1a3254ff83534",
+      "src/docsync/__init__.py": "e389b13fb67195d45022336ff7cc3c98d3097b94755f209095b0f289c9ce1dd7",
+      "src/docsync/__main__.py": "d489c8565e10912585107711bb16a1e765109299bf5c6faf17e73f3321e73ab7",
+      "src/docsync/alignment/__init__.py": "67161aa0cf5eecab2fb7ffc88b2a7a2ac2e295b2ec413ff26d7e4ddaecf205c8",
+      "src/docsync/benchmark.py": "e7c5cfe31ec13d40ad807fd7a578b638a1326f3f33ab6a730bb4727231919872",
+      "src/docsync/cli.py": "6037aaffcabe18d9b04de253402617bf974f3ece7a6232d590566e3d7d1b2425",
+      "src/docsync/config.py": "2f29dce00a136714400cedc7fd8f92a7ee84961a6150a6986b1970443af00c10",
+      "src/docsync/extractors/__init__.py": "b40d44cab820d7a7bf09ac7d81780442bc6eea094f45862856de6a76bc9a0c4a",
+      "src/docsync/extractors/markdown.py": "bee67d0c338ec72e531ddb632183d3616c681270cc9b6b535da35357f8616ebd",
+      "src/docsync/extractors/python_ast.py": "9b7dc0ca4b566c545a051291ae751ca251cbffcb93639db195eff22fbb1fa398",
+      "src/docsync/llm/__init__.py": "9cf5aea7e846de96d911ddb9d87a547af803398cad44784b2010a660cfef12a0",
+      "src/docsync/llm/prompts.py": "021e6111ca33449888b3dfd5f468bf43753bab096ba23354a3a4c1a7d7f1fb1e",
+      "src/docsync/llm/provider.py": "7a613774f6f037585a36d727c8c0140da2edd11752a7454ae9b6960a9032ea18",
+      "src/docsync/metrics.py": "d130f5dcbb6f9c3bc4543ae08ead69f311d66b9896db0d07c8d5142fa8b88794",
+      "src/docsync/models.py": "3b272692830a9bb753cdacc178959a48c6358910b494f72034daaf09841098ae",
+      "src/docsync/patches/__init__.py": "72fb2665cf99e02a9771d7520af25188c2e65eed63609223faa7be43dd7d01fc",
+      "src/docsync/pipeline.py": "670054b1c8b0993449df751213a474f26f027bd76ab1aa89510c956f84bb946b",
+      "src/docsync/reporting/__init__.py": "a32ccc9d5bb93ef29fe3762579589d857c7c6d5fce66262efcdcd017134e63a1",
+      "src/docsync/repository/__init__.py": "03e14ae487eed6eadcb67cb9224b06fd7f92dbe08133edb0788975adf22421d1",
+      "src/docsync/utils.py": "a26eb8e71afc9f29c8206cdc5578dd99376693674223bcd1fd4d0891ba785c3e",
+      "src/docsync/verification/__init__.py": "a29a1a7c6cb28b29496096d7096cb124ee831235683e8ea7df774911779ac253"
+    }
+  },
+  "status": "PARTIAL",
+  "results": {
+    "rules": {
+      "metrics": {
+        "sample_count": 24,
+        "counts": {
+          "tp": 3,
+          "fp": 0,
+          "tn": 11,
+          "fn": 5,
+          "decidable": 19,
+          "decided": 6,
+          "insufficient": 5,
+          "improper_confirmation": 0,
+          "failed": 0,
+          "abstained": 18
+        },
+        "precision": 1.0,
+        "recall": 0.375,
+        "f1": 0.5454545454545454,
+        "false_positive_rate": 0.0,
+        "decision_coverage": 0.3157894736842105,
+        "abstention_rate": 0.75,
+        "improper_confirmation_rate": 0.0
+      },
+      "status_counts": {
+        "COMPLETED": 20,
+        "PARTIAL": 4
+      },
+      "usage": {
+        "requests": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_hits": 0,
+        "unknown_usage_requests": 0
+      },
+      "elapsed_seconds": 16.09609420000561,
+      "review_items": [
+        {
+          "sample_id": "candidate-01",
+          "gold": "INCONSISTENT",
+          "prediction": "UNCERTAIN",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "candidate-04",
+          "gold": "CONSISTENT",
+          "prediction": "UNCERTAIN",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "candidate-05",
+          "gold": "INCONSISTENT",
+          "prediction": "UNCERTAIN",
+          "status": "PARTIAL",
+          "errors": [
+            "DYNAMIC_FUNCTION"
+          ]
+        },
+        {
+          "sample_id": "candidate-06",
+          "gold": "CONSISTENT",
+          "prediction": "UNCERTAIN",
+          "status": "PARTIAL",
+          "errors": [
+            "DYNAMIC_FUNCTION"
+          ]
+        },
+        {
+          "sample_id": "candidate-07",
+          "gold": "INSUFFICIENT",
+          "prediction": "UNCERTAIN",
+          "status": "PARTIAL",
+          "errors": [
+            "DYNAMIC_FUNCTION"
+          ]
+        },
+        {
+          "sample_id": "candidate-08",
+          "gold": "CONSISTENT",
+          "prediction": "UNCERTAIN",
+          "status": "PARTIAL",
+          "errors": [
+            "DYNAMIC_FUNCTION"
+          ]
+        },
+        {
+          "sample_id": "candidate-09",
+          "gold": "CONSISTENT",
+          "prediction": "UNCERTAIN",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "candidate-10",
+          "gold": "INCONSISTENT",
+          "prediction": "UNCERTAIN",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "candidate-11",
+          "gold": "CONSISTENT",
+          "prediction": "UNCERTAIN",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "candidate-17",
+          "gold": "INCONSISTENT",
+          "prediction": "UNCERTAIN",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "candidate-18",
+          "gold": "CONSISTENT",
+          "prediction": "UNCERTAIN",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "candidate-20",
+          "gold": "CONSISTENT",
+          "prediction": "UNCERTAIN",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "candidate-21",
+          "gold": "INCONSISTENT",
+          "prediction": "UNCERTAIN",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "candidate-24",
+          "gold": "CONSISTENT",
+          "prediction": "UNCERTAIN",
+          "status": "COMPLETED",
+          "errors": []
+        }
+      ],
+      "cost_amount": null
+    },
+    "keyword": {
+      "metrics": {
+        "sample_count": 24,
+        "counts": {
+          "tp": 3,
+          "fp": 3,
+          "tn": 8,
+          "fn": 5,
+          "decidable": 19,
+          "decided": 7,
+          "insufficient": 5,
+          "improper_confirmation": 2,
+          "failed": 0,
+          "abstained": 15
+        },
+        "precision": 0.5,
+        "recall": 0.375,
+        "f1": 0.42857142857142855,
+        "false_positive_rate": 0.2727272727272727,
+        "decision_coverage": 0.3684210526315789,
+        "abstention_rate": 0.625,
+        "improper_confirmation_rate": 0.4
+      },
+      "status_counts": {
+        "COMPLETED": 24
+      },
+      "usage": {
+        "requests": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_hits": 0,
+        "unknown_usage_requests": 0
+      },
+      "elapsed_seconds": 14.043258999994578,
+      "review_items": [
+        {
+          "sample_id": "candidate-02",
+          "gold": "CONSISTENT",
+          "prediction": "SKIPPED",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "candidate-03",
+          "gold": "INCONSISTENT",
+          "prediction": "SKIPPED",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "candidate-04",
+          "gold": "CONSISTENT",
+          "prediction": "INCONSISTENT",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "candidate-06",
+          "gold": "CONSISTENT",
+          "prediction": "INCONSISTENT",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "candidate-07",
+          "gold": "INSUFFICIENT",
+          "prediction": "INCONSISTENT",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "candidate-08",
+          "gold": "CONSISTENT",
+          "prediction": "INCONSISTENT",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "candidate-09",
+          "gold": "CONSISTENT",
+          "prediction": "SKIPPED",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "candidate-10",
+          "gold": "INCONSISTENT",
+          "prediction": "SKIPPED",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "candidate-11",
+          "gold": "CONSISTENT",
+          "prediction": "SKIPPED",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "candidate-12",
+          "gold": "INSUFFICIENT",
+          "prediction": "SKIPPED",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "candidate-13",
+          "gold": "CONSISTENT",
+          "prediction": "SKIPPED",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "candidate-14",
+          "gold": "INCONSISTENT",
+          "prediction": "SKIPPED",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "candidate-15",
+          "gold": "INCONSISTENT",
+          "prediction": "SKIPPED",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "candidate-16",
+          "gold": "INSUFFICIENT",
+          "prediction": "SKIPPED",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "candidate-18",
+          "gold": "CONSISTENT",
+          "prediction": "SKIPPED",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "candidate-19",
+          "gold": "INSUFFICIENT",
+          "prediction": "INCONSISTENT",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "candidate-20",
+          "gold": "CONSISTENT",
+          "prediction": "SKIPPED",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "candidate-21",
+          "gold": "INCONSISTENT",
+          "prediction": "SKIPPED",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "candidate-23",
+          "gold": "INSUFFICIENT",
+          "prediction": "SKIPPED",
+          "status": "COMPLETED",
+          "errors": []
+        },
+        {
+          "sample_id": "candidate-24",
+          "gold": "CONSISTENT",
+          "prediction": "SKIPPED",
+          "status": "COMPLETED",
+          "errors": []
+        }
+      ],
+      "cost_amount": null
+    }
+  },
+  "actual_requests": 0
+}

@@ -1,0 +1,686 @@
+{
+  "schema_version": "2.0",
+  "manifest": {
+    "schema_version": "2.0",
+    "run_id": "4a9bb58adfd84265aedad094b7399773",
+    "versions": {
+      "docsync": "0.2.0",
+      "schema": "2.0",
+      "extractor": "python-static/2",
+      "claims": "markdown/2",
+      "verifier": "verifier/2",
+      "method": "rules",
+      "pydantic": "2.11.7",
+      "markdown-it-py": "3.0.0"
+    },
+    "config_hash": "86b44df60004d4951d0b70a3b2ff5a57a0cc71beccbd1b5519b6b6ff0fa5657e",
+    "mode": "rules",
+    "status": "COMPLETED",
+    "enabled_types": [
+      "DEFAULT_VALUE",
+      "SIGNATURE",
+      "CONFIG"
+    ],
+    "semantic_coverage": "supported-static-claims-only",
+    "budget": {
+      "max_requests": 1,
+      "max_total_tokens": 100000
+    },
+    "usage": {
+      "requests": 0,
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "diagnostics": [],
+    "stage_seconds": {
+      "extraction": 0.0035944000010204036,
+      "alignment": 0.00010850000035134144,
+      "judging": 0.00005319999763742089,
+      "verification": 0.00015799999891896732,
+      "analysis_total": 0.00695859999905224,
+      "repository": 0.5911572000004526,
+      "patch_validation": 0.013055800001893658,
+      "total": 0.6162105000003066
+    },
+    "model": {
+      "provider": "chat-completions",
+      "model": "deepseek-flash",
+      "temperature": 0.0
+    },
+    "events": [
+      "CREATED",
+      "ANALYZING",
+      "EXTRACTING",
+      "ALIGNING",
+      "JUDGING",
+      "VERIFYING",
+      "REPORTING",
+      "COMPLETED"
+    ],
+    "model_calls": []
+  },
+  "snapshot": {
+    "repo_id": "f5266aaf236cd672bacbed4d",
+    "head_sha": "97978fc406e9a2b05717d9ed6e55a747a94be41c",
+    "base_sha": null,
+    "mode": "commit",
+    "files_hash": "a02b8035c81dd24513c030fb",
+    "dirty": false,
+    "files": [
+      {
+        "path": "case01.md",
+        "blob_hash": "3a9ec984d4d5557ffcc9c128fd4cb0f6d81d19e44af834fc72faa07c224aae4a",
+        "size": 79,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "case01.py",
+        "blob_hash": "51814d481fc5e9613639cb44ccf0d9654f4493467f6ad59e7690a3ebc03e78f0",
+        "size": 100,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "case02.md",
+        "blob_hash": "c5cd48b3009805286b9fb56ea4321edc631e8b9710b9b236b104ddef2b9b3fcd",
+        "size": 71,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "case02.py",
+        "blob_hash": "86d6372f935e148d3fb1d532ef6f50efe9b775a5d277da0bf7a713029a01df15",
+        "size": 109,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "case03.md",
+        "blob_hash": "b7dbecac4d146250d712d06b512a1d25cd60204071b68fa9988e77c2c5ad0bac",
+        "size": 82,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "case03.py",
+        "blob_hash": "7d2db77e30a150d7dfe913d18360f19946a12b108aeb58ff0c3029336c870c25",
+        "size": 99,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "case04.md",
+        "blob_hash": "e19607fb02efec53563e454eadc4cdd79400bb0584b7bc83b973e90653fe96b1",
+        "size": 79,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "case04.py",
+        "blob_hash": "e59e37dec24024969d5eafc89768cc92ad07532b8e8f8954f98be8edb700cc1f",
+        "size": 120,
+        "encoding": "utf-8"
+      }
+    ],
+    "changed_paths": []
+  },
+  "entities": [
+    {
+      "entity_id": "4c15c4500374ae94e058d16e",
+      "kind": "async_function",
+      "qualified_name": "case02.download_resource",
+      "module": "case02",
+      "signature": [
+        {
+          "name": "url",
+          "kind": "POSITIONAL_OR_KEYWORD",
+          "required": true,
+          "value_state": "ABSENT",
+          "typed_value": null,
+          "expression": null
+        },
+        {
+          "name": "retries",
+          "kind": "KEYWORD_ONLY",
+          "required": false,
+          "value_state": "KNOWN",
+          "typed_value": {
+            "type": "int",
+            "canonical": "[\"int\",4]"
+          },
+          "expression": "4"
+        },
+        {
+          "name": "decode",
+          "kind": "KEYWORD_ONLY",
+          "required": false,
+          "value_state": "KNOWN",
+          "typed_value": {
+            "type": "bool",
+            "canonical": "[\"bool\",false]"
+          },
+          "expression": "False"
+        }
+      ],
+      "decorators": [],
+      "span": {
+        "path": "case02.py",
+        "start_line": 1,
+        "end_line": 2,
+        "start_byte": 0,
+        "end_byte": 108,
+        "blob_hash": "86d6372f935e148d3fb1d532ef6f50efe9b775a5d277da0bf7a713029a01df15"
+      }
+    },
+    {
+      "entity_id": "a4be030de81eceed46ce0609",
+      "kind": "function",
+      "qualified_name": "case03.emit_record",
+      "module": "case03",
+      "signature": [
+        {
+          "name": "payload",
+          "kind": "POSITIONAL_OR_KEYWORD",
+          "required": true,
+          "value_state": "ABSENT",
+          "typed_value": null,
+          "expression": null
+        },
+        {
+          "name": "tags",
+          "kind": "KEYWORD_ONLY",
+          "required": false,
+          "value_state": "KNOWN",
+          "typed_value": {
+            "type": "tuple",
+            "canonical": "[\"tuple\",[[\"str\",\"audit\"],[\"str\",\"public\"]]]"
+          },
+          "expression": "(\"audit\", \"public\")"
+        }
+      ],
+      "decorators": [],
+      "span": {
+        "path": "case03.py",
+        "start_line": 1,
+        "end_line": 2,
+        "start_byte": 0,
+        "end_byte": 98,
+        "blob_hash": "7d2db77e30a150d7dfe913d18360f19946a12b108aeb58ff0c3029336c870c25"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "51b9d03c80fddd1d2092597e",
+      "entity_id": "4c15c4500374ae94e058d16e",
+      "subject": "case02.download_resource",
+      "property": "retries",
+      "value_state": "KNOWN",
+      "typed_value": {
+        "type": "int",
+        "canonical": "[\"int\",4]"
+      },
+      "expression": "4",
+      "span": {
+        "path": "case02.py",
+        "start_line": 1,
+        "end_line": 1,
+        "start_byte": 51,
+        "end_byte": 52,
+        "blob_hash": "86d6372f935e148d3fb1d532ef6f50efe9b775a5d277da0bf7a713029a01df15"
+      },
+      "fact_kind": "DEFAULT_VALUE",
+      "parameters": [],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    },
+    {
+      "fact_id": "37b72c892510747e233f9be4",
+      "entity_id": "4c15c4500374ae94e058d16e",
+      "subject": "case02.download_resource",
+      "property": "decode",
+      "value_state": "KNOWN",
+      "typed_value": {
+        "type": "bool",
+        "canonical": "[\"bool\",false]"
+      },
+      "expression": "False",
+      "span": {
+        "path": "case02.py",
+        "start_line": 1,
+        "end_line": 1,
+        "start_byte": 69,
+        "end_byte": 74,
+        "blob_hash": "86d6372f935e148d3fb1d532ef6f50efe9b775a5d277da0bf7a713029a01df15"
+      },
+      "fact_kind": "DEFAULT_VALUE",
+      "parameters": [],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    },
+    {
+      "fact_id": "32ba947c578a2176c0200dd6",
+      "entity_id": "4c15c4500374ae94e058d16e",
+      "subject": "case02.download_resource",
+      "property": "__signature__",
+      "value_state": "KNOWN",
+      "typed_value": null,
+      "expression": "async def download_resource(url, *, retries: int = 4, decode: bool = False):\n    return url, retries, decode",
+      "span": {
+        "path": "case02.py",
+        "start_line": 1,
+        "end_line": 2,
+        "start_byte": 0,
+        "end_byte": 108,
+        "blob_hash": "86d6372f935e148d3fb1d532ef6f50efe9b775a5d277da0bf7a713029a01df15"
+      },
+      "fact_kind": "SIGNATURE",
+      "parameters": [
+        {
+          "name": "url",
+          "kind": "POSITIONAL_OR_KEYWORD",
+          "required": true,
+          "value_state": "ABSENT",
+          "typed_value": null,
+          "expression": null
+        },
+        {
+          "name": "retries",
+          "kind": "KEYWORD_ONLY",
+          "required": false,
+          "value_state": "KNOWN",
+          "typed_value": {
+            "type": "int",
+            "canonical": "[\"int\",4]"
+          },
+          "expression": "4"
+        },
+        {
+          "name": "decode",
+          "kind": "KEYWORD_ONLY",
+          "required": false,
+          "value_state": "KNOWN",
+          "typed_value": {
+            "type": "bool",
+            "canonical": "[\"bool\",false]"
+          },
+          "expression": "False"
+        }
+      ],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    },
+    {
+      "fact_id": "b862e0d05e7d824fb2505800",
+      "entity_id": "a4be030de81eceed46ce0609",
+      "subject": "case03.emit_record",
+      "property": "tags",
+      "value_state": "KNOWN",
+      "typed_value": {
+        "type": "tuple",
+        "canonical": "[\"tuple\",[[\"str\",\"audit\"],[\"str\",\"public\"]]]"
+      },
+      "expression": "(\"audit\", \"public\")",
+      "span": {
+        "path": "case03.py",
+        "start_line": 1,
+        "end_line": 1,
+        "start_byte": 52,
+        "end_byte": 71,
+        "blob_hash": "7d2db77e30a150d7dfe913d18360f19946a12b108aeb58ff0c3029336c870c25"
+      },
+      "fact_kind": "DEFAULT_VALUE",
+      "parameters": [],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    },
+    {
+      "fact_id": "d25100cb75f1e059334230e7",
+      "entity_id": "a4be030de81eceed46ce0609",
+      "subject": "case03.emit_record",
+      "property": "__signature__",
+      "value_state": "KNOWN",
+      "typed_value": null,
+      "expression": "def emit_record(payload, *, tags: tuple[str, ...] = (\"audit\", \"public\")):\n    return payload, tags",
+      "span": {
+        "path": "case03.py",
+        "start_line": 1,
+        "end_line": 2,
+        "start_byte": 0,
+        "end_byte": 98,
+        "blob_hash": "7d2db77e30a150d7dfe913d18360f19946a12b108aeb58ff0c3029336c870c25"
+      },
+      "fact_kind": "SIGNATURE",
+      "parameters": [
+        {
+          "name": "payload",
+          "kind": "POSITIONAL_OR_KEYWORD",
+          "required": true,
+          "value_state": "ABSENT",
+          "typed_value": null,
+          "expression": null
+        },
+        {
+          "name": "tags",
+          "kind": "KEYWORD_ONLY",
+          "required": false,
+          "value_state": "KNOWN",
+          "typed_value": {
+            "type": "tuple",
+            "canonical": "[\"tuple\",[[\"str\",\"audit\"],[\"str\",\"public\"]]]"
+          },
+          "expression": "(\"audit\", \"public\")"
+        }
+      ],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "5b16a074af948b08b0e8e82f",
+      "subject": "PageReader.__init__",
+      "predicate": "encoding",
+      "kind": "DEFAULT_ASSERTION",
+      "value": null,
+      "qualifiers": [],
+      "version_scope": "current",
+      "span": {
+        "path": "case01.md",
+        "start_line": 5,
+        "end_line": 5,
+        "start_byte": 43,
+        "end_byte": 78,
+        "blob_hash": "3a9ec984d4d5557ffcc9c128fd4cb0f6d81d19e44af834fc72faa07c224aae4a"
+      },
+      "value_span": {
+        "path": "case01.md",
+        "start_line": 5,
+        "end_line": 5,
+        "start_byte": 68,
+        "end_byte": 74,
+        "blob_hash": "3a9ec984d4d5557ffcc9c128fd4cb0f6d81d19e44af834fc72faa07c224aae4a"
+      },
+      "quote": "`encoding` 默认值为 `utf-16`。",
+      "extraction_method": "markdown-rules/2",
+      "source_hint": null,
+      "positional_count": null,
+      "keyword_names": [],
+      "unpacking": false,
+      "bound_receiver": false
+    },
+    {
+      "claim_id": "a44d6820478b1a46cd10548f",
+      "subject": "download_resource",
+      "predicate": "retries",
+      "kind": "DEFAULT_ASSERTION",
+      "value": {
+        "type": "int",
+        "canonical": "[\"int\",4]"
+      },
+      "qualifiers": [],
+      "version_scope": "current",
+      "span": {
+        "path": "case02.md",
+        "start_line": 5,
+        "end_line": 5,
+        "start_byte": 41,
+        "end_byte": 70,
+        "blob_hash": "c5cd48b3009805286b9fb56ea4321edc631e8b9710b9b236b104ddef2b9b3fcd"
+      },
+      "value_span": {
+        "path": "case02.md",
+        "start_line": 5,
+        "end_line": 5,
+        "start_byte": 65,
+        "end_byte": 66,
+        "blob_hash": "c5cd48b3009805286b9fb56ea4321edc631e8b9710b9b236b104ddef2b9b3fcd"
+      },
+      "quote": "`retries` 默认值为 `4`。",
+      "extraction_method": "markdown-rules/2",
+      "source_hint": null,
+      "positional_count": null,
+      "keyword_names": [],
+      "unpacking": false,
+      "bound_receiver": false
+    },
+    {
+      "claim_id": "0f52e02f2c734324e5ea39ba",
+      "subject": "emit_record",
+      "predicate": "tags",
+      "kind": "DEFAULT_ASSERTION",
+      "value": {
+        "type": "tuple",
+        "canonical": "[\"tuple\",[[\"str\",\"audit\"],[\"str\",\"internal\"]]]"
+      },
+      "qualifiers": [],
+      "version_scope": "current",
+      "span": {
+        "path": "case03.md",
+        "start_line": 5,
+        "end_line": 5,
+        "start_byte": 35,
+        "end_byte": 81,
+        "blob_hash": "b7dbecac4d146250d712d06b512a1d25cd60204071b68fa9988e77c2c5ad0bac"
+      },
+      "value_span": {
+        "path": "case03.md",
+        "start_line": 5,
+        "end_line": 5,
+        "start_byte": 56,
+        "end_byte": 77,
+        "blob_hash": "b7dbecac4d146250d712d06b512a1d25cd60204071b68fa9988e77c2c5ad0bac"
+      },
+      "quote": "`tags` 默认值为 `(\"audit\", \"internal\")`。",
+      "extraction_method": "markdown-rules/2",
+      "source_hint": null,
+      "positional_count": null,
+      "keyword_names": [],
+      "unpacking": false,
+      "bound_receiver": false
+    },
+    {
+      "claim_id": "64077d9ae7e71c34598aa8dc",
+      "subject": "MemoryBuffer.__init__",
+      "predicate": "capacity",
+      "kind": "DEFAULT_ASSERTION",
+      "value": {
+        "type": "NoneType",
+        "canonical": "[\"NoneType\",null]"
+      },
+      "qualifiers": [],
+      "version_scope": "current",
+      "span": {
+        "path": "case04.md",
+        "start_line": 5,
+        "end_line": 5,
+        "start_byte": 45,
+        "end_byte": 78,
+        "blob_hash": "e19607fb02efec53563e454eadc4cdd79400bb0584b7bc83b973e90653fe96b1"
+      },
+      "value_span": {
+        "path": "case04.md",
+        "start_line": 5,
+        "end_line": 5,
+        "start_byte": 70,
+        "end_byte": 74,
+        "blob_hash": "e19607fb02efec53563e454eadc4cdd79400bb0584b7bc83b973e90653fe96b1"
+      },
+      "quote": "`capacity` 默认值为 `None`。",
+      "extraction_method": "markdown-rules/2",
+      "source_hint": null,
+      "positional_count": null,
+      "keyword_names": [],
+      "unpacking": false,
+      "bound_receiver": false
+    }
+  ],
+  "candidates": [
+    {
+      "claim_id": "5b16a074af948b08b0e8e82f",
+      "candidates": [],
+      "ambiguity": false,
+      "reason": "NO_CANDIDATE"
+    },
+    {
+      "claim_id": "a44d6820478b1a46cd10548f",
+      "candidates": [
+        {
+          "fact_id": "51b9d03c80fddd1d2092597e",
+          "rank": 1,
+          "score": 1.0,
+          "features": [
+            "exact_symbol",
+            "parameter_owner"
+          ]
+        }
+      ],
+      "ambiguity": false,
+      "reason": "MATCH"
+    },
+    {
+      "claim_id": "0f52e02f2c734324e5ea39ba",
+      "candidates": [
+        {
+          "fact_id": "b862e0d05e7d824fb2505800",
+          "rank": 1,
+          "score": 1.0,
+          "features": [
+            "exact_symbol",
+            "parameter_owner"
+          ]
+        }
+      ],
+      "ambiguity": false,
+      "reason": "MATCH"
+    },
+    {
+      "claim_id": "64077d9ae7e71c34598aa8dc",
+      "candidates": [],
+      "ambiguity": false,
+      "reason": "NO_CANDIDATE"
+    }
+  ],
+  "judgments": [
+    {
+      "claim_id": "5b16a074af948b08b0e8e82f",
+      "decision": "UNCERTAIN",
+      "fact_ids": [],
+      "reason_code": "NO_CANDIDATE",
+      "reason_text": "Insufficient evidence for a deterministic decision",
+      "claim_type_check": false,
+      "version_compatible": false,
+      "score": null,
+      "uncertainty_reason": "NO_CANDIDATE",
+      "model_run_id": null
+    },
+    {
+      "claim_id": "a44d6820478b1a46cd10548f",
+      "decision": "CONSISTENT",
+      "fact_ids": [
+        "51b9d03c80fddd1d2092597e"
+      ],
+      "reason_code": "LITERAL_EQUAL",
+      "reason_text": "Compare explicit typed default values for the same parameter",
+      "claim_type_check": true,
+      "version_compatible": true,
+      "score": null,
+      "uncertainty_reason": null,
+      "model_run_id": null
+    },
+    {
+      "claim_id": "0f52e02f2c734324e5ea39ba",
+      "decision": "INCONSISTENT",
+      "fact_ids": [
+        "b862e0d05e7d824fb2505800"
+      ],
+      "reason_code": "LITERAL_MISMATCH",
+      "reason_text": "Compare explicit typed default values for the same parameter",
+      "claim_type_check": true,
+      "version_compatible": true,
+      "score": null,
+      "uncertainty_reason": null,
+      "model_run_id": null
+    },
+    {
+      "claim_id": "64077d9ae7e71c34598aa8dc",
+      "decision": "UNCERTAIN",
+      "fact_ids": [],
+      "reason_code": "NO_CANDIDATE",
+      "reason_text": "Insufficient evidence for a deterministic decision",
+      "claim_type_check": false,
+      "version_compatible": false,
+      "score": null,
+      "uncertainty_reason": "NO_CANDIDATE",
+      "model_run_id": null
+    }
+  ],
+  "findings": [
+    {
+      "finding_id": "d6e17610693ff0ea2e4c3ae7",
+      "drift_type": "DEFAULT_VALUE",
+      "claim_id": "0f52e02f2c734324e5ea39ba",
+      "fact_ids": [
+        "b862e0d05e7d824fb2505800"
+      ],
+      "evidence": {
+        "head_sha": "97978fc406e9a2b05717d9ed6e55a747a94be41c",
+        "snapshot_hash": "a02b8035c81dd24513c030fb",
+        "entity_id": "a4be030de81eceed46ce0609",
+        "document": {
+          "path": "case03.md",
+          "start_line": 5,
+          "end_line": 5,
+          "start_byte": 35,
+          "end_byte": 81,
+          "blob_hash": "b7dbecac4d146250d712d06b512a1d25cd60204071b68fa9988e77c2c5ad0bac"
+        },
+        "code": {
+          "path": "case03.py",
+          "start_line": 1,
+          "end_line": 1,
+          "start_byte": 52,
+          "end_byte": 71,
+          "blob_hash": "7d2db77e30a150d7dfe913d18360f19946a12b108aeb58ff0c3029336c870c25"
+        },
+        "rule_id": "DEFAULT_VALUE/1",
+        "verifier_version": "verifier/2"
+      },
+      "severity": "warning",
+      "status": "INCONSISTENT",
+      "verification_status": "VERIFIED",
+      "ignored": false,
+      "ignore_reason": null,
+      "ignore_expires": null
+    }
+  ],
+  "rejected": [],
+  "patches": [
+    {
+      "patch_id": "029ac2879399bc2752bac344",
+      "finding_ids": [
+        "d6e17610693ff0ea2e4c3ae7"
+      ],
+      "base_hashes": {
+        "case03.md": "b7dbecac4d146250d712d06b512a1d25cd60204071b68fa9988e77c2c5ad0bac"
+      },
+      "edits": [
+        {
+          "span": {
+            "path": "case03.md",
+            "start_line": 5,
+            "end_line": 5,
+            "start_byte": 56,
+            "end_byte": 77,
+            "blob_hash": "b7dbecac4d146250d712d06b512a1d25cd60204071b68fa9988e77c2c5ad0bac"
+          },
+          "old_text": "(\"audit\", \"internal\")",
+          "new_text": "(\"audit\", \"public\")"
+        }
+      ],
+      "diff": "--- a/case03.md\n+++ b/case03.md\n@@ -2,4 +2,4 @@\n \n ## `emit_record`\n \n-`tags` 默认值为 `(\"audit\", \"internal\")`。\n+`tags` 默认值为 `(\"audit\", \"public\")`。\n",
+      "validation": "VALIDATED",
+      "requires_review": true,
+      "validation_details": [
+        "All byte preimages match",
+        "Code fences unchanged",
+        "In-memory rescan: target conflicts removed; no new confirmed conflicts",
+        "Human semantic review still required"
+      ]
+    }
+  ]
+}

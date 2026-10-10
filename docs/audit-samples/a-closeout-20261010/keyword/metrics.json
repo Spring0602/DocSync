@@ -1,0 +1,94 @@
+{
+  "sample_count": 24,
+  "counts": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 8,
+    "fn": 5,
+    "decidable": 19,
+    "decided": 7,
+    "insufficient": 5,
+    "improper_confirmation": 2,
+    "failed": 0,
+    "abstained": 15
+  },
+  "precision": 0.5,
+  "recall": 0.375,
+  "f1": 0.42857142857142855,
+  "false_positive_rate": 0.2727272727272727,
+  "decision_coverage": 0.3684210526315789,
+  "abstention_rate": 0.625,
+  "improper_confirmation_rate": 0.4,
+  "by_type": {
+    "CONFIG": {
+      "sample_count": 8,
+      "counts": {
+        "tp": 1,
+        "fp": 0,
+        "tn": 4,
+        "fn": 1,
+        "decidable": 6,
+        "decided": 2,
+        "insufficient": 2,
+        "improper_confirmation": 1,
+        "failed": 0,
+        "abstained": 5
+      },
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6666666666666666,
+      "false_positive_rate": 0.0,
+      "decision_coverage": 0.3333333333333333,
+      "abstention_rate": 0.625,
+      "improper_confirmation_rate": 0.5
+    },
+    "DEFAULT_VALUE": {
+      "sample_count": 8,
+      "counts": {
+        "tp": 2,
+        "fp": 3,
+        "tn": 1,
+        "fn": 1,
+        "decidable": 7,
+        "decided": 5,
+        "insufficient": 1,
+        "improper_confirmation": 1,
+        "failed": 0,
+        "abstained": 2
+      },
+      "precision": 0.4,
+      "recall": 0.6666666666666666,
+      "f1": 0.5,
+      "false_positive_rate": 0.75,
+      "decision_coverage": 0.7142857142857143,
+      "abstention_rate": 0.25,
+      "improper_confirmation_rate": 1.0
+    },
+    "SIGNATURE": {
+      "sample_count": 8,
+      "counts": {
+        "tp": 0,
+        "fp": 0,
+        "tn": 3,
+        "fn": 3,
+        "decidable": 6,
+        "decided": 0,
+        "insufficient": 2,
+        "improper_confirmation": 0,
+        "failed": 0,
+        "abstained": 8
+      },
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "false_positive_rate": 0.0,
+      "decision_coverage": 0.0,
+      "abstention_rate": 1.0,
+      "improper_confirmation_rate": 0.0
+    }
+  },
+  "provisional_labels": false,
+  "manifest_hash": "c8fcf3cfb3cdfb38b89266b2d7926038e774fa68293f5f3edbd8939fa8a51aae",
+  "config_hash": "86b44df60004d4951d0b70a3b2ff5a57a0cc71beccbd1b5519b6b6ff0fa5657e",
+  "method": "keyword"
+}

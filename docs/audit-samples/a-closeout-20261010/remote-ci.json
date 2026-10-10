@@ -1,0 +1,9 @@
+{
+  "checked_on": "2026-10-10",
+  "commit": "0465c93c5d75a8508223a808d59711c045d3b3d7",
+  "name": "Core CI",
+  "status": "completed",
+  "conclusion": "success",
+  "url": "https://github.com/Spring0602/DocSync/actions/runs/37935003338",
+  "scope": "Already-pushed baseline only; does not cover uncommitted closeout changes."
+}

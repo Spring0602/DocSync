@@ -1,0 +1,776 @@
+{
+  "schema_version": "2.0",
+  "manifest": {
+    "schema_version": "2.0",
+    "run_id": "23cb645dd2f94af8b6ea07e1167b900e",
+    "versions": {
+      "docsync": "0.2.0",
+      "schema": "2.0",
+      "extractor": "python-static/2",
+      "claims": "markdown/2",
+      "verifier": "verifier/2",
+      "method": "rules",
+      "pydantic": "2.11.7",
+      "markdown-it-py": "3.0.0"
+    },
+    "config_hash": "86b44df60004d4951d0b70a3b2ff5a57a0cc71beccbd1b5519b6b6ff0fa5657e",
+    "mode": "rules",
+    "status": "COMPLETED",
+    "enabled_types": [
+      "DEFAULT_VALUE",
+      "SIGNATURE",
+      "CONFIG"
+    ],
+    "semantic_coverage": "supported-static-claims-only",
+    "budget": {
+      "max_requests": 1,
+      "max_total_tokens": 100000
+    },
+    "usage": {
+      "requests": 0,
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "diagnostics": [],
+    "stage_seconds": {
+      "extraction": 0.11629749999701744,
+      "alignment": 0.00008200000229408033,
+      "judging": 0.00008019999950192869,
+      "verification": 9.300005331169814e-6,
+      "analysis_total": 0.11879950000002282,
+      "repository": 0.6682643000021926,
+      "patch_validation": 0.00002390000008745119,
+      "total": 0.7918829000009282
+    },
+    "model": {
+      "provider": "chat-completions",
+      "model": "deepseek-flash",
+      "temperature": 0.0
+    },
+    "events": [
+      "CREATED",
+      "ANALYZING",
+      "EXTRACTING",
+      "ALIGNING",
+      "JUDGING",
+      "VERIFYING",
+      "REPORTING",
+      "COMPLETED"
+    ],
+    "model_calls": []
+  },
+  "snapshot": {
+    "repo_id": "9f4e0474639cebd54f4d3cf3",
+    "head_sha": "16d3ac74221f2247c645ca1999d485bb9763d833",
+    "base_sha": null,
+    "mode": "commit",
+    "files_hash": "ce659f22846d5a4290b6aac8",
+    "dirty": false,
+    "files": [
+      {
+        "path": "case09.md",
+        "blob_hash": "7641bb95409faef62548aeebf224423fc16b7600594ca45fc6955474c062068e",
+        "size": 216,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "case09.py",
+        "blob_hash": "18f3a6fcc00bff82634fd84dd3dd99c5aab19dafe8ad08dc59b0685cf897c5bd",
+        "size": 64,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "case10.md",
+        "blob_hash": "36440d1b04dd7cf5799804727234e67349fe1eb598a75bb907df41090896eafb",
+        "size": 221,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "case10.py",
+        "blob_hash": "36b4256aa253fc3e86a7e30a413f564b3470f5823d2f968e2451fa1cd81f53a3",
+        "size": 66,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "case11.md",
+        "blob_hash": "7466f87082368a1050f6c44d95931be1925d9764c6ea3a6a078c91d3ef032040",
+        "size": 230,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "case11.py",
+        "blob_hash": "4d684c72a6edeb2ff2ebe449ce5dbd2470920b6be9d220f958184998737693cb",
+        "size": 66,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "case12.md",
+        "blob_hash": "cb65ddb92d0ae2fbd92b9f092cd69234c241fda86c0d1715a874f260b40cc337",
+        "size": 213,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "case12.py",
+        "blob_hash": "df9ebb1a9ed10df59759162193c7c291f96e26f297130a65042c4f59b5c00f3f",
+        "size": 171,
+        "encoding": "utf-8"
+      }
+    ],
+    "changed_paths": []
+  },
+  "entities": [
+    {
+      "entity_id": "b35246b06dd977e6de3bf5bc",
+      "kind": "function",
+      "qualified_name": "case09.attach_volume",
+      "module": "case09",
+      "signature": [
+        {
+          "name": "name",
+          "kind": "POSITIONAL_OR_KEYWORD",
+          "required": true,
+          "value_state": "ABSENT",
+          "typed_value": null,
+          "expression": null
+        },
+        {
+          "name": "readonly",
+          "kind": "KEYWORD_ONLY",
+          "required": true,
+          "value_state": "ABSENT",
+          "typed_value": null,
+          "expression": null
+        }
+      ],
+      "decorators": [],
+      "span": {
+        "path": "case09.py",
+        "start_line": 1,
+        "end_line": 2,
+        "start_byte": 0,
+        "end_byte": 63,
+        "blob_hash": "18f3a6fcc00bff82634fd84dd3dd99c5aab19dafe8ad08dc59b0685cf897c5bd"
+      }
+    },
+    {
+      "entity_id": "99ebdfc17321e533babf43d7",
+      "kind": "function",
+      "qualified_name": "case10.send_notice",
+      "module": "case10",
+      "signature": [
+        {
+          "name": "address",
+          "kind": "POSITIONAL_OR_KEYWORD",
+          "required": true,
+          "value_state": "ABSENT",
+          "typed_value": null,
+          "expression": null
+        },
+        {
+          "name": "channel",
+          "kind": "KEYWORD_ONLY",
+          "required": true,
+          "value_state": "ABSENT",
+          "typed_value": null,
+          "expression": null
+        }
+      ],
+      "decorators": [],
+      "span": {
+        "path": "case10.py",
+        "start_line": 1,
+        "end_line": 2,
+        "start_byte": 0,
+        "end_byte": 65,
+        "blob_hash": "36b4256aa253fc3e86a7e30a413f564b3470f5823d2f968e2451fa1cd81f53a3"
+      }
+    },
+    {
+      "entity_id": "3526043686185db2f4f0f348",
+      "kind": "function",
+      "qualified_name": "case11.place_marker",
+      "module": "case11",
+      "signature": [
+        {
+          "name": "x",
+          "kind": "POSITIONAL_ONLY",
+          "required": true,
+          "value_state": "ABSENT",
+          "typed_value": null,
+          "expression": null
+        },
+        {
+          "name": "y",
+          "kind": "POSITIONAL_ONLY",
+          "required": true,
+          "value_state": "ABSENT",
+          "typed_value": null,
+          "expression": null
+        },
+        {
+          "name": "color",
+          "kind": "KEYWORD_ONLY",
+          "required": false,
+          "value_state": "KNOWN",
+          "typed_value": {
+            "type": "str",
+            "canonical": "[\"str\",\"red\"]"
+          },
+          "expression": "\"red\""
+        }
+      ],
+      "decorators": [],
+      "span": {
+        "path": "case11.py",
+        "start_line": 1,
+        "end_line": 2,
+        "start_byte": 0,
+        "end_byte": 65,
+        "blob_hash": "4d684c72a6edeb2ff2ebe449ce5dbd2470920b6be9d220f958184998737693cb"
+      }
+    },
+    {
+      "entity_id": "d450cc00ae96cde5521661ac",
+      "kind": "function",
+      "qualified_name": "case12.read_options",
+      "module": "case12",
+      "signature": [],
+      "decorators": [],
+      "span": {
+        "path": "case12.py",
+        "start_line": 4,
+        "end_line": 5,
+        "start_byte": 23,
+        "end_byte": 104,
+        "blob_hash": "df9ebb1a9ed10df59759162193c7c291f96e26f297130a65042c4f59b5c00f3f"
+      }
+    },
+    {
+      "entity_id": "c3788b5974df9553cbbd734f",
+      "kind": "function",
+      "qualified_name": "case12.queue_notice",
+      "module": "case12",
+      "signature": [
+        {
+          "name": "topic",
+          "kind": "POSITIONAL_OR_KEYWORD",
+          "required": true,
+          "value_state": "ABSENT",
+          "typed_value": null,
+          "expression": null
+        },
+        {
+          "name": "priority",
+          "kind": "KEYWORD_ONLY",
+          "required": true,
+          "value_state": "ABSENT",
+          "typed_value": null,
+          "expression": null
+        }
+      ],
+      "decorators": [],
+      "span": {
+        "path": "case12.py",
+        "start_line": 7,
+        "end_line": 8,
+        "start_byte": 106,
+        "end_byte": 170,
+        "blob_hash": "df9ebb1a9ed10df59759162193c7c291f96e26f297130a65042c4f59b5c00f3f"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "22db8a2d402a99004c644395",
+      "entity_id": "b35246b06dd977e6de3bf5bc",
+      "subject": "case09.attach_volume",
+      "property": "__signature__",
+      "value_state": "KNOWN",
+      "typed_value": null,
+      "expression": "def attach_volume(name, *, readonly):\n    return name, readonly",
+      "span": {
+        "path": "case09.py",
+        "start_line": 1,
+        "end_line": 2,
+        "start_byte": 0,
+        "end_byte": 63,
+        "blob_hash": "18f3a6fcc00bff82634fd84dd3dd99c5aab19dafe8ad08dc59b0685cf897c5bd"
+      },
+      "fact_kind": "SIGNATURE",
+      "parameters": [
+        {
+          "name": "name",
+          "kind": "POSITIONAL_OR_KEYWORD",
+          "required": true,
+          "value_state": "ABSENT",
+          "typed_value": null,
+          "expression": null
+        },
+        {
+          "name": "readonly",
+          "kind": "KEYWORD_ONLY",
+          "required": true,
+          "value_state": "ABSENT",
+          "typed_value": null,
+          "expression": null
+        }
+      ],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    },
+    {
+      "fact_id": "b22af7d26ea1f09e98c84194",
+      "entity_id": "99ebdfc17321e533babf43d7",
+      "subject": "case10.send_notice",
+      "property": "__signature__",
+      "value_state": "KNOWN",
+      "typed_value": null,
+      "expression": "def send_notice(address, *, channel):\n    return address, channel",
+      "span": {
+        "path": "case10.py",
+        "start_line": 1,
+        "end_line": 2,
+        "start_byte": 0,
+        "end_byte": 65,
+        "blob_hash": "36b4256aa253fc3e86a7e30a413f564b3470f5823d2f968e2451fa1cd81f53a3"
+      },
+      "fact_kind": "SIGNATURE",
+      "parameters": [
+        {
+          "name": "address",
+          "kind": "POSITIONAL_OR_KEYWORD",
+          "required": true,
+          "value_state": "ABSENT",
+          "typed_value": null,
+          "expression": null
+        },
+        {
+          "name": "channel",
+          "kind": "KEYWORD_ONLY",
+          "required": true,
+          "value_state": "ABSENT",
+          "typed_value": null,
+          "expression": null
+        }
+      ],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    },
+    {
+      "fact_id": "8d676bc01d7be1b68022a30e",
+      "entity_id": "3526043686185db2f4f0f348",
+      "subject": "case11.place_marker",
+      "property": "color",
+      "value_state": "KNOWN",
+      "typed_value": {
+        "type": "str",
+        "canonical": "[\"str\",\"red\"]"
+      },
+      "expression": "\"red\"",
+      "span": {
+        "path": "case11.py",
+        "start_line": 1,
+        "end_line": 1,
+        "start_byte": 35,
+        "end_byte": 40,
+        "blob_hash": "4d684c72a6edeb2ff2ebe449ce5dbd2470920b6be9d220f958184998737693cb"
+      },
+      "fact_kind": "DEFAULT_VALUE",
+      "parameters": [],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    },
+    {
+      "fact_id": "75033fde41fb0f6f5cb60afc",
+      "entity_id": "3526043686185db2f4f0f348",
+      "subject": "case11.place_marker",
+      "property": "__signature__",
+      "value_state": "KNOWN",
+      "typed_value": null,
+      "expression": "def place_marker(x, y, /, *, color=\"red\"):\n    return x, y, color",
+      "span": {
+        "path": "case11.py",
+        "start_line": 1,
+        "end_line": 2,
+        "start_byte": 0,
+        "end_byte": 65,
+        "blob_hash": "4d684c72a6edeb2ff2ebe449ce5dbd2470920b6be9d220f958184998737693cb"
+      },
+      "fact_kind": "SIGNATURE",
+      "parameters": [
+        {
+          "name": "x",
+          "kind": "POSITIONAL_ONLY",
+          "required": true,
+          "value_state": "ABSENT",
+          "typed_value": null,
+          "expression": null
+        },
+        {
+          "name": "y",
+          "kind": "POSITIONAL_ONLY",
+          "required": true,
+          "value_state": "ABSENT",
+          "typed_value": null,
+          "expression": null
+        },
+        {
+          "name": "color",
+          "kind": "KEYWORD_ONLY",
+          "required": false,
+          "value_state": "KNOWN",
+          "typed_value": {
+            "type": "str",
+            "canonical": "[\"str\",\"red\"]"
+          },
+          "expression": "\"red\""
+        }
+      ],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    },
+    {
+      "fact_id": "63daa9cbc6bd82aa07ea3ab5",
+      "entity_id": "d450cc00ae96cde5521661ac",
+      "subject": "case12.read_options",
+      "property": "__signature__",
+      "value_state": "KNOWN",
+      "typed_value": null,
+      "expression": "def read_options():\n    return json.loads(os.environ.get(\"NOTICE_OPTIONS\", \"{}\"))",
+      "span": {
+        "path": "case12.py",
+        "start_line": 4,
+        "end_line": 5,
+        "start_byte": 23,
+        "end_byte": 104,
+        "blob_hash": "df9ebb1a9ed10df59759162193c7c291f96e26f297130a65042c4f59b5c00f3f"
+      },
+      "fact_kind": "SIGNATURE",
+      "parameters": [],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    },
+    {
+      "fact_id": "2f84fc7bcc89f3aeb028291c",
+      "entity_id": "c3788b5974df9553cbbd734f",
+      "subject": "case12.queue_notice",
+      "property": "__signature__",
+      "value_state": "KNOWN",
+      "typed_value": null,
+      "expression": "def queue_notice(topic, *, priority):\n    return topic, priority",
+      "span": {
+        "path": "case12.py",
+        "start_line": 7,
+        "end_line": 8,
+        "start_byte": 106,
+        "end_byte": 170,
+        "blob_hash": "df9ebb1a9ed10df59759162193c7c291f96e26f297130a65042c4f59b5c00f3f"
+      },
+      "fact_kind": "SIGNATURE",
+      "parameters": [
+        {
+          "name": "topic",
+          "kind": "POSITIONAL_OR_KEYWORD",
+          "required": true,
+          "value_state": "ABSENT",
+          "typed_value": null,
+          "expression": null
+        },
+        {
+          "name": "priority",
+          "kind": "KEYWORD_ONLY",
+          "required": true,
+          "value_state": "ABSENT",
+          "typed_value": null,
+          "expression": null
+        }
+      ],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "fcc96d2002bb3e185864520f",
+      "subject": "case09.attach_volume",
+      "predicate": "__signature__",
+      "kind": "CALL_EXAMPLE",
+      "value": null,
+      "qualifiers": [],
+      "version_scope": "current",
+      "span": {
+        "path": "case09.md",
+        "start_line": 5,
+        "end_line": 9,
+        "start_byte": 107,
+        "end_byte": 216,
+        "blob_hash": "7641bb95409faef62548aeebf224423fc16b7600594ca45fc6955474c062068e"
+      },
+      "value_span": null,
+      "quote": "```python\nfrom case09 import attach_volume\noptions = {\"readonly\": True}\nattach_volume(\"logs\", **options)\n```\n",
+      "extraction_method": "markdown-call/2",
+      "source_hint": null,
+      "positional_count": 1,
+      "keyword_names": [],
+      "unpacking": true,
+      "bound_receiver": false
+    },
+    {
+      "claim_id": "8e7470419a6b34c08c475ec6",
+      "subject": "case10.send_notice",
+      "predicate": "__signature__",
+      "kind": "CALL_EXAMPLE",
+      "value": null,
+      "qualifiers": [],
+      "version_scope": "current",
+      "span": {
+        "path": "case10.md",
+        "start_line": 5,
+        "end_line": 9,
+        "start_byte": 107,
+        "end_byte": 221,
+        "blob_hash": "36440d1b04dd7cf5799804727234e67349fe1eb598a75bb907df41090896eafb"
+      },
+      "value_span": null,
+      "quote": "```python\nfrom case10 import send_notice\narguments = (\"ops@example.invalid\", \"email\")\nsend_notice(*arguments)\n```\n",
+      "extraction_method": "markdown-call/2",
+      "source_hint": null,
+      "positional_count": 1,
+      "keyword_names": [],
+      "unpacking": true,
+      "bound_receiver": false
+    },
+    {
+      "claim_id": "1b53da17778426293e7795f0",
+      "subject": "case11.place_marker",
+      "predicate": "__signature__",
+      "kind": "CALL_EXAMPLE",
+      "value": null,
+      "qualifiers": [],
+      "version_scope": "current",
+      "span": {
+        "path": "case11.md",
+        "start_line": 5,
+        "end_line": 10,
+        "start_byte": 107,
+        "end_byte": 230,
+        "blob_hash": "7466f87082368a1050f6c44d95931be1925d9764c6ea3a6a078c91d3ef032040"
+      },
+      "value_span": null,
+      "quote": "```python\nfrom case11 import place_marker\nposition = (3, 7)\nstyle = {\"color\": \"blue\"}\nplace_marker(*position, **style)\n```\n",
+      "extraction_method": "markdown-call/2",
+      "source_hint": null,
+      "positional_count": 1,
+      "keyword_names": [],
+      "unpacking": true,
+      "bound_receiver": false
+    },
+    {
+      "claim_id": "1485a368f223ff3da8fd46d7",
+      "subject": "case12.queue_notice",
+      "predicate": "__signature__",
+      "kind": "CALL_EXAMPLE",
+      "value": null,
+      "qualifiers": [],
+      "version_scope": "current",
+      "span": {
+        "path": "case12.md",
+        "start_line": 5,
+        "end_line": 8,
+        "start_byte": 107,
+        "end_byte": 213,
+        "blob_hash": "cb65ddb92d0ae2fbd92b9f092cd69234c241fda86c0d1715a874f260b40cc337"
+      },
+      "value_span": null,
+      "quote": "```python\nfrom case12 import queue_notice, read_options\nqueue_notice(\"maintenance\", **read_options())\n```\n",
+      "extraction_method": "markdown-call/2",
+      "source_hint": null,
+      "positional_count": 1,
+      "keyword_names": [],
+      "unpacking": true,
+      "bound_receiver": false
+    },
+    {
+      "claim_id": "77079641ba573bd26d7b165f",
+      "subject": "case12.read_options",
+      "predicate": "__signature__",
+      "kind": "CALL_EXAMPLE",
+      "value": null,
+      "qualifiers": [],
+      "version_scope": "current",
+      "span": {
+        "path": "case12.md",
+        "start_line": 5,
+        "end_line": 8,
+        "start_byte": 107,
+        "end_byte": 213,
+        "blob_hash": "cb65ddb92d0ae2fbd92b9f092cd69234c241fda86c0d1715a874f260b40cc337"
+      },
+      "value_span": null,
+      "quote": "```python\nfrom case12 import queue_notice, read_options\nqueue_notice(\"maintenance\", **read_options())\n```\n",
+      "extraction_method": "markdown-call/2",
+      "source_hint": null,
+      "positional_count": 0,
+      "keyword_names": [],
+      "unpacking": false,
+      "bound_receiver": false
+    }
+  ],
+  "candidates": [
+    {
+      "claim_id": "fcc96d2002bb3e185864520f",
+      "candidates": [
+        {
+          "fact_id": "22db8a2d402a99004c644395",
+          "rank": 1,
+          "score": 1.0,
+          "features": [
+            "exact_symbol",
+            "parameter_owner"
+          ]
+        }
+      ],
+      "ambiguity": false,
+      "reason": "MATCH"
+    },
+    {
+      "claim_id": "8e7470419a6b34c08c475ec6",
+      "candidates": [
+        {
+          "fact_id": "b22af7d26ea1f09e98c84194",
+          "rank": 1,
+          "score": 1.0,
+          "features": [
+            "exact_symbol",
+            "parameter_owner"
+          ]
+        }
+      ],
+      "ambiguity": false,
+      "reason": "MATCH"
+    },
+    {
+      "claim_id": "1b53da17778426293e7795f0",
+      "candidates": [
+        {
+          "fact_id": "75033fde41fb0f6f5cb60afc",
+          "rank": 1,
+          "score": 1.0,
+          "features": [
+            "exact_symbol",
+            "parameter_owner"
+          ]
+        }
+      ],
+      "ambiguity": false,
+      "reason": "MATCH"
+    },
+    {
+      "claim_id": "1485a368f223ff3da8fd46d7",
+      "candidates": [
+        {
+          "fact_id": "2f84fc7bcc89f3aeb028291c",
+          "rank": 1,
+          "score": 1.0,
+          "features": [
+            "exact_symbol",
+            "parameter_owner"
+          ]
+        }
+      ],
+      "ambiguity": false,
+      "reason": "MATCH"
+    },
+    {
+      "claim_id": "77079641ba573bd26d7b165f",
+      "candidates": [
+        {
+          "fact_id": "63daa9cbc6bd82aa07ea3ab5",
+          "rank": 1,
+          "score": 1.0,
+          "features": [
+            "exact_symbol",
+            "parameter_owner"
+          ]
+        }
+      ],
+      "ambiguity": false,
+      "reason": "MATCH"
+    }
+  ],
+  "judgments": [
+    {
+      "claim_id": "fcc96d2002bb3e185864520f",
+      "decision": "UNCERTAIN",
+      "fact_ids": [
+        "22db8a2d402a99004c644395"
+      ],
+      "reason_code": "DYNAMIC_CALL",
+      "reason_text": "Cannot bind a dynamic or unsupported call",
+      "claim_type_check": false,
+      "version_compatible": false,
+      "score": null,
+      "uncertainty_reason": "DYNAMIC_CALL",
+      "model_run_id": null
+    },
+    {
+      "claim_id": "8e7470419a6b34c08c475ec6",
+      "decision": "UNCERTAIN",
+      "fact_ids": [
+        "b22af7d26ea1f09e98c84194"
+      ],
+      "reason_code": "DYNAMIC_CALL",
+      "reason_text": "Cannot bind a dynamic or unsupported call",
+      "claim_type_check": false,
+      "version_compatible": false,
+      "score": null,
+      "uncertainty_reason": "DYNAMIC_CALL",
+      "model_run_id": null
+    },
+    {
+      "claim_id": "1b53da17778426293e7795f0",
+      "decision": "UNCERTAIN",
+      "fact_ids": [
+        "75033fde41fb0f6f5cb60afc"
+      ],
+      "reason_code": "DYNAMIC_CALL",
+      "reason_text": "Cannot bind a dynamic or unsupported call",
+      "claim_type_check": false,
+      "version_compatible": false,
+      "score": null,
+      "uncertainty_reason": "DYNAMIC_CALL",
+      "model_run_id": null
+    },
+    {
+      "claim_id": "1485a368f223ff3da8fd46d7",
+      "decision": "UNCERTAIN",
+      "fact_ids": [
+        "2f84fc7bcc89f3aeb028291c"
+      ],
+      "reason_code": "DYNAMIC_CALL",
+      "reason_text": "Cannot bind a dynamic or unsupported call",
+      "claim_type_check": false,
+      "version_compatible": false,
+      "score": null,
+      "uncertainty_reason": "DYNAMIC_CALL",
+      "model_run_id": null
+    },
+    {
+      "claim_id": "77079641ba573bd26d7b165f",
+      "decision": "CONSISTENT",
+      "fact_ids": [
+        "63daa9cbc6bd82aa07ea3ab5"
+      ],
+      "reason_code": "CALL_ACCEPTED",
+      "reason_text": "Statically bind supplied arguments to the supported signature",
+      "claim_type_check": true,
+      "version_compatible": true,
+      "score": null,
+      "uncertainty_reason": null,
+      "model_run_id": null
+    }
+  ],
+  "findings": [],
+  "rejected": [],
+  "patches": []
+}

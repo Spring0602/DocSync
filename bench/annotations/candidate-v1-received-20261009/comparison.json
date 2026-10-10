@@ -1,0 +1,513 @@
+[
+  {
+    "sample_id": "candidate-01",
+    "B": {
+      "label": "INCONSISTENT",
+      "drift_type": "DEFAULT_VALUE",
+      "target_entity": "PageReader.__init__",
+      "code_lines": "2",
+      "document_lines": "5"
+    },
+    "C": {
+      "label": "INCONSISTENT",
+      "drift_type": "DEFAULT_VALUE",
+      "target_entity": "PageReader.__init__.encoding",
+      "code_lines": "2",
+      "document_lines": "5"
+    },
+    "different_fields": [
+      "target_entity"
+    ],
+    "adjudication_status": "pending"
+  },
+  {
+    "sample_id": "candidate-02",
+    "B": {
+      "label": "CONSISTENT",
+      "drift_type": "DEFAULT_VALUE",
+      "target_entity": "download_resource",
+      "code_lines": "1",
+      "document_lines": "5"
+    },
+    "C": {
+      "label": "CONSISTENT",
+      "drift_type": "DEFAULT_VALUE",
+      "target_entity": "download_resource.retries",
+      "code_lines": "1",
+      "document_lines": "5"
+    },
+    "different_fields": [
+      "target_entity"
+    ],
+    "adjudication_status": "pending"
+  },
+  {
+    "sample_id": "candidate-03",
+    "B": {
+      "label": "INCONSISTENT",
+      "drift_type": "DEFAULT_VALUE",
+      "target_entity": "emit_record",
+      "code_lines": "1",
+      "document_lines": "5"
+    },
+    "C": {
+      "label": "INCONSISTENT",
+      "drift_type": "DEFAULT_VALUE",
+      "target_entity": "emit_record.tags",
+      "code_lines": "1",
+      "document_lines": "5"
+    },
+    "different_fields": [
+      "target_entity"
+    ],
+    "adjudication_status": "pending"
+  },
+  {
+    "sample_id": "candidate-04",
+    "B": {
+      "label": "CONSISTENT",
+      "drift_type": "DEFAULT_VALUE",
+      "target_entity": "MemoryBuffer.__init__",
+      "code_lines": "2",
+      "document_lines": "5"
+    },
+    "C": {
+      "label": "CONSISTENT",
+      "drift_type": "DEFAULT_VALUE",
+      "target_entity": "MemoryBuffer.__init__.capacity",
+      "code_lines": "2",
+      "document_lines": "5"
+    },
+    "different_fields": [
+      "target_entity"
+    ],
+    "adjudication_status": "pending"
+  },
+  {
+    "sample_id": "candidate-05",
+    "B": {
+      "label": "INCONSISTENT",
+      "drift_type": "DEFAULT_VALUE",
+      "target_entity": "read_batch",
+      "code_lines": "1-6",
+      "document_lines": "5"
+    },
+    "C": {
+      "label": "INCONSISTENT",
+      "drift_type": "DEFAULT_VALUE",
+      "target_entity": "read_batch.limit",
+      "code_lines": "1-6",
+      "document_lines": "5"
+    },
+    "different_fields": [
+      "target_entity"
+    ],
+    "adjudication_status": "pending"
+  },
+  {
+    "sample_id": "candidate-06",
+    "B": {
+      "label": "CONSISTENT",
+      "drift_type": "DEFAULT_VALUE",
+      "target_entity": "encode_packet",
+      "code_lines": "1-4",
+      "document_lines": "5"
+    },
+    "C": {
+      "label": "CONSISTENT",
+      "drift_type": "DEFAULT_VALUE",
+      "target_entity": "encode_packet.codec",
+      "code_lines": "1-4",
+      "document_lines": "5"
+    },
+    "different_fields": [
+      "target_entity"
+    ],
+    "adjudication_status": "pending"
+  },
+  {
+    "sample_id": "candidate-07",
+    "B": {
+      "label": "INSUFFICIENT",
+      "drift_type": "DEFAULT_VALUE",
+      "target_entity": "flush_records",
+      "code_lines": "3-6",
+      "document_lines": "5"
+    },
+    "C": {
+      "label": "INSUFFICIENT",
+      "drift_type": "DEFAULT_VALUE",
+      "target_entity": "flush_records.interval",
+      "code_lines": "1-7",
+      "document_lines": "5"
+    },
+    "different_fields": [
+      "target_entity",
+      "code_lines"
+    ],
+    "adjudication_status": "pending"
+  },
+  {
+    "sample_id": "candidate-08",
+    "B": {
+      "label": "CONSISTENT",
+      "drift_type": "DEFAULT_VALUE",
+      "target_entity": "export_records",
+      "code_lines": "1-4",
+      "document_lines": "5"
+    },
+    "C": {
+      "label": "CONSISTENT",
+      "drift_type": "DEFAULT_VALUE",
+      "target_entity": "export_records.format_name",
+      "code_lines": "1-5",
+      "document_lines": "5"
+    },
+    "different_fields": [
+      "target_entity",
+      "code_lines"
+    ],
+    "adjudication_status": "pending"
+  },
+  {
+    "sample_id": "candidate-09",
+    "B": {
+      "label": "CONSISTENT",
+      "drift_type": "SIGNATURE",
+      "target_entity": "attach_volume",
+      "code_lines": "1",
+      "document_lines": "6-8"
+    },
+    "C": {
+      "label": "CONSISTENT",
+      "drift_type": "SIGNATURE",
+      "target_entity": "attach_volume",
+      "code_lines": "1",
+      "document_lines": "5-8"
+    },
+    "different_fields": [
+      "document_lines"
+    ],
+    "adjudication_status": "pending"
+  },
+  {
+    "sample_id": "candidate-10",
+    "B": {
+      "label": "INCONSISTENT",
+      "drift_type": "SIGNATURE",
+      "target_entity": "send_notice",
+      "code_lines": "1",
+      "document_lines": "6-8"
+    },
+    "C": {
+      "label": "INCONSISTENT",
+      "drift_type": "SIGNATURE",
+      "target_entity": "send_notice",
+      "code_lines": "1",
+      "document_lines": "5-8"
+    },
+    "different_fields": [
+      "document_lines"
+    ],
+    "adjudication_status": "pending"
+  },
+  {
+    "sample_id": "candidate-11",
+    "B": {
+      "label": "CONSISTENT",
+      "drift_type": "SIGNATURE",
+      "target_entity": "place_marker",
+      "code_lines": "1",
+      "document_lines": "6-9"
+    },
+    "C": {
+      "label": "CONSISTENT",
+      "drift_type": "SIGNATURE",
+      "target_entity": "place_marker",
+      "code_lines": "1",
+      "document_lines": "5-9"
+    },
+    "different_fields": [
+      "document_lines"
+    ],
+    "adjudication_status": "pending"
+  },
+  {
+    "sample_id": "candidate-12",
+    "B": {
+      "label": "INSUFFICIENT",
+      "drift_type": "SIGNATURE",
+      "target_entity": "queue_notice",
+      "code_lines": "4-7",
+      "document_lines": "6-7"
+    },
+    "C": {
+      "label": "INSUFFICIENT",
+      "drift_type": "SIGNATURE",
+      "target_entity": "queue_notice",
+      "code_lines": "1-8",
+      "document_lines": "5-7"
+    },
+    "different_fields": [
+      "code_lines",
+      "document_lines"
+    ],
+    "adjudication_status": "pending"
+  },
+  {
+    "sample_id": "candidate-13",
+    "B": {
+      "label": "CONSISTENT",
+      "drift_type": "SIGNATURE",
+      "target_entity": "ArtifactStore.open",
+      "code_lines": "2-3",
+      "document_lines": "6-7"
+    },
+    "C": {
+      "label": "CONSISTENT",
+      "drift_type": "SIGNATURE",
+      "target_entity": "ArtifactStore.open",
+      "code_lines": "1-4",
+      "document_lines": "5-7"
+    },
+    "different_fields": [
+      "code_lines",
+      "document_lines"
+    ],
+    "adjudication_status": "pending"
+  },
+  {
+    "sample_id": "candidate-14",
+    "B": {
+      "label": "INCONSISTENT",
+      "drift_type": "SIGNATURE",
+      "target_entity": "Formatter.render",
+      "code_lines": "2-3",
+      "document_lines": "6-7"
+    },
+    "C": {
+      "label": "INCONSISTENT",
+      "drift_type": "SIGNATURE",
+      "target_entity": "Formatter.render",
+      "code_lines": "1-4",
+      "document_lines": "5-7"
+    },
+    "different_fields": [
+      "code_lines",
+      "document_lines"
+    ],
+    "adjudication_status": "pending"
+  },
+  {
+    "sample_id": "candidate-15",
+    "B": {
+      "label": "INCONSISTENT",
+      "drift_type": "SIGNATURE",
+      "target_entity": "Registry.register",
+      "code_lines": "1-2",
+      "document_lines": "6-8"
+    },
+    "C": {
+      "label": "INCONSISTENT",
+      "drift_type": "SIGNATURE",
+      "target_entity": "Registry.register",
+      "code_lines": "1-3",
+      "document_lines": "5-8"
+    },
+    "different_fields": [
+      "code_lines",
+      "document_lines"
+    ],
+    "adjudication_status": "pending"
+  },
+  {
+    "sample_id": "candidate-16",
+    "B": {
+      "label": "INSUFFICIENT",
+      "drift_type": "SIGNATURE",
+      "target_entity": "dispatcher().deliver",
+      "code_lines": "3-14",
+      "document_lines": "6-7"
+    },
+    "C": {
+      "label": "INSUFFICIENT",
+      "drift_type": "SIGNATURE",
+      "target_entity": "dispatcher().deliver",
+      "code_lines": "1-14",
+      "document_lines": "5-7"
+    },
+    "different_fields": [
+      "code_lines",
+      "document_lines"
+    ],
+    "adjudication_status": "pending"
+  },
+  {
+    "sample_id": "candidate-17",
+    "B": {
+      "label": "INCONSISTENT",
+      "drift_type": "CONFIG",
+      "target_entity": "case17.RETRY_WINDOW",
+      "code_lines": "1-2",
+      "document_lines": "5"
+    },
+    "C": {
+      "label": "INCONSISTENT",
+      "drift_type": "CONFIG",
+      "target_entity": "RETRY_WINDOW",
+      "code_lines": "1-2",
+      "document_lines": "5"
+    },
+    "different_fields": [
+      "target_entity"
+    ],
+    "adjudication_status": "pending"
+  },
+  {
+    "sample_id": "candidate-18",
+    "B": {
+      "label": "CONSISTENT",
+      "drift_type": "CONFIG",
+      "target_entity": "case18.PORT",
+      "code_lines": "1-2",
+      "document_lines": "5"
+    },
+    "C": {
+      "label": "CONSISTENT",
+      "drift_type": "CONFIG",
+      "target_entity": "PORT",
+      "code_lines": "1-2",
+      "document_lines": "5"
+    },
+    "different_fields": [
+      "target_entity"
+    ],
+    "adjudication_status": "pending"
+  },
+  {
+    "sample_id": "candidate-19",
+    "B": {
+      "label": "INSUFFICIENT",
+      "drift_type": "CONFIG",
+      "target_entity": "case19.ARCHIVE_LEVEL",
+      "code_lines": "1-6",
+      "document_lines": "5"
+    },
+    "C": {
+      "label": "INSUFFICIENT",
+      "drift_type": "CONFIG",
+      "target_entity": "ARCHIVE_LEVEL",
+      "code_lines": "1-6",
+      "document_lines": "5"
+    },
+    "different_fields": [
+      "target_entity"
+    ],
+    "adjudication_status": "pending"
+  },
+  {
+    "sample_id": "candidate-20",
+    "B": {
+      "label": "CONSISTENT",
+      "drift_type": "CONFIG",
+      "target_entity": "case20.SERVICE_OPTIONS",
+      "code_lines": "1-2",
+      "document_lines": "5"
+    },
+    "C": {
+      "label": "CONSISTENT",
+      "drift_type": "CONFIG",
+      "target_entity": "SERVICE_OPTIONS.workers",
+      "code_lines": "1-2",
+      "document_lines": "5"
+    },
+    "different_fields": [
+      "target_entity"
+    ],
+    "adjudication_status": "pending"
+  },
+  {
+    "sample_id": "candidate-21",
+    "B": {
+      "label": "INCONSISTENT",
+      "drift_type": "CONFIG",
+      "target_entity": "case21.PIPELINE.export",
+      "code_lines": "1",
+      "document_lines": "5"
+    },
+    "C": {
+      "label": "INCONSISTENT",
+      "drift_type": "CONFIG",
+      "target_entity": "PIPELINE.export.compression",
+      "code_lines": "1",
+      "document_lines": "5"
+    },
+    "different_fields": [
+      "target_entity"
+    ],
+    "adjudication_status": "pending"
+  },
+  {
+    "sample_id": "candidate-22",
+    "B": {
+      "label": "CONSISTENT",
+      "drift_type": "CONFIG",
+      "target_entity": "case22.RETRY_DELAYS",
+      "code_lines": "1",
+      "document_lines": "5"
+    },
+    "C": {
+      "label": "CONSISTENT",
+      "drift_type": "CONFIG",
+      "target_entity": "RETRY_DELAYS",
+      "code_lines": "1",
+      "document_lines": "5"
+    },
+    "different_fields": [
+      "target_entity"
+    ],
+    "adjudication_status": "pending"
+  },
+  {
+    "sample_id": "candidate-23",
+    "B": {
+      "label": "INSUFFICIENT",
+      "drift_type": "CONFIG",
+      "target_entity": "case23.STORAGE.local",
+      "code_lines": "1-3",
+      "document_lines": "5"
+    },
+    "C": {
+      "label": "INSUFFICIENT",
+      "drift_type": "CONFIG",
+      "target_entity": "STORAGE.local.root",
+      "code_lines": "1-3",
+      "document_lines": "5"
+    },
+    "different_fields": [
+      "target_entity"
+    ],
+    "adjudication_status": "pending"
+  },
+  {
+    "sample_id": "candidate-24",
+    "B": {
+      "label": "CONSISTENT",
+      "drift_type": "CONFIG",
+      "target_entity": "case24.CACHE",
+      "code_lines": "1",
+      "document_lines": "5"
+    },
+    "C": {
+      "label": "CONSISTENT",
+      "drift_type": "CONFIG",
+      "target_entity": "CACHE.enabled",
+      "code_lines": "1",
+      "document_lines": "5"
+    },
+    "different_fields": [
+      "target_entity"
+    ],
+    "adjudication_status": "pending"
+  }
+]

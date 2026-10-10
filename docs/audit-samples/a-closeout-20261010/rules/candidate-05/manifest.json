@@ -1,0 +1,68 @@
+{
+  "schema_version": "2.0",
+  "run_id": "385c40f9b0ff45e085609b1ffe07bd39",
+  "versions": {
+    "docsync": "0.2.0",
+    "schema": "2.0",
+    "extractor": "python-static/2",
+    "claims": "markdown/2",
+    "verifier": "verifier/2",
+    "method": "rules",
+    "pydantic": "2.11.7",
+    "markdown-it-py": "3.0.0"
+  },
+  "config_hash": "86b44df60004d4951d0b70a3b2ff5a57a0cc71beccbd1b5519b6b6ff0fa5657e",
+  "mode": "rules",
+  "status": "PARTIAL",
+  "enabled_types": [
+    "DEFAULT_VALUE",
+    "SIGNATURE",
+    "CONFIG"
+  ],
+  "semantic_coverage": "supported-static-claims-only",
+  "budget": {
+    "max_requests": 1,
+    "max_total_tokens": 100000
+  },
+  "usage": {
+    "requests": 0,
+    "input_tokens": 0,
+    "output_tokens": 0
+  },
+  "diagnostics": [
+    {
+      "code": "DYNAMIC_FUNCTION",
+      "message": "Decorator or rebinding may change this public interface",
+      "stage": "extraction",
+      "path": "case06.py",
+      "retryable": false,
+      "affects_completeness": true
+    }
+  ],
+  "stage_seconds": {
+    "extraction": 0.006365000001096632,
+    "alignment": 0.00015379999967990443,
+    "judging": 0.00006379999831551686,
+    "verification": 0.000015800000255694613,
+    "analysis_total": 0.01373750000129803,
+    "repository": 0.7622989999981655,
+    "patch_validation": 0.000046299999667098746,
+    "total": 0.7820922999999311
+  },
+  "model": {
+    "provider": "chat-completions",
+    "model": "deepseek-flash",
+    "temperature": 0.0
+  },
+  "events": [
+    "CREATED",
+    "ANALYZING",
+    "EXTRACTING",
+    "ALIGNING",
+    "JUDGING",
+    "VERIFYING",
+    "REPORTING",
+    "PARTIAL"
+  ],
+  "model_calls": []
+}

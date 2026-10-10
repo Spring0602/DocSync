@@ -1,0 +1,49 @@
+{
+  "structurally_complete": true,
+  "errors": [],
+  "requires_adjudication": [
+    "candidate-01",
+    "candidate-02",
+    "candidate-03",
+    "candidate-04",
+    "candidate-05",
+    "candidate-06",
+    "candidate-07",
+    "candidate-08",
+    "candidate-09",
+    "candidate-10",
+    "candidate-11",
+    "candidate-12",
+    "candidate-13",
+    "candidate-14",
+    "candidate-15",
+    "candidate-16",
+    "candidate-17",
+    "candidate-18",
+    "candidate-19",
+    "candidate-20",
+    "candidate-21",
+    "candidate-22",
+    "candidate-23",
+    "candidate-24"
+  ],
+  "formal_test_ready": false,
+  "note": "A must review every row, rights, independence and evidence; this does not certify human authorship.",
+  "label_agreement_count": 24,
+  "sample_count": 24,
+  "B_label_counts": {
+    "INCONSISTENT": 8,
+    "CONSISTENT": 11,
+    "INSUFFICIENT": 5
+  },
+  "C_label_counts": {
+    "INCONSISTENT": 8,
+    "CONSISTENT": 11,
+    "INSUFFICIENT": 5
+  },
+  "different_field_counts": {
+    "target_entity": 16,
+    "code_lines": 7,
+    "document_lines": 8
+  }
+}

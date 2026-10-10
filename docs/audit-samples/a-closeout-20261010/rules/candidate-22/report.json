@@ -1,0 +1,506 @@
+{
+  "schema_version": "2.0",
+  "manifest": {
+    "schema_version": "2.0",
+    "run_id": "74f247fe4f044acda11fdcd021a19af7",
+    "versions": {
+      "docsync": "0.2.0",
+      "schema": "2.0",
+      "extractor": "python-static/2",
+      "claims": "markdown/2",
+      "verifier": "verifier/2",
+      "method": "rules",
+      "pydantic": "2.11.7",
+      "markdown-it-py": "3.0.0"
+    },
+    "config_hash": "86b44df60004d4951d0b70a3b2ff5a57a0cc71beccbd1b5519b6b6ff0fa5657e",
+    "mode": "rules",
+    "status": "COMPLETED",
+    "enabled_types": [
+      "DEFAULT_VALUE",
+      "SIGNATURE",
+      "CONFIG"
+    ],
+    "semantic_coverage": "supported-static-claims-only",
+    "budget": {
+      "max_requests": 1,
+      "max_total_tokens": 100000
+    },
+    "usage": {
+      "requests": 0,
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "diagnostics": [],
+    "stage_seconds": {
+      "extraction": 0.005794900000182679,
+      "alignment": 0.00008630000229459256,
+      "judging": 0.00006720000237692147,
+      "verification": 9.20000093174167e-6,
+      "analysis_total": 0.011507500003062887,
+      "repository": 0.5924391000007745,
+      "patch_validation": 0.00004930000068270601,
+      "total": 0.6100243000000773
+    },
+    "model": {
+      "provider": "chat-completions",
+      "model": "deepseek-flash",
+      "temperature": 0.0
+    },
+    "events": [
+      "CREATED",
+      "ANALYZING",
+      "EXTRACTING",
+      "ALIGNING",
+      "JUDGING",
+      "VERIFYING",
+      "REPORTING",
+      "COMPLETED"
+    ],
+    "model_calls": []
+  },
+  "snapshot": {
+    "repo_id": "6a4dd15b1f6e386f4ea43f01",
+    "head_sha": "05e0224c9d9b66564f45b228f7374f4e083f0f76",
+    "base_sha": null,
+    "mode": "commit",
+    "files_hash": "39cb7050d4bca6dde3b7c14d",
+    "dirty": false,
+    "files": [
+      {
+        "path": "case21.md",
+        "blob_hash": "099eec9bd8712e2ed092528d9597ac7d8c3184b8bd6a4a3abadaf579d43f3165",
+        "size": 83,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "case21.py",
+        "blob_hash": "b659a66d4a24131d2b4efe45b1b49f7e969c4b9939866bb304528644617b0bdd",
+        "size": 59,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "case22.md",
+        "blob_hash": "350b57724f4e0cd8b40cb91eccf409464ef0bf1be9347b62fd50adff659628e7",
+        "size": 73,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "case22.py",
+        "blob_hash": "4d9d1724dcc855694a71f8585fcb87d966ad7b90d8377a87640e511af46f93ad",
+        "size": 25,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "case23.md",
+        "blob_hash": "1e0347dfce2f8ef642378528766f627c6e2182d60b711315b13d530fe6dd3f06",
+        "size": 77,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "case23.py",
+        "blob_hash": "4acda8393104d3a67b20eb60f3902b5c644706febeae18ffa1c873901710211b",
+        "size": 84,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "case24.md",
+        "blob_hash": "ac542651c4f29b9c0850e7f1c1edee5d5b214129fa21b269b07cf1fa46a059fb",
+        "size": 69,
+        "encoding": "utf-8"
+      },
+      {
+        "path": "case24.py",
+        "blob_hash": "f32dfefee52664973123858ed130e7fc0777f76a20781f0ea312f6d62d21c572",
+        "size": 41,
+        "encoding": "utf-8"
+      }
+    ],
+    "changed_paths": []
+  },
+  "entities": [
+    {
+      "entity_id": "63af915282f12b7db572520f",
+      "kind": "config",
+      "qualified_name": "case21.PIPELINE",
+      "module": "case21",
+      "signature": [],
+      "decorators": [],
+      "span": {
+        "path": "case21.py",
+        "start_line": 1,
+        "end_line": 1,
+        "start_byte": 0,
+        "end_byte": 58,
+        "blob_hash": "b659a66d4a24131d2b4efe45b1b49f7e969c4b9939866bb304528644617b0bdd"
+      }
+    },
+    {
+      "entity_id": "f0909aaf9547f323c677be44",
+      "kind": "config",
+      "qualified_name": "case22.RETRY_DELAYS",
+      "module": "case22",
+      "signature": [],
+      "decorators": [],
+      "span": {
+        "path": "case22.py",
+        "start_line": 1,
+        "end_line": 1,
+        "start_byte": 0,
+        "end_byte": 24,
+        "blob_hash": "4d9d1724dcc855694a71f8585fcb87d966ad7b90d8377a87640e511af46f93ad"
+      }
+    },
+    {
+      "entity_id": "9eac043e3c558f9d72ce65d1",
+      "kind": "config",
+      "qualified_name": "case23.STORAGE",
+      "module": "case23",
+      "signature": [],
+      "decorators": [],
+      "span": {
+        "path": "case23.py",
+        "start_line": 3,
+        "end_line": 3,
+        "start_byte": 11,
+        "end_byte": 83,
+        "blob_hash": "4acda8393104d3a67b20eb60f3902b5c644706febeae18ffa1c873901710211b"
+      }
+    },
+    {
+      "entity_id": "eaa206a3dd1afbaa130e9afc",
+      "kind": "config",
+      "qualified_name": "case24.CACHE",
+      "module": "case24",
+      "signature": [],
+      "decorators": [],
+      "span": {
+        "path": "case24.py",
+        "start_line": 1,
+        "end_line": 1,
+        "start_byte": 0,
+        "end_byte": 40,
+        "blob_hash": "f32dfefee52664973123858ed130e7fc0777f76a20781f0ea312f6d62d21c572"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "18d1c1507e4beaa73fe76541",
+      "entity_id": "63af915282f12b7db572520f",
+      "subject": "case21.PIPELINE",
+      "property": "export",
+      "value_state": "KNOWN",
+      "typed_value": {
+        "type": "dict",
+        "canonical": "[\"dict\",[[[\"str\",\"compression\"],[\"str\",\"gzip\"]],[[\"str\",\"level\"],[\"int\",3]]]]"
+      },
+      "expression": "{\"compression\": \"gzip\", \"level\": 3}",
+      "span": {
+        "path": "case21.py",
+        "start_line": 1,
+        "end_line": 1,
+        "start_byte": 22,
+        "end_byte": 57,
+        "blob_hash": "b659a66d4a24131d2b4efe45b1b49f7e969c4b9939866bb304528644617b0bdd"
+      },
+      "fact_kind": "CONFIG",
+      "parameters": [],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    },
+    {
+      "fact_id": "9993d9bb6af65a4896412ae6",
+      "entity_id": "f0909aaf9547f323c677be44",
+      "subject": "case22",
+      "property": "RETRY_DELAYS",
+      "value_state": "KNOWN",
+      "typed_value": {
+        "type": "tuple",
+        "canonical": "[\"tuple\",[[\"int\",1],[\"int\",3],[\"int\",9]]]"
+      },
+      "expression": "(1, 3, 9)",
+      "span": {
+        "path": "case22.py",
+        "start_line": 1,
+        "end_line": 1,
+        "start_byte": 15,
+        "end_byte": 24,
+        "blob_hash": "4d9d1724dcc855694a71f8585fcb87d966ad7b90d8377a87640e511af46f93ad"
+      },
+      "fact_kind": "CONFIG",
+      "parameters": [],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    },
+    {
+      "fact_id": "fba72e392987fc6e4e02f794",
+      "entity_id": "9eac043e3c558f9d72ce65d1",
+      "subject": "case23.STORAGE",
+      "property": "local",
+      "value_state": "UNKNOWN",
+      "typed_value": null,
+      "expression": "{\"root\": os.environ.get(\"STORAGE_ROOT\", \"./cache\")}",
+      "span": {
+        "path": "case23.py",
+        "start_line": 3,
+        "end_line": 3,
+        "start_byte": 31,
+        "end_byte": 82,
+        "blob_hash": "4acda8393104d3a67b20eb60f3902b5c644706febeae18ffa1c873901710211b"
+      },
+      "fact_kind": "CONFIG",
+      "parameters": [],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    },
+    {
+      "fact_id": "b2d1af2af09369e63bfea4e4",
+      "entity_id": "eaa206a3dd1afbaa130e9afc",
+      "subject": "case24",
+      "property": "CACHE",
+      "value_state": "UNKNOWN",
+      "typed_value": null,
+      "expression": "dict(enabled=True, capacity=128)",
+      "span": {
+        "path": "case24.py",
+        "start_line": 1,
+        "end_line": 1,
+        "start_byte": 8,
+        "end_byte": 40,
+        "blob_hash": "f32dfefee52664973123858ed130e7fc0777f76a20781f0ea312f6d62d21c572"
+      },
+      "fact_kind": "CONFIG",
+      "parameters": [],
+      "receiver": "none",
+      "extractor_version": "python-static/2"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "008f4915faa535f14c1939b5",
+      "subject": "case21.PIPELINE.export",
+      "predicate": "compression",
+      "kind": "DEFAULT_ASSERTION",
+      "value": null,
+      "qualifiers": [],
+      "version_scope": "current",
+      "span": {
+        "path": "case21.md",
+        "start_line": 5,
+        "end_line": 5,
+        "start_byte": 46,
+        "end_byte": 82,
+        "blob_hash": "099eec9bd8712e2ed092528d9597ac7d8c3184b8bd6a4a3abadaf579d43f3165"
+      },
+      "value_span": {
+        "path": "case21.md",
+        "start_line": 5,
+        "end_line": 5,
+        "start_byte": 74,
+        "end_byte": 78,
+        "blob_hash": "099eec9bd8712e2ed092528d9597ac7d8c3184b8bd6a4a3abadaf579d43f3165"
+      },
+      "quote": "`compression` 默认值为 `zstd`。",
+      "extraction_method": "markdown-rules/2",
+      "source_hint": null,
+      "positional_count": null,
+      "keyword_names": [],
+      "unpacking": false,
+      "bound_receiver": false
+    },
+    {
+      "claim_id": "363fc4d3be05b1e5dec23fdf",
+      "subject": "case22",
+      "predicate": "RETRY_DELAYS",
+      "kind": "DEFAULT_ASSERTION",
+      "value": {
+        "type": "tuple",
+        "canonical": "[\"tuple\",[[\"int\",1],[\"int\",3],[\"int\",9]]]"
+      },
+      "qualifiers": [],
+      "version_scope": "current",
+      "span": {
+        "path": "case22.md",
+        "start_line": 5,
+        "end_line": 5,
+        "start_byte": 30,
+        "end_byte": 72,
+        "blob_hash": "350b57724f4e0cd8b40cb91eccf409464ef0bf1be9347b62fd50adff659628e7"
+      },
+      "value_span": {
+        "path": "case22.md",
+        "start_line": 5,
+        "end_line": 5,
+        "start_byte": 59,
+        "end_byte": 68,
+        "blob_hash": "350b57724f4e0cd8b40cb91eccf409464ef0bf1be9347b62fd50adff659628e7"
+      },
+      "quote": "`RETRY_DELAYS` 默认值为 `(1, 3, 9)`。",
+      "extraction_method": "markdown-rules/2",
+      "source_hint": null,
+      "positional_count": null,
+      "keyword_names": [],
+      "unpacking": false,
+      "bound_receiver": false
+    },
+    {
+      "claim_id": "9010225272ae5f43b29ef447",
+      "subject": "case23.STORAGE.local",
+      "predicate": "root",
+      "kind": "DEFAULT_ASSERTION",
+      "value": null,
+      "qualifiers": [],
+      "version_scope": "current",
+      "span": {
+        "path": "case23.md",
+        "start_line": 5,
+        "end_line": 5,
+        "start_byte": 44,
+        "end_byte": 76,
+        "blob_hash": "1e0347dfce2f8ef642378528766f627c6e2182d60b711315b13d530fe6dd3f06"
+      },
+      "value_span": {
+        "path": "case23.md",
+        "start_line": 5,
+        "end_line": 5,
+        "start_byte": 65,
+        "end_byte": 72,
+        "blob_hash": "1e0347dfce2f8ef642378528766f627c6e2182d60b711315b13d530fe6dd3f06"
+      },
+      "quote": "`root` 默认值为 `./cache`。",
+      "extraction_method": "markdown-rules/2",
+      "source_hint": null,
+      "positional_count": null,
+      "keyword_names": [],
+      "unpacking": false,
+      "bound_receiver": false
+    },
+    {
+      "claim_id": "1c4005c2d2bf79dc0811eca2",
+      "subject": "case24.CACHE",
+      "predicate": "enabled",
+      "kind": "DEFAULT_ASSERTION",
+      "value": {
+        "type": "bool",
+        "canonical": "[\"bool\",true]"
+      },
+      "qualifiers": [],
+      "version_scope": "current",
+      "span": {
+        "path": "case24.md",
+        "start_line": 5,
+        "end_line": 5,
+        "start_byte": 36,
+        "end_byte": 68,
+        "blob_hash": "ac542651c4f29b9c0850e7f1c1edee5d5b214129fa21b269b07cf1fa46a059fb"
+      },
+      "value_span": {
+        "path": "case24.md",
+        "start_line": 5,
+        "end_line": 5,
+        "start_byte": 60,
+        "end_byte": 64,
+        "blob_hash": "ac542651c4f29b9c0850e7f1c1edee5d5b214129fa21b269b07cf1fa46a059fb"
+      },
+      "quote": "`enabled` 默认值为 `True`。",
+      "extraction_method": "markdown-rules/2",
+      "source_hint": null,
+      "positional_count": null,
+      "keyword_names": [],
+      "unpacking": false,
+      "bound_receiver": false
+    }
+  ],
+  "candidates": [
+    {
+      "claim_id": "008f4915faa535f14c1939b5",
+      "candidates": [],
+      "ambiguity": false,
+      "reason": "NO_CANDIDATE"
+    },
+    {
+      "claim_id": "363fc4d3be05b1e5dec23fdf",
+      "candidates": [
+        {
+          "fact_id": "9993d9bb6af65a4896412ae6",
+          "rank": 1,
+          "score": 1.0,
+          "features": [
+            "exact_symbol",
+            "parameter_owner"
+          ]
+        }
+      ],
+      "ambiguity": false,
+      "reason": "MATCH"
+    },
+    {
+      "claim_id": "9010225272ae5f43b29ef447",
+      "candidates": [],
+      "ambiguity": false,
+      "reason": "NO_CANDIDATE"
+    },
+    {
+      "claim_id": "1c4005c2d2bf79dc0811eca2",
+      "candidates": [],
+      "ambiguity": false,
+      "reason": "NO_CANDIDATE"
+    }
+  ],
+  "judgments": [
+    {
+      "claim_id": "008f4915faa535f14c1939b5",
+      "decision": "UNCERTAIN",
+      "fact_ids": [],
+      "reason_code": "NO_CANDIDATE",
+      "reason_text": "Insufficient evidence for a deterministic decision",
+      "claim_type_check": false,
+      "version_compatible": false,
+      "score": null,
+      "uncertainty_reason": "NO_CANDIDATE",
+      "model_run_id": null
+    },
+    {
+      "claim_id": "363fc4d3be05b1e5dec23fdf",
+      "decision": "CONSISTENT",
+      "fact_ids": [
+        "9993d9bb6af65a4896412ae6"
+      ],
+      "reason_code": "LITERAL_EQUAL",
+      "reason_text": "Compare explicit typed default values for the same parameter",
+      "claim_type_check": true,
+      "version_compatible": true,
+      "score": null,
+      "uncertainty_reason": null,
+      "model_run_id": null
+    },
+    {
+      "claim_id": "9010225272ae5f43b29ef447",
+      "decision": "UNCERTAIN",
+      "fact_ids": [],
+      "reason_code": "NO_CANDIDATE",
+      "reason_text": "Insufficient evidence for a deterministic decision",
+      "claim_type_check": false,
+      "version_compatible": false,
+      "score": null,
+      "uncertainty_reason": "NO_CANDIDATE",
+      "model_run_id": null
+    },
+    {
+      "claim_id": "1c4005c2d2bf79dc0811eca2",
+      "decision": "UNCERTAIN",
+      "fact_ids": [],
+      "reason_code": "NO_CANDIDATE",
+      "reason_text": "Insufficient evidence for a deterministic decision",
+      "claim_type_check": false,
+      "version_compatible": false,
+      "score": null,
+      "uncertainty_reason": "NO_CANDIDATE",
+      "model_run_id": null
+    }
+  ],
+  "findings": [],
+  "rejected": [],
+  "patches": []
+}

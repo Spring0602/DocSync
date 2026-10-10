@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-10",
+  "tests": 219,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 2,
+  "passed": 217,
+  "seconds": 120.437,
+  "skip_reason": "Windows symlink creation permission",
+  "ruff": "passed",
+  "ruff_format": "53 files passed",
+  "mypy": "20 source files passed",
+  "build": "wheel and sdist passed",
+  "remote_ci_scope": "0465c93 only; local closeout commit not yet pushed"
+}

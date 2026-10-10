@@ -9,3 +9,7 @@ bench/annotations/candidate-v1/context.md whitespace=-blank-at-eol,-blank-at-eof
 
 # Preserve the received B annotation attachment hash.
 docs/audit-samples/b-20261009/*.csv -text whitespace=cr-at-eol
+
+# Received member files are byte-preserving audit copies.
+bench/annotations/candidate-v1-received-20261009/B/** -text whitespace=cr-at-eol
+bench/annotations/candidate-v1-received-20261009/C/** -text whitespace=cr-at-eol

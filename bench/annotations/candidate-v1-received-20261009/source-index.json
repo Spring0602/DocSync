@@ -1,0 +1,27 @@
+{
+  "B/individual-B-20261009.csv": {
+    "source_path": "individual-B-20261009.csv",
+    "sha256": "02df0604d36805fb105744ae25c9946106f76ad1d6c9740c6743e1f59417c67e",
+    "lf_sha256": "9934e28aca8320eb5437b08741d46751f3def8b05bb336671ea1bd430e7971e7"
+  },
+  "B/b-candidate-v1-handoff-to-a.md": {
+    "source_path": "b-candidate-v1-handoff-to-a.md",
+    "sha256": "3a302b71eda470e9c7b9e4e8a522c6f34c57e9110f5b919a6248f6f92c85cb18",
+    "lf_sha256": "3a302b71eda470e9c7b9e4e8a522c6f34c57e9110f5b919a6248f6f92c85cb18"
+  },
+  "C/annotations-C-candidate-v1.csv": {
+    "source_path": "docs/audit-samples/c-20261007/annotations-C-candidate-v1.csv",
+    "sha256": "5082ad65c1378116cd9ee5be0e0a8ea25929ad3be0de4cf0c0758dbdbdf8c882",
+    "lf_sha256": "4bcceb9aa571137fccad918d31176085539ad9cd23dcef1c7898a0160045ba97"
+  },
+  "C/candidate-v1-C-handoff-20261007.md": {
+    "source_path": "docs/audit-samples/c-20261007/candidate-v1-C-handoff-20261007.md",
+    "sha256": "71ded50e672c95066e34d4091f52c014c573e215bba6a87a97d07f57d226a3e5",
+    "lf_sha256": "228b9b4fbb3ac533fe47cbca2cf786825a4233d8dda1574d22002880849971df"
+  },
+  "C/candidate-v1-C-suggestion-table.md": {
+    "source_path": "docs/audit-samples/c-20261007/candidate-v1-C-suggestion-table.md",
+    "sha256": "3bd0c2c4bc38d4318ed03b75a7235b0a299e79812d23ebc3b83275f965352779",
+    "lf_sha256": "30134ed1b729b6062dabafbce735fb7720466fffdc006d321137c87fe0212c36"
+  }
+}
