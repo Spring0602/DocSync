@@ -58,5 +58,7 @@ python -m docsync benchmark --manifest runs\b-release-closeout-candidates\manife
 
 ## 版本边界
 
-Git 网络连接在本轮被重置，因此工作区先以用户下载的最新 `main` ZIP 建立本地承接基线 `6997ff6`。该同步基线不应作为 B 成果合并；在正式远端最新 main 上只移植代码提交 `7a16354` 及其后续审计文档提交，再运行受影响验证和远程 CI。
+早期工作区曾以用户下载的 `main` ZIP 建立本地承接基线 `6997ff6`，该提交仅用于网络不可用时继续开发。2026-10-10 已重新获取正式 `origin/main` `353527b`，并从它创建干净分支 `member-b-release-closeout-final`；`6997ff6` 不是该分支祖先。
+
+原始提交 `7a16354`、`656ecc0`、`1498206` 在正式最新 main 上依次移植为 `0ccbecb`、`2ab8ed3`、`3a34706`。移植后完整测试为 `222 passed, 2 skipped`，两个 skip 仍为 Windows symlink 权限；Ruff、格式检查、mypy 和构建均通过。当前构建产物 SHA-256：wheel `efda69cd1eda5460ee0d65abdab09b5623dbdef4e822a57009f0bb97771b77b4`；sdist `70e1e94fc1cef6a9b700a7b82b74792069ae5f2b7ff14a7a3232696300dbb854`。远程 CI 仍需以推送后的分支 SHA 为准。
 

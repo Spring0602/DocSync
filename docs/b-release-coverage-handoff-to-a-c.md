@@ -2,7 +2,11 @@
 
 ## 交付内容
 
-- 技术实现提交：`7a16354f0ff1ad4c6ed544cd19a926c867848897`
+- 正式基线：`origin/main` `353527b`
+- 干净交付分支：`member-b-release-closeout-final`
+- 技术实现提交：`0ccbecb`（原始提交 `7a16354`）
+- 技术报告提交：`2ab8ed3`（原始提交 `656ecc0`）
+- B 本人复核提交：`3a34706`（原始提交 `1498206`）
 - 实现与范围报告：`docs/b-release-coverage-review-20261010.md`
 - 原始离线证据：`docs/audit-samples/b-release-coverage-20261010/`
 - 新增回归：`tests/integration/test_b_release_coverage.py`
@@ -32,6 +36,8 @@ python -m build --no-isolation
 
 ## 合并边界
 
-由于 GitHub Git 连接在 B 工作时被重置，本地分支前一提交 `6997ff6` 只是把用户下载的最新 ZIP 接到旧远端历史上，**不要合并或 cherry-pick 该同步基线**。只移植 `7a16354` 和其后的 B 审计文档提交。最终远端 CI 必须对应 A 合并后的真实 main SHA。
+本交付分支直接建立在正式 `origin/main` `353527b` 上，本地 ZIP 承接提交 `6997ff6` 已排除且不是当前分支祖先。A/C 可以直接复验当前分支的三个 B 提交；最终远端 CI 必须对应推送后的分支 SHA 和 A 合并后的真实 main SHA。
 
 B 的技术调查、实现、本地验证和交接已完成。成员 B 已于 2026-10-10 完成本人 AI 人工复核，确认五项内容均无异议，同意进入 A/C 复验；记录见 [复核指南及结果](b-ai-human-review-guide-20261010.md)。A/C 仍需在正式最新 main 上独立复验，不能把 B 的确认代替接收方结论。
+
+移植后的本地复验结果：完整测试 `222 passed, 2 skipped`；两个 skip 是 Windows symlink 权限；Ruff、格式检查、mypy 和 wheel/sdist 构建通过。远程 GitHub Actions 结果应在推送后另行核对。
