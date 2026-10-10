@@ -1,9 +1,10 @@
 import ast
 from dataclasses import dataclass
+from typing import Any
 
 from docsync.models import CodeEntity, CodeFact, Diagnostic, Parameter, ParameterKind
 from docsync.repository import SnapshotData
-from docsync.utils import span_for, stable_id, typed_literal
+from docsync.utils import literal_value, span_for, stable_id
 
 
 @dataclass(frozen=True)
@@ -11,6 +12,272 @@ class CodeExtractionResult:
     entities: list[CodeEntity]
     facts: list[CodeFact]
     diagnostics: list[Diagnostic]
+
+
+_UNKNOWN = object()
+
+
+def _static_value(
+    node: ast.expr,
+    bindings: dict[str, Any],
+    functions: dict[str, Any],
+    *,
+    dict_available: bool,
+) -> Any:
+    """Evaluate only side-effect-free literal syntax with proven local bindings."""
+
+    if isinstance(node, ast.Constant):
+        return node.value if literal_value(node.value) is not None else _UNKNOWN
+    if isinstance(node, ast.Name):
+        return bindings.get(node.id, _UNKNOWN)
+    if isinstance(node, ast.List | ast.Tuple | ast.Set):
+        values = [
+            _static_value(item, bindings, functions, dict_available=dict_available)
+            for item in node.elts
+        ]
+        if any(item is _UNKNOWN for item in values):
+            return _UNKNOWN
+        if isinstance(node, ast.List):
+            return values
+        if isinstance(node, ast.Tuple):
+            return tuple(values)
+        try:
+            return set(values)
+        except TypeError:
+            return _UNKNOWN
+    if isinstance(node, ast.Dict):
+        result: dict[Any, Any] = {}
+        for key_node, value_node in zip(node.keys, node.values, strict=True):
+            value = _static_value(value_node, bindings, functions, dict_available=dict_available)
+            if value is _UNKNOWN:
+                return _UNKNOWN
+            if key_node is None:
+                if type(value) is not dict:
+                    return _UNKNOWN
+                result.update(value)
+                continue
+            key = _static_value(key_node, bindings, functions, dict_available=dict_available)
+            if key is _UNKNOWN:
+                return _UNKNOWN
+            try:
+                result[key] = value
+            except TypeError:
+                return _UNKNOWN
+        return result if literal_value(result) is not None else _UNKNOWN
+    if isinstance(node, ast.UnaryOp):
+        operand = _static_value(node.operand, bindings, functions, dict_available=dict_available)
+        if operand is _UNKNOWN or type(operand) not in {int, float}:
+            return _UNKNOWN
+        if isinstance(node.op, ast.UAdd):
+            return +operand
+        if isinstance(node.op, ast.USub):
+            return -operand
+        return _UNKNOWN
+    if isinstance(node, ast.BinOp):
+        left = _static_value(node.left, bindings, functions, dict_available=dict_available)
+        right = _static_value(node.right, bindings, functions, dict_available=dict_available)
+        if left is _UNKNOWN or right is _UNKNOWN:
+            return _UNKNOWN
+        try:
+            if isinstance(node.op, ast.Add) and (
+                (type(left) in {int, float} and type(right) in {int, float})
+                or (type(left) is type(right) and type(left) in {str, tuple, list})
+            ):
+                value = left + right
+            elif (
+                isinstance(node.op, ast.Sub)
+                and type(left) in {int, float}
+                and type(right) in {int, float}
+            ):
+                value = left - right
+            else:
+                return _UNKNOWN
+        except (TypeError, ValueError, OverflowError):
+            return _UNKNOWN
+        return value if literal_value(value) is not None else _UNKNOWN
+    if isinstance(node, ast.Call) and isinstance(node.func, ast.Name):
+        if not node.args and not node.keywords and node.func.id in functions:
+            return functions[node.func.id]
+        if node.func.id == "dict" and dict_available and not node.args:
+            call_result: dict[str, Any] = {}
+            for keyword in node.keywords:
+                if keyword.arg is None:
+                    return _UNKNOWN
+                value = _static_value(
+                    keyword.value, bindings, functions, dict_available=dict_available
+                )
+                if value is _UNKNOWN:
+                    return _UNKNOWN
+                call_result[keyword.arg] = value
+            return call_result
+    return _UNKNOWN
+
+
+def _pure_literal_return(
+    node: ast.FunctionDef | ast.AsyncFunctionDef,
+    bindings: dict[str, Any],
+    functions: dict[str, Any],
+    *,
+    dict_available: bool,
+) -> Any:
+    if (
+        isinstance(node, ast.AsyncFunctionDef)
+        or node.decorator_list
+        or node.args.posonlyargs
+        or node.args.args
+        or node.args.kwonlyargs
+        or node.args.vararg
+        or node.args.kwarg
+        or len(node.body) != 1
+        or not isinstance(node.body[0], ast.Return)
+        or node.body[0].value is None
+    ):
+        return _UNKNOWN
+    return _static_value(node.body[0].value, bindings, functions, dict_available=dict_available)
+
+
+def _definition_contexts(
+    tree: ast.Module,
+) -> dict[int, tuple[dict[str, Any], dict[str, Any], bool]]:
+    """Capture literal bindings as they exist when each definition executes."""
+
+    contexts: dict[int, tuple[dict[str, Any], dict[str, Any], bool]] = {}
+    bindings: dict[str, Any] = {}
+    functions: dict[str, Any] = {}
+    dict_available = True
+    for statement in tree.body:
+        if isinstance(statement, ast.FunctionDef | ast.AsyncFunctionDef):
+            contexts[id(statement)] = (dict(bindings), dict(functions), dict_available)
+            value = _pure_literal_return(
+                statement, bindings, functions, dict_available=dict_available
+            )
+            if value is _UNKNOWN:
+                functions.pop(statement.name, None)
+            else:
+                functions[statement.name] = value
+            bindings.pop(statement.name, None)
+            if statement.name == "dict":
+                dict_available = False
+            continue
+        if isinstance(statement, ast.ClassDef):
+            contexts[id(statement)] = (dict(bindings), dict(functions), dict_available)
+            bindings.pop(statement.name, None)
+            functions.pop(statement.name, None)
+            if statement.name == "dict":
+                dict_available = False
+            continue
+        if isinstance(statement, ast.Assign | ast.AnnAssign):
+            targets = statement.targets if isinstance(statement, ast.Assign) else [statement.target]
+            value_node = statement.value
+            value = (
+                _static_value(value_node, bindings, functions, dict_available=dict_available)
+                if value_node is not None
+                else _UNKNOWN
+            )
+            for target in targets:
+                if isinstance(target, ast.Name):
+                    if value is _UNKNOWN:
+                        bindings.pop(target.id, None)
+                    else:
+                        bindings[target.id] = value
+                    functions.pop(target.id, None)
+                    if target.id == "dict":
+                        dict_available = False
+            continue
+        if isinstance(statement, ast.AugAssign) and isinstance(statement.target, ast.Name):
+            synthetic = ast.BinOp(
+                left=ast.Name(id=statement.target.id, ctx=ast.Load()),
+                op=statement.op,
+                right=statement.value,
+            )
+            value = _static_value(synthetic, bindings, functions, dict_available=dict_available)
+            if value is _UNKNOWN:
+                bindings.pop(statement.target.id, None)
+            else:
+                bindings[statement.target.id] = value
+            continue
+        for child in ast.walk(statement):
+            if isinstance(child, ast.Name) and isinstance(child.ctx, ast.Store | ast.Del):
+                bindings.pop(child.id, None)
+                functions.pop(child.id, None)
+                if child.id == "dict":
+                    dict_available = False
+    return contexts
+
+
+@dataclass
+class _ConfigLeaf:
+    path: tuple[str, ...]
+    node: ast.expr | ast.stmt
+    value: Any
+
+
+def _config_leaves(
+    node: ast.expr,
+    bindings: dict[str, Any],
+    functions: dict[str, Any],
+    *,
+    dict_available: bool,
+    prefix: tuple[str, ...] = (),
+) -> dict[tuple[str, ...], _ConfigLeaf]:
+    """Flatten explicit string-key mappings while retaining unknown leaf evidence."""
+
+    if isinstance(node, ast.Call) and isinstance(node.func, ast.Name) and node.func.id == "dict":
+        if not dict_available or node.args or any(item.arg is None for item in node.keywords):
+            return {}
+        return {
+            (*prefix, item.arg): _ConfigLeaf(
+                (*prefix, item.arg),
+                item.value,
+                _static_value(item.value, bindings, functions, dict_available=dict_available),
+            )
+            for item in node.keywords
+            if item.arg is not None
+        }
+    if not isinstance(node, ast.Dict):
+        return {
+            prefix: _ConfigLeaf(
+                prefix,
+                node,
+                _static_value(node, bindings, functions, dict_available=dict_available),
+            )
+        }
+
+    leaves: dict[tuple[str, ...], _ConfigLeaf] = {}
+    seen: set[str] = set()
+    for key_node, value_node in zip(node.keys, node.values, strict=True):
+        if key_node is None or not (
+            isinstance(key_node, ast.Constant) and isinstance(key_node.value, str)
+        ):
+            for leaf in leaves.values():
+                leaf.value = _UNKNOWN
+            continue
+        key = key_node.value
+        child_prefix = (*prefix, key)
+        child = _config_leaves(
+            value_node,
+            bindings,
+            functions,
+            dict_available=dict_available,
+            prefix=child_prefix,
+        )
+        if key in seen:
+            for path, leaf in leaves.items():
+                if path[: len(child_prefix)] == child_prefix:
+                    leaf.value = _UNKNOWN
+            for leaf in child.values():
+                leaf.value = _UNKNOWN
+        else:
+            for path in [path for path in leaves if path[: len(child_prefix)] == child_prefix]:
+                del leaves[path]
+        leaves.update(child)
+        seen.add(key)
+    return leaves
+
+
+def _mark_unknown(leaves: dict[tuple[str, ...], _ConfigLeaf]) -> None:
+    for leaf in leaves.values():
+        leaf.value = _UNKNOWN
 
 
 def extract_code(snapshot: SnapshotData) -> CodeExtractionResult:
@@ -41,10 +308,18 @@ def extract_code(snapshot: SnapshotData) -> CodeExtractionResult:
         if module.endswith(".__init__"):
             module = module.removesuffix(".__init__")
         module_trees[module] = (path, tree)
+        definition_contexts = _definition_contexts(tree)
 
         def visit(
-            body: list[ast.stmt], parents: tuple[str, ...] = (), inherited_safe: bool = True
+            body: list[ast.stmt],
+            parents: tuple[str, ...] = (),
+            inherited_safe: bool = True,
+            literal_bindings: dict[str, Any] | None = None,
+            literal_functions: dict[str, Any] | None = None,
+            dict_available: bool = True,
         ) -> None:
+            literal_bindings = literal_bindings or {}
+            literal_functions = literal_functions or {}
             definition_names = [
                 statement.name
                 for statement in body
@@ -83,6 +358,9 @@ def extract_code(snapshot: SnapshotData) -> CodeExtractionResult:
                             rebound.add(root.id)
             for node in body:
                 if isinstance(node, ast.ClassDef) and not node.name.startswith("_"):
+                    context = definition_contexts.get(
+                        id(node), (literal_bindings, literal_functions, dict_available)
+                    )
                     visit(
                         node.body,
                         (*parents, node.name),
@@ -91,11 +369,16 @@ def extract_code(snapshot: SnapshotData) -> CodeExtractionResult:
                         and not node.bases
                         and not node.keywords
                         and node.name not in rebound,
+                        *context,
                     )
-                if not isinstance(
-                    node, ast.FunctionDef | ast.AsyncFunctionDef
-                ) or node.name.startswith("_"):
+                if not isinstance(node, ast.FunctionDef | ast.AsyncFunctionDef) or (
+                    node.name.startswith("_") and node.name != "__init__"
+                ):
                     continue
+                context = definition_contexts.get(
+                    id(node), (literal_bindings, literal_functions, dict_available)
+                )
+                definition_bindings, definition_functions, definition_dict_available = context
                 name = ".".join((module, *parents, node.name))
                 span = span_for(
                     path,
@@ -132,7 +415,17 @@ def extract_code(snapshot: SnapshotData) -> CodeExtractionResult:
                     expression = (
                         ast.get_source_segment(text, default) if default is not None else None
                     )
-                    value = typed_literal(expression) if expression is not None and safe else None
+                    static_value = (
+                        _static_value(
+                            default,
+                            definition_bindings,
+                            definition_functions,
+                            dict_available=definition_dict_available,
+                        )
+                        if default is not None and safe
+                        else _UNKNOWN
+                    )
+                    value = literal_value(static_value) if static_value is not _UNKNOWN else None
                     kind: ParameterKind = (
                         "POSITIONAL_ONLY"
                         if arg in node.args.posonlyargs
@@ -226,22 +519,158 @@ def extract_code(snapshot: SnapshotData) -> CodeExtractionResult:
                 )
 
         visit(tree.body)
-        # Only explicit top-level uppercase constants and dict literals are config interfaces.
-        assignments: dict[str, list[ast.Assign | ast.AnnAssign]] = {}
-        for node in tree.body:
-            if isinstance(node, ast.Assign | ast.AnnAssign):
-                targets = node.targets if isinstance(node, ast.Assign) else [node.target]
+        # Evaluate explicit module initialization in source order. Supported operations are
+        # deliberately narrow: literal assignment, literal +=/-=, and dict.update with an
+        # explicit mapping. Every other mutation keeps the affected facts UNKNOWN.
+        config_states: dict[str, dict[tuple[str, ...], _ConfigLeaf]] = {}
+        config_nodes: dict[str, ast.Assign | ast.AnnAssign] = {}
+        runtime_bindings: dict[str, Any] = {}
+        runtime_functions: dict[str, Any] = {}
+        runtime_dict_available = True
+        for statement in tree.body:
+            handled_names: set[str] = set()
+            if isinstance(statement, ast.FunctionDef | ast.AsyncFunctionDef):
+                value = _pure_literal_return(
+                    statement,
+                    runtime_bindings,
+                    runtime_functions,
+                    dict_available=runtime_dict_available,
+                )
+                if value is _UNKNOWN:
+                    runtime_functions.pop(statement.name, None)
+                else:
+                    runtime_functions[statement.name] = value
+                runtime_bindings.pop(statement.name, None)
+                if statement.name == "dict":
+                    runtime_dict_available = False
+                continue
+            if isinstance(statement, ast.ClassDef):
+                runtime_bindings.pop(statement.name, None)
+                runtime_functions.pop(statement.name, None)
+                if statement.name == "dict":
+                    runtime_dict_available = False
+                continue
+            if isinstance(statement, ast.Assign | ast.AnnAssign):
+                targets = (
+                    statement.targets if isinstance(statement, ast.Assign) else [statement.target]
+                )
+                value_node = statement.value
+                value = (
+                    _static_value(
+                        value_node,
+                        runtime_bindings,
+                        runtime_functions,
+                        dict_available=runtime_dict_available,
+                    )
+                    if value_node is not None
+                    else _UNKNOWN
+                )
                 for target in targets:
-                    if (
-                        isinstance(target, ast.Name)
-                        and target.id.isupper()
-                        and node.value is not None
-                    ):
-                        assignments.setdefault(target.id, []).append(node)
-        for key, nodes in assignments.items():
-            node = nodes[0]
-            assert node.value is not None
-            value_node = node.value
+                    if not isinstance(target, ast.Name):
+                        continue
+                    handled_names.add(target.id)
+                    runtime_functions.pop(target.id, None)
+                    if value is _UNKNOWN:
+                        runtime_bindings.pop(target.id, None)
+                    else:
+                        runtime_bindings[target.id] = value
+                    if target.id == "dict":
+                        runtime_dict_available = False
+                    if not target.id.isupper() or value_node is None:
+                        continue
+                    config_nodes.setdefault(target.id, statement)
+                    config_states[target.id] = _config_leaves(
+                        value_node,
+                        runtime_bindings,
+                        runtime_functions,
+                        dict_available=runtime_dict_available,
+                    )
+            elif isinstance(statement, ast.AugAssign) and isinstance(statement.target, ast.Name):
+                key = statement.target.id
+                handled_names.add(key)
+                synthetic = ast.BinOp(
+                    left=ast.Name(id=key, ctx=ast.Load()),
+                    op=statement.op,
+                    right=statement.value,
+                )
+                value = _static_value(
+                    synthetic,
+                    runtime_bindings,
+                    runtime_functions,
+                    dict_available=runtime_dict_available,
+                )
+                if value is _UNKNOWN:
+                    runtime_bindings.pop(key, None)
+                else:
+                    runtime_bindings[key] = value
+                if key in config_states:
+                    config_states[key] = {(): _ConfigLeaf((), statement, value)}
+            elif (
+                isinstance(statement, ast.Expr)
+                and isinstance(statement.value, ast.Call)
+                and isinstance(statement.value.func, ast.Attribute)
+                and statement.value.func.attr == "update"
+                and isinstance(statement.value.func.value, ast.Name)
+            ):
+                key = statement.value.func.value.id
+                handled_names.add(key)
+                call = statement.value
+                update_node: ast.expr | None = None
+                if len(call.args) == 1 and not call.keywords:
+                    update_node = call.args[0]
+                elif not call.args and all(item.arg is not None for item in call.keywords):
+                    update_node = ast.Dict(
+                        keys=[ast.Constant(item.arg) for item in call.keywords],
+                        values=[item.value for item in call.keywords],
+                    )
+                    ast.copy_location(update_node, call)
+                    ast.fix_missing_locations(update_node)
+                if key in config_states and update_node is not None:
+                    updates = _config_leaves(
+                        update_node,
+                        runtime_bindings,
+                        runtime_functions,
+                        dict_available=runtime_dict_available,
+                    )
+                    update_value = _static_value(
+                        update_node,
+                        runtime_bindings,
+                        runtime_functions,
+                        dict_available=runtime_dict_available,
+                    )
+                    current = runtime_bindings.get(key, _UNKNOWN)
+                    if type(current) is dict and type(update_value) is dict:
+                        merged = dict(current)
+                        merged.update(update_value)
+                        runtime_bindings[key] = merged
+                        for update_path, leaf in updates.items():
+                            if not update_path:
+                                _mark_unknown(config_states[key])
+                                break
+                            update_prefix = update_path[:1]
+                            for old_path in [
+                                path for path in config_states[key] if path[:1] == update_prefix
+                            ]:
+                                del config_states[key][old_path]
+                            config_states[key][update_path] = leaf
+                    else:
+                        runtime_bindings.pop(key, None)
+                        _mark_unknown(config_states[key])
+                elif key in config_states:
+                    runtime_bindings.pop(key, None)
+                    _mark_unknown(config_states[key])
+
+            for child in ast.walk(statement):
+                if not isinstance(child, ast.Name) or child.id in handled_names:
+                    continue
+                if isinstance(child.ctx, ast.Store | ast.Del):
+                    runtime_bindings.pop(child.id, None)
+                    runtime_functions.pop(child.id, None)
+                if child.id in config_states:
+                    _mark_unknown(config_states[child.id])
+
+        for key, leaves in config_states.items():
+            node = config_nodes[key]
             entity_span = span_for(
                 path,
                 data,
@@ -260,57 +689,25 @@ def extract_code(snapshot: SnapshotData) -> CodeExtractionResult:
                     span=entity_span,
                 )
             )
-            fields: list[tuple[str, str, ast.expr]] = [(module, key, value_node)]
-            dict_unknown: set[str] = set()
-            if isinstance(value_node, ast.Dict):
-                fields = []
-                for dict_key, dict_value in zip(value_node.keys, value_node.values, strict=True):
-                    if dict_key is None:
-                        # An unpack can override any explicit string key seen before it.
-                        dict_unknown.update(prop for _, prop, _ in fields)
-                    elif isinstance(dict_key, ast.Constant) and isinstance(dict_key.value, str):
-                        prop = dict_key.value
-                        if any(existing == prop for _, existing, _ in fields):
-                            # Duplicate explicit keys remain conservative even though Python
-                            # currently selects the last value.
-                            dict_unknown.add(prop)
-                        fields.append((module + "." + key, prop, dict_value))
-                    elif not isinstance(dict_key, ast.Constant):
-                        # A later runtime-computed key may equal any earlier string key.
-                        dict_unknown.update(prop for _, prop, _ in fields)
-                fields = list(
-                    {
-                        prop: (subject, prop, expression) for subject, prop, expression in fields
-                    }.values()
-                )
-            for subject, prop, expression_node in fields:
-                expression = ast.get_source_segment(text, expression_node) or ""
-                value = (
-                    typed_literal(expression)
-                    if len(nodes) == 1 and prop not in dict_unknown
-                    else None
-                )
-                # Any later mutation/update of the constant makes static defaults unknown.
-                for statement in tree.body:
-                    if statement is node or isinstance(
-                        statement, ast.FunctionDef | ast.AsyncFunctionDef | ast.ClassDef
-                    ):
-                        continue
-                    if any(
-                        isinstance(child, ast.Name) and child.id == key
-                        for child in ast.walk(statement)
-                    ):
-                        value = None
+            for leaf_path, leaf in leaves.items():
+                if leaf_path:
+                    subject = ".".join((module, key, *leaf_path[:-1]))
+                    prop = leaf_path[-1]
+                else:
+                    subject = module
+                    prop = key
+                expression = ast.get_source_segment(text, leaf.node) or ""
+                value = literal_value(leaf.value) if leaf.value is not _UNKNOWN else None
                 fact_span = span_for(
                     path,
                     data,
-                    offsets[expression_node.lineno - 1] + expression_node.col_offset,
-                    offsets[(expression_node.end_lineno or expression_node.lineno) - 1]
-                    + (expression_node.end_col_offset or 0),
+                    offsets[leaf.node.lineno - 1] + leaf.node.col_offset,
+                    offsets[(leaf.node.end_lineno or leaf.node.lineno) - 1]
+                    + (leaf.node.end_col_offset or 0),
                 )
                 facts.append(
                     CodeFact(
-                        fact_id=stable_id("config", config_id, prop, fact_span.blob_hash),
+                        fact_id=stable_id("config", config_id, subject, prop, fact_span.blob_hash),
                         entity_id=config_id,
                         subject=subject,
                         property=prop,
