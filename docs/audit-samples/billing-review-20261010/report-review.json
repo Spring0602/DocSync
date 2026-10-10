@@ -1,0 +1,94 @@
+{
+  "reviewer": "成员A",
+  "feedback_received_date": "2026-10-10",
+  "actual_review_date": null,
+  "guide_item": 3,
+  "status": "REPORT_INTERPRETATION_AND_THREE_PREDICTIONS_REVIEWED",
+  "user_statement": "因为旧集本身就明确限制了结论，且结果并不支持“AI 一定优于规则”的说法。旧集结果不是一个“干净的胜负证明”，而是一个“开发集观察”，而且不同方法在样本上都存在各自的误判、拒答和漏检。因此，不能把它当作“AI 明显胜过规则”的证据。；是，扩展集是如实披露的，而且比旧集更严格。扩展集没有“隐藏掉失败样本”，而是完整保留了这些情况，让读者能看见：哪些是漏检，哪些是拒答，哪些是 PARTIAL，哪些是证据不足被错误确认。",
+  "reviewed_document_sha256": {
+    "docs/deepseek-suite-20261007.md": "6c4bdc37920ab05bf3632ebda0bf2f674bb6ffc4e6a3929ed1d6caee22e3bde4",
+    "docs/a-closeout-20261010.md": "975ff18c0c5c5abfed277cde9f144b17ec54f6afbb526f0f9df0e000eeb0b862"
+  },
+  "assistant_verification": [
+    "Old Full and rules have identical 11/0/5/0 counts; both datasets are dev.",
+    "Extension rules: 5 FN, 18/24 abstentions, 4/24 PARTIAL; keyword: 2/5 insufficient false confirmations.",
+    "More strict is not an established experimental property; extension reveals coverage gaps but is not independent formal test evidence."
+  ],
+  "remaining_review": [],
+  "scope_limit": "Report interpretation and exactly three prediction rows reviewed. No full-dataset review claimed; separate inspection of candidate-05 report diagnostic details was not explicitly reported by user.",
+  "assistant_document_maintenance": "After recording reviewed hashes, updated stale billing-pending statements in both reports from existing reconciled evidence; not attributed to human review.",
+  "raw_spot_check": {
+    "feedback_received_date": "2026-10-10",
+    "user_statement": [
+      "candidate-03: 命中，gold 和 prediction 都是 INCONSISTENT",
+      "candidate-01: 是漏检/未命中，gold 是冲突但预测成 UNCERTAIN",
+      "candidate-05: 确实同时记录了 UNCERTAIN、PARTIAL 和 DYNAMIC_FUNCTION"
+    ],
+    "source_file": "docs/audit-samples/a-closeout-20261010/rules/predictions.jsonl",
+    "source_sha256": "df544b822d42dc7b758885c1e81e12a68196fc7190bf32c1d4ba21605b418c1a",
+    "verified_rows": [
+      {
+        "sample_id": "candidate-03",
+        "gold": "INCONSISTENT",
+        "origin": "controlled",
+        "split": "dev",
+        "drift_type": "DEFAULT_VALUE",
+        "method": "rules",
+        "annotation_status": "adjudicated",
+        "manifest_hash": "c8fcf3cfb3cdfb38b89266b2d7926038e774fa68293f5f3edbd8939fa8a51aae",
+        "prediction_stage": "verified",
+        "prediction": "INCONSISTENT",
+        "status": "COMPLETED",
+        "usage": {
+          "requests": 0,
+          "input_tokens": 0,
+          "output_tokens": 0
+        },
+        "errors": [],
+        "elapsed_seconds": 0.6348667999991449
+      },
+      {
+        "sample_id": "candidate-01",
+        "gold": "INCONSISTENT",
+        "origin": "controlled",
+        "split": "dev",
+        "drift_type": "DEFAULT_VALUE",
+        "method": "rules",
+        "annotation_status": "adjudicated",
+        "manifest_hash": "c8fcf3cfb3cdfb38b89266b2d7926038e774fa68293f5f3edbd8939fa8a51aae",
+        "prediction_stage": "verified",
+        "prediction": "UNCERTAIN",
+        "status": "COMPLETED",
+        "usage": {
+          "requests": 0,
+          "input_tokens": 0,
+          "output_tokens": 0
+        },
+        "errors": [],
+        "elapsed_seconds": 0.6758970000009867
+      },
+      {
+        "sample_id": "candidate-05",
+        "gold": "INCONSISTENT",
+        "origin": "controlled",
+        "split": "dev",
+        "drift_type": "DEFAULT_VALUE",
+        "method": "rules",
+        "annotation_status": "adjudicated",
+        "manifest_hash": "c8fcf3cfb3cdfb38b89266b2d7926038e774fa68293f5f3edbd8939fa8a51aae",
+        "prediction_stage": "verified",
+        "prediction": "UNCERTAIN",
+        "status": "PARTIAL",
+        "usage": {
+          "requests": 0,
+          "input_tokens": 0,
+          "output_tokens": 0
+        },
+        "errors": [
+          "DYNAMIC_FUNCTION"
+        ],
+        "elapsed_seconds": 0.8122001000010641
+      }
+    ]
+  }
+}

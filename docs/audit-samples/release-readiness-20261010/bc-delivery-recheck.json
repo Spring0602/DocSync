@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-10",
+  "remote_fetch_succeeded": true,
+  "refs": {
+    "HEAD": "a0f0c749e5d6510e0856126d2761a92e4c750bf7",
+    "origin/main": "0465c93c5d75a8508223a808d59711c045d3b3d7",
+    "origin/c2-action-verification": "4462ff7466b8d1c0ff71838fd8cb56e2c074c40d",
+    "origin/member-b-tasks": "b19498341860cc6d3a7c2aa114d2486ebb8a3d5a"
+  },
+  "branch_commits_not_in_main": {
+    "origin/c2-action-verification": [],
+    "origin/member-b-tasks": []
+  },
+  "source_hashes": {
+    "bench/annotations/candidate-v1-received-20261009/B/b-candidate-v1-handoff-to-a.md": "3a302b71eda470e9c7b9e4e8a522c6f34c57e9110f5b919a6248f6f92c85cb18",
+    "bench/annotations/candidate-v1-received-20261009/C/candidate-v1-C-handoff-20261007.md": "71ded50e672c95066e34d4091f52c014c573e215bba6a87a97d07f57d226a3e5",
+    "bench/candidates/controlled-v1/README.md": "17813ae50ed5f013318d81d98dfa91ee30ebf72ee0e6788699b2381d61089d3f",
+    "bench/frozen/candidate-dev-v1/group-review.jsonl": "f190f50655e286bdb1338627dd0f37e3a7a3dd66efcf69c4a7efcaafe1f8e459"
+  },
+  "conclusion": "Both seed and candidate B/C annotations received. No new independent formal set found in inspected workspace or fetched remote branch histories. Candidate independence excluded under existing group review; do not ask B/C to redo those annotations."
+}

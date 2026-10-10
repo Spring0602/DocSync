@@ -1,0 +1,19 @@
+{
+  "reviewer": "成员A",
+  "feedback_received_date": "2026-10-10",
+  "actual_review_date": null,
+  "guide_item": 2,
+  "completed_subscope": "CLI command separation and scan exit-code semantics",
+  "source_file": "src/docsync/cli.py",
+  "source_sha256": "6037aaffcabe18d9b04de253402617bf974f3ece7a6232d590566e3d7d1b2425",
+  "user_statement": [
+    "不会自动应用补丁，是因为这个程序把“扫描”和“应用修复”分成了两步，而且应用补丁还要求额外的安全校验与“已验证”的 patch manifest。",
+    "退出码 0 也不等于“没有问题”，它更准确地说是“没有触发当前规则定义的失败条件”。"
+  ],
+  "assistant_verification": "Consistent with parser/main/exit_code: scan writes reports, patch exports a VALIDATED proposal, apply explicitly calls apply_patch; FAILED -> 2, required-complete PARTIAL -> 3, confirmed warning -> 1, otherwise 0.",
+  "remaining_item_2_scopes": [
+    "provider credentials, budgets and failure handling",
+    "patch path and preimage safety implementation"
+  ],
+  "scope_limit": "This records CLI understanding only, not completion of all item 2 or all historical AI reviews."
+}

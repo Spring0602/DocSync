@@ -1,0 +1,13 @@
+diff --git a/README.md b/README.md
+index f0f655a..ed889dc 100644
+--- a/README.md
++++ b/README.md
+@@ -2,7 +2,7 @@
+ 
+ ## `connect`
+ 
+-`timeout` 默认值为 `30`。
++`timeout` 默认值为 `60`。
+ 
+ 可以显式选择较短的等待时间：
+ 

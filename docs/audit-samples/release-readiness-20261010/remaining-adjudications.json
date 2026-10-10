@@ -1,0 +1,206 @@
+{
+  "status": "MEMBER_A_REVIEW_COMPLETED",
+  "sample_ids": [
+    "candidate-01",
+    "candidate-02",
+    "candidate-03",
+    "candidate-04",
+    "candidate-08",
+    "candidate-09",
+    "candidate-10",
+    "candidate-11",
+    "candidate-12",
+    "candidate-14",
+    "candidate-15",
+    "candidate-16",
+    "candidate-17",
+    "candidate-18",
+    "candidate-20",
+    "candidate-21",
+    "candidate-22",
+    "candidate-23",
+    "candidate-24"
+  ],
+  "count": 19,
+  "context_sha256": "b68ddf7ddcb089a670a661ce218ff0ba35c9db0e25be6f28aa9dc079d42eb19e",
+  "human_decisions": [
+    {
+      "sample_id": "candidate-01",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "label": "INCONSISTENT",
+      "user_statement": "两个encoding不一样，一个utf-8，一个utf-16",
+      "result": "AGREES_WITH_TECHNICAL_ADJUDICATION"
+    },
+    {
+      "sample_id": "candidate-02",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "label": "CONSISTENT",
+      "user_statement": "一致",
+      "result": "AGREES_WITH_TECHNICAL_ADJUDICATION"
+    },
+    {
+      "sample_id": "candidate-03",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "label": "INCONSISTENT",
+      "user_statement": "元组第二个不一样",
+      "result": "AGREES_WITH_TECHNICAL_ADJUDICATION"
+    },
+    {
+      "sample_id": "candidate-04",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "label": "CONSISTENT",
+      "user_statement": "一致",
+      "result": "AGREES_WITH_TECHNICAL_ADJUDICATION"
+    },
+    {
+      "sample_id": "candidate-08",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "label": "CONSISTENT",
+      "user_statement": "确定，默认返回json",
+      "result": "AGREES_WITH_TECHNICAL_ADJUDICATION"
+    },
+    {
+      "sample_id": "candidate-09",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "label": "CONSISTENT",
+      "user_statement": "符合",
+      "result": "AGREES_WITH_TECHNICAL_ADJUDICATION"
+    },
+    {
+      "sample_id": "candidate-10",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "label": "INCONSISTENT",
+      "user_statement": "不符合",
+      "result": "AGREES_WITH_TECHNICAL_ADJUDICATION"
+    },
+    {
+      "sample_id": "candidate-11",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "label": "CONSISTENT",
+      "user_statement": "符合",
+      "result": "AGREES_WITH_TECHNICAL_ADJUDICATION"
+    },
+    {
+      "sample_id": "candidate-12",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "label": "INSUFFICIENT",
+      "user_statement": "不能确定",
+      "result": "AGREES_WITH_TECHNICAL_ADJUDICATION"
+    },
+    {
+      "sample_id": "candidate-14",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "label": "INCONSISTENT",
+      "user_statement": "不符合",
+      "result": "AGREES_WITH_TECHNICAL_ADJUDICATION"
+    },
+    {
+      "sample_id": "candidate-15",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "label": "INCONSISTENT",
+      "user_statement": "不符合",
+      "result": "AGREES_WITH_TECHNICAL_ADJUDICATION"
+    },
+    {
+      "sample_id": "candidate-16",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "label": "INSUFFICIENT",
+      "user_statement": "不能确定",
+      "result": "AGREES_WITH_TECHNICAL_ADJUDICATION"
+    },
+    {
+      "sample_id": "candidate-17",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "label": "INCONSISTENT",
+      "user_statement": "不一致",
+      "result": "AGREES_WITH_TECHNICAL_ADJUDICATION"
+    },
+    {
+      "sample_id": "candidate-18",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "label": "CONSISTENT",
+      "user_statement": "一致",
+      "result": "AGREES_WITH_TECHNICAL_ADJUDICATION"
+    },
+    {
+      "sample_id": "candidate-20",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "label": "CONSISTENT",
+      "user_statement": "一致",
+      "result": "AGREES_WITH_TECHNICAL_ADJUDICATION"
+    },
+    {
+      "sample_id": "candidate-21",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "label": "INCONSISTENT",
+      "user_statement": "不一致",
+      "result": "AGREES_WITH_TECHNICAL_ADJUDICATION"
+    },
+    {
+      "sample_id": "candidate-22",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "label": "CONSISTENT",
+      "user_statement": "一致",
+      "result": "AGREES_WITH_TECHNICAL_ADJUDICATION"
+    },
+    {
+      "sample_id": "candidate-23",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "label": "INSUFFICIENT",
+      "user_statement": "不能",
+      "result": "AGREES_WITH_TECHNICAL_ADJUDICATION",
+      "question_context": "环境未知时，能否把 fallback 当作实际值？",
+      "interpretation": "不能把 fallback 当实际值，保留 INSUFFICIENT"
+    },
+    {
+      "sample_id": "candidate-24",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "label": "CONSISTENT",
+      "user_statement": "一致",
+      "result": "AGREES_WITH_TECHNICAL_ADJUDICATION"
+    }
+  ],
+  "technical_review": "remaining-technical-review.json",
+  "display_source": "Original per-sample packet files; full content verified",
+  "remaining_sample_ids": [],
+  "remaining_count": 0,
+  "overall_candidate_reviewed_count": 24
+}

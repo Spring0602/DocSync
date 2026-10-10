@@ -1,0 +1,18 @@
+{
+  "reviewer": "成员A",
+  "feedback_received_date": "2026-10-10",
+  "actual_review_date": null,
+  "group": "H4",
+  "status": "SUMMARY_CHECKPOINTS_REVIEWED",
+  "user_statement": "候选 Recall@K 不是对所有 20 个样本求平均，而是对可判定的 16 个样本做严格事实级召回；真正调用模型的不是 5 次而是 4 次；seed-04 的拒答结论可接受，但附带解释仍存在明显错误，不能被当成可信证据。",
+  "source_sha256": {
+    "bench/frozen/seed-dev-v1/README.md": "8e70effa00fe7d92fd0abecda5691fa9a1cb71b32c153841e191725516f5c962",
+    "docs/deepseek-smoke5-20261007.md": "a544136512e081ab9867edd15c19d95f5db353f8c44899ad4f91e722ef12318a"
+  },
+  "assistant_detail_not_user_quote": [
+    "Candidate recall checks whether target facts occur within top K, while classification recall measures detected actual conflicts. The 16 samples are preselected as current, decidable and uniquely attributable; 4 insufficient examples excluded by protocol.",
+    "seed-02 is handled by rules, so no model request.",
+    "seed-04 lacks a determined dynamic value; the extra claim that client.connect and connect denote different entities is unsupported."
+  ],
+  "scope_limit": "User confirmed summary-level denominator, invocation count and explanation limitation. No claim of inspecting every gold coordinate or raw model response."
+}

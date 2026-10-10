@@ -1,0 +1,82 @@
+[
+  {
+    "group": "group-01",
+    "start_time_iso": "2026-10-07T00:00:00+08:00",
+    "end_time_iso": "2026-10-08T00:00:00+08:00",
+    "model": "deepseek-flash",
+    "type": "input_cache_miss_tokens",
+    "unit_price_cny": "0.000001",
+    "amount": 4385,
+    "calculated_cost_cny": "0.004385"
+  },
+  {
+    "group": "group-01",
+    "start_time_iso": "2026-10-07T00:00:00+08:00",
+    "end_time_iso": "2026-10-08T00:00:00+08:00",
+    "model": "deepseek-flash",
+    "type": "input_cache_hit_tokens",
+    "unit_price_cny": "0.00000002",
+    "amount": 1792,
+    "calculated_cost_cny": "0.00003584"
+  },
+  {
+    "group": "group-01",
+    "start_time_iso": "2026-10-07T00:00:00+08:00",
+    "end_time_iso": "2026-10-08T00:00:00+08:00",
+    "model": "deepseek-flash",
+    "type": "output_tokens",
+    "unit_price_cny": "0.000004",
+    "amount": 1179,
+    "calculated_cost_cny": "0.004716"
+  },
+  {
+    "group": "group-01",
+    "start_time_iso": "2026-10-07T00:00:00+08:00",
+    "end_time_iso": "2026-10-08T00:00:00+08:00",
+    "model": "deepseek-flash",
+    "type": "request_count",
+    "unit_price_cny": null,
+    "amount": 6,
+    "calculated_cost_cny": null
+  },
+  {
+    "group": "group-02",
+    "start_time_iso": "2026-10-07T00:00:00+08:00",
+    "end_time_iso": "2026-10-08T00:00:00+08:00",
+    "model": "deepseek-flash",
+    "type": "output_tokens",
+    "unit_price_cny": "0.000004",
+    "amount": 13115,
+    "calculated_cost_cny": "0.052460"
+  },
+  {
+    "group": "group-02",
+    "start_time_iso": "2026-10-07T00:00:00+08:00",
+    "end_time_iso": "2026-10-08T00:00:00+08:00",
+    "model": "deepseek-flash",
+    "type": "request_count",
+    "unit_price_cny": null,
+    "amount": 85,
+    "calculated_cost_cny": null
+  },
+  {
+    "group": "group-02",
+    "start_time_iso": "2026-10-07T00:00:00+08:00",
+    "end_time_iso": "2026-10-08T00:00:00+08:00",
+    "model": "deepseek-flash",
+    "type": "input_cache_miss_tokens",
+    "unit_price_cny": "0.000001",
+    "amount": 19873,
+    "calculated_cost_cny": "0.019873"
+  },
+  {
+    "group": "group-02",
+    "start_time_iso": "2026-10-07T00:00:00+08:00",
+    "end_time_iso": "2026-10-08T00:00:00+08:00",
+    "model": "deepseek-flash",
+    "type": "input_cache_hit_tokens",
+    "unit_price_cny": "0.00000002",
+    "amount": 51313,
+    "calculated_cost_cny": "0.00102626"
+  }
+]

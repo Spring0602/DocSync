@@ -1,0 +1,15 @@
+{
+  "reviewer": "成员A",
+  "feedback_received_date": "2026-10-10",
+  "actual_review_date": null,
+  "group": "H3",
+  "status": "GUIDE_CHECKPOINTS_REVIEWED",
+  "user_statement": "这四处证据是一致的：它们都说明“历史记录是某个时点、某个提交、某个范围的验证结果”，不是“全量累计数”；“skip”不是“pass”；“远程 CI 成功”只证明某个已推送 SHA 通过，不证明当前未推送改动已跑过；而许可证声明与打包配置是对齐的，但范围仅覆盖项目自有材料，不包括外部材料和第三方依赖内容。",
+  "source_sha256": {
+    "docs/verification.md": "c21ff6c11ad0fe360ff619227f0247d5c746f37e3cbad68e583f1173cb056a35",
+    "docs/a-closeout-20261010.md": "bde8588b191d3b0c03e88cefc2a960ac8ba8af57b8fb984eba9108dbf13c1a59",
+    "LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "pyproject.toml": "bf985ebd263396629025e4dedfb438823584caf25b970dca6a3d92049dd69398"
+  },
+  "scope_limit": "Document, license and build-configuration review only; no new test execution, remote CI verification or inspection of built distributions claimed. Third-party license obligations remain separate."
+}

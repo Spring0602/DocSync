@@ -1,0 +1,35 @@
+{
+  "reviewer": "成员A",
+  "actual_review_date": null,
+  "feedback_received_date": "2026-10-10",
+  "completed_guide_items": [
+    1
+  ],
+  "status": "CORE_FLOW_REVIEW_COMPLETED",
+  "run_directory": "runs/a-human-20261010-184210",
+  "user_statement": {
+    "files": "指南中的指定文件",
+    "result": "与预期一致",
+    "issues_or_changes": "无",
+    "unclear_or_unreviewed_within_submitted_item": "无"
+  },
+  "assistant_verification": {
+    "before_confirmed": 1,
+    "after_confirmed": 0,
+    "changed_paths": [
+      "README.md"
+    ],
+    "change": "default description 30 -> 60; source unchanged"
+  },
+  "scope": "Core demo scan, patch, apply and rescan only; guide items 2-5 and complete historical AI log reviews remain pending.",
+  "source_sha256": {
+    "before/summary.json": "3e1252d9c71ae799850d2bd605a680d7f5c2bfc65b56d558ba8cdce5096ea33e",
+    "after/summary.json": "3a7581fa77ec6b69d9e2dc939f43a530181036f3b932baabc257bc7e0416170a",
+    "before/report.json": "19cd8090abf3686bda4be32d751619314f86e93841f826464310a97ef87b51c0",
+    "after/report.json": "d5bb3e3a47866fde071d098b4756ef3bee3b7e0cf1f5051f659df7bb9c59fc7e",
+    "fix.patch": "0b971a11b042dfea2cbfd9cda8b8ef42855281a7eed398ace1cba29132e7c3f8",
+    "fix.patch.json": "9e9262d74aa6ea0f2eab1ce50c5b21dcb03dc96067eb127723986d8dc8a3beb1",
+    "repo/README.md": "017421c07c0749ae29d0d1c8caa452de56345872eaacc7f2973924c7aa1f6201",
+    "repo/src/client.py": "605ccaaa0035fd5397a215840519181f728ee794e6ca23cfdb816a20ceee9803"
+  }
+}

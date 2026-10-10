@@ -1,0 +1,19 @@
+{
+  "tests": 219,
+  "passed": 217,
+  "skipped": 2,
+  "failures": 0,
+  "errors": 0,
+  "seconds": "116.505",
+  "junit_sha256": "b16365927ed46564e9de7b3e88ce68b7b1d44ec0802460db365b9a992e96a5ee",
+  "skips": [
+    {
+      "test": "test_external_symlink_is_rejected",
+      "reason": "OS does not grant symlink creation to this process"
+    },
+    {
+      "test": "test_dangling_symlink_is_rejected_when_platform_can_create_it",
+      "reason": "OS does not grant symlink creation to this process"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "reviewer": "成员A",
+  "feedback_received_date": "2026-10-10",
+  "actual_review_date": null,
+  "guide_item": 4,
+  "status": "FIVE_ANNOTATIONS_AND_PROVENANCE_CHECKPOINTS_REVIEWED",
+  "sample_ids": [
+    "candidate-05",
+    "candidate-06",
+    "candidate-07",
+    "candidate-13",
+    "candidate-19"
+  ],
+  "user_statement": [
+    "candidate-05：默认参数在定义时绑定，后续重赋值不改“已绑定的默认值”",
+    "candidate-07 / candidate-19：依赖环境或分支的值没有唯一确定证据，所以必须保留 INSUFFICIENT，不能直接用 fallback/环境默认值当真值"
+  ],
+  "assistant_verification": "Matches adjudication: 05 binds 12 at definition despite later rebinding to 24; 07 has unknown environment value; 19 has environment-dependent branches. 06 explicitly sets __defaults__ during module initialization; 13 binds cls automatically via classmethod. This confirms binding semantics, not arbitrary runtime behavior or automatic self injection for unbound calls.",
+  "source_sha256": {
+    "bench/frozen/candidate-dev-v1/adjudication.md": "9100ef7e301c8e3e43912f6a2eab41f3062c4c5eecb965929f6325bfdb5c84b9",
+    "bench/annotations/candidate-v1/context.md": "b68ddf7ddcb089a670a661ce218ff0ba35c9db0e25be6f28aa9dc079d42eb19e",
+    "bench/frozen/candidate-dev-v1/group-review.jsonl": "f190f50655e286bdb1338627dd0f37e3a7a3dd66efcf69c4a7efcaafe1f8e459",
+    "bench/annotations/candidate-v1-received-20261009/README.md": "183e2c73ea49fb85f48873b729985c92986f994f6e705ca98d407446f99b1f6a"
+  },
+  "remaining_review": [],
+  "scope_limit": "Five annotation explanations plus preservation and independence checkpoints reviewed; not full review of all 24 labels. Guide item 5 and complete historical log scope remain separate.",
+  "followup_statements": [
+    {
+      "feedback_received_date": "2026-10-10",
+      "sample_ids": [
+        "candidate-06",
+        "candidate-13"
+      ],
+      "statement": "代码里如果在定义后显式写 __defaults__，那么从“接口”层面看，默认值确实已经变成新值；在本例中正好与文档一致，所以裁决为 CONSISTENT。在判断“函数签名是否匹配”时，cls 是自动注入的，不属于调用者手动传参；它不需要在文档示例里显式写出来。判断的对象是“绑定语义”，不是“字面上写了几个参数”。如果文档示例和代码的绑定行为一致，那么它就算是“同一接口”，即使调用方式不显式写 self / cls，也不算冲突。"
+    },
+    {
+      "feedback_received_date": "2026-10-10",
+      "statement": "1.是的，原始标注和交接说明都保留了。2.标签一致只说明“收敛”，不能说明“独立盲测”",
+      "scope": "Original annotation/handoff preservation and distinction between label agreement and independence"
+    }
+  ]
+}

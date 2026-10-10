@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-10",
+  "status": "AGGREGATE_BILL_RECONCILED",
+  "known_total_tokens": 90238,
+  "totals": {
+    "requests": 91,
+    "input_tokens": 76306,
+    "output_tokens": 13932,
+    "cache_hits": 0,
+    "unknown_usage_requests": 1
+  },
+  "batches": [
+    {
+      "batch": "timeout",
+      "run_directory": "runs/deepseek-20261007-150519/result",
+      "folder_time_hint": "2026-10-07 15:05:19",
+      "usage": {
+        "requests": 1,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_hits": 0,
+        "unknown_usage_requests": 1
+      },
+      "call_status_counts": {
+        "MODEL_TIMEOUT_OR_NETWORK_ERROR": 1
+      }
+    },
+    {
+      "batch": "single",
+      "run_directory": "runs/deepseek-retry-20261007-151326",
+      "folder_time_hint": "2026-10-07 15:13:26",
+      "usage": {
+        "requests": 1,
+        "input_tokens": 1032,
+        "output_tokens": 133,
+        "cache_hits": 0,
+        "unknown_usage_requests": 0
+      },
+      "call_status_counts": {
+        "SUCCEEDED": 1
+      }
+    },
+    {
+      "batch": "smoke5",
+      "run_directory": "runs/deepseek-smoke5-20261007-151734",
+      "folder_time_hint": "2026-10-07 15:17:34",
+      "usage": {
+        "requests": 4,
+        "input_tokens": 4088,
+        "output_tokens": 684,
+        "cache_hits": 0,
+        "unknown_usage_requests": 0
+      },
+      "call_status_counts": {
+        "SUCCEEDED": 4
+      }
+    },
+    {
+      "batch": "suite20",
+      "run_directory": "runs/deepseek-suite-20261007-222034",
+      "folder_time_hint": "2026-10-07 22:20:34",
+      "usage": {
+        "requests": 85,
+        "input_tokens": 71186,
+        "output_tokens": 13115,
+        "cache_hits": 0,
+        "unknown_usage_requests": 0
+      },
+      "call_status_counts": {
+        "SUCCEEDED": 85
+      }
+    }
+  ],
+  "amount": "0.0824961000000000",
+  "currency": "CNY",
+  "provider_evidence_received": true,
+  "human_reviewer": null,
+  "limitations": [
+    "No provider request IDs or exact request timestamps recorded.",
+    "Provider cache billing split not archived; local cache_hits=0 does not imply no provider cache hits.",
+    "One timeout has unknown usage and charge.",
+    "Folder times do not establish exact billing intervals or exclude other account traffic.",
+    "Provider day totals now reconciled; project attribution confirmed by user. No per-request matching is claimed."
+  ],
+  "provider_reconciliation": "provider-reconciliation.json"
+}

@@ -1,0 +1,207 @@
+{
+  "status": "ALL_24_LABELS_REVIEWED_BY_MEMBER_A",
+  "count": 24,
+  "labels": {
+    "INCONSISTENT": 8,
+    "CONSISTENT": 11,
+    "INSUFFICIENT": 5
+  },
+  "changed_labels": 0,
+  "frozen_adjudication_sha256": "d3570215da0cc4617a31c0065bb25a6015bc882edd6f42be0108f0c436608ba5",
+  "frozen_files_modified": false,
+  "scope": "Human confirmation of candidate-dev-v1 labels; not blind annotation, independent formal test certification or all-code approval. Original frozen pending flags retained as historical state; this supplementary record supplies subsequent human review.",
+  "entries": [
+    {
+      "sample_id": "candidate-01",
+      "label": "INCONSISTENT",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "evidence": "docs/audit-samples/release-readiness-20261010/remaining-adjudications.json"
+    },
+    {
+      "sample_id": "candidate-02",
+      "label": "CONSISTENT",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "evidence": "docs/audit-samples/release-readiness-20261010/remaining-adjudications.json"
+    },
+    {
+      "sample_id": "candidate-03",
+      "label": "INCONSISTENT",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "evidence": "docs/audit-samples/release-readiness-20261010/remaining-adjudications.json"
+    },
+    {
+      "sample_id": "candidate-04",
+      "label": "CONSISTENT",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "evidence": "docs/audit-samples/release-readiness-20261010/remaining-adjudications.json"
+    },
+    {
+      "sample_id": "candidate-05",
+      "label": "INCONSISTENT",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "evidence": "docs/audit-samples/billing-review-20261010/annotation-review.json"
+    },
+    {
+      "sample_id": "candidate-06",
+      "label": "CONSISTENT",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "evidence": "docs/audit-samples/billing-review-20261010/annotation-review.json"
+    },
+    {
+      "sample_id": "candidate-07",
+      "label": "INSUFFICIENT",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "evidence": "docs/audit-samples/billing-review-20261010/annotation-review.json"
+    },
+    {
+      "sample_id": "candidate-08",
+      "label": "CONSISTENT",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "evidence": "docs/audit-samples/release-readiness-20261010/remaining-adjudications.json"
+    },
+    {
+      "sample_id": "candidate-09",
+      "label": "CONSISTENT",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "evidence": "docs/audit-samples/release-readiness-20261010/remaining-adjudications.json"
+    },
+    {
+      "sample_id": "candidate-10",
+      "label": "INCONSISTENT",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "evidence": "docs/audit-samples/release-readiness-20261010/remaining-adjudications.json"
+    },
+    {
+      "sample_id": "candidate-11",
+      "label": "CONSISTENT",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "evidence": "docs/audit-samples/release-readiness-20261010/remaining-adjudications.json"
+    },
+    {
+      "sample_id": "candidate-12",
+      "label": "INSUFFICIENT",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "evidence": "docs/audit-samples/release-readiness-20261010/remaining-adjudications.json"
+    },
+    {
+      "sample_id": "candidate-13",
+      "label": "CONSISTENT",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "evidence": "docs/audit-samples/billing-review-20261010/annotation-review.json"
+    },
+    {
+      "sample_id": "candidate-14",
+      "label": "INCONSISTENT",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "evidence": "docs/audit-samples/release-readiness-20261010/remaining-adjudications.json"
+    },
+    {
+      "sample_id": "candidate-15",
+      "label": "INCONSISTENT",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "evidence": "docs/audit-samples/release-readiness-20261010/remaining-adjudications.json"
+    },
+    {
+      "sample_id": "candidate-16",
+      "label": "INSUFFICIENT",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "evidence": "docs/audit-samples/release-readiness-20261010/remaining-adjudications.json"
+    },
+    {
+      "sample_id": "candidate-17",
+      "label": "INCONSISTENT",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "evidence": "docs/audit-samples/release-readiness-20261010/remaining-adjudications.json"
+    },
+    {
+      "sample_id": "candidate-18",
+      "label": "CONSISTENT",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "evidence": "docs/audit-samples/release-readiness-20261010/remaining-adjudications.json"
+    },
+    {
+      "sample_id": "candidate-19",
+      "label": "INSUFFICIENT",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "evidence": "docs/audit-samples/billing-review-20261010/annotation-review.json"
+    },
+    {
+      "sample_id": "candidate-20",
+      "label": "CONSISTENT",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "evidence": "docs/audit-samples/release-readiness-20261010/remaining-adjudications.json"
+    },
+    {
+      "sample_id": "candidate-21",
+      "label": "INCONSISTENT",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "evidence": "docs/audit-samples/release-readiness-20261010/remaining-adjudications.json"
+    },
+    {
+      "sample_id": "candidate-22",
+      "label": "CONSISTENT",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "evidence": "docs/audit-samples/release-readiness-20261010/remaining-adjudications.json"
+    },
+    {
+      "sample_id": "candidate-23",
+      "label": "INSUFFICIENT",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "evidence": "docs/audit-samples/release-readiness-20261010/remaining-adjudications.json"
+    },
+    {
+      "sample_id": "candidate-24",
+      "label": "CONSISTENT",
+      "reviewer": "成员A",
+      "feedback_received_date": "2026-10-10",
+      "actual_review_date": null,
+      "evidence": "docs/audit-samples/release-readiness-20261010/remaining-adjudications.json"
+    }
+  ]
+}

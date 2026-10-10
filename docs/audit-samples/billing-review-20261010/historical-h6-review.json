@@ -1,0 +1,20 @@
+{
+  "reviewer": "成员A",
+  "feedback_received_date": "2026-10-10",
+  "actual_review_date": null,
+  "group": "H6",
+  "status": "GUIDE_CHECKPOINTS_REVIEWED_WITH_PROVENANCE_CLARIFICATION",
+  "user_statement": [
+    "原文固定在 Git blob 和 hash 上，答案不能预填",
+    "双表结构检查只能证明完整性，不证明语义正确或盲测独立",
+    "组/分组只是组织维度，不等于真实独立项目",
+    "重建前后都要做哈希和 Git/路径/分组校验，是为了确保同一批样本没有被“看起来像新、实则同源”的方式绕过真实性要求"
+  ],
+  "source_sha256": {
+    "bench/annotation_packet.py": "6692de02e1f8305b50d93d42ed2ba5ccb4764f0cbf45acf10e4470fdf3a563c4",
+    "bench/candidates/controlled-v1/README.md": "17813ae50ed5f013318d81d98dfa91ee30ebf72ee0e6788699b2381d61089d3f",
+    "bench/builders/build_reviewed_candidates.py": "5952e30384b9cfc5c9842141d50fb945895e3cebe80f97e42f73b440954768a0"
+  },
+  "assistant_clarification": "Hash and Git/path/group equality checks ensure integrity and reproducibility against the frozen version. They do not detect arbitrary renamed/rewritten same-origin material or certify independence; declared-ID overlap checks are limited and provenance/template-family review remains necessary.",
+  "scope_limit": "Tooling and provenance checkpoints reviewed, not whole-dataset human adjudication. Only 05/06/07/13/19 reviewed; remaining 19 labels retain no human signoff."
+}

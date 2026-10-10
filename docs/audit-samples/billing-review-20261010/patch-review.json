@@ -1,0 +1,22 @@
+{
+  "reviewer": "成员A",
+  "feedback_received_date": "2026-10-10",
+  "actual_review_date": null,
+  "guide_item": 2,
+  "status": "PATCH_CHECKPOINTS_REVIEWED_WITH_ASSISTANT_CORRECTION",
+  "source_file": "src/docsync/patches/__init__.py",
+  "source_sha256": "b717a561c51162dd33032590ed61ab7fcb945b59daa97ae1946b270907cfd3e7",
+  "user_statement": "在 __init__.py:161-194 的 safe_target() 里，路径被做了严格白名单和安全检查。它不能“越界”到仓库外，也不能用符号链接绕过安全边界。；在 __init__.py:218-286 的 apply_patch() 里，流程是：先取出目标文件当前内容：originals，再拿 proposal.base_hashes[path] 和当前文件digest(data) 比较，如果不一致，说明原文已经变化，拒绝应用。如果基础文档已经被人改过，那么这个补丁对应的旧位置可能已经失效；继续应用会覆盖新改动，风险很大，所以直接失败。另外它还在应用前后检查一遍，避免中途被改，应用时必须满足： 当前文件仍然是原始快照对应内容、应用期间没有被其他改动打断，否则就拒绝。；manifest 里记录的文件集合必须和 patch edits 一致，重算 diff 必须和 proposal.diff 完全一致",
+  "verified_checkpoints": [
+    "Markdown-only paths, repository containment and symlink/reparse rejection",
+    "Current content hash must match base_hashes",
+    "Manifest paths equal edit paths; supplied and recomputed diff match proposal.diff"
+  ],
+  "assistant_correction": {
+    "text": "Checks occur before application and immediately before each file write, not after writing. There is no lock covering check-to-replace and no post-write validation. Atomic replacement does not guarantee detection/prevention of every concurrent modification; rollback is attempted on caught errors.",
+    "user_confirmation": null,
+    "user_followup": "H1: 用户确认没有全局并发锁、不能保证发现所有并发改动；未声称跨文件原子回滚。",
+    "user_followup_record": "historical-h1-review.json"
+  },
+  "scope_limit": "Records submitted guide checkpoints with explicit correction; not a blanket concurrency/security guarantee or approval of all historical AI work."
+}

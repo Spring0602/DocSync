@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-10",
+  "head": "a0f0c749e5d6510e0856126d2761a92e4c750bf7",
+  "dirty": true,
+  "artifact_checks": [
+    {
+      "file": "docsync_core-0.2.0-py3-none-any.whl",
+      "sha256": "17602bfcaadb9a2f2521f908a6194a004b9419cff243dfc60b3547b7a5c3becb",
+      "files": 25,
+      "passed": true,
+      "forbidden_paths": [],
+      "credential_pattern_paths": [],
+      "license_paths": [
+        "docsync_core-0.2.0.dist-info/licenses/LICENSE"
+      ]
+    },
+    {
+      "file": "docsync_core-0.2.0.tar.gz",
+      "sha256": "26f4df86078d5af530eff27b52818fc30c7656b97c9dc844e8d46f4cc052e37d",
+      "files": 880,
+      "passed": true,
+      "forbidden_paths": [],
+      "credential_pattern_paths": [],
+      "license_paths": [
+        "docsync_core-0.2.0/bench/annotations/candidate-v1/LICENSE",
+        "docsync_core-0.2.0/LICENSE"
+      ]
+    }
+  ],
+  "local_markdown_links_checked": 190,
+  "broken_local_links": [],
+  "static_checks": {
+    "ruff": "passed",
+    "format": "54 files unchanged",
+    "mypy": "20 source files passed"
+  },
+  "scope": "Local current-workspace candidate only; not release approval, final SHA CI, anonymous material certification or formal model evaluation."
+}

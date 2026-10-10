@@ -1,0 +1,27 @@
+{
+  "reviewer": "成员A",
+  "feedback_received_date": "2026-10-10",
+  "actual_review_date": null,
+  "guide_item": 5,
+  "status": "GUIDE_ITEM_5_CHECKPOINTS_REVIEWED",
+  "user_statement": "覆盖：本项目原创代码、测试、文档、自建开发样本。不覆盖：外部策划材料、个人承诺书、竞赛材料、第三方依赖及其许可证规定的内容",
+  "source_file": "docs/license-scope.md",
+  "source_sha256": "67ca47e02d53fc1c96a27e3c22a59d8f527e8715695120ce5ddee25a9cd4c658",
+  "assistant_verification": "Matches documented project authorization scope. Third-party dependencies retain their own licenses; exclusion from project authorization does not remove obligations under those licenses.",
+  "remaining_review": [],
+  "scope_limit": "License scope, aggregate billing limits and outstanding release conditions reviewed. This is not release approval or full historical AI log signoff.",
+  "billing_review": {
+    "feedback_received_date": "2026-10-10",
+    "user_statement": "总账正确，金额是 0.0824961 CNY。但不能证明的是：每次请求分别花了多少，尤其是超时/未知 usage 的那几次。因为当前证据只有“总量对齐”，没有“逐请求服务端成本明细”。",
+    "source_file": "docs/provider-bill-reconciliation-20261010.md",
+    "source_sha256": "105075d83846fc97a6805258ca87263a8ee4bff7395bc09fa20f4a57448db867",
+    "assistant_clarification": "Local records have exactly one timeout with unknown usage. Daily provider totals are not identical to local known token totals: delta is 1419 tokens, not provably attributable to that request. Aggregate billed amount reconciles; per-request costs remain unproven."
+  },
+  "release_review": {
+    "feedback_received_date": "2026-10-10",
+    "user_statement": "新的独立正式测试集、真实模型与正式实验、AI 人工复核日志、最终发布 tag 和最终材料一致性",
+    "source_file": "docs/release-checklist.md",
+    "source_sha256": "879482d17946b575384c8dfc6a84843455e2a6a6f765ba97cd81179f9c36e15d",
+    "assistant_clarification": "Live-model smoke and seven-method development experiments are already complete. Remaining experimental work is on a newly frozen independent formal test set; final SHA CI/material checks and member review records remain required."
+  }
+}

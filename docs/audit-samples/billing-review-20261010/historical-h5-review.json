@@ -1,0 +1,25 @@
+{
+  "reviewer": "成员A",
+  "feedback_received_date": "2026-10-10",
+  "actual_review_date": null,
+  "group": "H5",
+  "status": "GUIDE_CHECKPOINTS_REVIEWED",
+  "user_statement": "不会；上界 = 预算上限/理论上可能的最大请求数，实际调用数 = 真实发起请求数，两者只有在极端情况才相等，通常并不相等；输出目录和源码状态都必须合法，否者直接失败。",
+  "verified_scope": [
+    "Without --run only planning occurs",
+    "Actual calls and planned bound are distinct",
+    "Existing output path or installed/source mismatch prevents execution",
+    "Multiplicative bound and rejection of 100-request plan under limit 80"
+  ],
+  "assistant_clarifications": [
+    "bound = len(samples) * count(non-local methods) * cfg.llm.max_requests; suite max_requests is a separate limit checked against bound, not a divisor.",
+    "Output path must not exist, including an empty directory. Source comparison normalizes CRLF/LF; it does not require a clean Git working tree.",
+    "Actual requests may equal the bound if every model scan uses its allowed requests; this need not be an extreme case.",
+    "With only local methods, model-request bound is exactly zero; this concerns request budget, not other validation requirements."
+  ],
+  "source_file": "bench/run_suite.py",
+  "source_sha256": "007d2c8c7df118e4d6bb3370c9d8ba0aef2b5356a491e81c2e30687a9e28af16",
+  "remaining_review": null,
+  "scope_limit": "Record user feedback separately from assistant formula correction; no paid execution.",
+  "followup_statement": "不能。启动前会先算一个“理论最大请求上限”：bound = len(samples) × sum(m not in LOCAL for m in methods) × cfg.llm.max_requests。只有在方法全是本地方法（如只选 rules / keyword）时，sum(m not in LOCAL ...) 才会变成 0，预算压力才会小很多。但按“上述默认配置”来理解，80 还是不够的。"
+}

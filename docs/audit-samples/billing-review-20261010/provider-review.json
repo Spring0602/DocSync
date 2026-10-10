@@ -1,0 +1,32 @@
+{
+  "reviewer": "成员A",
+  "feedback_received_date": "2026-10-10",
+  "actual_review_date": null,
+  "guide_item": 2,
+  "completed_subscope": "Provider environment credentials, request/token reservation limits and structured response/input ID validation; bounded timeout/network retries and failure propagation; unknown usage accounting and retained call records",
+  "user_statement": "密钥需要在外部环境读取；超出最大请求次数或者预留 token 总量超过总预算就直接抛出 MODEL_BUDGET_EXHAUSTED；模型返回的内容必须符合“严格结构”，而且必须引用“合法输入”",
+  "source_sha256": {
+    "src/docsync/llm/provider.py": "7880110a24e9a96f1e8a23cfb931b0753279d94ce3c4e936a3d1d619dfd7958a",
+    "src/docsync/llm/__init__.py": "9cf5aea7e846de96d911ddb9d87a547af803398cad44784b2010a660cfef12a0"
+  },
+  "assistant_clarifications": [
+    "Request count >= max_requests blocks the next network attempt; token reservation plus next reserve must not exceed max_total_tokens. Reservation is a conservative local bound, not measured billing usage.",
+    "Response claim_id must equal current claim ID and cited fact_ids must be a subset of supplied IDs; structural validity does not prove semantic correctness.",
+    "At most max_retries retries after the initial attempt, hence max_retries + 1 network attempts, subject to earlier budget exhaustion."
+  ],
+  "remaining_review": [
+    "Patch path/preimage guards"
+  ],
+  "scope_limit": "Guide item 2 provider checkpoints completed from user feedback; not a comprehensive security audit. Patch review, guide items 3-5 and complete historical log reviews remain pending.",
+  "followup_statements": [
+    {
+      "feedback_received_date": "2026-10-10",
+      "statement": "超时/网络错误会重试，但最多重试 max_retries ，如果仍失败，就抛出最终错误，不会“伪造一个成功判定”；超出最大请求次数或者预留 token 总量超过总预算就直接抛出 MODEL_BUDGET_EXHAUSTED，而不是继续发请求。"
+    },
+    {
+      "feedback_received_date": "2026-10-10",
+      "statement": "usage_known 是一个“是否拿到了可确认的 token 用量”标志。如果它是 False，代码不会把这次调用当成“没发生任何消耗”；相反，它会记成“未知用量”，并保留一条请求记录。"
+    }
+  ],
+  "status": "GUIDE_PROVIDER_CHECKPOINTS_COMPLETED"
+}

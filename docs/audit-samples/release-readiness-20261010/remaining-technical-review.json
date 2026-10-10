@@ -1,0 +1,378 @@
+{
+  "date": "2026-10-10",
+  "reviewer": "Codex assistant technical review",
+  "source_executed": false,
+  "live_api_calls": 0,
+  "count": 19,
+  "labels": {
+    "INCONSISTENT": 7,
+    "CONSISTENT": 9,
+    "INSUFFICIENT": 3
+  },
+  "changed_labels": 0,
+  "display_fix": "Replaced unsafe heading splitting with full original packet files; all 38 fragments verified against packet hashes and line counts.",
+  "human_review": "pending",
+  "entries": [
+    {
+      "sample_id": "candidate-01",
+      "technical_label": "INCONSISTENT",
+      "technical_result": "AGREES_WITH_EXISTING_ADJUDICATION",
+      "reason": "构造函数签名 encoding=utf-8，文档第 5 行为 utf-16；比较接口默认值即可确认冲突。",
+      "human_review": "pending",
+      "sources": {
+        "code_path": {
+          "sha256": "51814d481fc5e9613639cb44ccf0d9654f4493467f6ad59e7690a3ebc03e78f0",
+          "lines": 3,
+          "file": "case01.py"
+        },
+        "document_path": {
+          "sha256": "3a9ec984d4d5557ffcc9c128fd4cb0f6d81d19e44af834fc72faa07c224aae4a",
+          "lines": 5,
+          "file": "case01.md"
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-02",
+      "technical_label": "CONSISTENT",
+      "technical_result": "AGREES_WITH_EXISTING_ADJUDICATION",
+      "reason": "async 不改变默认参数绑定；retries 是 keyword-only 且默认整数 4，与文档一致。",
+      "human_review": "pending",
+      "sources": {
+        "code_path": {
+          "sha256": "86d6372f935e148d3fb1d532ef6f50efe9b775a5d277da0bf7a713029a01df15",
+          "lines": 2,
+          "file": "case02.py"
+        },
+        "document_path": {
+          "sha256": "c5cd48b3009805286b9fb56ea4321edc631e8b9710b9b236b104ddef2b9b3fcd",
+          "lines": 5,
+          "file": "case02.md"
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-03",
+      "technical_label": "INCONSISTENT",
+      "technical_result": "AGREES_WITH_EXISTING_ADJUDICATION",
+      "reason": "两个元组首项相同，第二项 public/internal 不同；类型一致不等于值一致。",
+      "human_review": "pending",
+      "sources": {
+        "code_path": {
+          "sha256": "7d2db77e30a150d7dfe913d18360f19946a12b108aeb58ff0c3029336c870c25",
+          "lines": 2,
+          "file": "case03.py"
+        },
+        "document_path": {
+          "sha256": "b7dbecac4d146250d712d06b512a1d25cd60204071b68fa9988e77c2c5ad0bac",
+          "lines": 5,
+          "file": "case03.md"
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-04",
+      "technical_label": "CONSISTENT",
+      "technical_result": "AGREES_WITH_EXISTING_ADJUDICATION",
+      "reason": "签名默认 None；实例属性最终取 32 是函数体转换，不能将属性值冒充参数默认值。",
+      "human_review": "pending",
+      "sources": {
+        "code_path": {
+          "sha256": "e59e37dec24024969d5eafc89768cc92ad07532b8e8f8954f98be8edb700cc1f",
+          "lines": 3,
+          "file": "case04.py"
+        },
+        "document_path": {
+          "sha256": "e19607fb02efec53563e454eadc4cdd79400bb0584b7bc83b973e90653fe96b1",
+          "lines": 5,
+          "file": "case04.md"
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-08",
+      "technical_label": "CONSISTENT",
+      "technical_result": "AGREES_WITH_EXISTING_ADJUDICATION",
+      "reason": "choose_format 无条件返回 json，无外部输入；定义时绑定该值。静态提取器不支持调用表达式不改变原文可推导的标签。",
+      "human_review": "pending",
+      "sources": {
+        "code_path": {
+          "sha256": "6099a35b019b32483ae1ed27093fc53ce494fc30ec32137545133d2129ccd947",
+          "lines": 5,
+          "file": "case08.py"
+        },
+        "document_path": {
+          "sha256": "67a887a13f5f60c67dfdf374322b05f0692b3636e191325f728ca65fd9646cf5",
+          "lines": 5,
+          "file": "case08.md"
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-09",
+      "technical_label": "CONSISTENT",
+      "technical_result": "AGREES_WITH_EXISTING_ADJUDICATION",
+      "reason": "options 是固定字典，展开后提供 readonly=True；name 由 logs 位置参数绑定，无多余参数。",
+      "human_review": "pending",
+      "sources": {
+        "code_path": {
+          "sha256": "18f3a6fcc00bff82634fd84dd3dd99c5aab19dafe8ad08dc59b0685cf897c5bd",
+          "lines": 2,
+          "file": "case09.py"
+        },
+        "document_path": {
+          "sha256": "7641bb95409faef62548aeebf224423fc16b7600594ca45fc6955474c062068e",
+          "lines": 9,
+          "file": "case09.md"
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-10",
+      "technical_label": "INCONSISTENT",
+      "technical_result": "AGREES_WITH_EXISTING_ADJUDICATION",
+      "reason": "arguments 展开成两个位置参数；channel 在 * 后，仅接受关键字，第二个位置参数不合法。",
+      "human_review": "pending",
+      "sources": {
+        "code_path": {
+          "sha256": "36b4256aa253fc3e86a7e30a413f564b3470f5823d2f968e2451fa1cd81f53a3",
+          "lines": 2,
+          "file": "case10.py"
+        },
+        "document_path": {
+          "sha256": "36440d1b04dd7cf5799804727234e67349fe1eb598a75bb907df41090896eafb",
+          "lines": 9,
+          "file": "case10.md"
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-11",
+      "technical_label": "CONSISTENT",
+      "technical_result": "AGREES_WITH_EXISTING_ADJUDICATION",
+      "reason": "position 展开成 x/y 两个位置参数，style 提供 color 关键字，符合 / 与 * 约束。",
+      "human_review": "pending",
+      "sources": {
+        "code_path": {
+          "sha256": "4d684c72a6edeb2ff2ebe449ce5dbd2470920b6be9d220f958184998737693cb",
+          "lines": 2,
+          "file": "case11.py"
+        },
+        "document_path": {
+          "sha256": "7466f87082368a1050f6c44d95931be1925d9764c6ea3a6a078c91d3ef032040",
+          "lines": 10,
+          "file": "case11.md"
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-12",
+      "technical_label": "INSUFFICIENT",
+      "technical_result": "AGREES_WITH_EXISTING_ADJUDICATION",
+      "reason": "NOTICE_OPTIONS 未知，可能缺 priority、含多余键、不是映射或无效 JSON；不能把默认 {} 当实际输入。",
+      "human_review": "pending",
+      "sources": {
+        "code_path": {
+          "sha256": "df9ebb1a9ed10df59759162193c7c291f96e26f297130a65042c4f59b5c00f3f",
+          "lines": 8,
+          "file": "case12.py"
+        },
+        "document_path": {
+          "sha256": "cb65ddb92d0ae2fbd92b9f092cd69234c241fda86c0d1715a874f260b40cc337",
+          "lines": 8,
+          "file": "case12.md"
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-14",
+      "technical_label": "INCONSISTENT",
+      "technical_result": "AGREES_WITH_EXISTING_ADJUDICATION",
+      "reason": "staticmethod 不注入 self/cls；width 仅限关键字，72 却作为第二位置参数传入。",
+      "human_review": "pending",
+      "sources": {
+        "code_path": {
+          "sha256": "be0759794ebf8528381494005ad450468aef0465a0daf5139ed76e9ca9b6b7d3",
+          "lines": 4,
+          "file": "case14.py"
+        },
+        "document_path": {
+          "sha256": "4bfc2348c559998570f8e332dd6939e8445650e3c86d179e82d0b5ed037eac90",
+          "lines": 8,
+          "file": "case14.md"
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-15",
+      "technical_label": "INCONSISTENT",
+      "technical_result": "AGREES_WITH_EXISTING_ADJUDICATION",
+      "reason": "self 由实例绑定，但 name 仍是 / 前的位置专用参数；name=worker 不合法。",
+      "human_review": "pending",
+      "sources": {
+        "code_path": {
+          "sha256": "af2460d5cc5ed21255a663600fd95a7b48721cfa4b7232d44185e6d683aa481b",
+          "lines": 3,
+          "file": "case15.py"
+        },
+        "document_path": {
+          "sha256": "db4bdd7686d5e60d94340369651f524a8379f45aa78f7a1d36ba5e22c6108b55",
+          "lines": 9,
+          "file": "case15.md"
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-16",
+      "technical_label": "INSUFFICIENT",
+      "technical_result": "AGREES_WITH_EXISTING_ADJUDICATION",
+      "reason": "环境可选 Local 或 Remote，Remote 还需 token；当前环境缺证据，不能断言所有路径绑定都有效或都无效。",
+      "human_review": "pending",
+      "sources": {
+        "code_path": {
+          "sha256": "02df1b52ea61aab1d8b02c7d126edb7e017be70594937b5f720938b5ab15aeb8",
+          "lines": 14,
+          "file": "case16.py"
+        },
+        "document_path": {
+          "sha256": "b4e01cb47f62888b6d74f00ecbc910613569887aab82745459af0c834c85bdd3",
+          "lines": 8,
+          "file": "case16.md"
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-17",
+      "technical_label": "INCONSISTENT",
+      "technical_result": "AGREES_WITH_EXISTING_ADJUDICATION",
+      "reason": "顺序初始化后 RETRY_WINDOW=14，注解和首赋值 6 不阻止后续重赋值；文档 6 过期。",
+      "human_review": "pending",
+      "sources": {
+        "code_path": {
+          "sha256": "c1a306be7226d30bb07b8b617b7f646eeffe577d7ac1c37f7141afe2c2f269a1",
+          "lines": 2,
+          "file": "case17.py"
+        },
+        "document_path": {
+          "sha256": "3fd26fde4360a099ac66c015981326c94084b867efa193261a8ddd5fec08e212",
+          "lines": 5,
+          "file": "case17.md"
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-18",
+      "technical_label": "CONSISTENT",
+      "technical_result": "AGREES_WITH_EXISTING_ADJUDICATION",
+      "reason": "固定整数增强赋值 8020+3 得 8023；无未知输入，文档一致。",
+      "human_review": "pending",
+      "sources": {
+        "code_path": {
+          "sha256": "0d3152db908c4204e280c6d21909083747ca48d880ed04872a2b45f778413e03",
+          "lines": 2,
+          "file": "case18.py"
+        },
+        "document_path": {
+          "sha256": "0fccbe32b444368506c7f1491916a097fca1aeea8af7201b4a528d6265449f9c",
+          "lines": 5,
+          "file": "case18.md"
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-20",
+      "technical_label": "CONSISTENT",
+      "technical_result": "AGREES_WITH_EXISTING_ADJUDICATION",
+      "reason": "字典 update 明确覆盖 workers 为 6；应比较模块初始化完成后的值，而非初始 2。",
+      "human_review": "pending",
+      "sources": {
+        "code_path": {
+          "sha256": "17e33f2386af29f80939eceaf7bce44ff32246e36bd5f9b93b30841d70645328",
+          "lines": 2,
+          "file": "case20.py"
+        },
+        "document_path": {
+          "sha256": "d3dac0ef9af9a4a3a292eadc49fc90daa4f90cd9c39f81996eb824b520b0c9bb",
+          "lines": 5,
+          "file": "case20.md"
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-21",
+      "technical_label": "INCONSISTENT",
+      "technical_result": "AGREES_WITH_EXISTING_ADJUDICATION",
+      "reason": "层级路径 PIPELINE.export.compression 精确对应 gzip，文档 zstd 不同；不能用工具不支持嵌套键否定真值。",
+      "human_review": "pending",
+      "sources": {
+        "code_path": {
+          "sha256": "b659a66d4a24131d2b4efe45b1b49f7e969c4b9939866bb304528644617b0bdd",
+          "lines": 1,
+          "file": "case21.py"
+        },
+        "document_path": {
+          "sha256": "099eec9bd8712e2ed092528d9597ac7d8c3184b8bd6a4a3abadaf579d43f3165",
+          "lines": 5,
+          "file": "case21.md"
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-22",
+      "technical_label": "CONSISTENT",
+      "technical_result": "AGREES_WITH_EXISTING_ADJUDICATION",
+      "reason": "固定元组 (1,3,9) 的类型、次序、数值与文档一致。",
+      "human_review": "pending",
+      "sources": {
+        "code_path": {
+          "sha256": "4d9d1724dcc855694a71f8585fcb87d966ad7b90d8377a87640e511af46f93ad",
+          "lines": 1,
+          "file": "case22.py"
+        },
+        "document_path": {
+          "sha256": "350b57724f4e0cd8b40cb91eccf409464ef0bf1be9347b62fd50adff659628e7",
+          "lines": 5,
+          "file": "case22.md"
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-23",
+      "technical_label": "INSUFFICIENT",
+      "technical_result": "AGREES_WITH_EXISTING_ADJUDICATION",
+      "reason": "STORAGE_ROOT 的实际值未知；./cache 仅为未设置分支，不能保证文档在实际环境成立。",
+      "human_review": "pending",
+      "sources": {
+        "code_path": {
+          "sha256": "4acda8393104d3a67b20eb60f3902b5c644706febeae18ffa1c873901710211b",
+          "lines": 3,
+          "file": "case23.py"
+        },
+        "document_path": {
+          "sha256": "1e0347dfce2f8ef642378528766f627c6e2182d60b711315b13d530fe6dd3f06",
+          "lines": 5,
+          "file": "case23.md"
+        }
+      }
+    },
+    {
+      "sample_id": "candidate-24",
+      "technical_label": "CONSISTENT",
+      "technical_result": "AGREES_WITH_EXISTING_ADJUDICATION",
+      "reason": "模块内无 dict 重绑定；关键字构造给出布尔 True，与文档布尔值一致，不混同整数 1。",
+      "human_review": "pending",
+      "sources": {
+        "code_path": {
+          "sha256": "f32dfefee52664973123858ed130e7fc0777f76a20781f0ea312f6d62d21c572",
+          "lines": 1,
+          "file": "case24.py"
+        },
+        "document_path": {
+          "sha256": "ac542651c4f29b9c0850e7f1c1edee5d5b214129fa21b269b07cf1fa46a059fb",
+          "lines": 5,
+          "file": "case24.md"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "reviewer": "成员A",
+  "feedback_received_date": "2026-10-10",
+  "actual_review_date": null,
+  "group": "H2",
+  "status": "GUIDE_CHECKPOINTS_REVIEWED",
+  "user_statement": [
+    "新程序读取旧报告时只做兼容读取，不会重算历史结果；旧程序不保证能读取新增字段。",
+    "全局 FAILED 的错误信封不能直接当完整 ScanReport，因为它不是完整报告结构，而是错误包装格式。",
+    "patch 的同名输出和 scan 的非空输出目录，处理方式不一样；前者默认允许覆盖同名文件，后者会显式拒绝非空目录。"
+  ],
+  "source_sha256": {
+    "docs/a-contract-review.md": "724d8561ef37c6978ad3cd5aa54b98c724d482cedb6aa4bb989f3f0595f7ab7f",
+    "docs/limitations.md": "c78e9400119b1b96efa1200ecb86b9eb1d75a1791642bb7266ef0b1fec4a48d1",
+    "src/docsync/cli.py": "6037aaffcabe18d9b04de253402617bf974f3ece7a6232d590566e3d7d1b2425"
+  },
+  "scope_limit": "Current documented contract checkpoints reviewed; not retroactive full approval of historical commit or claim of rerunning tests."
+}

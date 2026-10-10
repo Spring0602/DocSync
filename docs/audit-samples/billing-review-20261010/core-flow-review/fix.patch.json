@@ -1,0 +1,32 @@
+{
+  "patch_id": "fbd2d327a6ea071b1f040f71",
+  "finding_ids": [
+    "53245f8a8a0ddd4420057093"
+  ],
+  "base_hashes": {
+    "README.md": "4c1c960bca1c4ee38edff253562add9f90e088a5b88160104e8a9b916b810064"
+  },
+  "edits": [
+    {
+      "span": {
+        "path": "README.md",
+        "start_line": 5,
+        "end_line": 5,
+        "start_byte": 56,
+        "end_byte": 58,
+        "blob_hash": "4c1c960bca1c4ee38edff253562add9f90e088a5b88160104e8a9b916b810064"
+      },
+      "old_text": "30",
+      "new_text": "60"
+    }
+  ],
+  "diff": "--- a/README.md\n+++ b/README.md\n@@ -2,7 +2,7 @@\n \n ## `connect`\n \n-`timeout` 默认值为 `30`。\n+`timeout` 默认值为 `60`。\n \n 可以显式选择较短的等待时间：\n \n",
+  "validation": "VALIDATED",
+  "requires_review": true,
+  "validation_details": [
+    "All byte preimages match",
+    "Code fences unchanged",
+    "In-memory rescan: target conflicts removed; no new confirmed conflicts",
+    "Human semantic review still required"
+  ]
+}

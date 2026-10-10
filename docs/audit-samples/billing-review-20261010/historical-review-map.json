@@ -1,0 +1,203 @@
+{
+  "source_file": "compliance/ai_assistance_log.csv",
+  "source_sha256": "5425a2dc22e5e2b20aefae230cc0c2c3ce674d866c7e3b7aca23db5b38f11145",
+  "feedback_mapping_date": "2026-10-10",
+  "actual_review_date": null,
+  "status_counts": {
+    "SCOPED_REVIEW_COMPLETED": 11
+  },
+  "entries": [
+    {
+      "row_number": 2,
+      "date": "2026-09-17",
+      "stage": "framework",
+      "historical_commit": "85e9d71",
+      "status": "SCOPED_REVIEW_COMPLETED",
+      "reviewer": "成员A",
+      "reviewed_scope": "核心演示、CLI、补丁主要检查点；H1 快照/未提取声明/模型降级与拒答/并发边界已反馈；确认不导入或执行目标项目",
+      "evidence": [
+        "core-flow-review/review.json",
+        "cli-review.json",
+        "patch-review.json",
+        "historical-h1-review.json"
+      ],
+      "remaining_group": null,
+      "remaining_scope": "本组指定检查点已完成；不声称重装、重跑测试或历史提交全量验收",
+      "version_boundary": "Current-workspace review; no retrospective approval of historical commit inferred.",
+      "completed_group": "H1"
+    },
+    {
+      "row_number": 3,
+      "date": "2026-09-18",
+      "stage": "core extensions",
+      "historical_commit": "85e9d71",
+      "status": "SCOPED_REVIEW_COMPLETED",
+      "reviewer": "成员A",
+      "reviewed_scope": "模型密钥、预算、校验、重试及未知用量；H1 快照/未提取声明/模型降级与拒答/并发边界已反馈；确认不导入或执行目标项目",
+      "evidence": [
+        "provider-review.json",
+        "historical-h1-review.json"
+      ],
+      "remaining_group": null,
+      "remaining_scope": "本组指定检查点已完成；不声称重装、重跑测试或历史提交全量验收",
+      "version_boundary": "Current-workspace review; no retrospective approval of historical commit inferred.",
+      "completed_group": "H1"
+    },
+    {
+      "row_number": 4,
+      "date": "2026-09-19",
+      "stage": "release verification",
+      "historical_commit": "85e9d71",
+      "status": "SCOPED_REVIEW_COMPLETED",
+      "reviewer": "成员A",
+      "reviewed_scope": "历史验证的时点/版本/范围，skip 不算 pass，远程 CI 的 SHA 边界，LICENSE/元数据与自有材料范围一致",
+      "evidence": [
+        "historical-h3-review.json"
+      ],
+      "remaining_group": null,
+      "remaining_scope": "指定文档/许可/构建配置检查点已完成；未声称检查实际发行包或重跑验证",
+      "version_boundary": "Current-workspace review; no retrospective approval of historical commit inferred.",
+      "completed_group": "H3"
+    },
+    {
+      "row_number": 5,
+      "date": "2026-09-20",
+      "stage": "member A contract review",
+      "historical_commit": "1be73fe",
+      "status": "SCOPED_REVIEW_COMPLETED",
+      "reviewer": "成员A",
+      "reviewed_scope": "CLI 退出码和显式应用、补丁检查；旧报告不重算、新字段兼容边界、FAILED 信封及输出覆盖差异",
+      "evidence": [
+        "cli-review.json",
+        "patch-review.json",
+        "historical-h2-review.json"
+      ],
+      "remaining_group": null,
+      "remaining_scope": "本组指定检查点已完成；不声称重装、重跑测试或历史提交全量验收",
+      "version_boundary": "Current-workspace review; no retrospective approval of historical commit inferred.",
+      "completed_group": "H2"
+    },
+    {
+      "row_number": 6,
+      "date": "2026-09-30",
+      "stage": "A acceptance and license",
+      "historical_commit": "uncommitted",
+      "status": "SCOPED_REVIEW_COMPLETED",
+      "reviewer": "成员A",
+      "reviewed_scope": "历史验证的时点/版本/范围，skip 不算 pass，远程 CI 的 SHA 边界，LICENSE/元数据与自有材料范围一致",
+      "evidence": [
+        "license-billing-release-review.json",
+        "historical-h3-review.json"
+      ],
+      "remaining_group": null,
+      "remaining_scope": "指定文档/许可/构建配置检查点已完成；未声称检查实际发行包或重跑验证",
+      "version_boundary": "Current-workspace review; no retrospective approval of historical commit inferred.",
+      "completed_group": "H3"
+    },
+    {
+      "row_number": 7,
+      "date": "2026-10-07",
+      "stage": "A development adjudication",
+      "historical_commit": "uncommitted",
+      "status": "SCOPED_REVIEW_COMPLETED",
+      "reviewer": "成员A",
+      "reviewed_scope": "限定 16 样本事实级候选召回、5 样本实际 4 次调用、seed-04 拒答与错误附带解释的区分",
+      "evidence": [
+        "historical-h4-review.json"
+      ],
+      "remaining_group": null,
+      "remaining_scope": "汇总口径复核完成；未声称逐条核验全部 gold 或原始模型响应",
+      "version_boundary": "Current-workspace review; no retrospective approval of historical commit inferred.",
+      "completed_group": "H4"
+    },
+    {
+      "row_number": 8,
+      "date": "2026-10-07",
+      "stage": "live smoke verification",
+      "historical_commit": "uncommitted",
+      "status": "SCOPED_REVIEW_COMPLETED",
+      "reviewer": "成员A",
+      "reviewed_scope": "限定 16 样本事实级候选召回、5 样本实际 4 次调用、seed-04 拒答与错误附带解释的区分",
+      "evidence": [
+        "license-billing-release-review.json",
+        "provider-review.json",
+        "historical-h4-review.json"
+      ],
+      "remaining_group": null,
+      "remaining_scope": "汇总口径复核完成；未声称逐条核验全部 gold 或原始模型响应",
+      "version_boundary": "Current-workspace review; no retrospective approval of historical commit inferred.",
+      "completed_group": "H4"
+    },
+    {
+      "row_number": 9,
+      "date": "2026-10-07",
+      "stage": "A experiment readiness",
+      "historical_commit": "uncommitted",
+      "status": "SCOPED_REVIEW_COMPLETED",
+      "reviewer": "成员A",
+      "reviewed_scope": "七方法开发结果解释及汇总账单；默认仅计划、实际调用与上界有别、执行前输出/源码检查；乘法预算上界和 suite 限额判断已确认",
+      "evidence": [
+        "report-review.json",
+        "license-billing-release-review.json",
+        "historical-h5-review.json"
+      ],
+      "remaining_group": null,
+      "remaining_scope": "指定运行器检查点已完成；无付费重跑",
+      "version_boundary": "Current-workspace review; no retrospective approval of historical commit inferred.",
+      "completed_group": "H5"
+    },
+    {
+      "row_number": 10,
+      "date": "2026-10-07",
+      "stage": "A annotation handoff tooling",
+      "historical_commit": "uncommitted",
+      "status": "SCOPED_REVIEW_COMPLETED",
+      "reviewer": "成员A",
+      "reviewed_scope": "B/C 原表及交接保留、标签一致不等于独立性；Git blob 固定、无预填答案、结构检查边界、合成组来源及冻结重建校验",
+      "evidence": [
+        "annotation-review.json",
+        "historical-h6-review.json"
+      ],
+      "remaining_group": null,
+      "remaining_scope": "工具与来源检查点已提交；保留哈希不证明独立性的助手澄清，不扩大为 24 条全量裁决签署",
+      "version_boundary": "Current-workspace review; no retrospective approval of historical commit inferred.",
+      "completed_group": "H6"
+    },
+    {
+      "row_number": 11,
+      "date": "2026-10-07",
+      "stage": "A controlled candidate collection",
+      "historical_commit": "uncommitted",
+      "status": "SCOPED_REVIEW_COMPLETED",
+      "reviewer": "成员A",
+      "reviewed_scope": "五条标注及来源独立性原则；Git blob 固定、无预填答案、结构检查边界、合成组来源及冻结重建校验",
+      "evidence": [
+        "annotation-review.json",
+        "historical-h6-review.json"
+      ],
+      "remaining_group": null,
+      "remaining_scope": "工具与来源检查点已提交；保留哈希不证明独立性的助手澄清，不扩大为 24 条全量裁决签署",
+      "version_boundary": "Current-workspace review; no retrospective approval of historical commit inferred.",
+      "completed_group": "H6"
+    },
+    {
+      "row_number": 12,
+      "date": "2026-10-10",
+      "stage": "A technical closeout",
+      "historical_commit": "uncommitted",
+      "status": "SCOPED_REVIEW_COMPLETED",
+      "reviewer": "成员A",
+      "reviewed_scope": "报告解释、3 条预测、5 条标注及 dev 判断；Git blob 固定、无预填答案、结构检查边界、合成组来源及冻结重建校验",
+      "evidence": [
+        "report-review.json",
+        "annotation-review.json",
+        "historical-h6-review.json"
+      ],
+      "remaining_group": null,
+      "remaining_scope": "工具与来源检查点已提交；保留哈希不证明独立性的助手澄清，不扩大为 24 条全量裁决签署",
+      "version_boundary": "Current-workspace review; no retrospective approval of historical commit inferred.",
+      "completed_group": "H6"
+    }
+  ],
+  "review_completion": "H1-H6 scoped feedback recorded for all 11 historical entries; full-stage and full-dataset signoff not inferred."
+}

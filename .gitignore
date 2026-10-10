@@ -16,3 +16,6 @@ htmlcov/
 # Original private/reference materials are not cleared for public redistribution.
 /*.docx
 /*.pdf
+
+# Private provider exports contain account and masked credential identifiers.
+/usage_data_2026-09-11_2026-10-10/

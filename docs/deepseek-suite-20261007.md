@@ -1,6 +1,6 @@
 # 七方法开发集真实实验验收（2026-10-07）
 
-用户在持有密钥的终端运行 runs/deepseek-suite-20261007-222034，7 方法 × 20 例均 COMPLETED，无 FAILED/PARTIAL。85 次模型调用均 SUCCEEDED；输入 71186、输出 13115，共 84301 Token，无缓存命中及未知用量。逐报告调用记录与 manifest 用量一致，七种方法指标从原始 predictions 重算一致。费用仍需账单，不声明为零。
+用户在持有密钥的终端运行 runs/deepseek-suite-20261007-222034，7 方法 × 20 例均 COMPLETED，无 FAILED/PARTIAL。85 次模型调用均 SUCCEEDED；输入 71186、输出 13115，共 84301 Token，无缓存命中及未知用量。逐报告调用记录与 manifest 用量一致，七种方法指标从原始 predictions 重算一致。费用已于 2026-10-10 按供应商汇总核对，本批对应 0.07335926 CNY；见 [账单核对](provider-bill-reconciliation-20261010.md)。
 
 代码提交 927f42c23670d86642f0afbe678411b858be97cb；配置 hash 37a959a06dad80b416b91ee9504f300b698c86d460495c98fc40fc6fdc67fdbb；数据 seed-dev-v1，全部 dev。运行记录 dirty=true；所记录的全部源码哈希与该提交匹配。验收前工作区仅有未跟踪连接脚本，但运行时完整 dirty 内容未单独记录，保留这一限制。
 

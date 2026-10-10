@@ -1,0 +1,26 @@
+{
+  "reviewer": "成员A",
+  "feedback_received_date": "2026-10-10",
+  "actual_review_date": null,
+  "group": "H1",
+  "status": "GUIDE_CHECKPOINTS_REVIEWED",
+  "user_statement": "默认只看提交快照；未提交修改要用 --working-tree；没抽到声明不算一致；无模型服务时走降级或拒答；补丁做了哈希与原子回滚检查，但不是全局并发锁，因此不能保证发现所有并发改动。",
+  "verified_scope": [
+    "Default committed snapshot and explicit working-tree inclusion",
+    "Missing claim extraction is not a consistent judgment",
+    "Unavailable model leads to degradation or abstention",
+    "No global concurrency lock or guarantee against all concurrent modifications",
+    "Target project is not imported or executed"
+  ],
+  "assistant_clarifications": [
+    "hybrid is PARTIAL with explicitly marked rule fallback; pure LLM abstains, without passing rule output off as model output.",
+    "Atomicity applies to individual file replacement; exception rollback is attempted, not an atomic cross-file transaction."
+  ],
+  "remaining_question": null,
+  "source_sha256": {
+    "src/docsync/cli.py": "6037aaffcabe18d9b04de253402617bf974f3ece7a6232d590566e3d7d1b2425",
+    "docs/limitations.md": "c78e9400119b1b96efa1200ecb86b9eb1d75a1791642bb7266ef0b1fec4a48d1",
+    "src/docsync/patches/__init__.py": "b717a561c51162dd33032590ed61ab7fcb945b59daa97ae1946b270907cfd3e7"
+  },
+  "followup_statement": "不会导入或执行目标项目"
+}
