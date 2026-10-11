@@ -3,7 +3,7 @@
   "reviewed_at": "2026-10-10",
   "feedback_received_at": "2026-10-10",
   "scope": {
-    "implementation_commit": "7a16354f0ff1ad4c6ed544cd19a926c867848897",
+    "implementation_commit": "0ccbecb49e87b098abadce705f7e5168e9f74c01",
     "items": [
       "构造方法判断",
       "默认值绑定判断",

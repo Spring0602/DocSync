@@ -1,6 +1,6 @@
 # B 扩展样本覆盖调查与修复（2026-10-10）
 
-本轮完成 `docs/tasks.md` 中“B：扩展样本覆盖调查与修复交接”的技术部分。实现提交为 `7a16354f0ff1ad4c6ed544cd19a926c867848897`。没有调用付费模型，没有修改冻结标签或原始 B/C 标注。
+本轮完成 `docs/tasks.md` 中“B：扩展样本覆盖调查与修复交接”的技术部分。正式远端可解析的实现提交为 `0ccbecb49e87b098abadce705f7e5168e9f74c01`。没有调用付费模型，没有修改冻结标签或原始 B/C 标注。
 
 ## 范围决定
 
@@ -60,5 +60,5 @@ python -m docsync benchmark --manifest runs\b-release-closeout-candidates\manife
 
 早期工作区曾以用户下载的 `main` ZIP 建立本地承接基线 `6997ff6`，该提交仅用于网络不可用时继续开发。2026-10-10 已重新获取正式 `origin/main` `353527b`，并从它创建干净分支 `member-b-release-closeout-final`；`6997ff6` 不是该分支祖先。
 
-原始提交 `7a16354`、`656ecc0`、`1498206` 在正式最新 main 上依次移植为 `0ccbecb`、`2ab8ed3`、`3a34706`。移植后完整测试为 `222 passed, 2 skipped`，两个 skip 仍为 Windows symlink 权限；Ruff、格式检查、mypy 和构建均通过。当前构建产物 SHA-256：wheel `efda69cd1eda5460ee0d65abdab09b5623dbdef4e822a57009f0bb97771b77b4`；sdist `70e1e94fc1cef6a9b700a7b82b74792069ae5f2b7ff14a7a3232696300dbb854`。远程 CI 仍需以推送后的分支 SHA 为准。
+B 成果已在正式最新 main 上依次提交为 `0ccbecb`、`2ab8ed3`、`3a34706`。移植后完整测试为 `222 passed, 2 skipped`，两个 skip 仍为 Windows symlink 权限；Ruff、格式检查、mypy 和构建均通过。当前构建产物 SHA-256：wheel `efda69cd1eda5460ee0d65abdab09b5623dbdef4e822a57009f0bb97771b77b4`；sdist `70e1e94fc1cef6a9b700a7b82b74792069ae5f2b7ff14a7a3232696300dbb854`。远程 CI 仍需以推送后的分支 SHA 为准。
 

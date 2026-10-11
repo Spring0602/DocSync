@@ -4,9 +4,9 @@
 
 - 正式基线：`origin/main` `353527b`
 - 干净交付分支：`member-b-release-closeout-final`
-- 技术实现提交：`0ccbecb`（原始提交 `7a16354`）
-- 技术报告提交：`2ab8ed3`（原始提交 `656ecc0`）
-- B 本人复核提交：`3a34706`（原始提交 `1498206`）
+- 技术实现提交：`0ccbecb49e87b098abadce705f7e5168e9f74c01`
+- 技术报告提交：`2ab8ed3a8cc6dc9b3bd6b4639ea8a9d4c2925823`
+- B 本人复核提交：`3a347065ac12c32df195f2520f0b1cbe2c1a8a1d`
 - 实现与范围报告：`docs/b-release-coverage-review-20261010.md`
 - 原始离线证据：`docs/audit-samples/b-release-coverage-20261010/`
 - 新增回归：`tests/integration/test_b_release_coverage.py`

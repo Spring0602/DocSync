@@ -4,14 +4,20 @@
 
 ## 固定输入与文件哈希
 
+以下哈希统一按 Git 仓库存储的 LF 字节计算，不使用可能被本地 checkout 转换为 CRLF 的工作区副本。
+
 - manifest SHA-256：`c8fcf3cfb3cdfb38b89266b2d7926038e774fa68293f5f3edbd8939fa8a51aae`
 - 修复前指标：`../a-closeout-20261010/rules/metrics.json`
 - 修复前指标文件 SHA-256：`9e8880df194747f172112b0e391fb3851fd550a550d26fb4fb273555e89f5c9a`
 - 修复后指标：[after-metrics.json](after-metrics.json)
-- 修复后指标文件 SHA-256：`6c59ea53103f6cd72339e16c336d1e2ee14c79bdfee69d013f9c787e8f1eee8`
+- 修复后指标文件 SHA-256：`89686d460b6b870fb899de01499e04d518e19bfac836c129b4281905f0ef7949`
 - 修复后逐样本预测：[after-predictions.jsonl](after-predictions.jsonl)
-- 修复后预测文件 SHA-256：`7f585f085e8b9eae560e376ee7ffc0d830a58645dcc36cd5053e1b717e0f4deb`
-- 代码提交：`7a16354f0ff1ad4c6ed544cd19a926c867848897`
+- 修复后预测文件 SHA-256：`6c424d160b07d56d866acb5d19e3c99a3216641cdb7e46a4730ac5e3370775d5`
+- 代码提交：`0ccbecb49e87b098abadce705f7e5168e9f74c01`
+
+## 人工复核口径
+
+`compliance/ai_assistance_log.csv` 中本轮记录最初以 `pending` 写入，表示写入当时尚未收到成员 B 的本人意见。成员 B 后续已于 2026-10-10 完成五项复核；当前 CSV 的本人复核字段、[机器可读复核记录](human-review.json)和 [AI 复核索引](../../../compliance/ai_review_index.md)共同记录该后续状态。
 
 ## 前后结果
 
