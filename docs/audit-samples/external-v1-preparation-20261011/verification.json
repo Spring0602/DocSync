@@ -1,0 +1,53 @@
+{
+  "status": "VERIFIED_UNLABELLED_PACKET",
+  "samples": 24,
+  "files": 100,
+  "formal_test_ready": false,
+  "packet_sha256": "d2e30c933b2a31dd06c192b5f2834b51164220fb7fb8ec0dd08b29d0921cdf89",
+  "checksums_sha256": "ba1be2574191267018f66c08b33b51553ff2886c5a72470ca3ec4796cd6cce3f",
+  "date": "2026-10-11",
+  "git_baseline": "6134fdf05816aa23e4eb5be86fac3a54d59084ed",
+  "generator_sha256": "6eaf01922fa82ce069783ab020aa03605fb269c8756fc03e42f647e81e8903c7",
+  "source_repositories": 6,
+  "all_packet_files_including_checksums": 101,
+  "independent_rebuild_byte_identical": true,
+  "negative_checks": [
+    {
+      "case": "modified original document",
+      "result": "REJECTED_AS_EXPECTED"
+    },
+    {
+      "case": "missing required inventory file",
+      "result": "REJECTED_AS_EXPECTED"
+    },
+    {
+      "case": "unexpected nested checksums.json",
+      "result": "REJECTED_AS_EXPECTED"
+    },
+    {
+      "case": "answer inserted even after checksums updated",
+      "result": "REJECTED_AS_EXPECTED"
+    }
+  ],
+  "annotation_tool_tests": {
+    "passed": 5,
+    "junit": "runs/external-v1-qa/pytest.xml"
+  },
+  "ruff": "passed",
+  "csv_checks": {
+    "rows_per_member": 24,
+    "columns": 14,
+    "blank_review_fields": true,
+    "artifact_tool_preview": "both reviewed; no extra blank records after CRCRLF normalization"
+  },
+  "bundle": {
+    "path": "runs/external-v1-handoff/external-v1-unlabelled.zip",
+    "sha256": "f8e6dc1e3a55b5f52e3b76b0ab29a31cd50335c28c6c78b0edd11be2a3cb582c",
+    "all_members_roundtrip_verified": true
+  },
+  "target_imports_or_executions": 0,
+  "docsync_scans": 0,
+  "experiment_model_requests": 0,
+  "human_signoff": "PENDING_A_REVIEW_OF_THIS_PREPARATION",
+  "limits": "No gold, final family clearance, formal test manifest or experiments produced."
+}

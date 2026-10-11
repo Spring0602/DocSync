@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-11",
+  "code_sha": "ecb00181693c3fe188523f33d35fa0c3ab5d3a5b",
+  "core_ci": {
+    "id": 38107560892,
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/Spring0602/DocSync/actions/runs/38107560892"
+  },
+  "local_tests": {
+    "passed": 222,
+    "skipped": 2,
+    "seconds": 115.74,
+    "skip_reason": "Windows symlink permission"
+  },
+  "offline_rules": {
+    "all_24_prediction_and_status_match_B": true,
+    "metric_metadata_differences": {
+      "config_hash": {
+        "current": "3e411cd0725ab7d0a10e0f508c6ca35f6f18f80ca24063a9490ac4829dbe8edf",
+        "B": "8101bb716abd350eb099f3fadcd45ff8a2954fa869ff5b93e06eaedb63685045"
+      }
+    },
+    "statuses": {
+      "COMPLETED": 20,
+      "PARTIAL": 4
+    },
+    "requests": 0,
+    "counts": {
+      "tp": 8,
+      "fp": 0,
+      "tn": 11,
+      "fn": 0,
+      "decidable": 19,
+      "decided": 18,
+      "insufficient": 5,
+      "improper_confirmation": 0,
+      "failed": 0,
+      "abstained": 6
+    }
+  },
+  "release_ready": false,
+  "open_gates": [
+    "Independent formal test source/freeze and subsequent experiment",
+    "Final submission materials and C audit",
+    "Final release commit CI and tag alignment"
+  ]
+}

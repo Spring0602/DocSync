@@ -1,0 +1,494 @@
+{
+  "version": "external-v1",
+  "created_at": "2026-10-11",
+  "status": "UNLABELLED_SELECTION",
+  "formal_test_ready": false,
+  "policy": "screening-policy.md",
+  "samples": [
+    {
+      "sample_id": "external-01",
+      "source_id": "external-source-01",
+      "document_path": "docs/advanced/timeouts.md",
+      "document_focus": "3-4",
+      "code_path": "httpx/_config.py",
+      "code_entry": "246",
+      "title": "默认超时数值",
+      "question": "核对文档所述默认超时数值与库的默认配置；不评估真实网络是否在精确时刻抛异常。",
+      "selection_reason": "按预定文档顺序纳入可定位声明；未运行扫描或模型，最终类别/标签由标注者填写。"
+    },
+    {
+      "sample_id": "external-02",
+      "source_id": "external-source-01",
+      "document_path": "docs/advanced/timeouts.md",
+      "document_focus": "10-12",
+      "code_path": "httpx/_api.py",
+      "code_entry": "174-186",
+      "title": "顶层 get 调用",
+      "question": "核对示例中位置参数和 timeout 关键字能否按该接口绑定。",
+      "selection_reason": "按预定文档顺序纳入可定位声明；未运行扫描或模型，最终类别/标签由标注者填写。"
+    },
+    {
+      "sample_id": "external-03",
+      "source_id": "external-source-01",
+      "document_path": "docs/advanced/timeouts.md",
+      "document_focus": "14-16",
+      "code_path": "httpx/_client.py",
+      "code_entry": "1036-1047",
+      "title": "客户端 get 调用",
+      "question": "核对已构造 client 的 get 调用绑定，包括 timeout 关键字。",
+      "selection_reason": "按预定文档顺序纳入可定位声明；未运行扫描或模型，最终类别/标签由标注者填写。"
+    },
+    {
+      "sample_id": "external-04",
+      "source_id": "external-source-01",
+      "document_path": "docs/advanced/timeouts.md",
+      "document_focus": "19-23",
+      "code_path": "httpx/_config.py",
+      "code_entry": "86-130",
+      "title": "禁用请求超时的配置",
+      "question": "核对示例 timeout=None 对超时配置的含义，沿调用链查看；不以实际外部网络行为作证。",
+      "selection_reason": "按预定文档顺序纳入可定位声明；未运行扫描或模型，最终类别/标签由标注者填写。"
+    },
+    {
+      "sample_id": "external-05",
+      "source_id": "external-source-02",
+      "document_path": "README.md",
+      "document_focus": "64-66",
+      "code_path": "loguru/__init__.py",
+      "code_entry": "18-32",
+      "title": "初始日志输出配置",
+      "question": "核对导入 logger 后文档所述初始输出位置；保留原文限定及配置/环境条件。",
+      "selection_reason": "按预定文档顺序纳入可定位声明；未运行扫描或模型，最终类别/标签由标注者填写。"
+    },
+    {
+      "sample_id": "external-06",
+      "source_id": "external-source-02",
+      "document_path": "README.md",
+      "document_focus": "68-72",
+      "code_path": "loguru/_logger.py",
+      "code_entry": "2205-2207",
+      "title": "debug 调用",
+      "question": "核对 logger.debug 示例的参数绑定；不评估实际日志内容或终端效果。",
+      "selection_reason": "按预定文档顺序纳入可定位声明；未运行扫描或模型，最终类别/标签由标注者填写。"
+    },
+    {
+      "sample_id": "external-07",
+      "source_id": "external-source-02",
+      "document_path": "README.md",
+      "document_focus": "80-84",
+      "code_path": "loguru/_logger.py",
+      "code_entry": "273-288",
+      "title": "添加 sink 的调用",
+      "question": "核对 logger.add 示例中 sink 和 format/filter/level 的绑定；sys.stderr 按示例引用处理。",
+      "selection_reason": "按预定文档顺序纳入可定位声明；未运行扫描或模型，最终类别/标签由标注者填写。"
+    },
+    {
+      "sample_id": "external-08",
+      "source_id": "external-source-02",
+      "document_path": "README.md",
+      "document_focus": "88",
+      "code_path": "loguru/_logger.py",
+      "code_entry": "1072-1118",
+      "title": "移除 handler 的调用",
+      "question": "核对 logger.remove() 无参数调用与文档所指移除范围，勿只按方法名称判断。",
+      "selection_reason": "按预定文档顺序纳入可定位声明；未运行扫描或模型，最终类别/标签由标注者填写。"
+    },
+    {
+      "sample_id": "external-09",
+      "source_id": "external-source-03",
+      "document_path": "README.md",
+      "document_focus": "36-43",
+      "code_path": "src/dotenv/main.py",
+      "code_entry": "431-438",
+      "title": "load_dotenv 无参调用",
+      "question": "仅核对 load_dotenv() 调用绑定；此条不把示例后的环境变量实际值作为待评估事实。",
+      "selection_reason": "按预定文档顺序纳入可定位声明；未运行扫描或模型，最终类别/标签由标注者填写。"
+    },
+    {
+      "sample_id": "external-10",
+      "source_id": "external-source-03",
+      "document_path": "README.md",
+      "document_focus": "45-47",
+      "code_path": "src/dotenv/main.py",
+      "code_entry": "376-428",
+      "title": "默认查找目录配置",
+      "question": "核对文档所述默认查找起点/向上搜索策略，结合调用入口和上下文条件。",
+      "selection_reason": "按预定文档顺序纳入可定位声明；未运行扫描或模型，最终类别/标签由标注者填写。"
+    },
+    {
+      "sample_id": "external-11",
+      "source_id": "external-source-03",
+      "document_path": "README.md",
+      "document_focus": "45-49",
+      "code_path": "src/dotenv/main.py",
+      "code_entry": "431-479",
+      "title": "override 默认设置",
+      "question": "仅核对 override 的默认设置及其覆盖含义；不猜测外部 .env 内容。",
+      "selection_reason": "按预定文档顺序纳入可定位声明；未运行扫描或模型，最终类别/标签由标注者填写。"
+    },
+    {
+      "sample_id": "external-12",
+      "source_id": "external-source-03",
+      "document_path": "README.md",
+      "document_focus": "86-90",
+      "code_path": "src/dotenv/main.py",
+      "code_entry": "482-488",
+      "title": "dotenv_values 路径参数调用",
+      "question": "仅核对 dotenv_values(\".env\") 的调用绑定；不对注释示例中的 USER/EMAIL 实际值判定。",
+      "selection_reason": "按预定文档顺序纳入可定位声明；未运行扫描或模型，最终类别/标签由标注者填写。"
+    },
+    {
+      "sample_id": "external-13",
+      "source_id": "external-source-04",
+      "document_path": "README.md",
+      "document_focus": "64-68",
+      "code_path": "rich/__init__.py",
+      "code_entry": "53-59",
+      "title": "rich.print 调用",
+      "question": "核对示例 print 的三个位置参数绑定；不扩展为对全部 builtin print 行为的等价证明。",
+      "selection_reason": "按预定文档顺序纳入可定位声明；未运行扫描或模型，最终类别/标签由标注者填写。"
+    },
+    {
+      "sample_id": "external-14",
+      "source_id": "external-source-04",
+      "document_path": "README.md",
+      "document_focus": "76-79",
+      "code_path": "rich/pretty.py",
+      "code_entry": "171-180",
+      "title": "pretty.install 调用",
+      "question": "核对 pretty.install() 无参调用绑定；不评估 REPL 的实际输出效果。",
+      "selection_reason": "按预定文档顺序纳入可定位声明；未运行扫描或模型，最终类别/标签由标注者填写。"
+    },
+    {
+      "sample_id": "external-15",
+      "source_id": "external-source-04",
+      "document_path": "README.md",
+      "document_focus": "87-91",
+      "code_path": "rich/console.py",
+      "code_entry": "619-672",
+      "title": "Console 构造调用",
+      "question": "核对 Console() 无参构造的绑定。",
+      "selection_reason": "按预定文档顺序纳入可定位声明；未运行扫描或模型，最终类别/标签由标注者填写。"
+    },
+    {
+      "sample_id": "external-16",
+      "source_id": "external-source-04",
+      "document_path": "README.md",
+      "document_focus": "93-97",
+      "code_path": "rich/console.py",
+      "code_entry": "1652-1682",
+      "title": "Console.print 调用",
+      "question": "核对已构造 console 的 print(\"Hello\", \"World!\") 绑定，不评估终端渲染。",
+      "selection_reason": "按预定文档顺序纳入可定位声明；未运行扫描或模型，最终类别/标签由标注者填写。"
+    },
+    {
+      "sample_id": "external-17",
+      "source_id": "external-source-05",
+      "document_path": "docs/examples.md",
+      "document_focus": "7-13",
+      "code_path": "src/attr/_make.py",
+      "code_entry": "2030-2096",
+      "title": "生成的 Empty 构造接口",
+      "question": "核对 @define 后 Empty() 的构造绑定；需查看装饰器、生成逻辑及文档中类定义，不能将导出名直接当生成的类。",
+      "selection_reason": "按预定文档顺序纳入可定位声明；未运行扫描或模型，最终类别/标签由标注者填写。"
+    },
+    {
+      "sample_id": "external-18",
+      "source_id": "external-source-05",
+      "document_path": "docs/examples.md",
+      "document_focus": "24-44",
+      "code_path": "src/attr/_make.py",
+      "code_entry": "2187-2448",
+      "title": "生成的 Coordinates 构造接口",
+      "question": "核对文档同一 Coordinates 类的两种构造调用（位置及关键字），限定为该类的参数绑定。",
+      "selection_reason": "按预定文档顺序纳入可定位声明；未运行扫描或模型，最终类别/标签由标注者填写。"
+    },
+    {
+      "sample_id": "external-19",
+      "source_id": "external-source-05",
+      "document_path": "docs/examples.md",
+      "document_focus": "51-58",
+      "code_path": "src/attr/_next_gen.py",
+      "code_entry": "434-455",
+      "title": "field 无参调用",
+      "question": "仅核对类体中的 field() 调用绑定，Coordinates 构造已在上一条评估，不重复计数。",
+      "selection_reason": "按预定文档顺序纳入可定位声明；未运行扫描或模型，最终类别/标签由标注者填写。"
+    },
+    {
+      "sample_id": "external-20",
+      "source_id": "external-source-05",
+      "document_path": "docs/examples.md",
+      "document_focus": "66-74",
+      "code_path": "src/attr/_make.py",
+      "code_entry": "2451-2459",
+      "title": "私有属性对应的构造参数",
+      "question": "核对示例 C(x=1) 中关键字与生成构造接口的对应关系，结合文档类定义。",
+      "selection_reason": "按预定文档顺序纳入可定位声明；未运行扫描或模型，最终类别/标签由标注者填写。"
+    },
+    {
+      "sample_id": "external-21",
+      "source_id": "external-source-06",
+      "document_path": "README.md",
+      "document_focus": "126-132",
+      "code_path": "alive_progress/core/progress.py",
+      "code_entry": "22-22",
+      "title": "alive_bar 的 total 参数",
+      "question": "仅核对 alive_bar(120000) 的调用绑定；下一条单独评估返回句柄。",
+      "selection_reason": "按预定文档顺序纳入可定位声明；未运行扫描或模型，最终类别/标签由标注者填写。"
+    },
+    {
+      "sample_id": "external-22",
+      "source_id": "external-source-06",
+      "document_path": "README.md",
+      "document_focus": "126-134",
+      "code_path": "alive_progress/core/progress.py",
+      "code_entry": "181-202",
+      "title": "bar 句柄调用",
+      "question": "核对同一 with 上下文中的 bar(60000, skipped=True) 与 bar() 的绑定；根据上下文判断目标，不预设为某一内部函数。",
+      "selection_reason": "按预定文档顺序纳入可定位声明；未运行扫描或模型，最终类别/标签由标注者填写。"
+    },
+    {
+      "sample_id": "external-23",
+      "source_id": "external-source-06",
+      "document_path": "README.md",
+      "document_focus": "194-203",
+      "code_path": "alive_progress/core/progress.py",
+      "code_entry": "22-22",
+      "title": "alive_bar 关键字配置调用",
+      "question": "核对 alive_bar(26, dual_line=True, title=...) 的关键字入口及配置接收；不评估显示效果或 bar.text 赋值。",
+      "selection_reason": "按预定文档顺序纳入可定位声明；未运行扫描或模型，最终类别/标签由标注者填写。"
+    },
+    {
+      "sample_id": "external-24",
+      "source_id": "external-source-06",
+      "document_path": "README.md",
+      "document_focus": "238-241",
+      "code_path": "alive_progress/core/configuration.py",
+      "code_entry": "145-175",
+      "title": "ctrl_c 默认配置",
+      "question": "仅核对文档所述 ctrl_c 默认值；保留历史版本小节上下文，以当前固定提交为代码对照，不实测键盘中断。",
+      "selection_reason": "按预定文档顺序纳入可定位声明；未运行扫描或模型，最终类别/标签由标注者填写。"
+    }
+  ],
+  "context_files": {
+    "external-source-01": [
+      "httpx/__init__.py",
+      "httpx/_api.py",
+      "httpx/_client.py",
+      "httpx/_config.py",
+      "httpx/_types.py"
+    ],
+    "external-source-02": [
+      "loguru/__init__.py",
+      "loguru/_logger.py",
+      "loguru/_defaults.py"
+    ],
+    "external-source-03": [
+      "src/dotenv/__init__.py",
+      "src/dotenv/main.py",
+      "src/dotenv/parser.py",
+      "src/dotenv/variables.py"
+    ],
+    "external-source-04": [
+      "rich/__init__.py",
+      "rich/pretty.py",
+      "rich/console.py"
+    ],
+    "external-source-05": [
+      "src/attrs/__init__.py",
+      "src/attr/__init__.py",
+      "src/attr/_next_gen.py",
+      "src/attr/_make.py"
+    ],
+    "external-source-06": [
+      "alive_progress/__init__.py",
+      "alive_progress/core/progress.py",
+      "alive_progress/core/configuration.py"
+    ]
+  },
+  "screening_log": [
+    {
+      "source_id": "external-source-01",
+      "document_path": "docs/advanced/timeouts.md",
+      "lines": "1-2",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "泛化超时行为叙述；首个有明确数值的声明在 3-4 行。"
+    },
+    {
+      "source_id": "external-source-01",
+      "document_path": "docs/advanced/timeouts.md",
+      "lines": "15",
+      "disposition": "CONTEXT_ONLY",
+      "reason": "Client() 用于同块 get 示例的接收者上下文，不在该段另计构造样本。"
+    },
+    {
+      "source_id": "external-source-01",
+      "document_path": "docs/advanced/timeouts.md",
+      "lines": "24-71",
+      "disposition": "CAP_REACHED",
+      "reason": "已取四个单元；剩余内容本轮不做完整语义筛查。"
+    },
+    {
+      "source_id": "external-source-01",
+      "document_path": "docs/advanced/resource-limits.md",
+      "lines": "1-13",
+      "disposition": "CAP_REACHED",
+      "reason": "文档登记顺序在 timeouts.md 之后；该来源已达本轮上限，非因预测/标签排除。"
+    },
+    {
+      "source_id": "external-source-02",
+      "document_path": "README.md",
+      "lines": "1-63",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "介绍、图片、安装和目录，无本轮具体接口评估单元；只保存文本，不下载图片/商标。"
+    },
+    {
+      "source_id": "external-source-02",
+      "document_path": "README.md",
+      "lines": "74-78",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "接口概述和设问，后续 80-84 行才有本单元具体调用。"
+    },
+    {
+      "source_id": "external-source-02",
+      "document_path": "README.md",
+      "lines": "89-EOF",
+      "disposition": "CAP_REACHED",
+      "reason": "达到四条上限，后续不是判为不合格。"
+    },
+    {
+      "source_id": "external-source-03",
+      "document_path": "README.md",
+      "lines": "1-35",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "安装和一般环境说明，第一条完整 API 示例在 36-43 行。"
+    },
+    {
+      "source_id": "external-source-03",
+      "document_path": "README.md",
+      "lines": "48",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "环境写入行为未明确新的默认值或绑定问题，保留上下文，不单列为本轮接口样本。"
+    },
+    {
+      "source_id": "external-source-03",
+      "document_path": "README.md",
+      "lines": "51-84",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "目录、shell 变量展开和返回行为说明；选择后续具体 dotenv_values 调用，不给变量值预填真值。"
+    },
+    {
+      "source_id": "external-source-03",
+      "document_path": "README.md",
+      "lines": "91-EOF",
+      "disposition": "CAP_REACHED",
+      "reason": "达到四条上限。"
+    },
+    {
+      "source_id": "external-source-03",
+      "document_path": "docs/index.md",
+      "lines": "1",
+      "disposition": "PATH_ALIAS",
+      "reason": "原文只有 ../README.md，是路径别名，不作为另一份独立声明。"
+    },
+    {
+      "source_id": "external-source-04",
+      "document_path": "README.md",
+      "lines": "1-63",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "徽章、翻译、兼容/安装叙述；62 行概述保留为上下文，实际调用单元为 64-68 行。"
+    },
+    {
+      "source_id": "external-source-04",
+      "document_path": "README.md",
+      "lines": "98-EOF",
+      "disposition": "CAP_REACHED",
+      "reason": "达到四条上限，未因重复/预测对余下全部内容作判定。"
+    },
+    {
+      "source_id": "external-source-05",
+      "document_path": "docs/examples.md",
+      "lines": "14-17",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "比较与身份结果，不是新的构造绑定事实。"
+    },
+    {
+      "source_id": "external-source-05",
+      "document_path": "docs/examples.md",
+      "lines": "31",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "all features 叙述未定位到单一可评估默认参数，不单独计数。"
+    },
+    {
+      "source_id": "external-source-05",
+      "document_path": "docs/examples.md",
+      "lines": "56-57",
+      "disposition": "DUPLICATE",
+      "reason": "同形 Coordinates 构造已纳入，51-58 单元仅评估 field()。"
+    },
+    {
+      "source_id": "external-source-05",
+      "document_path": "docs/examples.md",
+      "lines": "60-62",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "字段收集机制提示保留原文上下文，未单列默认值/调用绑定事实。"
+    },
+    {
+      "source_id": "external-source-05",
+      "document_path": "docs/examples.md",
+      "lines": "75-EOF",
+      "disposition": "CAP_REACHED",
+      "reason": "达到四条上限。"
+    },
+    {
+      "source_id": "external-source-05",
+      "document_path": "docs/init.md",
+      "lines": "1-EOF",
+      "disposition": "CAP_REACHED",
+      "reason": "来源在 examples.md 已达四条上限；不把另一文档同类声明当独立来源。"
+    },
+    {
+      "source_id": "external-source-06",
+      "document_path": "README.md",
+      "lines": "1-125",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "介绍/性能/版本功能叙述；104 行提及计数范围但不提供带具体参数的完整调用，未单列。"
+    },
+    {
+      "source_id": "external-source-06",
+      "document_path": "README.md",
+      "lines": "138-149",
+      "disposition": "DUPLICATE",
+      "reason": "同一返回句柄的 skipped 及无参形式已由 126-134 单元覆盖。"
+    },
+    {
+      "source_id": "external-source-06",
+      "document_path": "README.md",
+      "lines": "151-193",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "功能、版本和图片说明，未提供新的具体默认值/完整调用单元。"
+    },
+    {
+      "source_id": "external-source-06",
+      "document_path": "README.md",
+      "lines": "198",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "运行期属性赋值，不是本条调用绑定对象。"
+    },
+    {
+      "source_id": "external-source-06",
+      "document_path": "README.md",
+      "lines": "214-237",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "参数和功能概述，没有新的具体默认值/完整调用单元。"
+    },
+    {
+      "source_id": "external-source-06",
+      "document_path": "README.md",
+      "lines": "242-EOF",
+      "disposition": "CAP_REACHED",
+      "reason": "达到四条上限。"
+    }
+  ],
+  "scope_note": "每条是指定声明单元；同一仓库/文件的条目相关，不能当成独立项目。未纳入的后续文档仅记录上限，不宣称穷尽筛查。"
+}

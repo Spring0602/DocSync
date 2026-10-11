@@ -1,0 +1,42 @@
+{
+  "scan": {
+    "mode": "rules",
+    "fail_on": "none",
+    "require_complete": false,
+    "analysis_method": "full",
+    "include": [
+      "**/*.py",
+      "**/*.md"
+    ],
+    "exclude": [
+      "tests/**",
+      "bench/**",
+      "runs/**",
+      "examples/**"
+    ],
+    "max_file_bytes": 1048576,
+    "max_total_bytes": 52428800
+  },
+  "alignment": {
+    "top_k": 5
+  },
+  "llm": {
+    "provider": "none",
+    "endpoint": null,
+    "model": null,
+    "api_key_env": "DOCSYNC_API_KEY",
+    "temperature": 0.0,
+    "send_temperature": true,
+    "thinking": null,
+    "response_format": "json_schema",
+    "token_parameter": "max_completion_tokens",
+    "max_output_tokens": 1024,
+    "max_input_bytes": 32000,
+    "max_total_tokens": 100000,
+    "cache_dir": null,
+    "timeout_seconds": 30,
+    "max_retries": 2,
+    "max_requests": 20
+  },
+  "ignores": []
+}

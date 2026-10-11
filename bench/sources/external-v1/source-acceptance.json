@@ -1,0 +1,19 @@
+{
+  "reviewer": "成员A",
+  "feedback_received_date": "2026-10-11",
+  "accepted_source_ids": [
+    "external-source-01",
+    "external-source-02",
+    "external-source-03",
+    "external-source-04",
+    "external-source-05",
+    "external-source-06"
+  ],
+  "statements": [
+    "这些文件没什么问题，可用于正式测试",
+    "还没用过"
+  ],
+  "status": "APPROVED_FOR_SAMPLE_PREPARATION",
+  "formal_test_frozen": false,
+  "next_step": "Inspect fixed source files and select unlabelled code/document claims; collect B/C exposure disclosure with annotation handoff rather than blocking preparation."
+}

@@ -13,3 +13,13 @@ docs/audit-samples/b-20261009/*.csv -text whitespace=cr-at-eol
 # Received member files are byte-preserving audit copies.
 bench/annotations/candidate-v1-received-20261009/B/** -text whitespace=cr-at-eol
 bench/annotations/candidate-v1-received-20261009/C/** -text whitespace=cr-at-eol
+
+# Preserve external annotation packet blobs, CSVs and their integrity hashes.
+bench/annotations/external-v1/** -text whitespace=cr-at-eol
+bench/sources/external-v1/licenses/** -text
+bench/sources/external-v1/*.json* -text whitespace=cr-at-eol
+bench/sources/external-v1/*.md text eol=lf
+bench/builders/build_external_packet.py text eol=lf
+
+# Audit evidence must keep the exact bytes used by recorded hashes.
+docs/audit-samples/release-acceptance-20261011/** -text whitespace=cr-at-eol

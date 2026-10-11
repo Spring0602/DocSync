@@ -1,0 +1,29 @@
+{
+  "development_manifests": [
+    {
+      "path": "bench/frozen/seed-dev-v1/manifest.jsonl",
+      "sha256": "fe5b4c21e3261de83137d1748651f9e54bc6b5fcb937eabee39108900f7dfab8",
+      "verification": "reviewed builder validates frozen artifacts and fixed commits; primary code/document blobs hashed"
+    },
+    {
+      "path": "bench/frozen/candidate-dev-v1/manifest.jsonl",
+      "sha256": "c8fcf3cfb3cdfb38b89266b2d7926038e774fa68293f5f3edbd8939fa8a51aae",
+      "verification": "reviewed builder validates frozen artifacts and fixed commits; primary code/document blobs hashed"
+    }
+  ],
+  "development_rows_checked": 44,
+  "development_unique_file_hashes_checked": 73,
+  "declared_id_repo_group_overlap": [],
+  "exact_payload_hash_overlap": [],
+  "provisional_groups": [
+    "external-encode-httpx",
+    "external-delgan-loguru",
+    "external-theskumar-python-dotenv",
+    "external-textualize-rich",
+    "external-python-attrs-attrs",
+    "external-rsalmei-alive-progress"
+  ],
+  "family_review": "PENDING_A_REVIEW; distinct IDs and hashes do not establish independence",
+  "annotator_exposure": "PENDING_SEPARATE_B_C_DECLARATIONS",
+  "formal_test_ready": false
+}

@@ -1,0 +1,590 @@
+{
+  "status": "AWAITING_INDEPENDENT_ANNOTATION",
+  "formal_test_ready": false,
+  "intake_sha256": "f41f75e247aa61cdc1d8eabbb006e765b651d4cbe400393f57a479577675684f",
+  "samples": [
+    {
+      "sample_id": "external-01",
+      "repo_id": "encode/httpx",
+      "group_id": "external-encode-httpx",
+      "head_sha": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254",
+      "code_path": "httpx/_config.py",
+      "document_path": "docs/advanced/timeouts.md",
+      "origin": "real",
+      "source": "https://github.com/encode/httpx",
+      "license": "BSD-3-Clause",
+      "rights_evidence": "rights-review.json and licenses/external-source-01",
+      "prior_exposure": "A reports not previously used; B/C declarations pending; collector AI knows DocSync development history and has screened originals; model training exposure unknown",
+      "collected_at": "2026-10-11",
+      "files": {
+        "code_path": {
+          "sha256": "a4fa7653ec2271f70ab05f8a6111352d876dddee84446788a1767c1a3a372d67",
+          "lines": 248
+        },
+        "document_path": {
+          "sha256": "48959a587ecc6430f9051ab1b1c76fcebc3f3e95ec01199281aab813a2dcfaa1",
+          "lines": 71
+        }
+      }
+    },
+    {
+      "sample_id": "external-02",
+      "repo_id": "encode/httpx",
+      "group_id": "external-encode-httpx",
+      "head_sha": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254",
+      "code_path": "httpx/_api.py",
+      "document_path": "docs/advanced/timeouts.md",
+      "origin": "real",
+      "source": "https://github.com/encode/httpx",
+      "license": "BSD-3-Clause",
+      "rights_evidence": "rights-review.json and licenses/external-source-01",
+      "prior_exposure": "A reports not previously used; B/C declarations pending; collector AI knows DocSync development history and has screened originals; model training exposure unknown",
+      "collected_at": "2026-10-11",
+      "files": {
+        "code_path": {
+          "sha256": "aff660b388c8a5c3c92ea2b975b6d26b2aa8fe254c2856b164277ea0e1f12c4b",
+          "lines": 438
+        },
+        "document_path": {
+          "sha256": "48959a587ecc6430f9051ab1b1c76fcebc3f3e95ec01199281aab813a2dcfaa1",
+          "lines": 71
+        }
+      }
+    },
+    {
+      "sample_id": "external-03",
+      "repo_id": "encode/httpx",
+      "group_id": "external-encode-httpx",
+      "head_sha": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254",
+      "code_path": "httpx/_client.py",
+      "document_path": "docs/advanced/timeouts.md",
+      "origin": "real",
+      "source": "https://github.com/encode/httpx",
+      "license": "BSD-3-Clause",
+      "rights_evidence": "rights-review.json and licenses/external-source-01",
+      "prior_exposure": "A reports not previously used; B/C declarations pending; collector AI knows DocSync development history and has screened originals; model training exposure unknown",
+      "collected_at": "2026-10-11",
+      "files": {
+        "code_path": {
+          "sha256": "ed717b3ac00debb48d089daeb4dd7fbaf47cb5642ebc4a6e76f3a2fc6cfc0f70",
+          "lines": 2019
+        },
+        "document_path": {
+          "sha256": "48959a587ecc6430f9051ab1b1c76fcebc3f3e95ec01199281aab813a2dcfaa1",
+          "lines": 71
+        }
+      }
+    },
+    {
+      "sample_id": "external-04",
+      "repo_id": "encode/httpx",
+      "group_id": "external-encode-httpx",
+      "head_sha": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254",
+      "code_path": "httpx/_config.py",
+      "document_path": "docs/advanced/timeouts.md",
+      "origin": "real",
+      "source": "https://github.com/encode/httpx",
+      "license": "BSD-3-Clause",
+      "rights_evidence": "rights-review.json and licenses/external-source-01",
+      "prior_exposure": "A reports not previously used; B/C declarations pending; collector AI knows DocSync development history and has screened originals; model training exposure unknown",
+      "collected_at": "2026-10-11",
+      "files": {
+        "code_path": {
+          "sha256": "a4fa7653ec2271f70ab05f8a6111352d876dddee84446788a1767c1a3a372d67",
+          "lines": 248
+        },
+        "document_path": {
+          "sha256": "48959a587ecc6430f9051ab1b1c76fcebc3f3e95ec01199281aab813a2dcfaa1",
+          "lines": 71
+        }
+      }
+    },
+    {
+      "sample_id": "external-05",
+      "repo_id": "Delgan/loguru",
+      "group_id": "external-delgan-loguru",
+      "head_sha": "0412a60d6aff63a4ed009c7445993b42d294c2f1",
+      "code_path": "loguru/__init__.py",
+      "document_path": "README.md",
+      "origin": "real",
+      "source": "https://github.com/Delgan/loguru",
+      "license": "MIT",
+      "rights_evidence": "rights-review.json and licenses/external-source-02",
+      "prior_exposure": "A reports not previously used; B/C declarations pending; collector AI knows DocSync development history and has screened originals; model training exposure unknown",
+      "collected_at": "2026-10-11",
+      "files": {
+        "code_path": {
+          "sha256": "196e5e0ff9f2234516dcb9385ccbf6524c0a6d72b0a97ca5c81bd225a7c3df19",
+          "lines": 34
+        },
+        "document_path": {
+          "sha256": "284609d9e5cb8c08293abb14b15358c831ecd11d7effff6118c08fc6286eee9a",
+          "lines": 416
+        }
+      }
+    },
+    {
+      "sample_id": "external-06",
+      "repo_id": "Delgan/loguru",
+      "group_id": "external-delgan-loguru",
+      "head_sha": "0412a60d6aff63a4ed009c7445993b42d294c2f1",
+      "code_path": "loguru/_logger.py",
+      "document_path": "README.md",
+      "origin": "real",
+      "source": "https://github.com/Delgan/loguru",
+      "license": "MIT",
+      "rights_evidence": "rights-review.json and licenses/external-source-02",
+      "prior_exposure": "A reports not previously used; B/C declarations pending; collector AI knows DocSync development history and has screened originals; model training exposure unknown",
+      "collected_at": "2026-10-11",
+      "files": {
+        "code_path": {
+          "sha256": "e4ef09f91d6622ec84450410802d64cb61be9361e8482343780d1475454f07c0",
+          "lines": 2281
+        },
+        "document_path": {
+          "sha256": "284609d9e5cb8c08293abb14b15358c831ecd11d7effff6118c08fc6286eee9a",
+          "lines": 416
+        }
+      }
+    },
+    {
+      "sample_id": "external-07",
+      "repo_id": "Delgan/loguru",
+      "group_id": "external-delgan-loguru",
+      "head_sha": "0412a60d6aff63a4ed009c7445993b42d294c2f1",
+      "code_path": "loguru/_logger.py",
+      "document_path": "README.md",
+      "origin": "real",
+      "source": "https://github.com/Delgan/loguru",
+      "license": "MIT",
+      "rights_evidence": "rights-review.json and licenses/external-source-02",
+      "prior_exposure": "A reports not previously used; B/C declarations pending; collector AI knows DocSync development history and has screened originals; model training exposure unknown",
+      "collected_at": "2026-10-11",
+      "files": {
+        "code_path": {
+          "sha256": "e4ef09f91d6622ec84450410802d64cb61be9361e8482343780d1475454f07c0",
+          "lines": 2281
+        },
+        "document_path": {
+          "sha256": "284609d9e5cb8c08293abb14b15358c831ecd11d7effff6118c08fc6286eee9a",
+          "lines": 416
+        }
+      }
+    },
+    {
+      "sample_id": "external-08",
+      "repo_id": "Delgan/loguru",
+      "group_id": "external-delgan-loguru",
+      "head_sha": "0412a60d6aff63a4ed009c7445993b42d294c2f1",
+      "code_path": "loguru/_logger.py",
+      "document_path": "README.md",
+      "origin": "real",
+      "source": "https://github.com/Delgan/loguru",
+      "license": "MIT",
+      "rights_evidence": "rights-review.json and licenses/external-source-02",
+      "prior_exposure": "A reports not previously used; B/C declarations pending; collector AI knows DocSync development history and has screened originals; model training exposure unknown",
+      "collected_at": "2026-10-11",
+      "files": {
+        "code_path": {
+          "sha256": "e4ef09f91d6622ec84450410802d64cb61be9361e8482343780d1475454f07c0",
+          "lines": 2281
+        },
+        "document_path": {
+          "sha256": "284609d9e5cb8c08293abb14b15358c831ecd11d7effff6118c08fc6286eee9a",
+          "lines": 416
+        }
+      }
+    },
+    {
+      "sample_id": "external-09",
+      "repo_id": "theskumar/python-dotenv",
+      "group_id": "external-theskumar-python-dotenv",
+      "head_sha": "0b2880591780a426b0551436f47a17e7a76d954f",
+      "code_path": "src/dotenv/main.py",
+      "document_path": "README.md",
+      "origin": "real",
+      "source": "https://github.com/theskumar/python-dotenv",
+      "license": "BSD-3-Clause",
+      "rights_evidence": "rights-review.json and licenses/external-source-03",
+      "prior_exposure": "A reports not previously used; B/C declarations pending; collector AI knows DocSync development history and has screened originals; model training exposure unknown",
+      "collected_at": "2026-10-11",
+      "files": {
+        "code_path": {
+          "sha256": "fcb89122cd8756c43209f9052bb3c552dbe440d45493c762295c771f0d1ceaa8",
+          "lines": 532
+        },
+        "document_path": {
+          "sha256": "7d06cf7aa8278a4416873e141b5510d99bcc46bd14b440221ef46eba74009441",
+          "lines": 260
+        }
+      }
+    },
+    {
+      "sample_id": "external-10",
+      "repo_id": "theskumar/python-dotenv",
+      "group_id": "external-theskumar-python-dotenv",
+      "head_sha": "0b2880591780a426b0551436f47a17e7a76d954f",
+      "code_path": "src/dotenv/main.py",
+      "document_path": "README.md",
+      "origin": "real",
+      "source": "https://github.com/theskumar/python-dotenv",
+      "license": "BSD-3-Clause",
+      "rights_evidence": "rights-review.json and licenses/external-source-03",
+      "prior_exposure": "A reports not previously used; B/C declarations pending; collector AI knows DocSync development history and has screened originals; model training exposure unknown",
+      "collected_at": "2026-10-11",
+      "files": {
+        "code_path": {
+          "sha256": "fcb89122cd8756c43209f9052bb3c552dbe440d45493c762295c771f0d1ceaa8",
+          "lines": 532
+        },
+        "document_path": {
+          "sha256": "7d06cf7aa8278a4416873e141b5510d99bcc46bd14b440221ef46eba74009441",
+          "lines": 260
+        }
+      }
+    },
+    {
+      "sample_id": "external-11",
+      "repo_id": "theskumar/python-dotenv",
+      "group_id": "external-theskumar-python-dotenv",
+      "head_sha": "0b2880591780a426b0551436f47a17e7a76d954f",
+      "code_path": "src/dotenv/main.py",
+      "document_path": "README.md",
+      "origin": "real",
+      "source": "https://github.com/theskumar/python-dotenv",
+      "license": "BSD-3-Clause",
+      "rights_evidence": "rights-review.json and licenses/external-source-03",
+      "prior_exposure": "A reports not previously used; B/C declarations pending; collector AI knows DocSync development history and has screened originals; model training exposure unknown",
+      "collected_at": "2026-10-11",
+      "files": {
+        "code_path": {
+          "sha256": "fcb89122cd8756c43209f9052bb3c552dbe440d45493c762295c771f0d1ceaa8",
+          "lines": 532
+        },
+        "document_path": {
+          "sha256": "7d06cf7aa8278a4416873e141b5510d99bcc46bd14b440221ef46eba74009441",
+          "lines": 260
+        }
+      }
+    },
+    {
+      "sample_id": "external-12",
+      "repo_id": "theskumar/python-dotenv",
+      "group_id": "external-theskumar-python-dotenv",
+      "head_sha": "0b2880591780a426b0551436f47a17e7a76d954f",
+      "code_path": "src/dotenv/main.py",
+      "document_path": "README.md",
+      "origin": "real",
+      "source": "https://github.com/theskumar/python-dotenv",
+      "license": "BSD-3-Clause",
+      "rights_evidence": "rights-review.json and licenses/external-source-03",
+      "prior_exposure": "A reports not previously used; B/C declarations pending; collector AI knows DocSync development history and has screened originals; model training exposure unknown",
+      "collected_at": "2026-10-11",
+      "files": {
+        "code_path": {
+          "sha256": "fcb89122cd8756c43209f9052bb3c552dbe440d45493c762295c771f0d1ceaa8",
+          "lines": 532
+        },
+        "document_path": {
+          "sha256": "7d06cf7aa8278a4416873e141b5510d99bcc46bd14b440221ef46eba74009441",
+          "lines": 260
+        }
+      }
+    },
+    {
+      "sample_id": "external-13",
+      "repo_id": "Textualize/rich",
+      "group_id": "external-textualize-rich",
+      "head_sha": "9d8f9a372cc5916fd4781fec207ced7ddac2f08f",
+      "code_path": "rich/__init__.py",
+      "document_path": "README.md",
+      "origin": "real",
+      "source": "https://github.com/Textualize/rich",
+      "license": "MIT",
+      "rights_evidence": "rights-review.json and licenses/external-source-04",
+      "prior_exposure": "A reports not previously used; B/C declarations pending; collector AI knows DocSync development history and has screened originals; model training exposure unknown",
+      "collected_at": "2026-10-11",
+      "files": {
+        "code_path": {
+          "sha256": "8fb000f7fcff3c03506e6453c1391665cfc355daad0411f106a1ab32ccf6d422",
+          "lines": 177
+        },
+        "document_path": {
+          "sha256": "2f68e0e5b36f088e4059f08717454bfca47691b0188a278c7966eef6205c0d63",
+          "lines": 445
+        }
+      }
+    },
+    {
+      "sample_id": "external-14",
+      "repo_id": "Textualize/rich",
+      "group_id": "external-textualize-rich",
+      "head_sha": "9d8f9a372cc5916fd4781fec207ced7ddac2f08f",
+      "code_path": "rich/pretty.py",
+      "document_path": "README.md",
+      "origin": "real",
+      "source": "https://github.com/Textualize/rich",
+      "license": "MIT",
+      "rights_evidence": "rights-review.json and licenses/external-source-04",
+      "prior_exposure": "A reports not previously used; B/C declarations pending; collector AI knows DocSync development history and has screened originals; model training exposure unknown",
+      "collected_at": "2026-10-11",
+      "files": {
+        "code_path": {
+          "sha256": "9715bf6e105f0d329efa0aedccfd4a42142ca8f6717d9375e2d8782515682f34",
+          "lines": 1016
+        },
+        "document_path": {
+          "sha256": "2f68e0e5b36f088e4059f08717454bfca47691b0188a278c7966eef6205c0d63",
+          "lines": 445
+        }
+      }
+    },
+    {
+      "sample_id": "external-15",
+      "repo_id": "Textualize/rich",
+      "group_id": "external-textualize-rich",
+      "head_sha": "9d8f9a372cc5916fd4781fec207ced7ddac2f08f",
+      "code_path": "rich/console.py",
+      "document_path": "README.md",
+      "origin": "real",
+      "source": "https://github.com/Textualize/rich",
+      "license": "MIT",
+      "rights_evidence": "rights-review.json and licenses/external-source-04",
+      "prior_exposure": "A reports not previously used; B/C declarations pending; collector AI knows DocSync development history and has screened originals; model training exposure unknown",
+      "collected_at": "2026-10-11",
+      "files": {
+        "code_path": {
+          "sha256": "4533fc66963623a2a21447b501d6f51f8cfee7e14775178093a5e6eb61dc135a",
+          "lines": 2698
+        },
+        "document_path": {
+          "sha256": "2f68e0e5b36f088e4059f08717454bfca47691b0188a278c7966eef6205c0d63",
+          "lines": 445
+        }
+      }
+    },
+    {
+      "sample_id": "external-16",
+      "repo_id": "Textualize/rich",
+      "group_id": "external-textualize-rich",
+      "head_sha": "9d8f9a372cc5916fd4781fec207ced7ddac2f08f",
+      "code_path": "rich/console.py",
+      "document_path": "README.md",
+      "origin": "real",
+      "source": "https://github.com/Textualize/rich",
+      "license": "MIT",
+      "rights_evidence": "rights-review.json and licenses/external-source-04",
+      "prior_exposure": "A reports not previously used; B/C declarations pending; collector AI knows DocSync development history and has screened originals; model training exposure unknown",
+      "collected_at": "2026-10-11",
+      "files": {
+        "code_path": {
+          "sha256": "4533fc66963623a2a21447b501d6f51f8cfee7e14775178093a5e6eb61dc135a",
+          "lines": 2698
+        },
+        "document_path": {
+          "sha256": "2f68e0e5b36f088e4059f08717454bfca47691b0188a278c7966eef6205c0d63",
+          "lines": 445
+        }
+      }
+    },
+    {
+      "sample_id": "external-17",
+      "repo_id": "python-attrs/attrs",
+      "group_id": "external-python-attrs-attrs",
+      "head_sha": "644b4e165bfbeee7e127de6fcbda08b64014316f",
+      "code_path": "src/attr/_make.py",
+      "document_path": "docs/examples.md",
+      "origin": "real",
+      "source": "https://github.com/python-attrs/attrs",
+      "license": "MIT",
+      "rights_evidence": "rights-review.json and licenses/external-source-05",
+      "prior_exposure": "A reports not previously used; B/C declarations pending; collector AI knows DocSync development history and has screened originals; model training exposure unknown",
+      "collected_at": "2026-10-11",
+      "files": {
+        "code_path": {
+          "sha256": "db3b8d7a08c7ed547459e6828e906ae4044e234d0144c189595bdf56cff61a91",
+          "lines": 3462
+        },
+        "document_path": {
+          "sha256": "d2fe6b8b2cdea2c2a247d2ababddb1b7f7e267666e603b2860123f4f34c698ab",
+          "lines": 814
+        }
+      }
+    },
+    {
+      "sample_id": "external-18",
+      "repo_id": "python-attrs/attrs",
+      "group_id": "external-python-attrs-attrs",
+      "head_sha": "644b4e165bfbeee7e127de6fcbda08b64014316f",
+      "code_path": "src/attr/_make.py",
+      "document_path": "docs/examples.md",
+      "origin": "real",
+      "source": "https://github.com/python-attrs/attrs",
+      "license": "MIT",
+      "rights_evidence": "rights-review.json and licenses/external-source-05",
+      "prior_exposure": "A reports not previously used; B/C declarations pending; collector AI knows DocSync development history and has screened originals; model training exposure unknown",
+      "collected_at": "2026-10-11",
+      "files": {
+        "code_path": {
+          "sha256": "db3b8d7a08c7ed547459e6828e906ae4044e234d0144c189595bdf56cff61a91",
+          "lines": 3462
+        },
+        "document_path": {
+          "sha256": "d2fe6b8b2cdea2c2a247d2ababddb1b7f7e267666e603b2860123f4f34c698ab",
+          "lines": 814
+        }
+      }
+    },
+    {
+      "sample_id": "external-19",
+      "repo_id": "python-attrs/attrs",
+      "group_id": "external-python-attrs-attrs",
+      "head_sha": "644b4e165bfbeee7e127de6fcbda08b64014316f",
+      "code_path": "src/attr/_next_gen.py",
+      "document_path": "docs/examples.md",
+      "origin": "real",
+      "source": "https://github.com/python-attrs/attrs",
+      "license": "MIT",
+      "rights_evidence": "rights-review.json and licenses/external-source-05",
+      "prior_exposure": "A reports not previously used; B/C declarations pending; collector AI knows DocSync development history and has screened originals; model training exposure unknown",
+      "collected_at": "2026-10-11",
+      "files": {
+        "code_path": {
+          "sha256": "2b205638ab541785abe9c7b833c9a98d46cb0e4186b2ef103b8a099a90dd1d00",
+          "lines": 678
+        },
+        "document_path": {
+          "sha256": "d2fe6b8b2cdea2c2a247d2ababddb1b7f7e267666e603b2860123f4f34c698ab",
+          "lines": 814
+        }
+      }
+    },
+    {
+      "sample_id": "external-20",
+      "repo_id": "python-attrs/attrs",
+      "group_id": "external-python-attrs-attrs",
+      "head_sha": "644b4e165bfbeee7e127de6fcbda08b64014316f",
+      "code_path": "src/attr/_make.py",
+      "document_path": "docs/examples.md",
+      "origin": "real",
+      "source": "https://github.com/python-attrs/attrs",
+      "license": "MIT",
+      "rights_evidence": "rights-review.json and licenses/external-source-05",
+      "prior_exposure": "A reports not previously used; B/C declarations pending; collector AI knows DocSync development history and has screened originals; model training exposure unknown",
+      "collected_at": "2026-10-11",
+      "files": {
+        "code_path": {
+          "sha256": "db3b8d7a08c7ed547459e6828e906ae4044e234d0144c189595bdf56cff61a91",
+          "lines": 3462
+        },
+        "document_path": {
+          "sha256": "d2fe6b8b2cdea2c2a247d2ababddb1b7f7e267666e603b2860123f4f34c698ab",
+          "lines": 814
+        }
+      }
+    },
+    {
+      "sample_id": "external-21",
+      "repo_id": "rsalmei/alive-progress",
+      "group_id": "external-rsalmei-alive-progress",
+      "head_sha": "69d9bf0aba6276e2434a3a595cceca55040d64d7",
+      "code_path": "alive_progress/core/progress.py",
+      "document_path": "README.md",
+      "origin": "real",
+      "source": "https://github.com/rsalmei/alive-progress",
+      "license": "MIT",
+      "rights_evidence": "rights-review.json and licenses/external-source-06",
+      "prior_exposure": "A reports not previously used; B/C declarations pending; collector AI knows DocSync development history and has screened originals; model training exposure unknown",
+      "collected_at": "2026-10-11",
+      "files": {
+        "code_path": {
+          "sha256": "cd89360ace5820d35a3c6eb3cbf54e8bba9012f7290ade998fff49f7563eb02a",
+          "lines": 611
+        },
+        "document_path": {
+          "sha256": "44cd5d1834854ffe11e810cda8895ea05a7b5f65a1f84b7752585ef3d17caee4",
+          "lines": 1040
+        }
+      }
+    },
+    {
+      "sample_id": "external-22",
+      "repo_id": "rsalmei/alive-progress",
+      "group_id": "external-rsalmei-alive-progress",
+      "head_sha": "69d9bf0aba6276e2434a3a595cceca55040d64d7",
+      "code_path": "alive_progress/core/progress.py",
+      "document_path": "README.md",
+      "origin": "real",
+      "source": "https://github.com/rsalmei/alive-progress",
+      "license": "MIT",
+      "rights_evidence": "rights-review.json and licenses/external-source-06",
+      "prior_exposure": "A reports not previously used; B/C declarations pending; collector AI knows DocSync development history and has screened originals; model training exposure unknown",
+      "collected_at": "2026-10-11",
+      "files": {
+        "code_path": {
+          "sha256": "cd89360ace5820d35a3c6eb3cbf54e8bba9012f7290ade998fff49f7563eb02a",
+          "lines": 611
+        },
+        "document_path": {
+          "sha256": "44cd5d1834854ffe11e810cda8895ea05a7b5f65a1f84b7752585ef3d17caee4",
+          "lines": 1040
+        }
+      }
+    },
+    {
+      "sample_id": "external-23",
+      "repo_id": "rsalmei/alive-progress",
+      "group_id": "external-rsalmei-alive-progress",
+      "head_sha": "69d9bf0aba6276e2434a3a595cceca55040d64d7",
+      "code_path": "alive_progress/core/progress.py",
+      "document_path": "README.md",
+      "origin": "real",
+      "source": "https://github.com/rsalmei/alive-progress",
+      "license": "MIT",
+      "rights_evidence": "rights-review.json and licenses/external-source-06",
+      "prior_exposure": "A reports not previously used; B/C declarations pending; collector AI knows DocSync development history and has screened originals; model training exposure unknown",
+      "collected_at": "2026-10-11",
+      "files": {
+        "code_path": {
+          "sha256": "cd89360ace5820d35a3c6eb3cbf54e8bba9012f7290ade998fff49f7563eb02a",
+          "lines": 611
+        },
+        "document_path": {
+          "sha256": "44cd5d1834854ffe11e810cda8895ea05a7b5f65a1f84b7752585ef3d17caee4",
+          "lines": 1040
+        }
+      }
+    },
+    {
+      "sample_id": "external-24",
+      "repo_id": "rsalmei/alive-progress",
+      "group_id": "external-rsalmei-alive-progress",
+      "head_sha": "69d9bf0aba6276e2434a3a595cceca55040d64d7",
+      "code_path": "alive_progress/core/configuration.py",
+      "document_path": "README.md",
+      "origin": "real",
+      "source": "https://github.com/rsalmei/alive-progress",
+      "license": "MIT",
+      "rights_evidence": "rights-review.json and licenses/external-source-06",
+      "prior_exposure": "A reports not previously used; B/C declarations pending; collector AI knows DocSync development history and has screened originals; model training exposure unknown",
+      "collected_at": "2026-10-11",
+      "files": {
+        "code_path": {
+          "sha256": "77fc6d4e5151e1a51a559daf3b1c5b1570ea9c7a2b1e576e072e1d38a68c30d8",
+          "lines": 269
+        },
+        "document_path": {
+          "sha256": "44cd5d1834854ffe11e810cda8895ea05a7b5f65a1f84b7752585ef3d17caee4",
+          "lines": 1040
+        }
+      }
+    }
+  ],
+  "limits": "Purposive source-order sample; shared repository groups are correlated. Human labels, source-family review, B/C exposure declarations and formal evaluation freeze pending. Not a benchmark manifest.",
+  "selection_sha256": "f7d59ed67b5101c4be3ad3ee3d409f10c16b26177e0e2f736025cb53333e735a",
+  "screening_policy_sha256": "2b914a3bd98df21a0b0e1c4e366496ad057191cc3d5517dd08387f1915c24544",
+  "generator_sha256": "6eaf01922fa82ce069783ab020aa03605fb269c8756fc03e42f647e81e8903c7",
+  "context_index": "context-index.json",
+  "model_requests": 0,
+  "target_scans": 0
+}

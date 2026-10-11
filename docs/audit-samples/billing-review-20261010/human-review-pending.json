@@ -263,5 +263,5 @@
   ],
   "guide_progress": "Feedback received across all five guide items; scoped evidence retained. Patch concurrency correction remains assistant clarification, not user confirmation; historical log not blanket-approved.",
   "historical_review_map": "historical-review-map.json",
-  "remaining_scope": "19 unreviewed candidate adjudications; any unreviewed historical implementation outside explicit scope; B/C own reviews and formal release gates."
+  "remaining_scope": "A labels now 24/24 reviewed; see ../release-readiness-20261010/candidate-human-review-complete.json. B extension review and C independent B recheck received. Remaining historical scope and formal release gates are separate."
 }

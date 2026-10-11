@@ -1,0 +1,282 @@
+[
+  {
+    "source_id": "external-source-01",
+    "path": "docs/advanced/timeouts.md",
+    "packet_path": "context/external-source-01/docs/advanced/timeouts.md.txt",
+    "head_sha": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254",
+    "git_blob_sha": "aedcfb627f5139901638ebf8de30216c2640591e",
+    "sha256": "48959a587ecc6430f9051ab1b1c76fcebc3f3e95ec01199281aab813a2dcfaa1",
+    "lines": 71,
+    "url": "https://github.com/encode/httpx/blob/b5addb64f0161ff6bfe94c124ef76f6a1fba5254/docs/advanced/timeouts.md"
+  },
+  {
+    "source_id": "external-source-01",
+    "path": "httpx/__init__.py",
+    "packet_path": "context/external-source-01/httpx/__init__.py.txt",
+    "head_sha": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254",
+    "git_blob_sha": "63225040ba8c1f9cbf01ef6085debe00c99d108d",
+    "sha256": "ee97edea66c8b6e7fa76ac30847e4189dfe114069e86827719e23a7c2e110f40",
+    "lines": 106,
+    "url": "https://github.com/encode/httpx/blob/b5addb64f0161ff6bfe94c124ef76f6a1fba5254/httpx/__init__.py"
+  },
+  {
+    "source_id": "external-source-01",
+    "path": "httpx/_api.py",
+    "packet_path": "context/external-source-01/httpx/_api.py.txt",
+    "head_sha": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254",
+    "git_blob_sha": "c3cda1ecda8629edbdca2e3bc04bc51dba5e1430",
+    "sha256": "aff660b388c8a5c3c92ea2b975b6d26b2aa8fe254c2856b164277ea0e1f12c4b",
+    "lines": 438,
+    "url": "https://github.com/encode/httpx/blob/b5addb64f0161ff6bfe94c124ef76f6a1fba5254/httpx/_api.py"
+  },
+  {
+    "source_id": "external-source-01",
+    "path": "httpx/_client.py",
+    "packet_path": "context/external-source-01/httpx/_client.py.txt",
+    "head_sha": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254",
+    "git_blob_sha": "13cd9336732a0854dae25b53b34e4b2e749b5897",
+    "sha256": "ed717b3ac00debb48d089daeb4dd7fbaf47cb5642ebc4a6e76f3a2fc6cfc0f70",
+    "lines": 2019,
+    "url": "https://github.com/encode/httpx/blob/b5addb64f0161ff6bfe94c124ef76f6a1fba5254/httpx/_client.py"
+  },
+  {
+    "source_id": "external-source-01",
+    "path": "httpx/_config.py",
+    "packet_path": "context/external-source-01/httpx/_config.py.txt",
+    "head_sha": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254",
+    "git_blob_sha": "467a6c90ae269babe3af7963d9d7c78b9f012268",
+    "sha256": "a4fa7653ec2271f70ab05f8a6111352d876dddee84446788a1767c1a3a372d67",
+    "lines": 248,
+    "url": "https://github.com/encode/httpx/blob/b5addb64f0161ff6bfe94c124ef76f6a1fba5254/httpx/_config.py"
+  },
+  {
+    "source_id": "external-source-01",
+    "path": "httpx/_types.py",
+    "packet_path": "context/external-source-01/httpx/_types.py.txt",
+    "head_sha": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254",
+    "git_blob_sha": "704dfdffc8ba61eb913fa918072381e410b23c00",
+    "sha256": "272878d4642aec039ebfc20e58a0c083bcc26ef1c07ee7e65b983f3e24ed12b6",
+    "lines": 114,
+    "url": "https://github.com/encode/httpx/blob/b5addb64f0161ff6bfe94c124ef76f6a1fba5254/httpx/_types.py"
+  },
+  {
+    "source_id": "external-source-02",
+    "path": "README.md",
+    "packet_path": "context/external-source-02/README.md.txt",
+    "head_sha": "0412a60d6aff63a4ed009c7445993b42d294c2f1",
+    "git_blob_sha": "b70ecb1d689b0f0acd39a9141dbdf2fc3ea747dd",
+    "sha256": "284609d9e5cb8c08293abb14b15358c831ecd11d7effff6118c08fc6286eee9a",
+    "lines": 416,
+    "url": "https://github.com/Delgan/loguru/blob/0412a60d6aff63a4ed009c7445993b42d294c2f1/README.md"
+  },
+  {
+    "source_id": "external-source-02",
+    "path": "loguru/__init__.py",
+    "packet_path": "context/external-source-02/loguru/__init__.py.txt",
+    "head_sha": "0412a60d6aff63a4ed009c7445993b42d294c2f1",
+    "git_blob_sha": "1bcd82442630b3c6d4615ebf79b5f7d3f0ed9e8b",
+    "sha256": "196e5e0ff9f2234516dcb9385ccbf6524c0a6d72b0a97ca5c81bd225a7c3df19",
+    "lines": 34,
+    "url": "https://github.com/Delgan/loguru/blob/0412a60d6aff63a4ed009c7445993b42d294c2f1/loguru/__init__.py"
+  },
+  {
+    "source_id": "external-source-02",
+    "path": "loguru/_defaults.py",
+    "packet_path": "context/external-source-02/loguru/_defaults.py.txt",
+    "head_sha": "0412a60d6aff63a4ed009c7445993b42d294c2f1",
+    "git_blob_sha": "3ba5e12ab2ef19b58f33b898a9f0e6a577564dae",
+    "sha256": "cf9fcc7589e745e571759c81717cb72544ffe8fd0cad9dafea15417967f07259",
+    "lines": 75,
+    "url": "https://github.com/Delgan/loguru/blob/0412a60d6aff63a4ed009c7445993b42d294c2f1/loguru/_defaults.py"
+  },
+  {
+    "source_id": "external-source-02",
+    "path": "loguru/_logger.py",
+    "packet_path": "context/external-source-02/loguru/_logger.py.txt",
+    "head_sha": "0412a60d6aff63a4ed009c7445993b42d294c2f1",
+    "git_blob_sha": "3385c1f1e3d60913b3afd801095390324467c3eb",
+    "sha256": "e4ef09f91d6622ec84450410802d64cb61be9361e8482343780d1475454f07c0",
+    "lines": 2281,
+    "url": "https://github.com/Delgan/loguru/blob/0412a60d6aff63a4ed009c7445993b42d294c2f1/loguru/_logger.py"
+  },
+  {
+    "source_id": "external-source-03",
+    "path": "README.md",
+    "packet_path": "context/external-source-03/README.md.txt",
+    "head_sha": "0b2880591780a426b0551436f47a17e7a76d954f",
+    "git_blob_sha": "3400e67cc5321f0e0dbe23a8eb39b5b8020e4ef9",
+    "sha256": "7d06cf7aa8278a4416873e141b5510d99bcc46bd14b440221ef46eba74009441",
+    "lines": 260,
+    "url": "https://github.com/theskumar/python-dotenv/blob/0b2880591780a426b0551436f47a17e7a76d954f/README.md"
+  },
+  {
+    "source_id": "external-source-03",
+    "path": "src/dotenv/__init__.py",
+    "packet_path": "context/external-source-03/src/dotenv/__init__.py.txt",
+    "head_sha": "0b2880591780a426b0551436f47a17e7a76d954f",
+    "git_blob_sha": "dde24a0138999bd3876dfdfad02d5d93014e481c",
+    "sha256": "6e163e88aeb0c0765a996208e9e482b820165d435d9f64d016610eb97494ed23",
+    "lines": 51,
+    "url": "https://github.com/theskumar/python-dotenv/blob/0b2880591780a426b0551436f47a17e7a76d954f/src/dotenv/__init__.py"
+  },
+  {
+    "source_id": "external-source-03",
+    "path": "src/dotenv/main.py",
+    "packet_path": "context/external-source-03/src/dotenv/main.py.txt",
+    "head_sha": "0b2880591780a426b0551436f47a17e7a76d954f",
+    "git_blob_sha": "5faa7f0e40ef73fbb87e024915ad775db25d4ff7",
+    "sha256": "fcb89122cd8756c43209f9052bb3c552dbe440d45493c762295c771f0d1ceaa8",
+    "lines": 532,
+    "url": "https://github.com/theskumar/python-dotenv/blob/0b2880591780a426b0551436f47a17e7a76d954f/src/dotenv/main.py"
+  },
+  {
+    "source_id": "external-source-03",
+    "path": "src/dotenv/parser.py",
+    "packet_path": "context/external-source-03/src/dotenv/parser.py.txt",
+    "head_sha": "0b2880591780a426b0551436f47a17e7a76d954f",
+    "git_blob_sha": "d9d475838282140d07d4bc1bfec4a8890bdfaf36",
+    "sha256": "0bc1350444eeff987f2c22924400ad0b7727563798118c641cd4c0de55bd30d0",
+    "lines": 191,
+    "url": "https://github.com/theskumar/python-dotenv/blob/0b2880591780a426b0551436f47a17e7a76d954f/src/dotenv/parser.py"
+  },
+  {
+    "source_id": "external-source-03",
+    "path": "src/dotenv/variables.py",
+    "packet_path": "context/external-source-03/src/dotenv/variables.py.txt",
+    "head_sha": "0b2880591780a426b0551436f47a17e7a76d954f",
+    "git_blob_sha": "667f2f26ff2182ecdfc5b809ba97a6cf1d1be13a",
+    "sha256": "083d2a5cebefa41deae51a4140c0fda97eaf1d7ed2c96f92ba2c063054a5b74f",
+    "lines": 86,
+    "url": "https://github.com/theskumar/python-dotenv/blob/0b2880591780a426b0551436f47a17e7a76d954f/src/dotenv/variables.py"
+  },
+  {
+    "source_id": "external-source-04",
+    "path": "README.md",
+    "packet_path": "context/external-source-04/README.md.txt",
+    "head_sha": "9d8f9a372cc5916fd4781fec207ced7ddac2f08f",
+    "git_blob_sha": "a8475817e1d00628656acd0d7eab72df16f61371",
+    "sha256": "2f68e0e5b36f088e4059f08717454bfca47691b0188a278c7966eef6205c0d63",
+    "lines": 445,
+    "url": "https://github.com/Textualize/rich/blob/9d8f9a372cc5916fd4781fec207ced7ddac2f08f/README.md"
+  },
+  {
+    "source_id": "external-source-04",
+    "path": "rich/__init__.py",
+    "packet_path": "context/external-source-04/rich/__init__.py.txt",
+    "head_sha": "9d8f9a372cc5916fd4781fec207ced7ddac2f08f",
+    "git_blob_sha": "3edd12e0167e159890655f985299759792b71dd0",
+    "sha256": "8fb000f7fcff3c03506e6453c1391665cfc355daad0411f106a1ab32ccf6d422",
+    "lines": 177,
+    "url": "https://github.com/Textualize/rich/blob/9d8f9a372cc5916fd4781fec207ced7ddac2f08f/rich/__init__.py"
+  },
+  {
+    "source_id": "external-source-04",
+    "path": "rich/console.py",
+    "packet_path": "context/external-source-04/rich/console.py.txt",
+    "head_sha": "9d8f9a372cc5916fd4781fec207ced7ddac2f08f",
+    "git_blob_sha": "0bdce769874bb787aa204682f3780b46bede90a4",
+    "sha256": "4533fc66963623a2a21447b501d6f51f8cfee7e14775178093a5e6eb61dc135a",
+    "lines": 2698,
+    "url": "https://github.com/Textualize/rich/blob/9d8f9a372cc5916fd4781fec207ced7ddac2f08f/rich/console.py"
+  },
+  {
+    "source_id": "external-source-04",
+    "path": "rich/pretty.py",
+    "packet_path": "context/external-source-04/rich/pretty.py.txt",
+    "head_sha": "9d8f9a372cc5916fd4781fec207ced7ddac2f08f",
+    "git_blob_sha": "00abecab356bcfcec4fc979c71da90a7672843db",
+    "sha256": "9715bf6e105f0d329efa0aedccfd4a42142ca8f6717d9375e2d8782515682f34",
+    "lines": 1016,
+    "url": "https://github.com/Textualize/rich/blob/9d8f9a372cc5916fd4781fec207ced7ddac2f08f/rich/pretty.py"
+  },
+  {
+    "source_id": "external-source-05",
+    "path": "docs/examples.md",
+    "packet_path": "context/external-source-05/docs/examples.md.txt",
+    "head_sha": "644b4e165bfbeee7e127de6fcbda08b64014316f",
+    "git_blob_sha": "f48b848bd2a9b8799fe552ab2d5d015aa1f848b8",
+    "sha256": "d2fe6b8b2cdea2c2a247d2ababddb1b7f7e267666e603b2860123f4f34c698ab",
+    "lines": 814,
+    "url": "https://github.com/python-attrs/attrs/blob/644b4e165bfbeee7e127de6fcbda08b64014316f/docs/examples.md"
+  },
+  {
+    "source_id": "external-source-05",
+    "path": "src/attr/__init__.py",
+    "packet_path": "context/external-source-05/src/attr/__init__.py.txt",
+    "head_sha": "644b4e165bfbeee7e127de6fcbda08b64014316f",
+    "git_blob_sha": "81b8a5dba769dd30146cc7e28727bca8b80426b3",
+    "sha256": "4fdf747231ee1acc387a5912d163595305e7cf73536a0954a23e12be98e323f8",
+    "lines": 120,
+    "url": "https://github.com/python-attrs/attrs/blob/644b4e165bfbeee7e127de6fcbda08b64014316f/src/attr/__init__.py"
+  },
+  {
+    "source_id": "external-source-05",
+    "path": "src/attr/_make.py",
+    "packet_path": "context/external-source-05/src/attr/_make.py.txt",
+    "head_sha": "644b4e165bfbeee7e127de6fcbda08b64014316f",
+    "git_blob_sha": "e5b3760c14ba16112ee3a3be0f98248786a8b3bf",
+    "sha256": "db3b8d7a08c7ed547459e6828e906ae4044e234d0144c189595bdf56cff61a91",
+    "lines": 3462,
+    "url": "https://github.com/python-attrs/attrs/blob/644b4e165bfbeee7e127de6fcbda08b64014316f/src/attr/_make.py"
+  },
+  {
+    "source_id": "external-source-05",
+    "path": "src/attr/_next_gen.py",
+    "packet_path": "context/external-source-05/src/attr/_next_gen.py.txt",
+    "head_sha": "644b4e165bfbeee7e127de6fcbda08b64014316f",
+    "git_blob_sha": "fc473608b3f6261fdf858948f4ae2671aa98076f",
+    "sha256": "2b205638ab541785abe9c7b833c9a98d46cb0e4186b2ef103b8a099a90dd1d00",
+    "lines": 678,
+    "url": "https://github.com/python-attrs/attrs/blob/644b4e165bfbeee7e127de6fcbda08b64014316f/src/attr/_next_gen.py"
+  },
+  {
+    "source_id": "external-source-05",
+    "path": "src/attrs/__init__.py",
+    "packet_path": "context/external-source-05/src/attrs/__init__.py.txt",
+    "head_sha": "644b4e165bfbeee7e127de6fcbda08b64014316f",
+    "git_blob_sha": "db0e46383facd83a25326ba7ea9208633724af4b",
+    "sha256": "3ea59419611e6cfc16be5521f2a3a69e030ec97e737fac48b7f38b88a06a2006",
+    "lines": 76,
+    "url": "https://github.com/python-attrs/attrs/blob/644b4e165bfbeee7e127de6fcbda08b64014316f/src/attrs/__init__.py"
+  },
+  {
+    "source_id": "external-source-06",
+    "path": "README.md",
+    "packet_path": "context/external-source-06/README.md.txt",
+    "head_sha": "69d9bf0aba6276e2434a3a595cceca55040d64d7",
+    "git_blob_sha": "5dda825556e023c2986eebe5a3b39000c92971fd",
+    "sha256": "44cd5d1834854ffe11e810cda8895ea05a7b5f65a1f84b7752585ef3d17caee4",
+    "lines": 1040,
+    "url": "https://github.com/rsalmei/alive-progress/blob/69d9bf0aba6276e2434a3a595cceca55040d64d7/README.md"
+  },
+  {
+    "source_id": "external-source-06",
+    "path": "alive_progress/__init__.py",
+    "packet_path": "context/external-source-06/alive_progress/__init__.py.txt",
+    "head_sha": "69d9bf0aba6276e2434a3a595cceca55040d64d7",
+    "git_blob_sha": "3a69a9cec8d633abbc346bf030398472e3f3d1e1",
+    "sha256": "84529ef495ba441caeaa42d4a0536a76fd47c444ada96a06416a737c0a6927d2",
+    "lines": 12,
+    "url": "https://github.com/rsalmei/alive-progress/blob/69d9bf0aba6276e2434a3a595cceca55040d64d7/alive_progress/__init__.py"
+  },
+  {
+    "source_id": "external-source-06",
+    "path": "alive_progress/core/configuration.py",
+    "packet_path": "context/external-source-06/alive_progress/core/configuration.py.txt",
+    "head_sha": "69d9bf0aba6276e2434a3a595cceca55040d64d7",
+    "git_blob_sha": "b36d671f6eed3e52b937953e86e74c60cc6c4f1b",
+    "sha256": "77fc6d4e5151e1a51a559daf3b1c5b1570ea9c7a2b1e576e072e1d38a68c30d8",
+    "lines": 269,
+    "url": "https://github.com/rsalmei/alive-progress/blob/69d9bf0aba6276e2434a3a595cceca55040d64d7/alive_progress/core/configuration.py"
+  },
+  {
+    "source_id": "external-source-06",
+    "path": "alive_progress/core/progress.py",
+    "packet_path": "context/external-source-06/alive_progress/core/progress.py.txt",
+    "head_sha": "69d9bf0aba6276e2434a3a595cceca55040d64d7",
+    "git_blob_sha": "789ff84e29a8e14beb12996c7324f5a05eca08fc",
+    "sha256": "cd89360ace5820d35a3c6eb3cbf54e8bba9012f7290ade998fff49f7563eb02a",
+    "lines": 611,
+    "url": "https://github.com/rsalmei/alive-progress/blob/69d9bf0aba6276e2434a3a595cceca55040d64d7/alive_progress/core/progress.py"
+  }
+]

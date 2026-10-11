@@ -1,6 +1,6 @@
 # GitHub Actions 接入
 
-`action/action.yml` 是 Linux runner 的 composite Action，目标仓库仅作为数据。下面固定到已通过双平台 Core CI 的合并提交 `7db2456a1ff955f72eab2504169b17409c5ab4fb`。这是经验证的开发提交，不是正式发布 tag；不能使用被扫描 PR 的工具版本。
+`action/action.yml` 是 Linux runner 的 composite Action，目标仓库仅作为数据。下面固定到已通过双平台 Core CI 的合并提交 `ecb00181693c3fe188523f33d35fa0c3ab5d3a5b`。这是经验证的开发提交，不是正式发布 tag；不能使用被扫描 PR 的工具版本。
 
 ```yaml
 name: Documentation drift
@@ -18,7 +18,7 @@ jobs:
           fetch-depth: 0
           path: target
           persist-credentials: false
-      - uses: Spring0602/DocSync/action@FULL_TRUSTED_COMMIT_SHA
+      - uses: Spring0602/DocSync/action@ecb00181693c3fe188523f33d35fa0c3ab5d3a5b
         id: docsync
         with:
           repo-path: target
