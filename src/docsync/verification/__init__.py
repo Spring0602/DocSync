@@ -42,6 +42,16 @@ def valid_span(span: SourceSpan, snapshot: SnapshotData, quote: str) -> bool:
     ] == quote.encode("utf-8")
 
 
+def valid_provenance(spans: list[SourceSpan], snapshot: SnapshotData) -> bool:
+    return all(
+        (data := snapshot.blobs.get(span.path)) is not None
+        and digest(data) == span.blob_hash
+        and span.end_byte <= len(data)
+        and span_for(span.path, data, span.start_byte, span.end_byte) == span
+        for span in spans
+    )
+
+
 def verify(
     judgment: JudgeResult,
     claim: DocumentClaim,
@@ -60,8 +70,10 @@ def verify(
     fact = facts.get(judgment.fact_ids[0])
     if fact is None:
         return reject("INVALID_REFERENCE")
-    if not valid_span(claim.span, snapshot, claim.quote) or not valid_span(
-        fact.span, snapshot, fact.expression
+    if (
+        not valid_span(claim.span, snapshot, claim.quote)
+        or not valid_span(fact.span, snapshot, fact.expression)
+        or not valid_provenance(fact.provenance, snapshot)
     ):
         return reject("EVIDENCE_MISMATCH")
     index = index or VerificationIndex.from_snapshot(snapshot)
@@ -92,6 +104,7 @@ def verify(
             entity_id=fact.entity_id,
             document=claim.span,
             code=fact.span,
+            code_provenance=fact.provenance,
             rule_id=rule_id,
         ),
     )

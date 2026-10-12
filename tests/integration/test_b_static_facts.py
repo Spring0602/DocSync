@@ -201,6 +201,7 @@ def test_safe_direct_and_chained_exports_keep_original_evidence(commit_files):
     assert {item.fact_kind for item in exported} == {"DEFAULT_VALUE", "SIGNATURE"}
     assert all(item.span.path == "impl.py" for item in exported)
     assert all(item.entity_id == exported[0].entity_id for item in exported)
+    assert all(item.provenance and item.provenance[-1].path == "facade.py" for item in exported)
     owner = next(item for item in report.entities if item.entity_id == exported[0].entity_id)
     assert owner.qualified_name == "impl.connect"
     assert report.confirmed_count == 1

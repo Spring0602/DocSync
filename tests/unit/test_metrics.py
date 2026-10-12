@@ -3,6 +3,8 @@ from pathlib import Path
 
 import pytest
 
+from docsync.metrics import evaluate
+
 spec = importlib.util.spec_from_file_location(
     "bench_evaluate", Path(__file__).parents[2] / "bench/evaluate.py"
 )
@@ -58,3 +60,14 @@ def test_failed_definite_prediction_rejected():
                 }
             ]
         )
+
+
+def test_explicit_consistency_does_not_count_abstention_as_correct():
+    rows = [
+        dict(sample_id=str(i), gold="CONSISTENT", prediction=p, status="COMPLETED")
+        for i, p in enumerate(["CONSISTENT", "UNCERTAIN", "SKIPPED", "INCONSISTENT"])
+    ]
+    result = evaluate(rows)
+    assert result["counts"]["tn"] == 3
+    assert result["explicit_consistency_rate"] == 0.25
+    assert result["recall"] is None

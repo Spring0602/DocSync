@@ -195,6 +195,13 @@
           "default": "python-static/2",
           "title": "Extractor Version",
           "type": "string"
+        },
+        "provenance": {
+          "items": {
+            "$ref": "#/$defs/SourceSpan"
+          },
+          "title": "Provenance",
+          "type": "array"
         }
       },
       "required": [
@@ -415,6 +422,13 @@
         },
         "code": {
           "$ref": "#/$defs/SourceSpan"
+        },
+        "code_provenance": {
+          "items": {
+            "$ref": "#/$defs/SourceSpan"
+          },
+          "title": "Code Provenance",
+          "type": "array"
         },
         "rule_id": {
           "default": "DEFAULT_VALUE/1",

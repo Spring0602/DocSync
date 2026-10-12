@@ -1,4 +1,123 @@
 {
+  "$defs": {
+    "ClaimScope": {
+      "additionalProperties": false,
+      "properties": {
+        "document_ranges": {
+          "items": {
+            "$ref": "#/$defs/LineRange"
+          },
+          "minItems": 1,
+          "title": "Document Ranges",
+          "type": "array"
+        },
+        "code_path": {
+          "minLength": 1,
+          "title": "Code Path",
+          "type": "string"
+        },
+        "entity_names": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Entity Names",
+          "type": "array"
+        },
+        "subject": {
+          "minLength": 1,
+          "title": "Subject",
+          "type": "string"
+        },
+        "predicate": {
+          "minLength": 1,
+          "title": "Predicate",
+          "type": "string"
+        },
+        "required_provenance": {
+          "items": {
+            "$ref": "#/$defs/SourceSpan"
+          },
+          "title": "Required Provenance",
+          "type": "array"
+        }
+      },
+      "required": [
+        "document_ranges",
+        "code_path",
+        "entity_names",
+        "subject",
+        "predicate"
+      ],
+      "title": "ClaimScope",
+      "type": "object"
+    },
+    "LineRange": {
+      "additionalProperties": false,
+      "properties": {
+        "start": {
+          "minimum": 1,
+          "title": "Start",
+          "type": "integer"
+        },
+        "end": {
+          "minimum": 1,
+          "title": "End",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "start",
+        "end"
+      ],
+      "title": "LineRange",
+      "type": "object"
+    },
+    "SourceSpan": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "start_line": {
+          "minimum": 1,
+          "title": "Start Line",
+          "type": "integer"
+        },
+        "end_line": {
+          "minimum": 1,
+          "title": "End Line",
+          "type": "integer"
+        },
+        "start_byte": {
+          "minimum": 0,
+          "title": "Start Byte",
+          "type": "integer"
+        },
+        "end_byte": {
+          "minimum": 0,
+          "title": "End Byte",
+          "type": "integer"
+        },
+        "blob_hash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Blob Hash",
+          "type": "string"
+        }
+      },
+      "required": [
+        "path",
+        "start_line",
+        "end_line",
+        "start_byte",
+        "end_byte",
+        "blob_hash"
+      ],
+      "title": "SourceSpan",
+      "type": "object"
+    }
+  },
   "additionalProperties": false,
   "properties": {
     "sample_id": {
@@ -95,6 +214,17 @@
       ],
       "default": null,
       "title": "Claim Line"
+    },
+    "claim_scope": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ClaimScope"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
     }
   },
   "required": [

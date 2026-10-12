@@ -84,3 +84,7 @@ foreach ($source in $sourceRows) {
 - packet.json SHA-256：`d2e30c933b2a31dd06c192b5f2834b51164220fb7fb8ec0dd08b29d0921cdf89`
 - checksums.json SHA-256：`ba1be2574191267018f66c08b33b51553ff2886c5a72470ca3ec4796cd6cce3f`
 - 压缩包 SHA-256：`f8e6dc1e3a55b5f52e3b76b0ab29a31cd50335c28c6c78b0edd11be2a3cb582c`
+
+## 2026-10-12 接收及技术裁决更新
+
+B/C external-v1 原表和接触声明已接收并冻结，双表结构检查通过，不再重复派发标注。24 条技术复查完成：23 条在限定范围内一致，external-10 的文档场景范围未决；原表不改。详见[逐条裁决及 A 复核指南](external-adjudication-20261012.md)。成员A已确认本轮 24/24 条技术裁决（10 认可保留未决），反馈接收于 2026-10-12；正式 test 仍为 0，独立性与计分/扫描方案仍待完成。本页早期等待交付的说明保留为历史，不代表最新状态。

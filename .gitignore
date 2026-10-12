@@ -17,5 +17,8 @@ htmlcov/
 /*.docx
 /*.pdf
 
+# Competition organizer template docs, not project materials.
+/2026AIC作品方案模板/
+
 # Private provider exports contain account and masked credential identifiers.
 /usage_data_2026-09-11_2026-10-10/

@@ -2,7 +2,7 @@ import ast
 from dataclasses import dataclass
 from typing import Any
 
-from docsync.models import CodeEntity, CodeFact, Diagnostic, Parameter, ParameterKind
+from docsync.models import CodeEntity, CodeFact, Diagnostic, Parameter, ParameterKind, SourceSpan
 from docsync.repository import SnapshotData
 from docsync.utils import literal_value, span_for, stable_id
 
@@ -723,8 +723,12 @@ def extract_code(snapshot: SnapshotData) -> CodeExtractionResult:
     # alias only when that local binding is unique. Clone facts with the exported subject while
     # retaining the original entity and source span. Star imports, conditional imports, missing
     # modules and any rebinding deliberately produce no alias facts.
-    exports: list[tuple[str, str, str, str, str]] = []
+    exports: list[tuple[str, str, str, str, str, SourceSpan]] = []
     for module, (path, tree) in module_trees.items():
+        export_data = snapshot.blobs[path]
+        export_offsets = [0]
+        for line in export_data.splitlines(keepends=True):
+            export_offsets.append(export_offsets[-1] + len(line))
         binding_counts: dict[str, int] = {}
         candidates: list[tuple[ast.ImportFrom, ast.alias, str]] = []
         for statement in tree.body:
@@ -770,7 +774,14 @@ def extract_code(snapshot: SnapshotData) -> CodeExtractionResult:
                 source_module = ".".join([*prefix, statement.module])
             else:
                 source_module = statement.module
-            exports.append((module, path, source_module, alias.name, binding))
+            export_span = span_for(
+                path,
+                export_data,
+                export_offsets[statement.lineno - 1] + statement.col_offset,
+                export_offsets[(statement.end_lineno or statement.lineno) - 1]
+                + (statement.end_col_offset or 0),
+            )
+            exports.append((module, path, source_module, alias.name, binding, export_span))
 
     seen = {
         (
@@ -786,7 +797,7 @@ def extract_code(snapshot: SnapshotData) -> CodeExtractionResult:
     }
     for _ in range(len(exports) + 1):
         changed = False
-        for target_module, target_path, source_module, imported_name, binding in exports:
+        for target_module, target_path, source_module, imported_name, binding, export_span in exports:
             source = source_module + "." + imported_name
             exported_subject = target_module + "." + binding
             for fact in list(facts):
@@ -809,6 +820,7 @@ def extract_code(snapshot: SnapshotData) -> CodeExtractionResult:
                         update={
                             "fact_id": stable_id("export", target_path, subject, fact.fact_id),
                             "subject": subject,
+                            "provenance": [*fact.provenance, export_span],
                         }
                     )
                 )

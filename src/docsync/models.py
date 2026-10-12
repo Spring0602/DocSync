@@ -101,6 +101,7 @@ class CodeFact(Model):
     parameters: list[Parameter] = Field(default_factory=list)
     receiver: Literal["none", "instance", "class"] = "none"
     extractor_version: str = "python-static/2"
+    provenance: list[SourceSpan] = Field(default_factory=list)
 
 
 class DocumentClaim(Model):
@@ -155,6 +156,7 @@ class Evidence(Model):
     entity_id: str
     document: SourceSpan
     code: SourceSpan
+    code_provenance: list[SourceSpan] = Field(default_factory=list)
     rule_id: str = "DEFAULT_VALUE/1"
     verifier_version: str = "verifier/2"
 
@@ -274,6 +276,8 @@ class ScanReport(Model):
         for fact in self.facts:
             if fact.entity_id not in entities or blobs.get(fact.span.path) != fact.span.blob_hash:
                 raise ValueError("Fact has an invalid entity or snapshot reference")
+            if any(blobs.get(span.path) != span.blob_hash for span in fact.provenance):
+                raise ValueError("Fact provenance has an invalid snapshot reference")
         for claim in self.claims:
             if blobs.get(claim.span.path) != claim.span.blob_hash:
                 raise ValueError("Claim has an invalid snapshot reference")
@@ -293,7 +297,9 @@ class ScanReport(Model):
             ):
                 raise ValueError("Invalid finding reference")
             if (
-                finding.evidence.document != claims[finding.claim_id].span
+                finding.evidence.code_provenance != facts[finding.fact_ids[0]].provenance
+                or finding.evidence.entity_id != facts[finding.fact_ids[0]].entity_id
+                or finding.evidence.document != claims[finding.claim_id].span
                 or finding.evidence.code != facts[finding.fact_ids[0]].span
                 or finding.evidence.head_sha != self.snapshot.head_sha
                 or finding.evidence.snapshot_hash != self.snapshot.files_hash

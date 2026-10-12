@@ -38,7 +38,8 @@ def test_report_read_render_and_patch_export(versioned_report, tmp_path):
     reread = ScanReport.model_validate_json((out / "report.json").read_bytes())
     assert reread.findings == report.findings
     for before, after in zip(original["findings"], reread.findings, strict=True):
-        assert before["evidence"] == after.evidence.model_dump(mode="json")
+        expected = {"code_provenance": [], **before["evidence"]}
+        assert expected == after.evidence.model_dump(mode="json")
     for claim in report.claims:
         assert claim.span == next(c.span for c in reread.claims if c.claim_id == claim.claim_id)
     assert report.findings[0].finding_id in (out / "report.md").read_text(encoding="utf-8")

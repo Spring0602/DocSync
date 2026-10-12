@@ -51,8 +51,16 @@ def evaluate(rows: list[dict]) -> dict:
         return numerator / denominator if denominator else None
 
     tp, fp, tn, fn = (counts[key] for key in ("tp", "fp", "tn", "fn"))
+    units = {row.get("evaluation_unit", "sample") for row in rows}
     return {
         "sample_count": len(rows),
+        "evaluation_unit": next(iter(units)) if len(units) == 1 else "mixed",
+        "declaration_count": sum(row.get("evaluation_unit") == "declaration" for row in rows),
+        "explicit_consistency_rate": ratio(
+            sum(r["gold"] == "CONSISTENT" and r["prediction"] == "CONSISTENT" for r in rows),
+            sum(r["gold"] == "CONSISTENT" for r in rows),
+        ),
+        "complete_run_rate": ratio(sum(r["status"] == "COMPLETED" for r in rows), len(rows)),
         "counts": counts,
         "precision": ratio(tp, tp + fp),
         "recall": ratio(tp, tp + fn),

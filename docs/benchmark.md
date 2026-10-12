@@ -39,8 +39,24 @@ python bench/evaluate.py --input runs/my-benchmark/predictions.jsonl --out runs/
 
 B-N1/C-N1 各提交完整独立标注；A-N2 负责裁决、目标实体映射、数据分组及 Recall@K 口径/实现。C 的现有预填表不是已完成标注，A 已明确暂不冻结，见 [接收记录](a-acceptance-20260930.md)。
 
-开发数据可继续验证流程。正式实验 A-N3 等待数据、模型和相关代码修复准备好；固定同一版本运行并保留失败、拒答及 PARTIAL。当前分类 recall 不等于 Recall@K，后者尚未实现，不报告虚构数值。详细操作与交付物见 [任务清单](tasks.md)。
+开发数据可继续验证流程。正式实验 A-N3 等待数据、模型和相关代码修复准备好；固定同一版本运行并保留失败、拒答及 PARTIAL。分类 recall 不等于 Recall@K；当前候选指标入口为 bench/evaluate_alignment.py，旧开发集的限定结果不代表正式集指标。详细操作与交付物见 [任务清单](tasks.md)。
 
 ## 已裁决开发版本与候选指标
 
 seed-dev-v1 已保存双人标注、技术裁决、固定 manifest 及 hash；原 build_seed.py 仍生成 provisional 样本。新入口为 bench/builders/build_reviewed_seed.py，候选指标为 bench/evaluate_alignment.py。16 个预定可判定样本、4 个排除及详细计分规则见 [冻结说明](../bench/frozen/seed-dev-v1/README.md)。正式独立测试与真实模型实验仍待完成。
+
+## 2026-10-12 声明级匹配第一阶段
+
+`BenchmarkSample.claim_scope` 为可选评测字段，未设置时旧 manifest 行为不变。设置时包含 `document_ranges`（start/end，闭区间）、`code_path`、`entity_names`（允许的实现限定名/别名）、`subject`（文档主体）、`predicate`（参数/属性）。声明须完整落在任一指定区间；事实须匹配实体所属路径、允许的实体名、属性及 drift_type。公开文档主体与内部事实限定名不要求字面相同，依靠显式实体映射连接。
+
+不存在对应声明为 SKIPPED；匹配声明但无合法事实、判断矛盾、有拒绝记录或版本不符为 UNCERTAIN。rules/full 等模式的冲突需要有效且未忽略的 finding；llm/no_verifier 仍使用未验证判断。旧模式没有重新计算历史报告。评测元数据仅用于结果匹配，不传入 scan 或模型提示。
+
+关键词基线不能验证实体归属，新范围模式保守返回 SKIPPED；它与旧关键词分数不直接可比。跨文件导出事实现在保留逐段 provenance，并在验证时重新校验每个来源文件的 blob、偏移和链条；篡改或缺失链条会拒绝发布 finding。声明级 benchmark 行记录 `evaluation_unit=declaration`，metrics 同时记录 `evaluation_unit` 和 `declaration_count`。最终扫描范围/预算仍待冻结。相同仓库、提交和配置的规则报告现在在一次 benchmark run 内复用，但每个 sample 仍写出独立报告；相同仓库发现坐标的重复 sample 会在运行前拒绝，避免同一 finding 被重复归属。
+
+验证使用独立合成仓库（同文档两个函数），覆盖正确目标、错误实体、声明缺失、SHA 不匹配、矛盾判断及缺失 verifier 证据。不扫描 external-v1，不使用其预测调参。测试须设置 `PYTHONPATH=src`，当前虚拟环境安装包可能仍为旧版本。
+
+本阶段实现由 Codex 完成。2026-10-12 已完成结项所列四项源码阅读复核（Codex，A 委托，披露身份），见 [评测新代码复核](a-evaluation-code-review-20261012.md)；此前 24 条标注确认不覆盖这次新代码，亦不代签成员 A 本人。
+
+验证补记：源码全套初跑 222 passed、2 skipped、1 failed；唯一失败为新增可选字段后 benchmark JSON Schema 未同步。已重新生成 `bench/schema/sample.schema.json`，相关契约与 benchmark 复验 37 passed；Ruff 和两模块 mypy 通过，git diff --check 通过。未声称修复后重新执行了全套。两个 skip 为 Windows 符号链接权限限制。
+
+2026-10-12 后续收尾：新增 required_provenance 精确链约束、实际路径上的重叠声明拒绝、复用行用量去重、明确一致率与分组指标。当前预算仍按样本保守估计，不能误称实际调用量。实现边界与最新验证见[工程收尾](a-evaluation-closeout-20261012.md)。

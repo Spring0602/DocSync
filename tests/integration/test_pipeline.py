@@ -165,6 +165,29 @@ def test_forged_evidence_is_rejected(commit_files):
         validate_response(json.dumps(payload), claim, set(facts))
 
 
+def test_forged_cross_file_provenance_is_rejected(commit_files):
+    repo = commit_files(
+        {
+            "impl.py": CODE,
+            "facade.py": "from impl import connect\n",
+            "README.md": DOC.replace("## `connect`", "## `facade.connect`"),
+        }
+    )
+    report = scan(RepoSpec(repo=repo))
+    claim = report.claims[0]
+    judgment = report.judgments[0]
+    facts = {f.fact_id: f for f in report.facts}
+    fact = facts[judgment.fact_ids[0]]
+    forged = fact.model_copy(update={"provenance": []})
+    rejected = verify(
+        judgment,
+        claim,
+        {**facts, forged.fact_id: forged},
+        analyze(RepoSpec(repo=repo), ScanConfig()),
+    )
+    assert rejected.reason == "REEXTRACTION_MISMATCH"
+
+
 def test_cli_exit_codes_and_artifacts(commit_files, tmp_path):
     repo = commit_files({"client.py": CODE, "README.md": DOC})
     out = tmp_path / "run"

@@ -8,6 +8,7 @@ from typing import Any, Literal
 
 from pydantic import Field
 
+from docsync.benchmark_scope import ClaimScope, scoped_predict
 from docsync.config import RepoSpec, ScanConfig
 from docsync.metrics import evaluate
 from docsync.models import Model, ScanReport
@@ -32,9 +33,19 @@ class BenchmarkSample(Model):
     rights_status: Literal["cleared", "manifest_only", "pending"]
     annotation_status: Literal["provisional", "adjudicated"] = "provisional"
     claim_line: int | None = Field(default=None, ge=1)
+    claim_scope: ClaimScope | None = None
 
 
 def predict(report: ScanReport, sample: BenchmarkSample, method: str) -> str:
+    if sample.claim_scope is not None:
+        return scoped_predict(
+            report,
+            sample.document_path,
+            sample.drift_type,
+            sample.head_sha,
+            sample.claim_scope,
+            method,
+        )
     claims = {
         c.claim_id
         for c in report.claims
@@ -62,6 +73,9 @@ def keyword_predict(
         data.decode() for path, data in snapshot.blobs.items() if path.endswith(".py")
     )
     document = snapshot.blobs.get(sample.document_path, b"").decode()
+    if sample.claim_scope is not None:
+        # The token baseline cannot establish entity ownership. Do not borrow gold evidence.
+        return "SKIPPED", errors
     if sample.claim_line is not None:
         lines = document.splitlines()
         document = lines[sample.claim_line - 1] if sample.claim_line <= len(lines) else ""
@@ -93,6 +107,49 @@ def run_benchmark(manifest: Path, cfg: ScanConfig, out: Path, method: str) -> di
             raise DocSyncError(
                 "SPLIT_LEAKAGE", "Same repository/group occurs across splits", "benchmark"
             )
+    ownership_keys = [
+        (
+            sample.repo_id,
+            sample.head_sha,
+            sample.document_path,
+            sample.code_path,
+            sample.drift_type,
+            sample.claim_line,
+            sample.claim_scope.model_dump_json() if sample.claim_scope else None,
+        )
+        for sample in samples
+    ]
+    if len(set(ownership_keys)) != len(ownership_keys):
+        raise DocSyncError(
+            "DUPLICATE_DISCOVERY_OWNERSHIP",
+            "Multiple samples claim the same repository discovery coordinate",
+            "benchmark",
+        )
+    for index, left in enumerate(samples):
+        for right in samples[index + 1 :]:
+            if (manifest.parent / left.repo_path).resolve() != (
+                manifest.parent / right.repo_path
+            ).resolve():
+                continue
+            if left.head_sha != right.head_sha or left.document_path != right.document_path:
+                continue
+            if left.claim_scope is None or right.claim_scope is None:
+                continue
+            a, b = left.claim_scope, right.claim_scope
+            if (
+                a.subject == b.subject
+                and a.predicate == b.predicate
+                and any(
+                    x.start <= y.end and y.start <= x.end
+                    for x in a.document_ranges
+                    for y in b.document_ranges
+                )
+            ):
+                raise DocSyncError(
+                    "DUPLICATE_DISCOVERY_OWNERSHIP",
+                    "Overlapping declaration ownership",
+                    "benchmark",
+                )
     mode = "rules" if method in {"rules", "keyword"} else "hybrid"
     cfg = cfg.model_copy(
         update={
@@ -104,11 +161,14 @@ def run_benchmark(manifest: Path, cfg: ScanConfig, out: Path, method: str) -> di
     )
     out.mkdir(parents=True, exist_ok=True)
     rows = []
+    report_cache: dict[tuple[str, str, str], ScanReport] = {}
     for sample in samples:
         started = time.perf_counter()
         row: dict[str, Any] = {
             "sample_id": sample.sample_id,
             "gold": sample.gold,
+            "repo_id": sample.repo_id,
+            "group_id": sample.group_id,
             "origin": sample.origin,
             "split": sample.split,
             "drift_type": sample.drift_type,
@@ -118,6 +178,7 @@ def run_benchmark(manifest: Path, cfg: ScanConfig, out: Path, method: str) -> di
             "prediction_stage": "keyword"
             if method == "keyword"
             else ("unverified_judge" if method in {"no_verifier", "llm"} else "verified"),
+            "evaluation_unit": "declaration" if sample.claim_scope is not None else "sample",
         }
         try:
             repo = (manifest.parent / sample.repo_path).resolve()
@@ -137,12 +198,19 @@ def run_benchmark(manifest: Path, cfg: ScanConfig, out: Path, method: str) -> di
                     errors=errors,
                 )
             else:
-                report = scan(spec, cfg)
+                cache_key = (str(repo), sample.head_sha, cfg.model_dump_json())
+                report = report_cache.get(cache_key)
+                reused = report is not None
+                if report is None:
+                    report = scan(spec, cfg)
+                    report_cache[cache_key] = report
                 write_report(report, out / sample.sample_id, {"json", "md"})
                 row.update(
                     prediction=predict(report, sample, method),
                     status=report.manifest.status,
-                    usage=report.manifest.usage,
+                    usage={} if reused else report.manifest.usage,
+                    report_run_id=report.manifest.run_id,
+                    report_reused=reused,
                     errors=[d.code for d in report.manifest.diagnostics if d.affects_completeness],
                 )
         except (DocSyncError, OSError, ValueError) as exc:
@@ -160,6 +228,11 @@ def run_benchmark(manifest: Path, cfg: ScanConfig, out: Path, method: str) -> di
         kind: evaluate([r for r in rows if r["drift_type"] == kind])
         for kind in sorted({s.drift_type for s in samples})
     }
+    metrics["by_group"] = {
+        group: evaluate([row for row in rows if row["group_id"] == group])
+        for group in sorted({s.group_id for s in samples})
+    }
+    metrics["unique_scan_count"] = len(report_cache)
     metrics["provisional_labels"] = any(s.annotation_status != "adjudicated" for s in samples)
     metrics["manifest_hash"] = digest(raw)
     metrics["config_hash"] = digest(cfg.model_dump_json().encode())

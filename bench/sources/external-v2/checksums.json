@@ -1,0 +1,16 @@
+{
+  "exposure-intake-template.md": "bb871119db271a65ff2d67e64b910ba2fe20cca17aaefa2ce5d8346b001b40c1",
+  "README.md": "392ae7929ddceef201c8ce26c87b24391e178fb3a7b52965c8cebf21f18db39a",
+  "sources.jsonl": "c34ff4fe16503a07d434657c11814f0b120024c80b8a1ff441266b5a5417b791",
+  "licenses/facebookresearch-hydra/LICENSE": "52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85",
+  "licenses/jd-tenacity/LICENSE": "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd",
+  "licenses/mkdocs-mkdocs/LICENSE": "26041bd625fc39411dc4b32748216236931c904adb90c2b3e0ba697090a5d54e",
+  "licenses/pydantic-pydantic/LICENSE": "a9e186f3ca16b5eef84318e7a701721351a00cb7b8ae3a4394b67b49e3529ef3",
+  "licenses/pypa-pipx/LICENSE": "2e142cbef6acf436d47d8fe1412439c442eeb6c48d5ef73d6b91fffbbf1cdf89",
+  "licenses/python-poetry-poetry/LICENSE": "1786f071a510648a24695f295117f02bae0bbf0fb7c6730aafe9c93a3e4bf7ee",
+  "licenses/source-01/LICENSE.txt": "9a8ad106a394e853bfe21f42f4e72d592819a22805d991b5f3275029292b658d",
+  "licenses/source-02/LICENSE": "d6b65e6c213a5d0b577911d34d6e5949b9f59d76c238c5071a2f3fc16cfb2606",
+  "licenses/source-03/LICENSE.txt": "30a8352c318ce1b645acde0299697342d4380ed2637d7ca18a8ad25661e3b41b",
+  "licenses/source-04/LICENSE.txt": "053664057b295b2f0c1332291a77102f01a099d87926e449e08a117eea9660bf",
+  "licenses/Textualize-textual/LICENSE": "94f290a762376dfdb7768e42070618b0abfd2a2799eab1b1c097816c3a39eb57"
+}
