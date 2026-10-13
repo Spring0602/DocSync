@@ -61,7 +61,8 @@
     const context = make("section", undefined, "report-context");
     context.setAttribute("aria-label", "当前报告");
     const info = make("div", undefined, "context-info");
-    const name = make("strong", model.name);
+    const name = make(byId("homeFileTree") ? "button" : "strong", model.name);
+    if (byId("homeFileTree")) { name.type = "button"; name.className = "report-picker-trigger"; name.id = "reportPickerTrigger"; name.setAttribute("aria-expanded", "false"); }
     name.title = model.name;
     info.append(make("span", isDemo ? "演示报告" : "本地导入", "source-pill"), name, make("span", statusText(report.manifest.status), "context-status"));
     const actions = make("div", undefined, "context-actions");
@@ -113,6 +114,90 @@
     set("homeStatus", statusText(report.manifest.status));
     set("homeFindingSummary", model.confirmedCount + " 条确认冲突 · " + (model.uncertainCount ?? "数量未知的") + " 条不确定项");
     set("homeSource", isDemo ? "随包演示，可直接查看" : "当前会话导入，结论沿用原报告");
+  }
+
+
+  function setupHome() {
+    const tree = byId("homeFileTree");
+    if (!tree) return;
+    function empty(target, message) {
+      const box = make("div", undefined, "project-empty");
+      const icon = make("span", "▱"); icon.setAttribute("aria-hidden", "true");
+      box.append(icon, make("p", message)); target.replaceChildren(box);
+    }
+    const files = list(report.snapshot.files);
+    set("homeFileCount", files.length + " 个已记录文件 · 非完整仓库保证");
+    if (!files.length) empty(tree, "暂无项目文件，导入包含快照文件的报告后显示。");
+    else {
+      const folders = new Map();
+      for (const file of [...files].sort((a,b) => String(a.path).localeCompare(String(b.path)))) {
+        const parts = String(file.path).split("/"); let parent = tree, key = "";
+        for (const part of parts.slice(0,-1)) {
+          key += part + "/";
+          if (!folders.has(key)) {
+            const folder = make("details", undefined, "repo-folder"); folder.open = true;
+            folder.append(make("summary", "▸ " + part)); parent.append(folder); folders.set(key, folder);
+          }
+          parent = folders.get(key);
+        }
+        const row = make("div", undefined, "repo-file");
+        row.append(make("span", "▤  " + parts.at(-1)), make("small", Number.isInteger(file.size) ? file.size + " B" : "大小未记录"));
+        parent.append(row);
+      }
+    }
+    const readme = byId("homeReadme");
+    empty(readme, "报告未包含 README 全文，可选择此项目的本地 README 查看。");
+    byId("readmeInput").addEventListener("change", async event => {
+      const file = event.target.files[0]; if (!file) return;
+      try {
+        if (file.size > 2 * 1024 * 1024) throw Error("README 请控制在 2 MB 内。");
+        const content = await file.text();
+        readme.replaceChildren(make("p", "本地选择：" + file.name + " · 未校验与报告快照的一致性", "readme-source"), make("pre", content));
+      } catch(error) { notice(error.message, true); }
+      event.target.value = "";
+    });
+    const trigger = byId("reportPickerTrigger");
+    const panel = make("section", undefined, "report-picker"); panel.id = "reportPicker"; panel.hidden = true;
+    panel.setAttribute("aria-label", "筛选与切换报告"); trigger.setAttribute("aria-controls", panel.id);
+    const search = make("input"); search.type = "search"; search.placeholder = "搜索仓库、报告名或运行 ID"; search.setAttribute("aria-label", "筛选报告");
+    const options = make("div", undefined, "report-picker-options");
+    const upload = make("input"); upload.type = "file"; upload.accept = ".json"; upload.multiple = true; upload.id = "homeReportsInput";
+    const label = make("label", "添加本地报告（可多选）", "text-action"); label.htmlFor = upload.id; upload.className = "sr-only";
+    const feedback = make("p", "报告仅保存在当前标签页会话。", "picker-feedback"); feedback.setAttribute("role", "status");
+    panel.append(search, options, label, upload, feedback); trigger.closest(".report-context").after(panel);
+    const catalogKey = "docsync.home.catalog.v1"; let choices = [];
+    try { const raw = JSON.parse(sessionStorage.getItem(catalogKey) || "[]"); if (Array.isArray(raw)) choices = raw.map(item => store.normalize(item.report, item.name)); } catch { feedback.textContent = "历史列表不可用，请重新添加报告。"; }
+    function add(item) {
+      const index = choices.findIndex(entry => entry.report.manifest.run_id === item.report.manifest.run_id && entry.report.snapshot.repo_id === item.report.snapshot.repo_id);
+      if (index < 0) choices.push(item); else choices[index] = item;
+    }
+    if (fallback) add(fallback); add(model);
+    function renderOptions() {
+      const query = search.value.toLowerCase().trim(); options.replaceChildren();
+      for (const item of choices.filter(item => [item.name, item.report.snapshot.repo_id, item.report.manifest.run_id].join(" ").toLowerCase().includes(query))) {
+        const button = make("button", undefined, "report-choice"); button.type = "button";
+        button.append(make("strong", item.name), make("small", item.name + " · " + short(item.report.manifest.run_id)));
+        button.addEventListener("click", () => {
+          const result = store.save(item);
+          if (result.ok) location.reload(); else feedback.textContent = result.message;
+        }); options.append(button);
+      }
+      if (!options.childElementCount) options.append(make("p", "没有匹配的报告。"));
+    }
+    search.addEventListener("input", renderOptions);
+    trigger.addEventListener("click", () => { panel.hidden = !panel.hidden; trigger.setAttribute("aria-expanded", String(!panel.hidden)); if (!panel.hidden) search.focus(); });
+    panel.addEventListener("keydown", event => { if (event.key === "Escape") { panel.hidden = true; trigger.setAttribute("aria-expanded", "false"); trigger.focus(); } });
+    upload.addEventListener("change", async () => {
+      let added = 0; const errors = [];
+      for (const file of upload.files) {
+        try { if (file.size > store.MAX_REPORT_BYTES) throw Error("超过 10 MB"); add(store.normalize(JSON.parse(await file.text()), file.name)); added++; }
+        catch(error) { errors.push(file.name + "：" + error.message); }
+      }
+      try { sessionStorage.setItem(catalogKey, JSON.stringify(choices.map(item => ({name:item.name, report:item.report})))); }
+      catch { errors.push("会话空间不足，新增列表仅在当前页面有效。"); }
+      feedback.textContent = "已添加 " + added + " 份报告。" + errors.join("；"); upload.value = ""; renderOptions();
+    });
+    renderOptions();
   }
 
   function renderData() {
@@ -232,6 +317,7 @@
 
   renderContext();
   renderHome();
+  setupHome();
   renderData();
   renderCode();
   renderHistory();

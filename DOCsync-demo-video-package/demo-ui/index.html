@@ -7,7 +7,7 @@
   <title>项目首页 · DocSync</title>
   <link rel="stylesheet" href="./portal.css"/>
 </head>
-<body>
+<body class="home-page">
 <a class="skip-link" href="#main">跳到内容</a>
 <header class="portal-header">
   <div class="header-inner">
@@ -19,12 +19,31 @@
 <main class="portal-main" id="main">
   <section class="hero">
     <div class="hero-copy">
-      <span class="eyebrow">DocSync Workspace</span>
-      <h1>让文档跟上<br/>代码的变化</h1>
-      <p>核对 Python 默认值、调用参数和配置与 Markdown 文档是否一致。发现问题后，沿着证据查看原因和建议修改。</p>
+      <h1 class="eyebrow workspace-title">DocSync Workspace</h1>
+      <p class="workspace-caption">发现问题后，沿着证据查看原因和建议修改。</p>
+    <div class="workspace-map">
+      <svg class="workspace-leaders" viewBox="0 0 400 260" preserveAspectRatio="none" aria-hidden="true">
+        <g class="leader leader-data"><path d="M24 71 V24 H174 L200 44 H400"/></g>
+        <g class="leader leader-code"><path d="M156 93 H180 L200 102 H400"/></g>
+        <g class="leader leader-report"><path d="M156 167 H180 L200 160 H400"/></g>
+        <g class="leader leader-history"><path d="M24 189 V240 H174 L200 218 H400"/></g>
+      </svg>
+    <nav class="workspace-wheel" aria-label="工作区四个入口">
+      <a href="./data.html" class="wheel-piece"><span aria-hidden="true">▤</span>快照数据</a>
+      <a href="./code.html" class="wheel-piece"><span aria-hidden="true">⌘</span>代码证据</a>
+      <a href="./history.html" class="wheel-piece"><span aria-hidden="true">◷</span>运行轨迹</a>
+      <a href="./reports.html" class="wheel-piece"><span aria-hidden="true">≡</span>审查报告</a>
+    </nav>
+      <div class="workspace-notes" aria-label="四个入口的功能说明">
+        <p class="workspace-note note-data"><strong>快照数据</strong><span>查找文件，核对快照与内容哈希。</span></p>
+        <p class="workspace-note note-code"><strong>代码证据</strong><span>对照源码与文档，追溯问题依据。</span></p>
+        <p class="workspace-note note-report"><strong>审查报告</strong><span>筛选问题，审阅证据与建议补丁。</span></p>
+        <p class="workspace-note note-history"><strong>运行轨迹</strong><span>回看扫描记录，比较前后结果。</span></p>
+      </div>
+    </div>
       <div class="hero-actions"><a class="portal-button primary" href="./reports.html">打开当前报告 →</a><a class="portal-button" href="#getting-started">第一次使用</a></div>
     </div>
-    <aside class="hero-console" aria-label="当前报告摘要">
+    <div class="home-side"><aside class="hero-console" aria-label="当前报告摘要">
       <div class="console-head"><span id="consoleSource">REPORT</span><span id="consoleSchema">—</span></div>
       <h2 class="console-title" data-repo>正在读取报告</h2>
       <p class="console-caption" id="homeSource">—</p>
@@ -34,15 +53,14 @@
       <div class="console-result"><span class="status-dot"></span><span id="homeStatus">—</span></div>
       <p class="console-summary" id="homeFindingSummary">—</p>
     </aside>
+</div>
   </section>
-  <section class="section-block">
-    <div class="section-heading"><h2>工作区</h2><p>各页面使用当前会话的同一份报告。</p></div>
-    <div class="channel-grid">
-      <a class="channel-card" href="./data.html"><span class="channel-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span><h3>快照数据</h3><p>搜索文件，查看内容哈希与扫描统计。</p><small>FILES &amp; DATA</small></a>
-      <a class="channel-card" href="./code.html"><span class="channel-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M14 5l-4 14"/></svg></span><h3>代码与证据</h3><p>逐条核对代码表达式与文档原文。</p><small>SOURCE &amp; EVIDENCE</small></a>
-      <a class="channel-card" href="./history.html"><span class="channel-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5M12 7v5l3 2"/></svg></span><h3>运行轨迹</h3><p>查看扫描、补丁建议与后续运行。</p><small>SCAN &amp; RESCAN</small></a>
-      <a class="channel-card" href="./reports.html"><span class="channel-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6Z"/><path d="M15 3v5h5M9 12h6M9 16h6"/></svg></span><h3>审查报告</h3><p>导入报告，筛选问题并审阅修改。</p><small>REVIEW &amp; PATCHES</small></a>
-    </div>
+  <section class="section-block project-browser" id="architecture">
+    <div class="section-heading"><h2>项目简介与架构</h2><p>当前报告记录的文件范围</p></div>
+    <div class="repository-heading"><span>项目文件</span><small id="homeFileCount"></small></div>
+    <div id="homeFileTree"></div>
+    <div class="repository-heading"><span>README · 项目介绍</span><label class="text-action" for="readmeInput">选择本地 README</label><input id="readmeInput" type="file" accept=".md,.txt,.markdown" hidden/></div>
+    <div id="homeReadme" class="readme-document"></div>
   </section>
   <section class="section-block panel" id="getting-started">
     <div class="section-heading"><h2>开始使用</h2><p>第一次打开时会载入随包演示。</p></div>
@@ -51,18 +69,6 @@
       <li><span class="step-number">2</span><div><h3>扫描自己的仓库</h3><p>安装 DocSync 后，在终端运行下方命令；将路径替换为自己的 Git 仓库，每次使用新的输出目录。</p><code class="command-example">docsync scan --repo /path/to/repo --out runs/check</code></div></li>
       <li><span class="step-number">3</span><div><h3>导入并核对结果</h3><p>在报告页选择生成的 report.json。补丁经人工审阅后在 CLI 中应用，再导入复扫报告。</p></div></li>
     </ol>
-  </section>
-  <section class="section-block" id="architecture">
-    <details class="project-details panel">
-      <summary>项目简介与架构<span>展开查看</span></summary>
-      <div class="architecture">
-        <article><b>01 · SNAPSHOT</b><h3>锁定快照</h3><p>保留提交与文件内容哈希。</p></article>
-        <article><b>02 · EXTRACT</b><h3>提取事实</h3><p>解析 Python AST 与 Markdown 声明。</p></article>
-        <article><b>03 · VERIFY</b><h3>核验证据</h3><p>比较默认值、签名与配置。</p></article>
-        <article><b>04 · REVIEW</b><h3>审阅与复扫</h3><p>审阅修改，通过后续报告核对结果。</p></article>
-      </div>
-      <p>支持规则扫描与可选模型辅助。动态表达式和证据缺失会保留为不确定结果。当前网页读取报告，扫描与补丁应用由 CLI 完成。</p>
-    </details>
   </section>
 </main>
 <footer class="portal-footer"><div class="footer-inner"><span data-source-footer>正在读取当前报告</span><span>DocSync · Python &amp; Markdown</span></div></footer>
