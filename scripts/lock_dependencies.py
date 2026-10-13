@@ -30,8 +30,8 @@ def main() -> None:
     root = Path(__file__).resolve().parents[1]
     hashes = defaultdict(set)
     for wheel in args.wheels.glob("*.whl"):
-        name, version, _, _ = parse_wheel_filename(wheel.name)
-        hashes[(canonicalize_name(name), str(version))].add(
+        wheel_name, wheel_version, _, _ = parse_wheel_filename(wheel.name)
+        hashes[(canonicalize_name(wheel_name), str(wheel_version))].add(
             hashlib.sha256(wheel.read_bytes()).hexdigest()
         )
     entries = {}

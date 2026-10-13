@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="description" content="DocSync 本地报告工作区：查看 Python 与 Markdown 的一致性证据。"/>
+  <title>数据与工件 · DocSync</title>
+  <link rel="stylesheet" href="./portal.css"/>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到内容</a>
+<header class="portal-header">
+  <div class="header-inner">
+    <a class="portal-brand" href="./index.html" aria-label="DocSync 首页"><span class="brand-glyph"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 3h8a7 7 0 0 1 0 14H6Z"/><path d="m9 11 3 3 6-8"/></svg></span><span>DocSync<i>.</i></span></a>
+    <nav class="portal-nav" aria-label="项目导航"><a href="./index.html">首页</a><a class="is-active" aria-current="page" href="./data.html">数据</a><a href="./code.html">证据</a><a href="./history.html">运行</a><a href="./reports.html">报告</a></nav>
+    <span class="header-status"><span class="status-dot"></span>本地读取 · 文件不上传</span>
+  </div>
+</header>
+<main class="portal-main" id="main">
+  <section class="page-hero"><span class="page-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span><div><h1>数据与工件</h1><p>当前报告中的文件与扫描统计。</p></div></section>
+  <section class="metric-grid" aria-label="报告统计">
+    <article class="metric-card"><span>快照文件</span><strong id="metricFiles">—</strong></article>
+    <article class="metric-card"><span>静态事实</span><strong id="metricFacts">—</strong></article>
+    <article class="metric-card"><span>确认冲突</span><strong id="metricFindings">—</strong></article>
+    <article class="metric-card"><span>不确定项</span><strong id="metricUncertain">—</strong></article>
+  </section>
+  <section class="panel">
+    <div class="section-heading"><h2>快照文件</h2><label class="search-field" for="fileSearch"><span>搜索文件</span><input id="fileSearch" type="search" placeholder="输入路径或编码…" autocomplete="off"/></label></div>
+    <p class="result-count" id="fileCountLabel" role="status">—</p>
+    <div class="table-shell"><table class="data-table"><caption class="sr-only">快照中的文件路径、编码、大小和哈希</caption><thead><tr><th scope="col">路径</th><th scope="col">编码</th><th scope="col">大小</th><th scope="col">Blob SHA-256</th></tr></thead><tbody id="fileRows"></tbody></table></div>
+  </section>
+  <section class="section-block readme-grid">
+    <details class="panel project-details"><summary>快照标识<span>展开查看</span></summary><div class="console-row"><span>HEAD SHA</span><code id="dataHead">—</code></div><div class="console-row"><span>FILES HASH</span><code id="dataSnapshot">—</code></div></details>
+    <details class="panel project-details"><summary>运行标识<span>展开查看</span></summary><div class="console-row"><span>RUN ID</span><code id="dataRun">—</code></div><div class="console-row"><span>STATUS</span><code id="dataStatus">—</code></div></details>
+  </section>
+</main>
+<footer class="portal-footer"><div class="footer-inner"><span data-source-footer>正在读取当前报告</span><span>DocSync · Python &amp; Markdown</span></div></footer>
+<script src="./demo-data.js"></script>
+<script src="./report-store.js"></script>
+<script src="./portal.js"></script>
+</body>
+</html>

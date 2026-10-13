@@ -1,18 +1,17 @@
+from __future__ import annotations
+
 import argparse
 import json
 import sys
 import uuid
 from pathlib import Path
-
-from pydantic import ValidationError
+from typing import TYPE_CHECKING
 
 from docsync import __version__
-from docsync.config import RepoSpec, ScanConfig, load_config
-from docsync.models import PatchProposal, ScanReport
-from docsync.patches import apply_patch
-from docsync.pipeline import scan
-from docsync.reporting import write_report
-from docsync.utils import DocSyncError
+
+if TYPE_CHECKING:
+    from docsync.config import ScanConfig
+    from docsync.models import ScanReport
 
 
 def parser() -> argparse.ArgumentParser:
@@ -21,6 +20,12 @@ def parser() -> argparse.ArgumentParser:
     )
     root.add_argument("--version", action="version", version=__version__)
     commands = root.add_subparsers(dest="command", required=True)
+    doctor = commands.add_parser(
+        "doctor", help="Check local setup without scanning or network calls"
+    )
+    doctor.add_argument("--repo", type=Path, help="Optionally check a Git repository root")
+    doctor.add_argument("--config", type=Path, help="Validate explicit trusted TOML configuration")
+    doctor.add_argument("--format", choices=["text", "json"], default="text")
     run = commands.add_parser("scan", help="Read a fixed snapshot and emit evidence reports")
     run.add_argument("--repo", type=Path, default=Path("."))
     run.add_argument("--head", default="HEAD")
@@ -75,6 +80,23 @@ def exit_code(report: ScanReport, cfg: ScanConfig) -> int:
 
 def main(argv: list[str] | None = None) -> int:
     args = parser().parse_args(argv)
+    if args.command == "doctor":
+        from docsync.doctor import check_environment, render_text
+
+        result = check_environment(args.repo, args.config)
+        print(json.dumps(result.to_dict()) if args.format == "json" else render_text(result))
+        return result.exit_code
+
+    # Doctor and --help stay available when runtime dependencies need repair.
+    from pydantic import ValidationError
+
+    from docsync.config import RepoSpec, load_config
+    from docsync.models import PatchProposal, ScanReport
+    from docsync.patches import apply_patch
+    from docsync.pipeline import scan
+    from docsync.reporting import write_report
+    from docsync.utils import DocSyncError
+
     failure_dir: Path | None = None
     try:
         if args.command == "scan":
@@ -131,11 +153,24 @@ def main(argv: list[str] | None = None) -> int:
                     "patch",
                 )
             proposal = patches[0]
-            args.out.parent.mkdir(parents=True, exist_ok=True)
-            args.out.write_bytes(proposal.diff.encode("utf-8"))
             manifest = args.manifest or args.out.with_suffix(args.out.suffix + ".json")
+            if args.out.resolve() == manifest.resolve():
+                raise DocSyncError(
+                    "OUTPUT_COLLISION", "Patch and manifest need different output paths", "patch"
+                )
+            for target in (args.out, manifest):
+                if target.exists() or target.is_symlink():
+                    raise DocSyncError(
+                        "OUTPUT_EXISTS",
+                        "Choose new output files; existing files preserved",
+                        "patch",
+                    )
+            args.out.parent.mkdir(parents=True, exist_ok=True)
             manifest.parent.mkdir(parents=True, exist_ok=True)
-            manifest.write_text(proposal.model_dump_json(indent=2), encoding="utf-8")
+            # Exclusive creation protects existing files even if they appear after preflight.
+            with args.out.open("xb") as diff_stream, manifest.open("xb") as manifest_stream:
+                diff_stream.write(proposal.diff.encode("utf-8"))
+                manifest_stream.write(proposal.model_dump_json(indent=2).encode("utf-8"))
             print(
                 json.dumps(
                     {"patch": str(args.out), "manifest": str(manifest), "requires_review": True}

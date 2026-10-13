@@ -22,7 +22,25 @@ docsync = "docsync.cli:main"
 packages = ["src/docsync"]
 
 [tool.hatch.build.targets.sdist]
-include = ["src", "tests", "scripts", "bench", "action", "examples", "docs", "compliance", "schemas", "README.md", "LICENSE", "pyproject.toml", "requirements-*.lock", "requirements-dev.txt", "docsync.toml"]
+include = [
+  "src", "tests", "scripts", "bench", "action", "examples", "docs", "compliance", "schemas",
+  "README.md", "LICENSE", "pyproject.toml", "requirements-*.lock", "requirements-dev.txt", "docsync.toml",
+  "DOCsync-demo-video-package/demo-ui/*.html",
+  "DOCsync-demo-video-package/demo-ui/*.css",
+  "DOCsync-demo-video-package/demo-ui/*.js",
+  "DOCsync-demo-video-package/demo-ui/tests/report-store.test.cjs",
+  "DOCsync-demo-video-package/启动前端.cmd",
+  "DOCsync-demo-video-package/README.md",
+  "DOCsync-demo-video-package/给队友-打开与修改.md",
+  "DOCsync-demo-video-package/artifacts/before-report.json",
+  "DOCsync-demo-video-package/artifacts/before-report.md",
+  "DOCsync-demo-video-package/artifacts/after-report.json",
+  "DOCsync-demo-video-package/artifacts/after-report.md",
+  "DOCsync-demo-video-package/artifacts/fixes.patch",
+  "DOCsync-demo-video-package/artifacts/fixes.patch.json",
+  "DOCsync-demo-video-package/artifacts/README.md",
+  "DOCsync-demo-video-package/artifacts/SHA256SUMS",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

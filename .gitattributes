@@ -23,3 +23,14 @@ bench/builders/build_external_packet.py text eol=lf
 
 # Audit evidence must keep the exact bytes used by recorded hashes.
 docs/audit-samples/release-acceptance-20261011/** -text whitespace=cr-at-eol
+
+# Preserve the exact bytes registered in the frozen v2 intake inventory.
+bench/sources/external-v2/** -text whitespace=cr-at-eol
+
+docs/audit-samples/product-maturity-20261013/*.json -text whitespace=cr-at-eol
+
+docs/audit-samples/product-maturity-20261013/*.patch -text whitespace=cr-at-eol
+
+# Frozen demo reports and patch context lines must retain their original bytes.
+DOCsync-demo-video-package/artifacts/** -text -whitespace
+docs/audit-samples/product-maturity-20261013/*.patch -text -whitespace

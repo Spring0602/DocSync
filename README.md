@@ -8,6 +8,8 @@
 
 ## 安装
 
+首次使用可先看 [软件优化与使用说明](docs/software-optimization-20261013.md)。本轮新增本地报告工作区、只读环境自检和安全前端启动器；它们不改变 Python/Markdown 的支持边界，也不替代正式测试。
+
 需要 Python **3.12** 和 Git。Windows PowerShell：
 
 ```powershell
@@ -25,6 +27,20 @@ python3.12 -m venv .venv
 ```
 
 后续示例的 `docsync`、`python`、`pytest` 均指虚拟环境内命令；可先激活环境。Windows x64 / Linux x86_64 的 Python 3.12 可用 `python -m pip install --require-hashes -r requirements-dev.lock` 安装完整锁定依赖，再执行 `python -m pip install --no-deps --no-build-isolation .`。其他平台暂使用常规安装，哈希锁需补对应 wheel。见 [贡献指南](docs/contributing.md)。本地原始策划案、承诺书和竞赛附件不属于软件包或默认公开资产。
+
+安装后先运行 `docsync doctor`；检查目标仓库时使用 `docsync doctor --repo /path/to/git-root`，机器读取用 `--format json`。该命令只做本地预检，不联网、不扫描、不调用模型。下载 ZIP 的目录没有 `.git`，不能直接作为固定提交扫描的目标，应使用本地 Git clone。
+
+## 打开前端
+
+Windows 双击 `DOCsync-demo-video-package/启动前端.cmd`，或在项目根目录运行：
+
+```powershell
+python scripts/serve_frontend.py
+```
+
+浏览器会打开本机地址。关闭终端会停止服务；端口默认自动选择。服务仅公开前端白名单文件，不能读取父目录、私人标注或密钥，不提供上传接口。启动器需 Python 3.12 或更新版本，扫描引擎仍要求 Python 3.12。
+
+进入“报告”导入自己的 `report.json`；“数据、证据、运行”使用当前标签页会话中的同一份报告。搜索、筛选后点击记录，按需展开证据与补丁。网页不执行扫描或应用补丁，详细步骤见 [前端使用与交接](DOCsync-demo-video-package/给队友-打开与修改.md)。双击 HTML 可直接查看，但 `file://` 下跨页面会话行为由浏览器决定，推荐上述启动方式。
 
 ## 五分钟跑通
 
@@ -56,6 +72,8 @@ docsync scan --repo /path/to/git-root --config docsync.toml --mode hybrid --requ
 配置仅通过 `--config` 显式加载。`base/head` 当前保留变更清单并全量检测，以覆盖“代码变了而文档未变”；缺失引用明确报错。`hybrid` 可通过 [模型配置示例](examples/hybrid.toml) 接入服务，无配置时返回规则结果和 `AI_UNAVAILABLE/PARTIAL`。服务故障返回不确定，不产生模拟 AI 结论。细节见 [模型适配器](docs/model-provider.md)。
 
 每次运行使用新的 `--out` 目录，不覆盖已有实验；不指定时自动创建 `runs/<id>`。扫描失败也会在新目录写入结构化失败工件。可在配置的 `[[ignores]]` 中指定规则/路径/原因/到期日，报告单列忽略计数。
+
+`patch` 同样拒绝覆盖既有 diff 或 manifest，并拒绝两个输出使用同一路径。需要重新导出时，请指定新的文件名。双文件导出不是跨文件事务；若写入中断，检查新输出是否完整。
 
 退出码：`0` 未触发阻断；`1` 确认问题触发 `--fail-on warning`；`2` 输入/运行失败；`3` 部分扫描且要求完整。默认 `fail-on=none`，退出 0 不代表没有告警。`COMPLETED` 仅表示当前声明支持范围内完成。
 

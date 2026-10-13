@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="DocSync 文档一致性审查：定位问题、核对证据、审阅补丁与复扫记录。" />
+  <title>问题报告 · DocSync</title><link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <svg class="svg-sprite" aria-hidden="true">
+    <symbol id="icon-repo" viewBox="0 0 24 24"><path d="M6 3v12a3 3 0 1 0 2 0V7h9v6"/><circle cx="17" cy="16" r="3"/></symbol>
+    <symbol id="icon-scan" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6"/><path d="m15 15 5 5M7 10h6M10 7v6"/></symbol>
+    <symbol id="icon-patch" viewBox="0 0 24 24"><path d="M4 6h12M4 12h7M4 18h7M17 10v10M12 15h10"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></symbol>
+    <symbol id="icon-upload" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M5 17v3h14v-3"/></symbol>
+    <symbol id="icon-play" viewBox="0 0 24 24"><path d="m9 5 10 7-10 7Z"/></symbol>
+    <symbol id="icon-next" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="icon-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M15 8V4H4v11h4"/></symbol>
+    <symbol id="icon-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 17h.01"/></symbol>
+    <symbol id="icon-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v2"/></symbol>
+    <symbol id="icon-branch" viewBox="0 0 24 24"><circle cx="6" cy="5" r="2"/><circle cx="18" cy="7" r="2"/><circle cx="6" cy="19" r="2"/><path d="M6 7v10M8 9h4a6 6 0 0 0 6-6"/></symbol>
+    <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="icon-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.7 2.8 8 7 10 4.2-2 7-5.3 7-10V6Z"/><path d="m9 12 2 2 4-5"/></symbol>
+    <symbol id="icon-panel" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M14 9l3 3-3 3"/></symbol>
+  </svg>
+  <a class="skip-link" href="#main">跳到审查内容</a>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-head"><a class="brand" href="./index.html" aria-label="返回 DocSync 项目首页"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M9 7h8a9 9 0 0 1 0 18H9Z"/><path d="m12 16 4 4 8-9"/></svg></span><span><strong>DocSync<span class="brand-period">.</span></strong><small>文档一致性审查</small></span></a><button id="toggleSidebar" class="sidebar-toggle" type="button" aria-label="折叠侧栏" aria-expanded="true" title="折叠侧栏"><svg aria-hidden="true"><use href="#icon-panel"/></svg></button></div>
+      <nav class="workspace-links" aria-label="工作区页面"><a href="./index.html">项目首页</a><a href="./data.html">数据与工件</a><a href="./code.html">代码与证据</a><a href="./history.html">运行轨迹</a><a href="./reports.html" aria-current="page">问题报告</a></nav>
+      <p class="nav-label">审查工作流 <span>WORKFLOW</span></p>
+      <nav class="steps" aria-label="审查导航">
+        <button class="step is-active" data-stage="0" type="button" aria-current="step"><span class="step-icon"><svg aria-hidden="true"><use href="#icon-lock"/></svg></span><span class="step-copy"><small>01 · REVIEW</small><strong>定位问题</strong></span><em>当前</em></button>
+        <button class="step" data-stage="1" type="button"><span class="step-icon"><svg aria-hidden="true"><use href="#icon-scan"/></svg></span><span class="step-copy"><small>02 · EVIDENCE</small><strong>核对证据</strong></span><em>待查看</em></button>
+        <button class="step" data-stage="2" type="button"><span class="step-icon"><svg aria-hidden="true"><use href="#icon-patch"/></svg></span><span class="step-copy"><small>03 · PATCH</small><strong>审阅最小补丁</strong></span><em>待查看</em></button>
+        <button class="step" data-stage="3" type="button"><span class="step-icon"><svg aria-hidden="true"><use href="#icon-check"/></svg></span><span class="step-copy"><small>04 · RESCAN</small><strong>复扫闭环验证</strong></span><em>待查看</em></button>
+      </nav>
+      <div class="sidebar-bottom"><div class="local-card"><svg aria-hidden="true"><use href="#icon-check"/></svg><p>证据先行，结论可追溯。</p><small>本地读取 CLI 报告<br />补丁执行仍在命令行完成</small></div><a href="./index.html" class="text-button"><span aria-hidden="true">⌂</span> 项目首页</a><button id="resetDemo" class="text-button" type="button"><span aria-hidden="true">↺</span> 恢复演示案例</button><span class="version"><span class="local-dot"></span>本地报告视图 <span>v0.2.0</span></span></div>
+    </aside>
+    <main id="main" class="workspace">
+      <section id="overview" class="run-console" aria-labelledby="repoName">
+        <div class="console-cap"><span><span class="console-pulse"></span><strong id="consoleTitle">演示工件已加载</strong><span id="consoleDetail">随包 CLI 工件可在 artifacts/ 中逐项复核。</span></span><span id="consoleState">LOCAL · READ ONLY</span></div>
+      <header class="topbar">
+        <div class="breadcrumb"><span class="breadcrumb-path">工作区 <i>/</i> 审查报告</span><span class="privacy-note"><span class="local-dot"></span>本地解析 · 文件不上传</span></div>
+        <div class="heading-row">
+          <div class="repo-identity"><span class="page-eyebrow">审计目标</span><div class="repo-title-line"><span class="repo-glyph" aria-hidden="true"><svg><use href="#icon-branch"/></svg></span><div><div class="repo-name-row"><h1 id="repoName">examples/minimal_repo</h1><span class="verified-chip" id="sourceBadge"><svg aria-hidden="true"><use href="#icon-shield"/></svg><span id="sourceBadgeText">演示数据</span></span></div><span class="source-label" id="sourceLabel">随包演示报告</span></div></div></div>
+          <div class="toolbar"><input id="reportInput" type="file" accept="application/json,.json" hidden />
+            <button id="downloadReport" class="button" type="button">导出报告</button>
+            <button id="autoDemo" class="button quiet-action" type="button" aria-pressed="false"><svg aria-hidden="true"><use href="#icon-play"/></svg><span id="playLabel">导览</span></button>
+            <button id="importReport" class="button primary" type="button" title="选择 DocSync 生成的 report.json；仅在当前浏览器读取"><svg aria-hidden="true"><use href="#icon-upload"/></svg>导入 report.json</button>
+          </div>
+        </div>
+        <div class="repo-meta">
+          <span><small><svg aria-hidden="true"><use href="#icon-branch"/></svg>COMMIT</small><button class="hash-button" id="headSha" type="button" aria-label="复制完整提交 SHA">—</button></span>
+          <span><small><svg aria-hidden="true"><use href="#icon-repo"/></svg>RUN</small><code id="topRunId">—</code></span>
+          <span><small><svg aria-hidden="true"><use href="#icon-shield"/></svg>SCHEMA</small><code id="topSchema">—</code></span>
+          <span><small><svg aria-hidden="true"><use href="#icon-scan"/></svg>MODE</small><code id="modeText">—</code></span>
+          <span><small><svg aria-hidden="true"><use href="#icon-clock"/></svg>DURATION</small><strong id="runtimeText">—</strong></span>
+          <span id="scanStatus" class="scan-status">—</span>
+        </div>
+      </header>
+      <div class="overview-deck">
+        <div class="overview-message"><span class="overview-icon" aria-hidden="true"><svg><use href="#icon-lock"/></svg></span><div><span id="overviewBadge" class="overview-badge">快照已锁定 · 第 1 步 / 共 4 步</span><h2 id="overviewHeading">从固定 Git 快照开始</h2><p id="overviewDescription">固定提交、文件列表与内容哈希，让后续事实、判断和补丁都能追溯到同一份源码。</p></div></div>
+      <div class="summary-bar" aria-label="扫描摘要">
+        <p class="summary-caption">本次报告汇总 <span id="summaryCaptionDetail">· 网页不会自动应用补丁</span></p>
+        <div class="summary-counts"><span><i><svg aria-hidden="true"><use href="#icon-alert"/></svg></i><small>确认冲突</small><b id="confirmedCount">—</b></span><span><i><svg aria-hidden="true"><use href="#icon-patch"/></svg></i><small>建议补丁</small><b id="patchCount">—</b></span><span><i><svg aria-hidden="true"><use href="#icon-scan"/></svg></i><small>不确定项</small><b id="uncertainCount">—</b></span><span><i><svg aria-hidden="true"><use href="#icon-check"/></svg></i><small>已忽略项</small><b id="ignoredCount">—</b></span></div>
+        <details class="summary-explain"><summary>这四项是什么意思？</summary><dl><div><dt>确认冲突</dt><dd>已验证、未忽略的文档与代码不一致。</dd></div><div><dt>建议补丁</dt><dd>报告收录的修改建议；需要审阅，不会在网页中自动应用。</dd></div><div><dt>不确定项</dt><dd>报告中无法确定结论的判断；“—”表示未提供该记录。</dd></div><div><dt>已忽略项</dt><dd>被忽略规则排除的告警，不计入确认冲突。</dd></div></dl></details>
+        <div class="guide-controls"><span id="guideLabel" aria-live="polite">查看步骤 · 概览 1 / 4</span><button class="text-button" id="nextStage" type="button">查看证据 →</button></div>
+      </div>
+      </div>
+      </section>
+      <div id="reportNotice" class="report-notice" role="status" hidden></div>
+      <section class="records-panel" aria-labelledby="recordsTitle">
+        <header class="records-head"><div><h2 id="recordsTitle">待审查记录 <span id="recordCount" class="count-pill">0</span></h2><p>选择一条记录，再查看证据或补丁。</p></div><button id="resetFilters" class="text-button" type="button">重置筛选</button></header>
+        <div class="record-filters"><label class="search-field"><svg aria-hidden="true"><use href="#icon-scan"/></svg><input id="recordSearch" type="search" placeholder="搜索路径、参数、原因…" aria-label="搜索报告记录" /></label><label>状态<select id="statusFilter"><option value="all">全部记录</option><option value="confirmed">确认冲突</option><option value="uncertain">不确定 / 验证拒绝</option><option value="ignored">已忽略</option><option value="unverified">未验证</option></select></label><label>类型<select id="typeFilter"><option value="all">全部类型</option><option value="DEFAULT_VALUE">默认值</option><option value="SIGNATURE">调用签名</option><option value="CONFIG">配置值</option><option value="other">其他 / 未记录</option></select></label></div>
+        <div id="recordList" class="record-list" aria-label="审查记录"></div>
+        <div id="recordEmpty" class="empty-state" hidden></div>
+        <div class="record-pagination"><span id="resultCount" role="status"></span><div><button id="previousPage" class="button small" type="button">上一页</button><span id="pageIndicator">1 / 1</span><button id="nextPage" class="button small" type="button">下一页</button></div></div>
+      </section>
+      <details class="content-disclosure issue-disclosure" data-report-panel="finding">
+        <summary><span class="disclosure-icon"><svg aria-hidden="true"><use href="#icon-alert"/></svg></span><span class="disclosure-copy"><small>当前问题</small><strong id="findingPreview">查看问题详情</strong></span><span class="disclosure-action">展开查看</span></summary>
+      <section id="finding-section" class="finding-section" aria-labelledby="findingTitle">
+        <div class="section-overline"><span><span class="issue-dot"></span>当前问题</span><label id="findingSelectWrap" hidden>选择告警 <select id="findingSelect" aria-label="选择告警"></select></label><span id="findingPosition" class="muted">1 / 1</span></div>
+        <div class="finding-layout"><div class="finding-copy">
+        <div class="finding-heading"><svg id="findingIcon" aria-hidden="true"><use href="#icon-alert"/></svg><h2 id="findingTitle">读取报告…</h2><span class="status-tag" id="findingStatus">—</span></div>
+        <p id="findingReason" class="finding-reason"></p>
+        <div class="finding-meta"><code id="ruleId">—</code><span id="severityText">—</span><span id="verifyStatus">—</span><span id="ignoreNotice" hidden></span></div>
+        </div>
+        <div class="value-comparison" id="valueComparison"><div><span>文档声明</span><strong id="documentValue">—</strong><small id="documentType"></small></div><span class="comparison-sign" aria-label="不一致">≠</span><div><span>代码事实</span><strong id="codeValue">—</strong><small id="codeType"></small></div><p id="comparisonContext"></p></div>
+        </div>
+        <details class="trace-details"><summary>查看报告标识与诊断</summary><dl class="trace-list"><div><dt>Finding ID</dt><dd id="findingId">—</dd></div><div><dt>快照标识</dt><dd id="snapshotHash">—</dd></div><div><dt>运行 ID</dt><dd id="runId">—</dd></div><div><dt>Schema</dt><dd id="schemaText">—</dd></div><div><dt>模型请求</dt><dd id="requestCount">—</dd></div><div><dt>其他记录</dt><dd id="diagnosticSummary">—</dd></div></dl></details>
+      </section>
+      </details>
+      <details class="content-disclosure" data-report-panel="evidence">
+        <summary><span class="disclosure-icon"><svg aria-hidden="true"><use href="#icon-scan"/></svg></span><span class="disclosure-copy"><small>01 · EVIDENCE</small><strong>证据对照</strong></span><span class="disclosure-action">查看源码与文档</span></summary>
+      <section id="evidence-section" class="review-section" aria-labelledby="evidenceTitle">
+        <header class="section-head"><div><h2 id="evidenceTitle"><span class="section-symbol"><svg aria-hidden="true"><use href="#icon-scan"/></svg></span><span><small>01</small>证据对照</span></h2><p>同一份快照，两侧事实，一处差异。</p></div><span class="section-index"><span class="local-dot"></span>源码 / 文档</span></header>
+        <div class="compare-grid">
+          <article class="file-pane"><header class="file-header"><span class="file-kind">PY</span><strong id="codePath">—</strong><span id="codeLine"></span></header><div class="code-view" id="codeSnippet" aria-label="代码证据"></div><div class="file-footer"><span id="codeExcerptLabel">报告中的源码摘录</span><span id="codeBytes"></span></div><div class="hash-row"><span>SHA-256</span><button id="codeHash" type="button" class="hash-button">—</button></div></article>
+          <article class="file-pane"><header class="file-header"><span class="file-kind">MD</span><strong id="docPath">—</strong><span id="docLine"></span></header><div class="code-view" id="docSnippet" aria-label="文档证据"></div><div class="file-footer"><span>报告中的文档引用</span><span id="docBytes"></span></div><div class="hash-row"><span>SHA-256</span><button id="docHash" type="button" class="hash-button">—</button></div></article>
+        </div>
+      </section>
+      </details>
+      <div class="lower-grid">
+      <details class="content-disclosure" data-report-panel="patch">
+        <summary><span class="disclosure-icon"><svg aria-hidden="true"><use href="#icon-patch"/></svg></span><span class="disclosure-copy"><small>02 · PATCH</small><strong>建议补丁</strong></span><span class="disclosure-action">查看修改内容</span></summary>
+      <section id="patch-section" class="review-section" aria-labelledby="patchTitle">
+        <header class="section-head"><div><h2 id="patchTitle"><span class="section-symbol"><svg aria-hidden="true"><use href="#icon-patch"/></svg></span><span><small>02</small>建议补丁</span></h2><p id="patchReason">核对修改范围后，在 CLI 中显式应用。</p></div><div class="toolbar"><button class="button small" id="downloadPatch" type="button">下载 diff</button><button class="button small" id="copyPatch" type="button"><svg aria-hidden="true"><use href="#icon-copy"/></svg>复制 diff</button></div></header>
+        <div class="patch-summary"><code id="patchScope">—</code><span id="patchValidation">—</span><span id="patchReview">—</span></div>
+        <div class="diff-view" id="patchCode" aria-label="补丁差异"></div>
+        <details class="validation-details"><summary>补丁校验记录</summary><ul id="validationList"></ul></details>
+      </section>
+      </details>
+      <details class="content-disclosure" data-report-panel="verify">
+        <summary><span class="disclosure-icon"><svg aria-hidden="true"><use href="#icon-shield"/></svg></span><span class="disclosure-copy"><small>03 · VERIFY</small><strong>验证记录</strong></span><span class="disclosure-action">查看复扫状态</span></summary>
+      <section id="verify-section" class="review-section" aria-labelledby="verificationTitle">
+        <header class="section-head"><div><h2 id="verificationTitle"><span class="section-symbol"><svg aria-hidden="true"><use href="#icon-shield"/></svg></span><span><small>03</small>验证记录</span></h2><p>对比同一仓库、同一基准提交的两次独立运行。</p></div><div class="toolbar"><input id="rescanInput" type="file" accept="application/json,.json" hidden /><button id="importRescan" class="button small" type="button">导入复扫报告</button><button id="clearRescan" class="text-button" type="button">移除对照</button></div></header>
+        <div class="verification-layout"><ol id="timeline" class="timeline"></ol><div id="closureCard" class="closure-card"><span class="muted">复扫结果</span><h3 id="closureTitle">—</h3><p id="closureBody"></p><dl id="rescanStats" class="rescan-stats"></dl></div></div>
+      </section>
+      </details>
+      </div>
+      <footer class="footer"><span id="sourceNote">演示工件位于 artifacts/</span><span>DocSync · Python &amp; Markdown</span></footer>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <noscript><p class="report-notice">需要启用浏览器 JavaScript 才能读取报告；原始 JSON 位于 artifacts/。</p></noscript>
+  <script src="./demo-data.js"></script><script src="./report-store.js"></script><script src="./app.js"></script>
+</body>
+</html>

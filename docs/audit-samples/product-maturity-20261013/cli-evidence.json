@@ -1,0 +1,220 @@
+{
+  "evidence_schema_version": "1.0",
+  "scope": "Current local source CLI integration smoke; controlled self-authored demo, not independent benchmark",
+  "environment": {
+    "PYTHONUTF8": "1",
+    "dependencies": {
+      "pydantic": "2.11.7",
+      "markdown-it-py": "3.0.0",
+      "build": "1.3.0",
+      "hatchling": "1.27.0"
+    }
+  },
+  "doctor": {
+    "exit_code": 0,
+    "status": "OK",
+    "read_only": true,
+    "network_checked": false,
+    "checks": [
+      {
+        "code": "PYTHON",
+        "status": "OK"
+      },
+      {
+        "code": "DEPENDENCY_PYDANTIC",
+        "status": "OK"
+      },
+      {
+        "code": "DEPENDENCY_MARKDOWN_IT",
+        "status": "OK"
+      },
+      {
+        "code": "GIT",
+        "status": "OK"
+      },
+      {
+        "code": "REPO_ROOT",
+        "status": "OK"
+      },
+      {
+        "code": "REPO_HEAD",
+        "status": "OK"
+      },
+      {
+        "code": "REPO_WORKTREE",
+        "status": "OK"
+      },
+      {
+        "code": "CONFIG",
+        "status": "OK"
+      },
+      {
+        "code": "MODEL",
+        "status": "OK"
+      }
+    ]
+  },
+  "before": {
+    "run_id": "8fce7dc50ffb4c11afa8db3b2f5542d7",
+    "status": "COMPLETED",
+    "confirmed_count": 1,
+    "uncertain_count": 0,
+    "requests": 0,
+    "head_sha": "8c71dc67d0a72fb057545c393cb9f480e44729f5",
+    "files_hash": "67325ac19c2d5f720fcbe71f",
+    "mode": "commit",
+    "seconds": 0.23367070000131207
+  },
+  "patch": {
+    "validation": "VALIDATED",
+    "requires_review": true,
+    "patch_id": "44d57a0b1474b88d83524100",
+    "export_exit_code": 0,
+    "apply_exit_code": 0,
+    "applied_paths": [
+      "README.md"
+    ],
+    "only_default_claim_changed": true,
+    "code_unchanged": true
+  },
+  "after": {
+    "run_id": "992f72a70c844973b1502b0a6a30b355",
+    "status": "COMPLETED",
+    "confirmed_count": 0,
+    "uncertain_count": 0,
+    "requests": 0,
+    "head_sha": "8c71dc67d0a72fb057545c393cb9f480e44729f5",
+    "files_hash": "d9358580dc06515abdd2d88b",
+    "mode": "working-tree",
+    "seconds": 0.16515280000021448
+  },
+  "stale_patch": {
+    "exit_code": 2,
+    "code": "STALE_PATCH",
+    "readme_sha256_before": "017421c07c0749ae29d0d1c8caa452de56345872eaacc7f2973924c7aa1f6201",
+    "readme_sha256_after": "017421c07c0749ae29d0d1c8caa452de56345872eaacc7f2973924c7aa1f6201",
+    "unchanged": true
+  },
+  "build": {
+    "exit_code": 0,
+    "mode": "python -m build --no-isolation",
+    "network_dependency_install": false,
+    "artifacts": [
+      {
+        "name": "docsync_core-0.2.0-py3-none-any.whl",
+        "bytes": 58936,
+        "sha256": "808d32df3494752a42d3a9ea2caf71d142b59f723c955838b77620fdee2e08bf"
+      },
+      {
+        "name": "docsync_core-0.2.0.tar.gz",
+        "bytes": 1249475,
+        "sha256": "a4054d2fe9267c826feef8a3ff53008fe135d9834cd9bc4aca86f6c5abde70f4"
+      }
+    ]
+  },
+  "report_hashes": {
+    "before": "ef5d72bbc725a61dcb0e6217072b423a572242b5402b26e031d0a6ea26777110",
+    "after": "f183bca2fbadf9eef1d57e825a93e0b72a3c679c2e2018579f53485e881e9d7d"
+  },
+  "source_hashes": [
+    {
+      "path": "src/docsync/__init__.py",
+      "sha256": "e389b13fb67195d45022336ff7cc3c98d3097b94755f209095b0f289c9ce1dd7"
+    },
+    {
+      "path": "src/docsync/__main__.py",
+      "sha256": "d489c8565e10912585107711bb16a1e765109299bf5c6faf17e73f3321e73ab7"
+    },
+    {
+      "path": "src/docsync/alignment/__init__.py",
+      "sha256": "67161aa0cf5eecab2fb7ffc88b2a7a2ac2e295b2ec413ff26d7e4ddaecf205c8"
+    },
+    {
+      "path": "src/docsync/benchmark.py",
+      "sha256": "f5ddd6a1a8b6db165b2144467abe3e52559f86997f28016b887c50b82e1b6c4e"
+    },
+    {
+      "path": "src/docsync/benchmark_scope.py",
+      "sha256": "b97ab0a67779b9d49db95edc8a177557a81a622503280167cfc38569515c5cde"
+    },
+    {
+      "path": "src/docsync/cli.py",
+      "sha256": "9482cfc9a2b8498b7ea67e252156d1eac08b27cf31fa2cb2bda3bfbc4d5411c2"
+    },
+    {
+      "path": "src/docsync/config.py",
+      "sha256": "2f29dce00a136714400cedc7fd8f92a7ee84961a6150a6986b1970443af00c10"
+    },
+    {
+      "path": "src/docsync/doctor.py",
+      "sha256": "dcd21d0d0b3bc8590288c9af7e1955a7bc0b2de438d51c1cc0459e48ce0242bc"
+    },
+    {
+      "path": "src/docsync/extractors/__init__.py",
+      "sha256": "b40d44cab820d7a7bf09ac7d81780442bc6eea094f45862856de6a76bc9a0c4a"
+    },
+    {
+      "path": "src/docsync/extractors/markdown.py",
+      "sha256": "459e6dfb96b850155a1d6966c67bd0a5c1e3ff6e6d8a2adfc20816d2bac38a24"
+    },
+    {
+      "path": "src/docsync/extractors/python_ast.py",
+      "sha256": "9303e5f6a215b9d6e75f64a4787de406f7ad05bd368f422229c4046b4ce75177"
+    },
+    {
+      "path": "src/docsync/llm/__init__.py",
+      "sha256": "9cf5aea7e846de96d911ddb9d87a547af803398cad44784b2010a660cfef12a0"
+    },
+    {
+      "path": "src/docsync/llm/prompts.py",
+      "sha256": "021e6111ca33449888b3dfd5f468bf43753bab096ba23354a3a4c1a7d7f1fb1e"
+    },
+    {
+      "path": "src/docsync/llm/provider.py",
+      "sha256": "7a613774f6f037585a36d727c8c0140da2edd11752a7454ae9b6960a9032ea18"
+    },
+    {
+      "path": "src/docsync/metrics.py",
+      "sha256": "802d9f730111a8e5a19783537f31958cb56ae73d9636fbdd3c118b8e18403c58"
+    },
+    {
+      "path": "src/docsync/models.py",
+      "sha256": "213ae42b48a2dcaf9dcd1ce47721511426ba5db32c7a11130ad4e026b364aae9"
+    },
+    {
+      "path": "src/docsync/patches/__init__.py",
+      "sha256": "72fb2665cf99e02a9771d7520af25188c2e65eed63609223faa7be43dd7d01fc"
+    },
+    {
+      "path": "src/docsync/pipeline.py",
+      "sha256": "670054b1c8b0993449df751213a474f26f027bd76ab1aa89510c956f84bb946b"
+    },
+    {
+      "path": "src/docsync/reporting/__init__.py",
+      "sha256": "a32ccc9d5bb93ef29fe3762579589d857c7c6d5fce66262efcdcd017134e63a1"
+    },
+    {
+      "path": "src/docsync/repository/__init__.py",
+      "sha256": "03e14ae487eed6eadcb67cb9224b06fd7f92dbe08133edb0788975adf22421d1"
+    },
+    {
+      "path": "src/docsync/utils.py",
+      "sha256": "4a9d6b4dcd6ebfae276b13025b4c32f1a68b923e951a1b0791de023fee0d8532"
+    },
+    {
+      "path": "src/docsync/verification/__init__.py",
+      "sha256": "5f1580c6d91d37ba3fdae340fa74ece7c2c2d3a2a39db6b632dcf27d269a72f4"
+    }
+  ],
+  "commands": [
+    "python scripts/create_demo.py --out ARTIFACT_ROOT/repo",
+    "python -m docsync doctor --repo ARTIFACT_ROOT/repo --format json",
+    "python -m docsync scan --repo ARTIFACT_ROOT/repo --mode rules --out ARTIFACT_ROOT/before",
+    "python -m docsync patch --report ARTIFACT_ROOT/before/report.json --out ARTIFACT_ROOT/fixes.patch",
+    "python -m docsync apply --repo ARTIFACT_ROOT/repo --patch ARTIFACT_ROOT/fixes.patch --manifest ARTIFACT_ROOT/fixes.patch.json",
+    "python -m docsync scan --repo ARTIFACT_ROOT/repo --mode rules --working-tree --out ARTIFACT_ROOT/after",
+    "python -m docsync apply --repo ARTIFACT_ROOT/repo --patch ARTIFACT_ROOT/fixes.patch --manifest ARTIFACT_ROOT/fixes.patch.json (expected exit 2)",
+    "python -m build --no-isolation --outdir ARTIFACT_ROOT/build"
+  ],
+  "note": "Absolute environment paths omitted from this summary. Raw report bytes remain unchanged; report_hashes are SHA-256 of cli-before-report.json and cli-after-report.json. Build hashes refer to this smoke run, not a later rebuild."
+}

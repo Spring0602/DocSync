@@ -797,7 +797,14 @@ def extract_code(snapshot: SnapshotData) -> CodeExtractionResult:
     }
     for _ in range(len(exports) + 1):
         changed = False
-        for target_module, target_path, source_module, imported_name, binding, export_span in exports:
+        for (
+            target_module,
+            target_path,
+            source_module,
+            imported_name,
+            binding,
+            export_span,
+        ) in exports:
             source = source_module + "." + imported_name
             exported_subject = target_module + "." + binding
             for fact in list(facts):

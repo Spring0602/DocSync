@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="description" content="DocSync 本地报告工作区：查看 Python 与 Markdown 的一致性证据。"/>
+  <title>代码与证据 · DocSync</title>
+  <link rel="stylesheet" href="./portal.css"/>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到内容</a>
+<header class="portal-header">
+  <div class="header-inner">
+    <a class="portal-brand" href="./index.html" aria-label="DocSync 首页"><span class="brand-glyph"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 3h8a7 7 0 0 1 0 14H6Z"/><path d="m9 11 3 3 6-8"/></svg></span><span>DocSync<i>.</i></span></a>
+    <nav class="portal-nav" aria-label="项目导航"><a href="./index.html">首页</a><a href="./data.html">数据</a><a class="is-active" aria-current="page" href="./code.html">证据</a><a href="./history.html">运行</a><a href="./reports.html">报告</a></nav>
+    <span class="header-status"><span class="status-dot"></span>本地读取 · 文件不上传</span>
+  </div>
+</header>
+<main class="portal-main" id="main">
+  <section class="page-hero"><span class="page-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M14 5l-4 14"/></svg></span><div><h1>代码与文档证据</h1><p>选择记录，查看报告实际包含的原文。</p></div></section>
+  <section class="evidence-toolbar panel">
+    <label for="evidenceSelect">选择审查记录</label>
+    <select id="evidenceSelect" aria-describedby="evidenceHelp"><option>正在读取…</option></select>
+    <span id="evidenceState" class="source-pill">—</span>
+    <p id="evidenceHelp">代码区展示报告记录的表达式，不补写未提供的源码。</p>
+  </section>
+  <section class="code-grid" aria-label="代码与文档对照">
+    <article class="code-card dark"><header class="code-head"><strong id="codePath">—</strong><span id="codeLines">—</span></header><pre class="code-body"><code id="codeView">—</code></pre><footer class="code-foot"><span id="evidenceCodeLabel">代码事实</span><code id="codeHash">—</code></footer></article>
+    <article class="code-card"><header class="code-head"><strong id="docPath">—</strong><span id="docLines">—</span></header><pre class="code-body"><code id="docView">—</code></pre><footer class="code-foot"><span>文档原文</span><code id="docHash">—</code></footer></article>
+  </section>
+  <section class="section-block panel">
+    <div class="section-heading"><h2>报告中的判断说明</h2><a class="portal-button primary" id="openEvidenceReport" href="./reports.html">查看完整记录 →</a></div>
+    <p id="evidenceReason">—</p>
+  </section>
+</main>
+<footer class="portal-footer"><div class="footer-inner"><span data-source-footer>正在读取当前报告</span><span>DocSync · Python &amp; Markdown</span></div></footer>
+<script src="./demo-data.js"></script>
+<script src="./report-store.js"></script>
+<script src="./portal.js"></script>
+</body>
+</html>

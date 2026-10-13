@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "browser": "148.0.7778.96",
+  "baseUrl": "http://127.0.0.1:56194/",
+  "checks": [
+    "five pages load without horizontal overflow",
+    "embedded report preserves real conflict and evidence",
+    "disclosures and sidebar navigation show requested details",
+    "real local report imports and is explicitly identified",
+    "imported report survives reload and follows all workspace pages",
+    "broken JSON, unknown schema and bad nested data preserve current report",
+    "rejected evidence counts as uncertain, deduplicated by claim",
+    "multiple findings are selectable and ignored findings expose no patch",
+    "expired ignore rule keeps warning, reason and date visible",
+    "search empty state and reset behave predictably",
+    "pagination and record deep links agree on the selected page",
+    "long repository identity fits desktop and mobile",
+    "rescan validates comparability and preserves prior comparison on failure",
+    "patch download matches the raw report diff",
+    "untrusted report text never becomes HTML",
+    "report export preserves imported JSON run identity",
+    "no-conflict report clears previous evidence and patch state",
+    "restore demo resets the shared workspace",
+    "mobile and tablet pages remain within the viewport",
+    "direct file opening can display and import a report",
+    "zero browser errors, CSP violations or external network requests"
+  ],
+  "failures": [],
+  "exceptions": [],
+  "externalRequests": [],
+  "cspViolations": [],
+  "service": "scripts/serve_frontend.py --no-browser (temporary test service stopped)"
+}
